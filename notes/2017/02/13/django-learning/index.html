@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>django 学习笔记 - 行走的西葫芦</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dylan Yang" />
+    <meta name="description" content="django 学习笔记" />
+    <meta name="keywords" content="Python, Django, Learning" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify-solarized-light.css" type="text/css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="zucchiniY.github.io">
+        </form>
+        <h1 class="masthead-title"><a href="/">行走的西葫芦</a></h1>
+        <p>世事洞明皆学问，人情练达即文章。</p>
+        <ul>
+          <li><a href="/blog/"><i class="fa fa-archive"></i>Blog</a></li>
+          <li><a href="/notes/"><i class="fa fa-archive"></i>Notes</a></li>
+          <li><a href="/tags/"><i class="fa fa-tag"></i>Tags</a></li>
+          <li><a href="/about/"><i class="fa fa-user"></i>About</a></li>
+          <li><a href="https://github.com/ZucchiniY"><i class="fa fa-github"></i>GitHub</a></li>
+          <li><a href="/rss.xml"><i class="fa fa-rss-square"></i>RSS</a></li>
+        </ul>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>django 学习笔记</h1>
+
+<div id="outline-container-org48565f8" class="outline-2">
+<h2 id="org48565f8">安装说明</h2>
+<div class="outline-text-2" id="text-org48565f8">
+<ul class="org-ul">
+<li>先安装 Python 和 Django</li>
+<li>创建 django 项目</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python">django-admin startproject mysite
+</pre>
+</div>
+<ul class="org-ul">
+<li>在命令行里，输入对应的命令来启动测试用的网站</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">python manage.py runserver
+</pre>
+</div>
+<ul class="org-ul">
+<li>创建子项目</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">python manage.py startapp lists
+</pre>
+</div>
+<ul class="org-ul">
+<li><p>
+执行 start 命令以及在项目文件夹中存放一个应用还不够，需要告诉 Django 确实要开发一个应用，并把这个应用添加到文件 settings.py 中才可以。
+</p>
+<ul class="org-ul">
+<li>settings.py 中找到变量 INSTALLED_APPS, 将 lists 加进去</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python">INSTALLED_APPS = (
+  'django.contrib.admin',
+  'django.contrib.auth',
+  'django.contrib.contenttypes',
+  'django.contrib.sessions',
+  'django.contrib.messages',
+  'django.contrib.staticfiles',
+  'lists',
+  )
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org002705b" class="outline-2">
+<h2 id="org002705b">常用语法参数</h2>
+<div class="outline-text-2" id="text-org002705b">
+<div class="org-src-container">
+<pre class="src src-python">assert 'To-Do' in brower.title, "Brower title was " + brower.title
+</pre>
+</div>
+<p>
+unittest.TestCase 内特殊方法
+</p>
+<ol class="org-ol">
+<li><b>setUp</b> : 测试方法之前执行，可以在测试之前打开浏览器</li>
+<li><b>tearDown</b> : 测试方法之后执行，可以在测试之后关闭浏览器
+<ol class="org-ol">
+<li>这两个方法有点类似于 <b>try</b> / <b>except</b>  语句，即使在测试中出错了，也依然后执行相关的语句</li>
+</ol></li>
+<li><b>self.fail</b>  都会失败，生成抒写的错误信息，用来提醒测试结束等必要信息</li>
+<li><b>warnings='ignore'</b> 的作用是禁止抛出 <b>ResourceWarning</b> 异常，可以删除这个参数</li>
+<li><b>implicitly_wait()</b> : 隐式等待，用来加载页面</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org20f38d3" class="outline-2">
+<h2 id="org20f38d3">TDD 中的功能测试与单元测试</h2>
+<div class="outline-text-2" id="text-org20f38d3">
+<ul class="org-ul">
+<li>功能测试站在高层驱动开发，单元测试则从低层驱动代码的进展
+<ul class="org-ul">
+<li>先功能测试，从用户角度去描述新的功能</li>
+<li>功能测试失败后进行单元测试，驱动代码</li>
+<li>再进行功能测试，看是否已经能完成</li>
+</ul></li>
+<li>TDD 总体流程</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dot">digraph G {
+edge [fontname="YouYuan"];
+node [fontname="YouYuan"];
+splines = spline; 
+a1 [shape=box, style=filled, label="编写测试"];
+a2 [shape=box, style=filled, label="编写最少量的代码"];
+a3 [shape=Mdiamond, style=filled, label="运行测试。\n 是否通过测试?"];
+a4 [shape=Mdiamond, style=filled, label="是否需要重构?"];
+a1:e-&gt;a3:w;
+a3:e-&gt;a4:w[label="是"];
+a4:s-&gt;a2:e[label="是"];
+a3:s-&gt;a2:n[label="否"];
+a2:ne-&gt;a3:se;
+a4:n-&gt;a1:n[style=dotted,label="否"]
+rankdir=TB;
+{rank=same; a1;a3;a4}
+}
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="file:///Users/zucchini/workspace/org/blog/ZucchiniY.github.io/images/django-01.png" alt="django-01.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>包含功能测试和单元测试的 TDD 流程</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dot">digraph G {
+compound=true;
+edge [fontname="YouYuan"];
+node [fontname="YouYuan"];
+fontname="YouYuan";
+rankdir=LR;
+
+subgraph cluster0 {
+style = filled;
+color = lightgrey;
+a1 [shape=box, label="编写单元测试"];
+a2 [shape=Mdiamond,  label="运行单元测试。\n 是否通过测试?"];
+a3 [shape=box, label="编写最少量的代码"];
+a4 [shape=Mdiamond, label="代码是否需要重构?"];
+
+a1:e-&gt;a3:w;
+a3:e-&gt;a4:w[label="是"];
+
+a4:s-&gt;a2:e[label="是"];
+a3:s-&gt;a2:n[label="否"];
+a2:ne-&gt;a3:se;
+
+{rank=min;a1}
+{rank=same;a2;a3}
+{rank=max;a4}
+
+label="TDD 流程" 
+}
+
+{rank=min;a5}
+{rank=same;a6}
+{rank=max;a7}
+
+
+a5 [shape=box, label="编写功能测试"];
+a6 [shape=Mdiamond,  label="运行功能测试。\n 是否通过？"];
+a7 [shape=Mdiamond, label="应用是否需要重构?"];
+
+a7:e-&gt;a4:e[lhead=cluster0];
+a5:e-&gt;a6:w;
+a6:e-&gt;a7:w[label="是"];
+
+a6:s-&gt;a3:n[label="否"];
+a3:n-&gt;a6:se;
+a7:n-&gt;a5:n[label="否",style=dotted];
+
+newrank=true;
+{rank=same;a1;a5}
+{rank=same;a2;a6}
+{rank=same;a4;a7}
+}
+
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="file:///Users/zucchini/workspace/org/blog/ZucchiniY.github.io/images/django-02.png" alt="django-02.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdd65cb2" class="outline-2">
+<h2 id="orgdd65cb2">利用 git 进行管理发布内容</h2>
+<div class="outline-text-2" id="text-orgdd65cb2">
+<div class="org-src-container">
+<pre class="src src-sh">git add .
+echo "something" &gt;&gt; .gitignore
+git commit -m "something"
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org87aa2e7" class="outline-2">
+<h2 id="org87aa2e7">单元测试笔记</h2>
+<div class="outline-text-2" id="text-org87aa2e7">
+<ul class="org-ul">
+<li>用户在浏览器中请求网页时，Django 看到的就是 HttpRequest 对象
+<ul class="org-ul">
+<li>关于 request 和 response 
+<ul class="org-ul">
+<li>request 对象用于接收客户端浏览器提交的数据</li>
+<li>response 对象是将服务器端的娄氯送到客户端浏览</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0cffcfd" class="outline-2">
+<h2 id="org0cffcfd">有用的命令和概念</h2>
+<div class="outline-text-2" id="text-org0cffcfd">
+</div>
+<div id="outline-container-org91097cc" class="outline-3">
+<h3 id="org91097cc">启动 Django 开发服务器</h3>
+<div class="outline-text-3" id="text-org91097cc">
+<div class="org-src-container">
+<pre class="src src-sh">python manage.py runserver
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org01b4224" class="outline-3">
+<h3 id="org01b4224">运行功能测试</h3>
+<div class="outline-text-3" id="text-org01b4224">
+<div class="org-src-container">
+<pre class="src src-sh">python functional_test.py
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd806773" class="outline-3">
+<h3 id="orgd806773">运行单元测试</h3>
+<div class="outline-text-3" id="text-orgd806773">
+<div class="org-src-container">
+<pre class="src src-sh">python manage.py test
+</pre>
+</div>
+<ul class="org-ul">
+<li>单元测试是用来测试逻辑、流程控制和配置。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7cbca40" class="outline-2">
+<h2 id="org7cbca40">Django 中的模板</h2>
+<div class="outline-text-2" id="text-org7cbca40">
+<pre class="example">
+模板是 Django 中一个很强大的功能，使用模板的主要优势之一是能把 Python 变量代入 HTML 文本。
+模板作为 Django 中的一个非常重要的功能，需要在后续过程中，学习模板的其它用法，主要在 templates 中.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge189163" class="outline-2">
+<h2 id="orge189163">Django 迁移</h2>
+<div class="outline-text-2" id="text-orge189163">
+<blockquote>
+<p>
+迁移 migration
+</p>
+</blockquote>
+<ul class="org-ul">
+<li>在 Django 中，ORM 的任务是模型化数据库</li>
+<li>创建数据库是由迁移(migration)系统完成的，其任务是：
+<ul class="org-ul">
+<li>根据你对 models.py 文件的改动情况，添加或删除表和列</li>
+<li>可以把迁移想象成数据库使用的版本控制系统
+<ul class="org-ul">
+<li>在把应用部署到线上服务器升级数据库时，迁移十分有用</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">python manage.py makemigrations
+</pre>
+</div>
+<ul class="org-ul">
+<li>再次执行迁移，可以发现要求我们对新增的列提供一个默认值来完成操作</li>
+<li>在使用 models.py 文件和后来创建的迁移文件中告诉 Django 创建数据库所需要一切信息，为了创建真正的数据库，使用 migrate 命令。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python">python manage.py migrate
+</pre>
+</div>
+<ul class="org-ul">
+<li>需要增加一种自动清理机制，可以手动清理，即：先删除数据库再执行一遍 migrate 命令</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">rm db.sqlite3
+python manage.py migrate --noinput
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c0e6e3" class="outline-2">
+<h2 id="org8c0e6e3">Django 中的常用方法</h2>
+<div class="outline-text-2" id="text-org8c0e6e3">
+<ul class="org-ul">
+<li>重定向</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python">redirect('/') # 重定向到/路径
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org13042c3" class="outline-2">
+<h2 id="org13042c3">问题</h2>
+<div class="outline-text-2" id="text-org13042c3">
+</div>
+<div id="outline-container-orge5d23e1" class="outline-3">
+<h3 id="orge5d23e1">在使用过程中，无法定位到 Iedriver，已经修改为使用 Chromedriver.exe 来完成。</h3>
+</div>
+<div id="outline-container-orge187ba0" class="outline-3">
+<h3 id="orge187ba0">事不过三，三则重构</h3>
+<div class="outline-text-3" id="text-orge187ba0">
+</div>
+<div id="outline-container-org688724c" class="outline-4">
+<h4 id="org688724c">在代码过程中，如果复制粘贴三次，就需要删除该重复，进行代码的重构。</h4>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-02-13</span>
+        <span title="last modification date" class="post-info">2018-02-04</span>
+        <span title="tags" class="post-info"><a href="/tags/learning/">Learning</a></span>
+        <span title="author" class="post-info">Dylan Yang</span>
+      </div>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:banshiliuli1990 &lt;at&gt; sina &lt;dot&gt; com">Dylan Yang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

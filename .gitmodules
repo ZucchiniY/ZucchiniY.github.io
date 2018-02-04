@@ -1,0 +1,3 @@
+[submodule "themes/vmdo"]
+	path = themes/vmdo
+	url = git@github.com:ZCodingTime/vmdo.git

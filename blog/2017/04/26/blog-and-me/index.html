@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>博客与我的生活 - 行走的西葫芦</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dylan Yang" />
+    <meta name="description" content="我们无法选择生活的样子，但我们可以记下来。" />
+    <meta name="keywords" content="Hexo, blog, Github Pages" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify-solarized-light.css" type="text/css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="zucchiniY.github.io">
+        </form>
+        <h1 class="masthead-title"><a href="/">行走的西葫芦</a></h1>
+        <p>世事洞明皆学问，人情练达即文章。</p>
+        <ul>
+          <li><a href="/blog/"><i class="fa fa-archive"></i>Blog</a></li>
+          <li><a href="/notes/"><i class="fa fa-archive"></i>Notes</a></li>
+          <li><a href="/tags/"><i class="fa fa-tag"></i>Tags</a></li>
+          <li><a href="/about/"><i class="fa fa-user"></i>About</a></li>
+          <li><a href="https://github.com/ZucchiniY"><i class="fa fa-github"></i>GitHub</a></li>
+          <li><a href="/rss.xml"><i class="fa fa-rss-square"></i>RSS</a></li>
+        </ul>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>博客与我的生活</h1>
+
+<div id="outline-container-orgd62b74b" class="outline-2">
+<h2 id="orgd62b74b">博客的开始</h2>
+<div class="outline-text-2" id="text-orgd62b74b">
+<p>
+其实，一切都是为了更好的装逼。好吧，我着相了。
+</p>
+
+<p>
+最开始想做一个自己博客，主要是因为看到了很多人都有，觉得自己没有太 Low
+了。于是申请了 CSDN
+的用户，但是太丑了，于是又申请了博客园，感觉这些都不是我想要的，而做为一个
+Emacser 不使用 Github 搭建一个自己的博客，感觉就已经落伍了。
+</p>
+
+<p>
+于是就有这最初的一个，相当简陋的利用 Emacs 的 Org-mode
+搭建的博客，后来看了 Org-page 这个包，但是，我配置不好啊！为什么为什么！
+</p>
+
+<p>
+最后，从 Hugo 和 Hexo 之间，我选择了 Hexo，虽然 Hugo 在 Windows
+上使用起来更方便，但是我还是觉得 Hexo 更适合我。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1098fc6" class="outline-2">
+<h2 id="org1098fc6">利用 Hexo 的坑</h2>
+<div class="outline-text-2" id="text-org1098fc6">
+<ul class="org-ul">
+<li>有些插件需要翻墙，有些不用，我也不记得哪个用哪个不用了，实在不行可以使用淘宝的
+npm 源进行安装。</li>
+<li>环境配置好之后，最好更新一下模板，把一些常用的内容写到 Hexo
+的模板里，这样在后续的使用中，可以快速的增加标签、分类和简介等内容。</li>
+<li>学习 Markdown , 这个并不是一个坑，而是一个忠告，作为一个常年游荡在
+GitHub 的好同志来说，但是对于一个 Emacser 来说，我更喜欢 Org-mode
+，但是 Org-mode 并不能直接用来发布 Hexo
+博客，有些人会说可以利用一些工具，但是与其增加一些工具，不如学习一下
+Markdown, 这根本用不了几分钟，虽然 Org-mode
+很强大（忍不住安利一波），但是 Markdown
+作为一个大众的标记语言，简单的语法还是需要我们掌握的。</li>
+<li>记住常用的命令
+
+<ul class="org-ul">
+<li><code>hexo new markdown_file</code> : 新建文章</li>
+<li><code>hexo new page html_file</code> : 新建页面</li>
+<li><code>hexo generate</code> : 生成静态页面到 public 目录</li>
+<li><code>hexo server</code> : 开启预览访问端口，4000， <code>Ctrl+c</code> 关闭 <i>server</i></li>
+<li><code>hexo deploy</code> : 将 .deploy 目录部署到 GitHub
+
+<ul class="org-ul">
+<li>这里需要配置 deploy 的项目地址并安装了 hexo-deployer-git
+插件，才能使用这个功能</li>
+</ul></li>
+</ul></li>
+
+<li>最后一个坑，挑选一个合适的主题，好吧，我选择了很久------大概四天吧，可能很多人能非常快的决定，但是对于我来说，把所有好看的主题都看一遍，才是我想做的事，最后我选择了
+Next 主题，简单美观，还有非常齐全的配置说明</li>
+<li>部署使用的命令有三个 hexo clean/hexo generate/hexo deploy,
+这三个命令之后，就可以登录你的静态博客页面去查看了。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org58606eb" class="outline-2">
+<h2 id="org58606eb">博客的生活</h2>
+<div class="outline-text-2" id="text-org58606eb">
+<p>
+我很喜欢调试自己的博客，但是写博客就不是那么喜欢了，但是我希望能养成一个定期写博客的习惯。
+</p>
+
+<p>
+所以，我需要博客，主要是用来装......咳，主要是用来记录我们的生活、工作的内容，这样在下次使用的时候，就能更好的做到了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3d28616" class="outline-2">
+<h2 id="org3d28616">Hexo 相关安装</h2>
+<div class="outline-text-2" id="text-org3d28616">
+<p>
+在几次试验之后，Node.js 环境还是使用 nvm
+管理比较好用，下载的时候可以使用 <code>npm
+--registry=https://registry.npm.taobao.org install</code> 进行安装下面的模块。
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-sh">npm install -g hexo-cli
+npm install hexo-deployer-git --save
+npm install hexo-generator-search --save
+npm install hexo-generator-feed --save
+npm install -g tern
+npm install -g js-beautify
+npm install -g jshint
+npm install -g js-yaml 
+npm install hexo-renderer-jade --save
+npm install hexo-renderer-sass --save
+</pre>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-04-26</span>
+        <span title="last modification date" class="post-info">2018-02-04</span>
+        <span title="tags" class="post-info"><a href="/tags/hexo-blog/">Hexo Blog</a></span>
+        <span title="author" class="post-info">Dylan Yang</span>
+      </div>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:banshiliuli1990 &lt;at&gt; sina &lt;dot&gt; com">Dylan Yang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

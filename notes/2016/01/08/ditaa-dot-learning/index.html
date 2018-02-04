@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>ditaa、dot 代码实例 - 行走的西葫芦</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dylan Yang" />
+    <meta name="description" content="dot、ditaa 代码笔记" />
+    <meta name="keywords" content="dot, ditaa, Emacs, Org mode" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify-solarized-light.css" type="text/css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="zucchiniY.github.io">
+        </form>
+        <h1 class="masthead-title"><a href="/">行走的西葫芦</a></h1>
+        <p>世事洞明皆学问，人情练达即文章。</p>
+        <ul>
+          <li><a href="/blog/"><i class="fa fa-archive"></i>Blog</a></li>
+          <li><a href="/notes/"><i class="fa fa-archive"></i>Notes</a></li>
+          <li><a href="/tags/"><i class="fa fa-tag"></i>Tags</a></li>
+          <li><a href="/about/"><i class="fa fa-user"></i>About</a></li>
+          <li><a href="https://github.com/ZucchiniY"><i class="fa fa-github"></i>GitHub</a></li>
+          <li><a href="/rss.xml"><i class="fa fa-rss-square"></i>RSS</a></li>
+        </ul>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>ditaa、dot 代码实例</h1>
+
+<div id="outline-container-org2d74d39" class="outline-2">
+<h2 id="org2d74d39">ditta</h2>
+<div class="outline-text-2" id="text-org2d74d39">
+<ul class="org-ul">
+<li>ditaa 可以繪製對應的矩形圖,如下</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-ditaa">+---------------------------------------+
+|                Applications           |
+|                cRED                   |
++-------------------+                   |
+|    cBLU           |                   |
+|    Libraries      |                   |
++-------------------+-------------------+
+|                                       |
+|   Kernel          +-------------------+
+|   cYEL            |           cGRE    |
+|           +-------+--------+  Drivers |
+|           |   Firmware c1AF|          |
++-----------+----------------+----------+
+|               Hardware  c1AC          |
++---------------------------------------+
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/01/08/ditaa-dot-learning/linux02.png" alt="linux02.png" />
+</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-ditaa">+---------------------------------------------------------+ 
+|                Applications                             |     
+|    +----------------------------------------------------+     
+|    |           System Libraries                         |     
++----+----------------------------------------------------+     
+|                System Call Interface                    |     
++------------------------+--------------+-----------------+       +---------+
+|          VFS           |   Socket     |                 |       |         |
++------------------------+--------------+    Scheduler    +-------+   CPU   |
+|       File Systems     |   TCP/UDP    |                 |       |         |
++------------------------+--------------+-----------------+       +----+----+
+|       Volume Manager   |   IP         |    Virtual      |            |  
++------------------------+--------------+    Memory       |            |
+| Block Device Interface |   Ethernet   |                 |            |
++------------------------+--------------+-----------------+       +----+----+
+|                       Device Driver                     |       |  DRAM   |
++-----------------------------+---------------------------+       +---------+
+			      |            
+			      |            
+		      +-------+--------+          
+		      |   I/O Bridge   |          
+		      +-------+--------+          
+			      |                            
+			      |                  
+      ------+-----------------+--------------------+------  
+	    |                                      |     
+  +---------+--------+                  +----------+---------+
+  |  I/O Controller  |                  | Network Controller |
+  +-+-------+------+-+                  +----+----------+----+
+    |       |      |                         |          |
++---+---+   |  +---+---+                +----+----+ +---+----+
+| Disk  |  ... | Swap  |                |  Port   | |  Port  |
++-------+      +-------+                +---------+ +--------+
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/01/08/ditaa-dot-learning/linux-os.png" alt="linux-os.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf9a5301" class="outline-2">
+<h2 id="orgf9a5301">Graphviz dot</h2>
+<div class="outline-text-2" id="text-orgf9a5301">
+</div>
+<div id="outline-container-orgb4be4b2" class="outline-3">
+<h3 id="orgb4be4b2">dot 线条</h3>
+<div class="outline-text-3" id="text-orgb4be4b2">
+<blockquote>
+<p>
+splines = ortho #直角拆线
+splines = spline #曲线（不遮挡）
+splines = cuvved #曲线（可遮挡）
+splines = line #直线（可遮挡）
+splines = polyline #直线（不遮挡）
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>静默执行代码</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq org-confirm-babel-evaluate nil) ;;执行静默语句块
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc4c3487" class="outline-3">
+<h3 id="orgc4c3487">dot 实例</h3>
+<div class="outline-text-3" id="text-orgc4c3487">
+<ul class="org-ul">
+<li><p>
+語言可以用來繪製流程圖,如下:
+</p>
+<div class="org-src-container">
+<pre class="src src-dot">digraph structs {
+ node[shape=record]
+ struct1 [label="&lt;f0&gt; left|&lt;f1&gt; mid\ dle|&lt;f2&gt; right"];
+ struct2 [label="{&lt;f0&gt; one|&lt;f1&gt; two\n\n\n}" shape=Mrecord];
+ struct3 [label="hello\nworld |{ b |{c|&lt;here&gt; d|e}| f}| g | h"];
+ struct1:f1 -&gt; struct2:f0;
+ struct1:f0 -&gt; struct3:f1;
+}
+</pre>
+</div></li>
+</ul>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/01/08/ditaa-dot-learning/dot04.png" alt="dot04.png" />
+</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-dot">  digraph G {
+  size="8,6"
+  ratio=expand
+  edge [dir=both]
+  plcnet [shape=box, label="PLC Network"]
+  subgraph cluster_wrapline {
+    label="Wrapline Control System"
+    color=purple
+    subgraph {
+    rank=same
+    exec
+    sharedmem [style=filled, fillcolor=lightgrey, shape=box]
+    }
+    edge[style=dotted, dir=none]
+    exec -&gt; opserver
+    exec -&gt; db
+    plc -&gt; exec
+    edge [style=line, dir=both]
+    exec -&gt; sharedmem
+    sharedmem -&gt; db
+    plc -&gt; sharedmem
+    sharedmem -&gt; opserver
+  }
+  plcnet -&gt; plc [constraint=false]
+  millwide [shape=box, label="Millwide System"]
+  db -&gt; millwide
+  subgraph cluster_opclients {
+    color=blue
+    label="Operator Client"
+    rankdir=LR
+    labelloc=b
+    node[label=client]
+    opserver -&gt; client1
+    opserver -&gt; client2
+    opserver -&gt; client3
+  }
+}
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/01/08/ditaa-dot-learning/dot01.png" alt="dot01.png" />
+</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-dot">  digraph G {
+  rankdir=LR
+  node [shape=plaintext]
+  a [
+     label=&lt;
+&lt;TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"&gt;
+  &lt;TR&gt;&lt;TD ROWSPAN="3" BGCOLOR="yellow"&gt;class&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR&gt;&lt;TD PORT="here" BGCOLOR="lightblue"&gt;qualifier&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;&gt;
+  ]
+    b [shape=ellipse style=filled
+  label=&lt;
+&lt;TABLE BGCOLOR="bisque"&gt;
+  &lt;TR&gt;&lt;TD COLSPAN="3"&gt;elephant&lt;/TD&gt; 
+      &lt;TD ROWSPAN="2" BGCOLOR="chartreuse" 
+	  VALIGN="bottom" ALIGN="right"&gt;two&lt;/TD&gt; &lt;/TR&gt;
+  &lt;TR&gt;&lt;TD COLSPAN="2" ROWSPAN="2"&gt;
+	&lt;TABLE BGCOLOR="grey"&gt;
+	  &lt;TR&gt; &lt;TD&gt;corn&lt;/TD&gt; &lt;/TR&gt; 
+	  &lt;TR&gt; &lt;TD BGCOLOR="yellow"&gt;c&lt;/TD&gt; &lt;/TR&gt; 
+	  &lt;TR&gt; &lt;TD&gt;f&lt;/TD&gt; &lt;/TR&gt; 
+	&lt;/TABLE&gt; &lt;/TD&gt;
+      &lt;TD BGCOLOR="white"&gt;penguin&lt;/TD&gt; 
+  &lt;/TR&gt; 
+  &lt;TR&gt; &lt;TD COLSPAN="2" BORDER="4" ALIGN="right" PORT="there"&gt;4&lt;/TD&gt; &lt;/TR&gt;
+&lt;/TABLE&gt;&gt;
+  ]
+  c [ 
+  label=&lt;long line 1&lt;BR/&gt;line 2&lt;BR ALIGN="LEFT"/&gt;line 3&lt;BR ALIGN="RIGHT"/&gt;&gt;
+  ]
+  subgraph { rank=same b c }
+  a:here -&gt; b:there [dir=both arrowtail = diamond]
+  c -&gt; b
+  d [shape=triangle]
+  d -&gt; c [label=&lt;
+&lt;TABLE&gt;
+  &lt;TR&gt;&lt;TD BGCOLOR="red" WIDTH="10"&gt; &lt;/TD&gt;
+      &lt;TD&gt;Edge labels&lt;BR/&gt;also&lt;/TD&gt;
+      &lt;TD BGCOLOR="blue" WIDTH="10"&gt; &lt;/TD&gt;
+  &lt;/TR&gt;
+&lt;/TABLE&gt;&gt;
+  ]
+
+  }
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/01/08/ditaa-dot-learning/dot_html01.png" alt="dot_html01.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-01-08</span>
+        <span title="last modification date" class="post-info">2018-02-04</span>
+        <span title="tags" class="post-info"><a href="/tags/dot/">dot</a>, <a href="/tags/ditaa/">ditaa</a></span>
+        <span title="author" class="post-info">Dylan Yang</span>
+      </div>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:banshiliuli1990 &lt;at&gt; sina &lt;dot&gt; com">Dylan Yang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

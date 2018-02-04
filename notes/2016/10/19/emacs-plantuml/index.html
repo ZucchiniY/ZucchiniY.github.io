@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Emacs 绘制 PlantUML - 行走的西葫芦</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dylan Yang" />
+    <meta name="description" content="在 Org-mode 中绘制 PlantUML 内容。" />
+    <meta name="keywords" content="Emacs, PlantUML, Org-mode" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify-solarized-light.css" type="text/css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="zucchiniY.github.io">
+        </form>
+        <h1 class="masthead-title"><a href="/">行走的西葫芦</a></h1>
+        <p>世事洞明皆学问，人情练达即文章。</p>
+        <ul>
+          <li><a href="/blog/"><i class="fa fa-archive"></i>Blog</a></li>
+          <li><a href="/notes/"><i class="fa fa-archive"></i>Notes</a></li>
+          <li><a href="/tags/"><i class="fa fa-tag"></i>Tags</a></li>
+          <li><a href="/about/"><i class="fa fa-user"></i>About</a></li>
+          <li><a href="https://github.com/ZucchiniY"><i class="fa fa-github"></i>GitHub</a></li>
+          <li><a href="/rss.xml"><i class="fa fa-rss-square"></i>RSS</a></li>
+        </ul>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>Emacs 绘制 PlantUML</h1>
+
+<div id="outline-container-orgd76e89a" class="outline-2">
+<h2 id="orgd76e89a">PlantUML 支持的图形有：</h2>
+<div class="outline-text-2" id="text-orgd76e89a">
+<ul class="org-ul">
+<li>sequence diagram</li>
+<li>use case diagram</li>
+<li>class diagram</li>
+<li>activity diagram</li>
+<li>component diagram</li>
+<li>state diagram</li>
+<li>object diagram</li>
+<li>wireframe graphical interface</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org79267cb" class="outline-2">
+<h2 id="org79267cb">可以生成 png、svg 和二进制图片</h2>
+<div class="outline-text-2" id="text-org79267cb">
+<div class="org-src-container">
+<pre class="src src-plantuml">Alice -&gt; Bob: synchronous call
+Alice -&gt; Bob: asynchronous call
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml01.png" alt="plantuml01.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org279de07" class="outline-2">
+<h2 id="org279de07">顺序图（Sequence Diagram）</h2>
+<div class="outline-text-2" id="text-org279de07">
+</div>
+<div id="outline-container-org8141482" class="outline-3">
+<h3 id="org8141482">顺序用 -&gt; , --&gt; , &lt;- , &lt;-- 来绘制参与者（Participants）之间的消息（Message）</h3>
+<div class="outline-text-3" id="text-org8141482">
+<div class="org-src-container">
+<pre class="src src-plantuml">Alice -&gt; Bob: Authentication Request
+Bob --&gt; Alice: Authentication Response
+
+Alice -&gt; Bob: Another authentication Request
+Alice &lt;-- Bob: Another authentication Response
+
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml02.png" alt="plantuml02.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>svg 图在 IE 下不支持，需要由 Chrome 打开</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7b2ea0f" class="outline-3">
+<h3 id="org7b2ea0f">注释语句</h3>
+<div class="outline-text-3" id="text-org7b2ea0f">
+<ul class="org-ul">
+<li>以单引号开始头行，是单行注释，多行注释用 "<i>'" 来表示注释开双，以 "'</i>" 表示注释结束</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1809295" class="outline-3">
+<h3 id="org1809295">申明参与者</h3>
+<div class="outline-text-3" id="text-org1809295">
+<ul class="org-ul">
+<li>actor 行动者</li>
+<li>boundary 边界，范围，分界线</li>
+<li>control 控制，管理操纵</li>
+<li>entity 实体，实际存在物，本质</li>
+<li>database 数据库，资料库</li>
+</ul>
+</div>
+<div id="outline-container-org00001f5" class="outline-4">
+<h4 id="org00001f5">不同的参与者类型，其图标也是不一样的</h4>
+<div class="outline-text-4" id="text-org00001f5">
+<div class="org-src-container">
+<pre class="src src-plantuml">actor Foo1
+boundary Foo2
+control Foo3
+entity Foo4
+database Foo5
+Foo1 -&gt; Foo2 : To boundary
+Foo1 -&gt; Foo3 : To control
+Foo1 -&gt; Foo4 : To entity
+Foo1 -&gt; Foo5 : To database
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml03.png" alt="plantuml03.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org60fdf1b" class="outline-4">
+<h4 id="org60fdf1b">利用 as 关键词可以为参与者起一个别名，这样在对引用长名的参与者时，会方便很多。在参与者申明语句后，行尾可以追加背景色的设置，只要把标准的 HTML 颜色值写在后面</h4>
+<div class="outline-text-4" id="text-org60fdf1b">
+<div class="org-src-container">
+<pre class="src src-plantuml">actor Bob #red
+' The only defference between actor
+' and participant is the drawing
+participant Alice
+participant "I have a really\nlong name" as L #99ff99
+/' You can also declare :
+participant L as "I have a really\nlong name" #99ff99
+'/
+Alice -&gt; Bob : Authentication Request
+Bob -&gt; Alice : Authentication Response
+Bob -&gt; L : Log transaction
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantum03.png" alt="plantum03.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga8d04a5" class="outline-3">
+<h3 id="orga8d04a5">使用非字母的参与者名称(Use non-letters in participants）</h3>
+<div class="outline-text-3" id="text-orga8d04a5">
+<ul class="org-ul">
+<li>针对非字母的参与者名，我们可以使用双引号，同样也可以为比较长的名字起个别名，方法同上使用 as 关键词。</li>
+<li>使用上面的关键词来申明参与者，是一种显示申明；而采用引号来申明参与者则是一种隐示申明方法，它不需要专门的位置去定义</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">Alice -&gt; "Bob()" : Hello
+"Bob()" -&gt; "This is very\nlong" as Long
+' You can also declare:
+' "Bob()" -&gt; Long as "This is very\nlong"
+Long --&gt; "Bob()" : ok
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml04.png" alt="plantuml04.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c2739b" class="outline-3">
+<h3 id="org8c2739b">发送消息给自己（Message to Self）</h3>
+<div class="outline-text-3" id="text-org8c2739b">
+<ul class="org-ul">
+<li>一个参与者可以给自己发送消息，消息名如果需要有多行文本，可以用 \n 来表示换行</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">Alice -&gt; Alice : This is a signal to self.\nIt also demonstrates\nmultiline \ntext
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantum05.png" alt="plantum05.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf7d761" class="outline-3">
+<h3 id="orgdf7d761">改变箭头的样式（Change arrow style）</h3>
+<div class="outline-text-3" id="text-orgdf7d761">
+<ul class="org-ul">
+<li>在用例图里可以通过以下方式来改变箭头的样式：
+<ul class="org-ul">
+<li>使用 \ 或 / 来替换 &lt; 或 &gt; 可以让箭头只显示上半部分或下半部分</li>
+<li>重复输入简单或斜杠（ &gt;&gt; //），用来绘制空心箭头</li>
+<li>使用双横线 -- 替代 - 可以用来绘制点线</li>
+<li>在箭头后面加个 o 可以在简单前绘制一个圆圈</li>
+<li>使用 &lt;-&gt; 可用来绘制双向箭头</li>
+</ul></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">Bob -&gt; Alice
+Bob -&gt;&gt; Alice
+Bob -\ Alice
+Bob \\- Alice
+Bob //-- Alice
+
+Bob -&gt;o Alice
+Bob o\\-- Alice
+
+Bob &lt;-&gt; Alice
+Bob &lt;&lt;-\\o Alice
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml06.png" alt="plantuml06.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8904d3b" class="outline-3">
+<h3 id="org8904d3b">改变箭头的颜色（Change arrow color）</h3>
+<div class="outline-text-3" id="text-org8904d3b">
+<ul class="org-ul">
+<li>要改变箭头的颜色，可以使用 HTML 颜色符号，参看下面的例子</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">Bob -[#red]&gt; Alice : hello
+Alice -[#0000ff]-&gt; Bob : ok
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml07.png" alt="plantuml07.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org905c7b6" class="outline-3">
+<h3 id="org905c7b6">消息序号（Mesage sequence numbering）</h3>
+<div class="outline-text-3" id="text-org905c7b6">
+<ul class="org-ul">
+<li>关键词 autonumber 用来自动的给消息添加上序号</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">autonumber
+Bob -&gt; Alice : Authentication Request
+Bob &lt;- Alice : Authentication Response
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml08.png" alt="plantuml08.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>如果需要指定一个起始号码，可以直接在 autonumber 后面加个数字就行了，如果要设置自动增量，再在后面加一个数字就行了（autonumber start increment）</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">autonumber
+Bob -&gt; Alice : Authentication Request
+Bob &lt;- Alice : Authentication Response
+
+autonumber 15
+Bob -&gt; Alice : Another authentication Request
+Bob &lt;- Alice : Another authentication Response
+
+autonumber 40 10
+Bob -&gt; Alice : Yet another authentication Request
+Bob &lt;- Alice : Yet another authentication Response
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml09.png" alt="plantuml09.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>我们也可以为序号指定数字格式，这个格式化的过程实际上是 Java 类 DecimalFormat 来执行的（0 表示数字， # 缺省补零倍数）</li>
+<li>同样的，也可以使用一些 HTML 标签来控制数字的样式</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">autonumber "&lt;b&gt;[000]"
+Bob -&gt; Alice : Authentication Request
+Bob &lt;- Alice : Authentication Response
+
+autonumber 15 "&lt;b&gt;(&lt;u&gt;##&lt;/u&gt;)"
+Bob -&gt; Alice : Another authentication Request
+Bob &lt;- Alice : Another authentication Response
+
+autonumber 40 10 "&lt;font color=red&gt;Message 0 "
+Bob -&gt; Alice : Yet another authentication Request
+Bob &lt;- Alice : Yet another authentication Response
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml10.png" alt="plantuml10.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1f3dc07" class="outline-3">
+<h3 id="org1f3dc07">标题（Title）</h3>
+<div class="outline-text-3" id="text-org1f3dc07">
+<ul class="org-ul">
+<li>要给图形加一个标题可以用 title 关键词来设置</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">title Simple Comunication example
+Alice -&gt; Bob : Authentication Request
+Bob --&gt; Alice : Authentication Response
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml11.png" alt="plantuml11.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9145602" class="outline-3">
+<h3 id="org9145602">图形图例（Legend the diagram）</h3>
+<div class="outline-text-3" id="text-org9145602">
+<ul class="org-ul">
+<li>使用 legend 和 end legend 关键词可以设置图形的图例，图例可以设为左对齐、右对齐和居中对齐</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">Alice -&gt; Bob : Hello
+legend right
+Short
+legend
+endlegend
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml12.png" alt="plantuml12.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f3b21f" class="outline-3">
+<h3 id="org4f3b21f">分割图形（Splitting diagrams）</h3>
+<div class="outline-text-3" id="text-org4f3b21f">
+<ul class="org-ul">
+<li>关键词 newpage 是用来把图形分割成几个图片的。每个被分割出来的图片可以看作是一个新的页面（new page），如果要给新的页面添加一个标题，可以紧跟在关键词 newpage 之后来设置。</li>
+<li>使用这个方法可以方便的在 word 里把较长的图形分别打印到几个不同的页面上（有点分页符的概念）</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">Bliss -&gt; Tia : I love you
+Bliss -&gt; Tia : I miss you
+
+newpage 
+
+Bliss -&gt; Tia : Let's go home
+Bliss -&gt; Tia : Quick
+
+newpage A title for the\nlast page
+
+Tia -&gt; Bliss : Give me money
+Tia -&gt; Bliss : No money No love
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml13.png" alt="plantuml13.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org28f7afb" class="outline-3">
+<h3 id="org28f7afb">消息分组（Grouping message）</h3>
+<div class="outline-text-3" id="text-org28f7afb">
+<ul class="org-ul">
+<li>有时候可能需要对消息进行分组，那么可以使用下面的关键词来实现
+<ul class="org-ul">
+<li>alt/else</li>
+<li>opt</li>
+<li>loop</li>
+<li>par</li>
+<li>break</li>
+<li>critical</li>
+<li>group，这个关键词后面的文字会作为组名显示在图形上</li>
+</ul></li>
+<li>上面的关键词后可以添加一些文本用来显示在头部（注：Group 除外，因为它后面的文本用来显示在组名的位置）。在组嵌套组的结构里可以用关键词 end 来关闭组或者说是表示一个组符号的结束符（类似 if/endif）</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">Alice -&gt; Bob : Authentication Request
+alt successful case
+  Bob -&gt; Alice : Authentication Accepted
+else some kind of failure
+  Bob -&gt; Alice : authentication Failure
+  group My own label
+    Alice -&gt; Log : Log attack start
+    loop 1000 times
+      Alice -&gt; Bob : DNS Attack
+    end
+    Alice -&gt; Log : Loag alice end
+  end
+else Another type of failue
+  Bob -&gt; Alice : Please repeat
+end
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml14.png" alt="plantuml14.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd042e1c" class="outline-3">
+<h3 id="orgd042e1c">消息注解（Notes on messages）</h3>
+<div class="outline-text-3" id="text-orgd042e1c">
+<ul class="org-ul">
+<li>我们可能经常会在消息的左边或右边使用注解，要添加注解，只要使用 note left 或 note right 关键词就可以了。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">Alice -&gt; Bob : hello
+note left : this is a first note
+
+Bob -&gt; Alice : ok
+note right : this is anther note
+
+Bob -&gt; Bob : I am thinking
+note left 
+     a note
+     can also be defined
+     on several lines
+end note
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml15.png" alt="plantuml15.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga446f1a" class="outline-3">
+<h3 id="orga446f1a">一些其他的注解方式（Some other notes）</h3>
+<div class="outline-text-3" id="text-orga446f1a">
+<ul class="org-ul">
+<li>通过使用关键词 note left of, note right of 或 note over，我们还可以把注解放置在与之相关的参与者的左边或右边，或下方。</li>
+<li>通过 改变注解的背景色，我们还可以高亮一个注解文本块。</li>
+<li>如果 要使用多行注解，可以使用关键词 end note 来表示注解的结束。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">participant Alice
+participant Bob
+note left of Alice #aqua
+     This is displayed
+     left of Alice.
+end note
+
+note right of Alice : This is displayed right os Alice.
+
+note over Alice : This displayed over Alice.
+
+note over Alice, Bob #FFAAAA : This is displayed\n over Bob and Alice.
+
+note over Bob, Alice
+     This is yet another
+     example of 
+     a long note.
+end note
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml16.png" alt="plantuml16.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7c7a5ac" class="outline-3">
+<h3 id="org7c7a5ac">使用 HTML 进行格式化（Formatting using HTML）</h3>
+<div class="outline-text-3" id="text-org7c7a5ac">
+<ul class="org-ul">
+<li>我们可以使用少量的 HTML 标签来格式化文本：
+<ul class="org-ul">
+<li>&lt;b&gt; 加粗文本</li>
+<li>&lt;u&gt; 或 &lt;u:#AAAAA&gt; 或 &lt;u:colorName&gt; 用来加下划线</li>
+<li>&lt;i&gt; 斜体</li>
+<li>&lt;s&gt; 或 &lt;s:#AAAAA&gt; 或 &lt;s:colorName&gt; 用来加删除线</li>
+<li>&lt;w&gt; 或 &lt;w:#AAAAA&gt; 或 &lt;w:colorName&gt; 用来加波浪线</li>
+<li>&lt;color:#AAAAA&gt; 或 &lt;color:colorName&gt; 用来设置文本颜色</li>
+<li>&lt;back:#AAAAA&gt; 或 &lt;back:colorName&gt; 用来设置背景颜色</li>
+<li>&lt;size:nn&gt; 设置字体大小</li>
+<li>&lt;img src = "file"&gt; 或者 &lt;img:file&gt; 用来添加图片，图片文件必须可以访问得到的才行。</li>
+<li>&lt;img src = "<a href="http://url">http://url</a>"&gt; 或者 &lt;img:<a href="http://url">http://url</a>&gt; 用来添加一个互联网图片，同样的图片地址必须是可用的才行。</li>
+</ul></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">participant Alice
+participant "The &lt;b&gt;Famous&lt;/b&gt; Bob" as Bob
+
+Alice -&gt; Bob : A &lt;i&gt;well formated&lt;/i&gt; message
+note right of Alice
+  This is &lt;back:cadetblue&gt;&lt;size:18&gt;displayed&lt;/size&gt;&lt;/back&gt;
+  &lt;b&gt;left of&lt;/b&gt; Alice
+end note
+note left of Bob
+  &lt;u:red&gt;This&lt;/u&gt; is &lt;color #118888&gt;displayed&lt;/color&gt;
+  &lt;b&gt;&lt;color purple&gt;left of&lt;/color&gt; &lt;s:red&gt;Alice&lt;/strike&gt; Bob&lt;/b&gt;
+end note
+note over Alice, Bob
+  &lt;w:#FF33FF&gt;This is hosted&lt;/w&gt; by &lt;img ./../images/code.png&gt;
+end note
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml17.png" alt="plantuml17.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org80a2c92" class="outline-2">
+<h2 id="org80a2c92">用例图(Use Case Diagram)</h2>
+<div class="outline-text-2" id="text-org80a2c92">
+</div>
+<div id="outline-container-org4726749" class="outline-3">
+<h3 id="org4726749">用例(Usecase)</h3>
+<div class="outline-text-3" id="text-org4726749">
+<ul class="org-ul">
+<li>用例可以用一对小括号括起来表示，也可以使用 usecase 关键词来定义。用例也可以通过使用 as 关键词来设置别名，在建立关系的时候可以使用别名。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">@startuml
+(Usecase One)
+(Usecase Two) as (UC2)
+usecase UC3
+usecase (Last\nusecase) as UC4
+@enduml
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml18.png" alt="plantuml18.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaab2282" class="outline-3">
+<h3 id="orgaab2282">参与者(Actors)</h3>
+<div class="outline-text-3" id="text-orgaab2282">
+<ul class="org-ul">
+<li>定义参与者时，可以把参与者的名称放在两个冒号的中间，也可以用 actor 关键词来来定义参与者。同样参与者也可以使用别名。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">@startuml
+:Actor 1:
+:Another\nactor: as Men2
+actor Men3
+actor :Last actor: as Men4
+@enduml
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml19.png" alt="plantuml19.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>示例</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">left to right direction
+skinparam packageStyle rect
+actor customer
+actor clerk
+rectangle checkout {
+  customer -- (checkout)
+  (checkout) .&gt; (payment) : include
+  (help) .&gt; (checkout) : extends
+  (checkout) -- clerk
+}
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml20.png" alt="plantuml20.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge2d050d" class="outline-2">
+<h2 id="orge2d050d">类图(Class Diagram)</h2>
+<div class="outline-text-2" id="text-orge2d050d">
+</div>
+<div id="outline-container-org5bb62cb" class="outline-3">
+<h3 id="org5bb62cb">示例 1</h3>
+</div>
+</div>
+
+<div id="outline-container-orgb6fe990" class="outline-2">
+<h2 id="orgb6fe990">活动图(Activity Diagram)</h2>
+<div class="outline-text-2" id="text-orgb6fe990">
+</div>
+<div id="outline-container-org3136dca" class="outline-3">
+<h3 id="org3136dca">简单活动(Simple Activity)</h3>
+<div class="outline-text-3" id="text-org3136dca">
+<ul class="org-ul">
+<li>在活动图中，你可以使用(*)来表示活动开始点和结束点。使用 --&gt; 来表示箭头。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">(*) --&gt; "First Activity"
+"First Activity" --&gt; (*)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml21.png" alt="plantuml21.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0f5357a" class="outline-3">
+<h3 id="org0f5357a">带标注的简单(Label on arrows)</h3>
+<div class="outline-text-3" id="text-org0f5357a">
+<ul class="org-ul">
+<li>缺省情况下，活动图的箭头是没有标注的。但我们可以通过方括号 [labels] 来设置标注，只要把它放在箭头定义的后面就可以了。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">(*) --&gt; "First Activity"
+--&gt; [You can put also labels] "Second Activity"
+--&gt; (*)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml22.png" alt="plantuml22.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org34ef51b" class="outline-3">
+<h3 id="org34ef51b">改变箭头的方向(Changing arrow direction)</h3>
+<div class="outline-text-3" id="text-org34ef51b">
+<ul class="org-ul">
+<li>我们可以使用 -&gt; 创建一个水平箭头，也可以通过下面的方式来改变箭头的方向:
+<ul class="org-ul">
+<li>-down-&gt; 向下(这个是默认的，等同于 <code>-&gt;</code>)</li>
+<li>-right-&gt; 向右</li>
+<li>-left-&gt; 向左</li>
+<li>-up-&gt; 向上</li>
+</ul></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-plantuml">(*) --&gt; "1"
+-right-&gt; "2"
+-down-&gt; "3"
+-left-&gt; "4"
+-le-&gt; "5"
+-up-&gt; "6"
+-l-&gt; "7"
+-do-&gt; "8"
+-d-&gt; "9"
+-&gt; "10"
+--&gt; (*)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml23.png" alt="plantuml23.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>在描述箭头时，up|down|left|right 这几个单词的写法可以简化，用单词开头的一个或两个字母来替换就行了，比如 -down-&gt; 也可以写成 -d-&gt; 或者 -do-&gt; 。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0471fcc" class="outline-3">
+<h3 id="org0471fcc">分支(Branches)</h3>
+<div class="outline-text-3" id="text-org0471fcc">
+<ul class="org-ul">
+<li>在 PlantUML 里，我们可以使用 if/then/else 关键词来定义分支。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">(*) --&gt; "Initialisation"
+
+if " Some Test" then
+  --&gt; [ture] "Some Activity"
+  --&gt; "Another Activity"
+  -right-&gt; (*)
+else
+  -&gt; [false] "Something else"
+  --&gt; [Ending process] (*)
+endif
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml24.png" alt="plantuml24.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2f247ab" class="outline-3">
+<h3 id="org2f247ab">多分支(More on Branches)</h3>
+<div class="outline-text-3" id="text-org2f247ab">
+<ul class="org-ul">
+<li>直接给例子:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">(*) --&gt; if "Some Test" then
+    --&gt;[true] "1"
+
+    if "" then
+      -&gt; "3" as a3
+    else
+      if "Other test" then
+	-left-&gt; "5"
+	--&gt; (*)
+      else
+	--&gt; "6"
+	--&gt; (*)
+      endif
+    endif
+
+  else
+    -&gt;[false] "2"
+    --&gt; (*)
+  endif
+
+  a3 --&gt; if "last test" then
+    --&gt; "7"
+    --&gt; (*)
+  else
+    -&gt; "8"
+    --&gt; (*)
+  endif
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml25.png" alt="plantuml25.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9bdd7ff" class="outline-3">
+<h3 id="org9bdd7ff">同步块(Synchronization)</h3>
+<div class="outline-text-3" id="text-org9bdd7ff">
+<ul class="org-ul">
+<li>同步块可以用 "<code>==code==</code>" 来表示。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">(*) --&gt; ===B1===
+  --&gt; "parallel Activity 1"
+  --&gt; ===B2===
+
+  ===B1=== --&gt; "Parallel Activity 2"
+  --&gt; ===B2===
+
+  --&gt; (*)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml26.png" alt="plantuml26.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>一个小实例</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">(*) --&gt; "Select site"
+  --&gt; "Commission architect"
+  --&gt; "Develop plan"
+  --&gt; "Bid plan" as bp
+  if "" then
+    --&gt;[else] ===B1===
+    --&gt; "Do site work"
+    --&gt; ===B2===
+    ===B1=== --&gt; "Do trade work"
+    --&gt; ===B2===
+    --&gt; "Finish construction"
+    --&gt; (*)
+  else
+    -u-&gt;[not accepted] bp
+  endif
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml27.png" alt="plantuml27.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd3d9fa0" class="outline-3">
+<h3 id="orgd3d9fa0">长文本的活动描述(Long activity description)</h3>
+<div class="outline-text-3" id="text-orgd3d9fa0">
+<ul class="org-ul">
+<li>在定义活动的时候，有时需要用多行文字来描述这个活动，这时我们可以在描述里添加换行符 \n，也可以使用少量的 HTML 标签。</li>
+<li>以下是可以使用的 HTML 标签:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-html">&lt;b&gt;
+&lt;i&gt;
+&lt;font size="nn"&gt; or &lt;size:nn&gt; to change font size
+&lt;font color="#AAAAAA"&gt; or &lt;font color="colorName"&gt;
+&lt;color:#AAAAAA&gt; or &lt;color:colorName&gt;
+&lt;img:file.png&gt; to include an image
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>针对较长文本描述活动，可以起一个较短的别名(如:  <span class="underline">\"long text" as A1</span> )，在图形定义脚本中可以使用别名，参看下面的例子中的 <span class="underline">A1</span> 。</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-plantuml">(*) -l-&gt; "this &lt;size:20&gt;activity&lt;/size&gt;
+	 is &lt;b&gt;very&lt;/b&gt; &lt;color:red&gt;long&lt;/color&gt;
+	 and defined on serveral lines
+	 that contains many &lt;i&gt;text&lt;/i&gt;" as A1
+-up-&gt; "Another activity\n on serveral lines"
+
+A1 --&gt; "Short activity\n&lt;img:images/code.png&gt;"
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml28.png" alt="plantuml28.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org85a4cbc" class="outline-3">
+<h3 id="org85a4cbc">注释(Notes)</h3>
+<div class="outline-text-3" id="text-org85a4cbc">
+<ul class="org-ul">
+<li>PlantUML 可以通过在脚本里使用 note 来添加注释文本块。</li>
+</ul>
+
+<p>
+<b>note commands:</b>
+</p>
+<ul class="org-ul">
+<li>note left</li>
+<li>note right</li>
+<li>note top</li>
+<li>note bottom</li>
+</ul>
+<ul class="org-ul">
+<li>PlantUML 用上面列表里的命令来标注一个注释块的开始，然后用 end note 来标注注释块的结束。同时 note 命令也允许使用单选定义一个广西块，详见下面的例子。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">(*) --&gt; "Some Activity" as s
+  note right: This activity has to be defined
+  s --&gt; (*)
+  note left
+    This note is on
+    serveral lines
+  end note
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml29.png" alt="plantuml29.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga2bfe17" class="outline-3">
+<h3 id="orga2bfe17">分区(Partition)</h3>
+<div class="outline-text-3" id="text-orga2bfe17">
+<ul class="org-ul">
+<li>通过分区关键词 partition 可以定义一个分区，并且可以使用 HTML 的颜色码可颜色名来设置分区的背景色。在你申明一个活动时，PlantUML 会自动的把这个活动对象放置到最后使用的分区中。当然，也可以使用 end partition 关闭分区定义。</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-plantuml">partition Conductor
+  (*) --&gt; "Climbs on Platform"
+  --&gt; === S1 ===
+  --&gt; Bows
+  end partition
+
+  partition Aduience #LightSkyBlue
+  === S1 === --&gt; Applauds
+
+  partition Conductor
+  Bows --&gt; === S2 ===
+  --&gt; WavesArmes
+  Applauds --&gt; === S2 ===
+  end partition
+
+  partition Orchestra #CCCCEE
+  WavesArmes --&gt; Introduction
+  --&gt; "Play music"
+ end partition
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml30.png" alt="plantuml30.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b0bf7b" class="outline-3">
+<h3 id="org8b0bf7b">图形标题(Title the diagram)</h3>
+<div class="outline-text-3" id="text-org8b0bf7b">
+<ul class="org-ul">
+<li>标题关键词 title 用来设置一个图形的标题广西，我们可以在 title 和 end title 两个关键词之间放置比较长的标题文本。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">title Simple example\nof title
+  (*) --&gt; "First activity"
+  --&gt; (*)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml31.png" alt="plantuml31.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org12b027c" class="outline-3">
+<h3 id="org12b027c">皮肤(Skinparam)</h3>
+<div class="outline-text-3" id="text-org12b027c">
+<ul class="org-ul">
+<li>皮肤命令 skinparam 可以改变图形的颜色和字体。这些命令可以在以下的位置中使用:
+<ul class="org-ul">
+<li>在图形定义里使用</li>
+<li>在包含的文件里使用</li>
+<li>在一个配置文件里使用，这个配置文件一般由命令行或 ANT 的 Task 来提供。</li>
+</ul></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">skinparam backgroundColor #AAFFFF
+  skinparam activityStartColor red
+  skinparam activityBarColor SaddleBrown
+  skinparam activityEndColor Silver
+  skinparam activityBackgroundColor Peru
+  skinparam activityBorderColor Peru
+  skinparam activityFontName Impact
+  skinparam activityShape octagon
+
+  (*) --&gt; "Climbs on Platform"
+  --&gt; === S1 ===
+  --&gt; Bows
+  --&gt; === S2 ===
+  --&gt; WavesArmes
+  --&gt; (*)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml32.png" alt="plantuml32.png" />
+</p>
+</div>
+
+<p>
+<b>使用 skinparam activityShape octagon 命令可以把活动图形改成八角 形的。(好像没效果！)</b> 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf31433e" class="outline-3">
+<h3 id="orgf31433e">完整示例(Complete Example)</h3>
+<div class="outline-text-3" id="text-orgf31433e">
+<div class="org-src-container">
+<pre class="src src-plantuml">'http://click.sourceforge.net/../images/activity-diagram-small.png
+  title Servlet Container
+
+  (*) --&gt; "ClickServlet.handleRequest()"
+  --&gt; "new Page"
+
+  if "Page.onSecurityCheck" then
+    -&gt;[true] "Page.onInit()"
+
+    if "isForward?" then
+      -&gt;[no] "Process controls"
+
+      if "continue processing?" then
+	--&gt;[yes] ===RENDERING===
+      else
+	--&gt;[no] ===REDIRECT_CHECK===
+      endif
+
+    else
+      --&gt;[yes] ===RENDERING===
+    endif
+
+    if "is Post?" then
+      --&gt;[yes] "Page.onPost()"
+      --&gt; "Page.onRender()" as render
+      --&gt; ===REDIRECT_CHECK===
+    else
+      --&gt;[no] "Page.onGet()"
+      --&gt; render
+    endif
+
+  else
+    --&gt;[false] ===REDIRECT_CHECK===
+  endif
+
+  if "Do redirect?" then
+    -&gt;[yes] "redirect request"
+    --&gt; ==BEFORE_DESTORY===
+  else
+    if "Do Forward?" then
+      -left-&gt;[yes] "Forward request"
+      --&gt; ==BEFORE_DESTORY===
+    else
+      -right-&gt;[no] "Render page template"
+      --&gt; ==BEFORE_DESTORY===
+    endif
+  endif
+
+  --&gt; "Page.onDestory()"
+  --&gt;(*)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml32.png" alt="plantuml32.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1ed104c" class="outline-2">
+<h2 id="org1ed104c">活动图 Beta</h2>
+<div class="outline-text-2" id="text-org1ed104c">
+<ul class="org-ul">
+<li>Beta 版本的活动图简化了活动图的符号定义。</li>
+</ul>
+</div>
+<div id="outline-container-org6a747c5" class="outline-3">
+<h3 id="org6a747c5">简单活动(Simple Activity)</h3>
+<div class="outline-text-3" id="text-org6a747c5">
+<ul class="org-ul">
+<li>在这个例子中，活动元素从一个：开始，然后到一个；结束。开始和结束符号，可以用 start 和 end 两个关键词来表示。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">start
+
+:Hello world;
+
+:This is on defined on
+serveral **lines**;
+
+Stop
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml33.png" alt="plantuml33.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org212a89d" class="outline-3">
+<h3 id="org212a89d">条件符号(Conditional)</h3>
+<div class="outline-text-3" id="text-org212a89d">
+<ul class="org-ul">
+<li>和之前一样，还是使用 if,then 和 else 关键词，但分支条件的标签 Labels 可以直接写在关键词 then 和 else 的后面，并用小括号括起来就可以了(如：(labels))。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">start
+if (graphviz installed?) then (yes)
+   :process all\ndiagrams;
+else (no)
+   :process only
+   __sequence__ and __activity__ diagrams;
+endif
+
+stop
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml34.png" alt="plantuml34.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>在新版本里除了使用 else 外，还新加了一个 elseif 关键词，有了这个语法，我们就可以绘制一系列条件的活动图。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">start
+  if (condition A) then (yes)
+    :Text1;
+  elseif (condition B) then (yes)
+    :Text2;
+    stop
+  elseif (condition C) then (yes)
+    :Text 3;
+  elseif (condition D) then (yes)
+    :Text 4;
+  else (nothing)
+    :Text else;
+  endif
+  stop
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml35.png" alt="plantuml35.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org421db48" class="outline-3">
+<h3 id="org421db48">重复循环(Repeat Loop)</h3>
+<div class="outline-text-3" id="text-org421db48">
+<ul class="org-ul">
+<li>通过 repeat 和 repeat while 关键词可以创建循环结构的图形。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">start
+
+  repeat
+    :read data;
+    :generate diagrams;
+  repeat while (more data?)
+
+  stop
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml35.png" alt="plantuml35.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orged77f71" class="outline-3">
+<h3 id="orged77f71">条件循环(While Loop)</h3>
+<div class="outline-text-3" id="text-orged77f71">
+<ul class="org-ul">
+<li>要创建条件循环结构的图形可以通过使用 while 和 end while 两个关键词来实现。如果要给条件分支加上标注，可以在 while 条件后加上一个 is 关键词，然后用小括号括上要标注的内容；在 end while 后可以直接用小括号括上要标注的内容。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">start
+  while (data available?) is (not empty)
+    :read data;
+    :generate diagrams;
+  end while (empty)
+stop
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml36.png" alt="plantuml36.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3a5995a" class="outline-3">
+<h3 id="org3a5995a">并行处理(Parallel Processing)</h3>
+<div class="outline-text-3" id="text-org3a5995a">
+<ul class="org-ul">
+<li>fork, fork again 和 end fork 三个关键词用来表示并行处理结构。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">start
+  if (multiprocessor?) then (yes)
+    fork
+      :Treatment 1;
+    fork again
+      :Treatment 2;
+    end fork
+  else (monoproc)
+    :Treatment 1;
+    :Treatment 2;
+  endif
+stop
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml37.png" alt="plantuml37.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc48fdf8" class="outline-3">
+<h3 id="orgc48fdf8">注释的文本样式(Notes)</h3>
+<div class="outline-text-3" id="text-orgc48fdf8">
+<ul class="org-ul">
+<li>注解里的文本样式是通过 <span class="underline">Creole wiki syntax</span> 来实现的。</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">start
+  :fool;
+  note left: This is a note
+  :foo2;
+  note right
+    This note is on serveral
+    //lines// and can
+    contain &lt;b&gt;HTML&lt;/b&gt;
+    ====
+    * Calling the method ""foo()"" is prohibited
+  end note
+stop
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml38.png" alt="plantuml38.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeb9910f" class="outline-3">
+<h3 id="orgeb9910f">颜色(Color)</h3>
+<div class="outline-text-3" id="text-orgeb9910f">
+<ul class="org-ul">
+<li>为活动元素指定背景色可以直接在活动开始标记：前加上颜色描述：</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-plantuml">start
+  #purple:starting progress;
+  :reading configuration files
+  These files must do be edited at this point;
+  #00AAAA:ending of the process;
+stop
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml39.png" alt="plantuml39.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org66557fb" class="outline-3">
+<h3 id="org66557fb">完整示例(Complete Example)</h3>
+<div class="outline-text-3" id="text-org66557fb">
+<div class="org-src-container">
+<pre class="src src-plantuml">start
+  :ClickServlet.handleRequest();
+  :new page;
+  if (Page.onSecurityCheck) then (true)
+    :(Page.onInit();
+    if (isForward?) then (no)
+      :Process controls;
+      if (continue processing?) then (no)
+	stop
+      endif
+
+      if (isPost?) then (yes)
+	:Page.onPost();
+      else (no)
+	:Page.onGet();
+      endif
+      :Page.onRender();
+    endif
+  else (false)
+  endif
+
+  if (do redirect?) then (yes)
+    :redirect process;
+  else
+    if (do forward?) then (yes)
+      :Forward request;
+    else (no)
+      :Render page template;
+    endif
+  endif
+
+stop
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="/assets/notes/2016/10/19/emacs-plantuml/plantuml40.png" alt="plantuml40.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-10-19</span>
+        <span title="last modification date" class="post-info">2018-02-04</span>
+        <span title="tags" class="post-info"><a href="/tags/plantuml/">PlantUML</a></span>
+        <span title="author" class="post-info">Dylan Yang</span>
+      </div>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:banshiliuli1990 &lt;at&gt; sina &lt;dot&gt; com">Dylan Yang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

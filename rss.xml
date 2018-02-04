@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>行走的西葫芦</title>
+    <link>http://zucchiniY.github.io/</link>
+    <description>世事洞明皆学问，人情练达即文章。</description>
+    <pubDate>日, 04  2 2018 22:55:22 CST</pubDate>
+    <lastBuildDate>日, 04  2 2018 22:55:22 CST</lastBuildDate>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>博客与我的生活</title>
+      <link>http://zucchiniY.github.io/blog/2017/04/26/blog-and-me</link>
+      <description><![CDATA[我们无法选择生活的样子，但我们可以记下来。]]></description>
+      <pubDate>2018-02-04</pubDate>
+      <guid>http://zucchiniY.github.io/blog/2017/04/26/blog-and-me</guid>
+    </item>
+    <item>
+      <title>Emacs 学习之路</title>
+      <link>http://zucchiniY.github.io/blog/2017/03/20/emacs-and-me</link>
+      <description><![CDATA[Emacs 的使用过程，就像是程序员的生涯一样——路漫漫其修远兮，吾将上下而求索。]]></description>
+      <pubDate>2018-02-04</pubDate>
+      <guid>http://zucchiniY.github.io/blog/2017/03/20/emacs-and-me</guid>
+    </item>
+    <item>
+      <title>Fedora 修改 user 目录为英文</title>
+      <link>http://zucchiniY.github.io/blog/2017/07/31/fedora-change-user-dirs-to-english</link>
+      <description><![CDATA[Fedora 小技巧]]></description>
+      <pubDate>2018-02-04</pubDate>
+      <guid>http://zucchiniY.github.io/blog/2017/07/31/fedora-change-user-dirs-to-english</guid>
+    </item>
+    <item>
+      <title>Fedora 下中文显示不全的解决方案</title>
+      <link>http://zucchiniY.github.io/blog/2017/08/04/fedora-plantuml-cannot-display-some-chinese</link>
+      <description><![CDATA[Fedora 环境下，Org mode 生成 PlantUML 图片中的中文有一小部分无法显示。]]></description>
+      <pubDate>2018-02-04</pubDate>
+      <guid>http://zucchiniY.github.io/blog/2017/08/04/fedora-plantuml-cannot-display-some-chinese</guid>
+    </item>
+    <item>
+      <title>Git 基础知识</title>
+      <link>http://zucchiniY.github.io/blog/2016/04/27/git-basic</link>
+      <description><![CDATA[Git 基础知识整理]]></description>
+      <pubDate>2018-02-04</pubDate>
+      <guid>http://zucchiniY.github.io/blog/2016/04/27/git-basic</guid>
+    </item>
+    <item>
+      <title>Git 合并多次提交</title>
+      <link>http://zucchiniY.github.io/blog/2017/08/02/git-combine-commit-message</link>
+      <description><![CDATA[在合并分支的时候，希望将多次提交合并成一个，然后再 cherry-pick 到主分支。]]></description>
+      <pubDate>2018-02-04</pubDate>
+      <guid>http://zucchiniY.github.io/blog/2017/08/02/git-combine-commit-message</guid>
+    </item>
+    <item>
+      <title>如何搭建私有网站</title>
+      <link>http://zucchiniY.github.io/blog/2016/11/17/how-to-build-private-web</link>
+      <description><![CDATA[如何在局域网搭建网站]]></description>
+      <pubDate>2018-02-04</pubDate>
+      <guid>http://zucchiniY.github.io/blog/2016/11/17/how-to-build-private-web</guid>
+    </item>
+    <item>
+      <title>如何在 Github 上提交 PR</title>
+      <link>http://zucchiniY.github.io/blog/2017/08/07/how-to-pull-request-in-github</link>
+      <description><![CDATA[如何在 GitHub 上提交一交 Pull Request]]></description>
+      <pubDate>2018-02-04</pubDate>
+      <guid>http://zucchiniY.github.io/blog/2017/08/07/how-to-pull-request-in-github</guid>
+    </item>
+    <item>
+      <title>配置 Sonarqube</title>
+      <link>http://zucchiniY.github.io/blog/2016/11/17/sonar-configure</link>
+      <description><![CDATA[配置 Sonarqube]]></description>
+      <pubDate>2018-02-04</pubDate>
+      <guid>http://zucchiniY.github.io/blog/2016/11/17/sonar-configure</guid>
+    </item>
+    <item>
+      <title>Emacs 绘制 PlantUML</title>
+      <link>http://zucchiniY.github.io/notes/2016/10/19/emacs-plantuml</link>
+      <description><![CDATA[在 Org-mode 中绘制 PlantUML 内容。]]></description>
+      <pubDate>2018-02-04</pubDate>
+      <guid>http://zucchiniY.github.io/notes/2016/10/19/emacs-plantuml</guid>
+    </item>
+  </channel>
+</rss>

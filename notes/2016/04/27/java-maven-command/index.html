@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Maven Command - 行走的西葫芦</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dylan Yang" />
+    <meta name="description" content="用 Maven 进行 Java 项目管理" />
+    <meta name="keywords" content="Java, Maven" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify-solarized-light.css" type="text/css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="zucchiniY.github.io">
+        </form>
+        <h1 class="masthead-title"><a href="/">行走的西葫芦</a></h1>
+        <p>世事洞明皆学问，人情练达即文章。</p>
+        <ul>
+          <li><a href="/blog/"><i class="fa fa-archive"></i>Blog</a></li>
+          <li><a href="/notes/"><i class="fa fa-archive"></i>Notes</a></li>
+          <li><a href="/tags/"><i class="fa fa-tag"></i>Tags</a></li>
+          <li><a href="/about/"><i class="fa fa-user"></i>About</a></li>
+          <li><a href="https://github.com/ZucchiniY"><i class="fa fa-github"></i>GitHub</a></li>
+          <li><a href="/rss.xml"><i class="fa fa-rss-square"></i>RSS</a></li>
+        </ul>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>Maven Command</h1>
+
+<div id="outline-container-org99fa7e1" class="outline-2">
+<h2 id="org99fa7e1">常用命令</h2>
+<div class="outline-text-2" id="text-org99fa7e1">
+</div>
+<div id="outline-container-org60d806c" class="outline-3">
+<h3 id="org60d806c">创建一个项目</h3>
+<div class="outline-text-3" id="text-org60d806c">
+<div class="org-src-container">
+<pre class="src src-sh">mvn archetype:generate -DarchetypeCatalog=internal -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>mvn archetype:generate 固定格式</li>
+<li>-DgroupId 组织标识，包名</li>
+<li>-DartifactId 项目名称</li>
+<li>-DarchetypeCatalog=internal 不要从远程服务器上取 catalog，解决新建项目卡在 Generating project in interactive mode 处的问题</li>
+<li>-DarchetypeArtifactId 指定 ArchetypeId , maven-archetype-quickstart, 创建一个 java 项目；maven-archetype-webapp，创建一个 web 项目</li>
+<li>-DinteractiveMode 是否使用交互模式</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orged691bf" class="outline-3">
+<h3 id="orged691bf">编译源代码</h3>
+<div class="outline-text-3" id="text-orged691bf">
+<div class="org-src-container">
+<pre class="src src-sh">mvn compile
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5f755ca" class="outline-3">
+<h3 id="org5f755ca">编译测试代码</h3>
+<div class="outline-text-3" id="text-org5f755ca">
+<div class="org-src-container">
+<pre class="src src-sh">mvn test-compile
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org20e815b" class="outline-3">
+<h3 id="org20e815b">清空</h3>
+<div class="outline-text-3" id="text-org20e815b">
+<div class="org-src-container">
+<pre class="src src-sh">mvn clean
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgce6dc07" class="outline-3">
+<h3 id="orgce6dc07">运行测试</h3>
+<div class="outline-text-3" id="text-orgce6dc07">
+<div class="org-src-container">
+<pre class="src src-sh">mvn test
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3ff6976" class="outline-3">
+<h3 id="org3ff6976">生产站点目录打包</h3>
+<div class="outline-text-3" id="text-org3ff6976">
+<div class="org-src-container">
+<pre class="src src-sh">mvn site-deploy
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3c3afec" class="outline-3">
+<h3 id="org3c3afec">安装当前工程的输出文件到本地仓库</h3>
+<div class="outline-text-3" id="text-org3c3afec">
+<div class="org-src-container">
+<pre class="src src-sh">mvn install
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org729b677" class="outline-3">
+<h3 id="org729b677">打包</h3>
+<div class="outline-text-3" id="text-org729b677">
+<div class="org-src-container">
+<pre class="src src-sh">mvn package
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3a0e435" class="outline-3">
+<h3 id="org3a0e435">先清除再打包</h3>
+<div class="outline-text-3" id="text-org3a0e435">
+<div class="org-src-container">
+<pre class="src src-sh">mvn clean package
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4387ab7" class="outline-3">
+<h3 id="org4387ab7">打成 jar 包</h3>
+<div class="outline-text-3" id="text-org4387ab7">
+<div class="org-src-container">
+<pre class="src src-sh">mvn jar:jar
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf1ee9f7" class="outline-3">
+<h3 id="orgf1ee9f7">生成 eclipse 项目</h3>
+<div class="outline-text-3" id="text-orgf1ee9f7">
+<div class="org-src-container">
+<pre class="src src-sh">mvn eclipse:eclipse
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc2818a5" class="outline-3">
+<h3 id="orgc2818a5">查看帮忙信息</h3>
+<div class="outline-text-3" id="text-orgc2818a5">
+<div class="org-src-container">
+<pre class="src src-sh">mvn help:help
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgef145f8" class="outline-3">
+<h3 id="orgef145f8">查看 maven 有哪些项目类型分类</h3>
+<div class="outline-text-3" id="text-orgef145f8">
+<div class="org-src-container">
+<pre class="src src-sh">mvn archetype:generate -DarchetypeCatalog=intrenal
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-04-27</span>
+        <span title="last modification date" class="post-info">2018-02-04</span>
+        <span title="tags" class="post-info"><a href="/tags/maven/">Maven</a></span>
+        <span title="author" class="post-info">Dylan Yang</span>
+      </div>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:banshiliuli1990 &lt;at&gt; sina &lt;dot&gt; com">Dylan Yang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

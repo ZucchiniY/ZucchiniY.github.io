@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Mysql 数据库设置远程权限 - 行走的西葫芦</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dylan Yang" />
+    <meta name="description" content="Mysql 数据远程访问权限授权" />
+    <meta name="keywords" content="Mysql, Remote Connection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify-solarized-light.css" type="text/css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="zucchiniY.github.io">
+        </form>
+        <h1 class="masthead-title"><a href="/">行走的西葫芦</a></h1>
+        <p>世事洞明皆学问，人情练达即文章。</p>
+        <ul>
+          <li><a href="/blog/"><i class="fa fa-archive"></i>Blog</a></li>
+          <li><a href="/notes/"><i class="fa fa-archive"></i>Notes</a></li>
+          <li><a href="/tags/"><i class="fa fa-tag"></i>Tags</a></li>
+          <li><a href="/about/"><i class="fa fa-user"></i>About</a></li>
+          <li><a href="https://github.com/ZucchiniY"><i class="fa fa-github"></i>GitHub</a></li>
+          <li><a href="/rss.xml"><i class="fa fa-rss-square"></i>RSS</a></li>
+        </ul>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>Mysql 数据库设置远程权限</h1>
+
+
+<div id="outline-container-orgbf34980" class="outline-2">
+<h2 id="orgbf34980">设置访问单个数据库权限</h2>
+<div class="outline-text-2" id="text-orgbf34980">
+<ul class="org-ul">
+<li>设置用户名为 root，密码为空，可以访问数据库 test</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">mysql&gt;grant all privileges on test.* to 'root'@'%';
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org094c2d6" class="outline-2">
+<h2 id="org094c2d6">设置访问全部数据库权限</h2>
+<div class="outline-text-2" id="text-org094c2d6">
+<ul class="org-ul">
+<li>设置用户名为 root，密码为空，可以访问所有数据库</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">mysql&gt;grant all privileges on *.* to 'root'@'%';
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf9a4b12" class="outline-2">
+<h2 id="orgf9a4b12">设置指定用户名访问权限</h2>
+<div class="outline-text-2" id="text-orgf9a4b12">
+<ul class="org-ul">
+<li>指定用户名为 liuhui，密码为空，可以访问所有数据库</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">mysql&gt;grant all privileges on *.* to 'liuhui'@'%';
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2ac16c1" class="outline-2">
+<h2 id="org2ac16c1">设置密码访问权限</h2>
+<div class="outline-text-2" id="text-org2ac16c1">
+<ul class="org-ul">
+<li>设置用户名为 liuhui，密码为 liuhui，可以访问所有数据库</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">mysql&gt;grant all privileges on *.* to 'liuhui'@'%' IDENTIFIED BY 'liuhui';
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge86c45e" class="outline-2">
+<h2 id="orge86c45e">设置指定可访问主机权限</h2>
+<div class="outline-text-2" id="text-orge86c45e">
+<ul class="org-ul">
+<li>设置用户名为 liuhui，密码为 liuhui，可以访问所有数据库，只有 10.1.1.1 这台机器有权限访问</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sh">mysql&gt;grant all privileges on *.* to 'liuhui'@'10.1.1.1';
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org726c6d4" class="outline-2">
+<h2 id="org726c6d4">设置对应的密码级别</h2>
+<div class="outline-text-2" id="text-org726c6d4">
+<ul class="org-ul">
+<li>参数解释
+<ul class="org-ul">
+<li><code>validate_password_dictionary_file</code>
+用于难密码强度的字典文件路径</li>
+<li><code>validate_password_length</code>
+密码最小长度，参数默认为 8，</li>
+<li><code>validate_password_mixed_case_count</code>
+密码至少要包含的小写字母个数和大写字母个数</li>
+<li><code>validate_password_number_count</code>
+密码至少要包含的数字个数</li>
+<li><code>validate_password_policy</code>
+密码强度难 0/LOW 1/MEDIUM 2/STRONG</li>
+<li><code>validate_password_special_char_count</code>
+密码至少要包含的特殊字符数</li>
+</ul></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sh">mysql&gt;show variables like 'validate_password%';
+</pre>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-04-29</span>
+        <span title="last modification date" class="post-info">2018-02-04</span>
+        <span title="tags" class="post-info"><a href="/tags/mysql-authority/">Mysql Authority</a></span>
+        <span title="author" class="post-info">Dylan Yang</span>
+      </div>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:banshiliuli1990 &lt;at&gt; sina &lt;dot&gt; com">Dylan Yang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

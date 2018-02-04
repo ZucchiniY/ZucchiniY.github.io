@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Selenium 笔记 - 行走的西葫芦</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dylan Yang" />
+    <meta name="description" content="Selenium 进行自动化的入门" />
+    <meta name="keywords" content="Selenium API, XPath" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify-solarized-light.css" type="text/css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="zucchiniY.github.io">
+        </form>
+        <h1 class="masthead-title"><a href="/">行走的西葫芦</a></h1>
+        <p>世事洞明皆学问，人情练达即文章。</p>
+        <ul>
+          <li><a href="/blog/"><i class="fa fa-archive"></i>Blog</a></li>
+          <li><a href="/notes/"><i class="fa fa-archive"></i>Notes</a></li>
+          <li><a href="/tags/"><i class="fa fa-tag"></i>Tags</a></li>
+          <li><a href="/about/"><i class="fa fa-user"></i>About</a></li>
+          <li><a href="https://github.com/ZucchiniY"><i class="fa fa-github"></i>GitHub</a></li>
+          <li><a href="/rss.xml"><i class="fa fa-rss-square"></i>RSS</a></li>
+        </ul>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>Selenium 笔记</h1>
+
+<div id="outline-container-org31aadea" class="outline-2">
+<h2 id="org31aadea">xpath 语法</h2>
+<div class="outline-text-2" id="text-org31aadea">
+<p>
+XPath 是 XML 的查询语言，和 SQL 的角色很类似。以下面 XML 为例，介绍 XPath 的语法
+</p>
+<div class="org-src-container">
+<pre class="src src-html">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;catalog&gt;
+
+   &lt;cd country="USA"&gt;
+      &lt;title&gt;Empire Burlesque&lt;/title&gt;
+      &lt;artist&gt;Bob Dylan&lt;/artist&gt;
+      &lt;price&gt;10.90&lt;/price&gt;
+   &lt;/cd&gt;
+
+   &lt;cd country="UK"&gt;
+     &lt;title&gt;Hide your heart&lt;/title&gt;
+     &lt;artist&gt;Bonnie Tyler&lt;/artist&gt;
+     &lt;price&gt;9.90&lt;/price&gt;
+   &lt;/cd&gt;
+
+   &lt;cd country="USA"&gt;
+     &lt;title&gt;Greatest Hits&lt;/title&gt;
+     &lt;artist&gt;Dolly Parton&lt;/artist&gt;
+     &lt;price&gt;9.90&lt;/price&gt;
+   &lt;/cd&gt;&lt;/catalog&gt;
+
+&lt;/catalog&gt;
+</pre>
+</div>
+</div>
+<div id="outline-container-orgde6684b" class="outline-3">
+<h3 id="orgde6684b">定位节点</h3>
+<div class="outline-text-3" id="text-orgde6684b">
+<p>
+XML 是树状结构，类似档案系统内数据夹的结构，XPath 也类似档案系统的路径命名方式。不过 XPath 是一种模式(Pattern)，可以选出 XML 档案中，路径符合某个模式的所有节点出来。例如要选 catalog 底下的 cd 中所有 price 元素可以用:
+</p>
+<pre class="example">
+/catalog/cd/price
+</pre>
+<p>
+如果 XPath 的开头是一个斜线（/）代表这是绝对路径。如果开头是两个斜线（//）表示文件中所有符合模式的元素都会被选出来，即使是处于树中不同的层级也会被选出来。以下的语法会选出文件中所有叫做 cd 的元素（在树中的任何层级都会被选出来）：
+</p>
+<pre class="example">
+//cd
+</pre>
+</div>
+</div>
+<div id="outline-container-org51d3fd2" class="outline-3">
+<h3 id="org51d3fd2">选择未知的元素</h3>
+<div class="outline-text-3" id="text-org51d3fd2">
+<p>
+使用星号（Wildcards,＊）可以选择未知的元素。下面这个语法会选出/catalog/cd 的所有子元素：
+</p>
+<pre class="example">
+/catalog/cd/*
+</pre>
+<p>
+以下的语法会选出所有 catalog 的子元素中，包含有 price 作为子元素的元素。
+</p>
+<pre class="example">
+/catalog/*/price
+</pre>
+<p>
+以下的语法会选出有两层父节点，叫做 price 的所有元素。
+</p>
+<pre class="example">
+/*/*/price
+</pre>
+<p>
+以下的语法会选择出文件中的所有元素。
+</p>
+<pre class="example">
+//*
+</pre>
+<p>
+要注意的是，想要存取不分层级的元素，XPath 语法必须以两个斜线开头(//)，想要存取未知元素才用星号(*)，星号只能代表未知名称的元素，不能代表未知层级的元素。
+</p>
+</div>
+</div>
+<div id="outline-container-org6e74f02" class="outline-3">
+<h3 id="org6e74f02">选择分支</h3>
+<div class="outline-text-3" id="text-org6e74f02">
+<p>
+使用中括号可以选择分支。以下的语法从 catalog 的子元素中取出第一个叫做 cd 的元素。XPath 的定义中没有第 0 元素这种东西。
+</p>
+<pre class="example">
+/catalog/cd[1]
+</pre>
+<p>
+以下语法选择 catalog 中的最后一个 cd 元素：（XPathj 并没有定义 first() 这种函式喔，用上例的 [ 1 ] 就可以取出第一个元素。
+</p>
+<pre class="example">
+/catalog/cd[last()]
+</pre>
+<p>
+以下语法选出含有 price 子元素的所有/catalog/cd 元素。
+</p>
+<pre class="example">
+/catalog/cd[price]
+</pre>
+<p>
+以下语法选出 price 元素的值等于 10.90 的所有/catalog/cd 元素
+</p>
+<pre class="example">
+/catalog/cd[price=10.90]
+</pre>
+<p>
+以下语法选出 price 元素的值等于 10.90 的所有/catalog/cd 元素 的 price 元素
+</p>
+<pre class="example">
+/catalog/cd[price=10.90]/price
+</pre>
+</div>
+</div>
+<div id="outline-container-org46aa0b2" class="outline-3">
+<h3 id="org46aa0b2">选择一个以上的路径</h3>
+<div class="outline-text-3" id="text-org46aa0b2">
+<p>
+使用 Or 操作数(|)就可以选择一个以上的路径。例如：
+</p>
+<pre class="example">
+/catalog/cd/title | catalog/cd/artist
+</pre>
+<p>
+选择所有 title 以及 artist 元素
+</p>
+<pre class="example">
+//title | //artist
+</pre>
+<p>
+选择所有 title 以及 artist 以及 price 元素
+</p>
+<pre class="example">
+//title | //artist | //price
+</pre>
+</div>
+</div>
+<div id="outline-container-orge9d8ea6" class="outline-3">
+<h3 id="orge9d8ea6">选择属性</h3>
+<div class="outline-text-3" id="text-orge9d8ea6">
+<p>
+在 XPath 中，除了选择元素以外，也可以选择属性。属性都是以@开头。例如选择文件中所有叫做 country 的属性。
+</p>
+<pre class="example">
+//@country
+</pre>
+<p>
+选择所有含有 country 这个属性的 cd 元素：
+</p>
+<pre class="example">
+//cd[@country]
+</pre>
+<p>
+以下语法选择出含有属性的所有 cd 元素
+</p>
+<pre class="example">
+//cd[@*]
+</pre>
+<p>
+以下语法选择出 country 属性值为 UK 的 cd 元
+</p>
+<pre class="example">
+//cd[@country='UK']
+</pre>
+<p>
+选择多个属性
+</p>
+<pre class="example">
+//cd[@country='UK'][@name='hyddd']
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org19b3c98" class="outline-2">
+<h2 id="org19b3c98">selenium 常见 API</h2>
+<div class="outline-text-2" id="text-org19b3c98">
+</div>
+<div id="outline-container-org3a4db76" class="outline-3">
+<h3 id="org3a4db76">Commands</h3>
+<div class="outline-text-3" id="text-org3a4db76">
+<p>
+Action：对学前状态进行操作，失败时，停止测试。
+Assertion：校验是否有产生正确的值。
+Element Locators：指定 HTML 中的元素。
+Patterns：用于模式匹配。
+</p>
+</div>
+<div id="outline-container-orgd745277" class="outline-4">
+<h4 id="orgd745277">Element Locators(元素定位）</h4>
+<div class="outline-text-4" id="text-orgd745277">
+<p>
+如果没有 locator 前序的情况下，如果以 "document" 开头，就默认使用 dom locator,如果是以 "//" 开头，就默认使用 xpath locator, 其余情况均认作 identifier locator。
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org39d9cfd"></a>id = id<br />
+<div class="outline-text-6" id="text-org39d9cfd">
+<p>
+id locator 指定 HTML 中的唯一 id 元素
+</p>
+</div>
+</li>
+<li><a id="org58b958e"></a>name = name<br />
+<div class="outline-text-6" id="text-org58b958e">
+<p>
+name locator 指定 HTML 中相同 name 的元素中的第一个元素
+</p>
+</div>
+</li>
+<li><a id="org9025fc4"></a>identifier = id<br />
+<div class="outline-text-6" id="text-org9025fc4">
+<p>
+identifier locator 首先查找 HTML 是否存在该 id 的元素，若不存在，查找第一个该 name 的元素
+</p>
+</div>
+</li>
+<li><a id="org96414e2"></a>dom = javascriptExpression<br />
+<div class="outline-text-6" id="text-org96414e2">
+<p>
+dom locator 用 JavaScript 表达式来定位 HTML 中的元素，注意必须要以 "document" 开头
+例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">dom = document.forms['myForm'].myDropdown
+dom = document.images[56]
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org97747ec"></a>xpath = xpathExpression<br />
+<div class="outline-text-6" id="text-org97747ec">
+<p>
+xpath locator 用 Xpath 表达式来定位 HTML 中的元素，必须注意要以 <code>"//"</code> 开头
+例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">xpath = //[@alt='The image alt text']
+xpath = //table[@id='table1']//tr[4]/td[2]
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org133e86b"></a>link = textPattern<br />
+<div class="outline-text-6" id="text-org133e86b">
+<p>
+link locator 用 link 来选择 HTML 中的连接或锚元素
+例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">link = The link text
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgf9b09df" class="outline-4">
+<h4 id="orgf9b09df">String Matching Patterns(字符串匹配）</h4>
+<div class="outline-text-4" id="text-orgf9b09df">
+<p>
+在没有指定字符串匹配前序的时候，selenium 默认使用 golb 匹配模式
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org505baf5"></a>glob : patthern<br />
+<div class="outline-text-6" id="text-org505baf5">
+<p>
+glob 模式，用通用匹配符 "*" 代表任意长度字符， "?" 代表一个字符
+</p>
+</div>
+</li>
+<li><a id="org397b62a"></a>regexp : regexp<br />
+<div class="outline-text-6" id="text-org397b62a">
+<p>
+正则表达式模式，用 JavaScript 正则表达式的形式匹配字符串
+</p>
+</div>
+</li>
+<li><a id="org391063d"></a>exact : string<br />
+<div class="outline-text-6" id="text-org391063d">
+<p>
+精确匹配模式，精确匹配整个字符串，不能用通配符
+</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org7dc96fa" class="outline-4">
+<h4 id="org7dc96fa">Select Option Specifiers(select 选项指定器)</h4>
+<div class="outline-text-4" id="text-org7dc96fa">
+<p>
+在没有选择前序的情况下，默认是匹配选项的文本
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="orgfed9224"></a>label = labelPattern<br />
+<div class="outline-text-6" id="text-orgfed9224">
+<p>
+通过匹配选项中的文本指定选项
+例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">label = regexp:^[Oo]ther
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org6f36244"></a>value = valuePattern<br />
+<div class="outline-text-6" id="text-org6f36244">
+<p>
+通过匹配选项中的指定选项
+例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">value = other
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgf2c0dd5"></a>id = id<br />
+<div class="outline-text-6" id="text-orgf2c0dd5">
+<p>
+通过匹配选项的 id 指定选项
+例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">id = option1
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org8aa500d"></a>index = index<br />
+<div class="outline-text-6" id="text-org8aa500d">
+<p>
+通过匹配选项的序号指定选项，序号从 0 开始
+例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-java">inde = 2
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org318aedd" class="outline-3">
+<h3 id="org318aedd">Action</h3>
+<div class="outline-text-3" id="text-org318aedd">
+<p>
+描述了用户所会作出的操作
+Action 有两种形式：action 和 actionAndWait，action 会立即执行，面 actionAndWait 会假设需要较长时间才能得到该 action 的响应，而作出等待，open 则是会处运算理等待时间。
+</p>
+</div>
+<div id="outline-container-org5b2d002" class="outline-4">
+<h4 id="org5b2d002">click</h4>
+<div class="outline-text-4" id="text-org5b2d002">
+<p>
+click(elementLocator)
+</p>
+<ul class="org-ul">
+<li>点击连接按钮，筛选和单选框</li>
+<li>如果点击后需要待响应，则用 <code>clickAndWait</code></li>
+<li>如果需要经过 JavaScript 的 alert 或 confirm 对话框后才能继续操作，则需要调用 verify 或 assert 来告诉 Selenium 你期望对对话框进行什么操作</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">clickAndWait</td>
+<td class="org-left">aCheckbox</td>
+</tr>
+
+<tr>
+<td class="org-left">clickAndWait</td>
+<td class="org-left">submitButton</td>
+</tr>
+
+<tr>
+<td class="org-left">clickAndWait</td>
+<td class="org-left">anyLink</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org3f3f90f" class="outline-4">
+<h4 id="org3f3f90f">open</h4>
+<div class="outline-text-4" id="text-org3f3f90f">
+<p>
+open(url)
+</p>
+<ul class="org-ul">
+<li>在浏览器中打开 URL，可以授受相对和绝对路径两种形式</li>
+<li>注意：该 URL 必须在与浏览器相同的安全限定范围之内</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">open</td>
+<td class="org-left">/mypage</td>
+</tr>
+
+<tr>
+<td class="org-left">open</td>
+<td class="org-left"><a href="http://localhost/">http://localhost/</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgd3a3c14" class="outline-4">
+<h4 id="orgd3a3c14">type</h4>
+<div class="outline-text-4" id="text-orgd3a3c14">
+<p>
+type(inputLocator, value)
+</p>
+<ul class="org-ul">
+<li>模拟人手的输入过程，往指定的 input 中输入值</li>
+<li>也适合给复选和单选框赋值</li>
+<li>在这个例子中，则只是给钩选了的复选框赋值，注意：而不是改写其文本</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">type</td>
+<td class="org-left">nameField</td>
+<td class="org-left">John Smith</td>
+</tr>
+
+<tr>
+<td class="org-left">typeAndWait</td>
+<td class="org-left">textBoxThatSubmitsOnChange</td>
+<td class="org-left">newValue</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgc2cc4ed" class="outline-4">
+<h4 id="orgc2cc4ed">select</h4>
+<div class="outline-text-4" id="text-orgc2cc4ed">
+<p>
+select(dropDownLocator, optionSpecifier)
+</p>
+<ul class="org-ul">
+<li>根据 optionSpecifier 选项选择器来选择一个下拉菜单选项</li>
+<li>如果有多于一个选择器的时候，如在用通配符模式，如 <code>f*b*</code> ，或者超过一个选项有相同的文本或值，则会选择第一个匹配到的值</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">select</td>
+<td class="org-left">dropDown</td>
+<td class="org-left">Australian Dollars</td>
+</tr>
+
+<tr>
+<td class="org-left">select</td>
+<td class="org-left">dropDown</td>
+<td class="org-left">index = 0</td>
+</tr>
+
+<tr>
+<td class="org-left">selectAndWait</td>
+<td class="org-left">currencySelector</td>
+<td class="org-left">value = AUD</td>
+</tr>
+
+<tr>
+<td class="org-left">selectAndWait</td>
+<td class="org-left">currencySelector</td>
+<td class="org-left">label = Australian D*rs</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org2954016" class="outline-4">
+<h4 id="org2954016">goBack, close</h4>
+<div class="outline-text-4" id="text-org2954016">
+<p>
+goBack()
+</p>
+<ul class="org-ul">
+<li>模拟点击浏览器后退按钮</li>
+</ul>
+<p>
+close()
+</p>
+<ul class="org-ul">
+<li>模拟点击浏览器关闭按钮</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgde73916" class="outline-4">
+<h4 id="orgde73916">selectWindow</h4>
+<div class="outline-text-4" id="text-orgde73916">
+<p>
+select(windowId)
+</p>
+<ul class="org-ul">
+<li>选择一个弹出窗口</li>
+<li>当选中那个窗口的时候，所有的命令将会转移到那个窗口中执行</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">selectWindow</td>
+<td class="org-left">myPopupWindow</td>
+</tr>
+
+<tr>
+<td class="org-left">selectWindow</td>
+<td class="org-left">null</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org732de28" class="outline-4">
+<h4 id="org732de28">pause</h4>
+<div class="outline-text-4" id="text-org732de28">
+<p>
+pause(millisenconds)
+</p>
+<ul class="org-ul">
+<li>根据指定时间暂停 Selenium 脚本执行</li>
+<li>常用在调试脚本或等待服务器段响应时</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">pause</td>
+<td class="org-right">5000</td>
+</tr>
+
+<tr>
+<td class="org-left">pause</td>
+<td class="org-right">2000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgd7e178f" class="outline-4">
+<h4 id="orgd7e178f">fireEvent</h4>
+<div class="outline-text-4" id="text-orgd7e178f">
+<p>
+fireEvent(elementLocator,evenName)
+</p>
+<ul class="org-ul">
+<li>模拟页面元素事件被激活的处理动作</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">fireEvent</td>
+<td class="org-left">textField</td>
+<td class="org-left">focus</td>
+</tr>
+
+<tr>
+<td class="org-left">fireEvent</td>
+<td class="org-left">dropDown</td>
+<td class="org-left">blur</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org1423869" class="outline-4">
+<h4 id="org1423869">waitForCondition</h4>
+<div class="outline-text-4" id="text-org1423869">
+<p>
+waitForCondition(JavaSvriptSnippet,time)
+</p>
+<ul class="org-ul">
+<li>在限定时间内，等待一段 JavaScript 代码返回 true 值，超时则停止等待</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">waitForCondition</td>
+<td class="org-left">var value = selenium.getText("foo");</td>
+<td class="org-right">3000</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">value.match(<i>bar</i>);</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org8cfd574" class="outline-4">
+<h4 id="org8cfd574">waitForValue</h4>
+<div class="outline-text-4" id="text-org8cfd574">
+<p>
+waitForValue(inputLocator,value)
+</p>
+<ul class="org-ul">
+<li>等待 input，如：hidden input 待被赋予某值</li>
+<li>会轮流检测该值，所以要注意如果该值长时间一直未赋予该 input 值的话，可能会导致阻塞</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">waitForValue</td>
+<td class="org-left">finishIndication</td>
+<td class="org-left">isfinished</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org12d2464" class="outline-4">
+<h4 id="org12d2464">store, storeValue</h4>
+<div class="outline-text-4" id="text-org12d2464">
+<p>
+store(valueToStore, variablename)
+</p>
+<ul class="org-ul">
+<li>保存一个值到变量里</li>
+<li>该值可以由自其它变量组合而成或者通过 JavaScript 表达式赋值给变量</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">store</td>
+<td class="org-left">Mr John Smith</td>
+<td class="org-left">fullname</td>
+</tr>
+
+<tr>
+<td class="org-left">store</td>
+<td class="org-left">$. {firstname} $. {suname}</td>
+<td class="org-left">fullname</td>
+</tr>
+
+<tr>
+<td class="org-left">store</td>
+<td class="org-left">javascript. {Math.round(Math.PI*100)/100}</td>
+<td class="org-left">PI</td>
+</tr>
+
+<tr>
+<td class="org-left">storeValue</td>
+<td class="org-left">inputLocator</td>
+<td class="org-left">variableName</td>
+</tr>
+</tbody>
+</table>
+<ul class="org-ul">
+<li>把指定的 input 中的值保存到变量中</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">storeValue</td>
+<td class="org-left">userName</td>
+<td class="org-left">userID</td>
+</tr>
+
+<tr>
+<td class="org-left">type</td>
+<td class="org-left">userName</td>
+<td class="org-left">$. {userID}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org0e6039b" class="outline-4">
+<h4 id="org0e6039b">storeText, storeAttribute</h4>
+<div class="outline-text-4" id="text-org0e6039b">
+<p>
+storeText(elementLocator,variablename)
+</p>
+<ul class="org-ul">
+<li>把指定元素的文本值赋予给变量</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">storeText</td>
+<td class="org-left">currentDate</td>
+<td class="org-left">expectedStartDate</td>
+</tr>
+
+<tr>
+<td class="org-left">verifyValue</td>
+<td class="org-left">startDate</td>
+<td class="org-left">$. {expectedStartDate}</td>
+</tr>
+</tbody>
+</table>
+<p>
+storeAttribute(.{} elementLocator@attributeName, variableName.{})
+</p>
+<ul class="org-ul">
+<li>把指定元素的属性的值赋予变量</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">storeAttribute</td>
+<td class="org-left">input1@class</td>
+<td class="org-left">classOfInput1</td>
+</tr>
+
+<tr>
+<td class="org-left">verifyAttribute</td>
+<td class="org-left">input2@class</td>
+<td class="org-left">$.{classOfInput1}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org6d6e68b" class="outline-4">
+<h4 id="org6d6e68b">chooseCancel.., answer..</h4>
+<div class="outline-text-4" id="text-org6d6e68b">
+<p>
+chooseCancelOnNextConfirmation()
+</p>
+<ul class="org-ul">
+<li>当下次 JavaScript 弹出 confirm 对话框的时候，让 selenium 选择 Cancel</li>
+<li>如果没有该命令时，遇到 confirm 对话框的，selenium 默认返回 true，和手动选择 OK 按钮一样</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">chooseCancelOnNextConfirmation</td>
+</tr>
+</tbody>
+</table>
+<ul class="org-ul">
+<li>如果已经运行过该命令，当下一次又有 confirm 对话框出现时，也会同样地再次选择 Cancel</li>
+</ul>
+<p>
+answerOnNextPrompt(answerString)
+</p>
+<ul class="org-ul">
+<li>在下次 JavaScript 弹出 prompt 提示框时，赋予其 answerString 的值，并选择确定</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">answerOnNextPrompt</td>
+<td class="org-left">Kangaroo</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-orga1d60b4" class="outline-3">
+<h3 id="orga1d60b4">Assertions</h3>
+<div class="outline-text-3" id="text-orga1d60b4">
+<p>
+允许用户去检查当前状态，两种模式：Assert 和 Verify，当 Assert 失败，则退出测试；当 Verify 失败，测试会继续运行
+</p>
+</div>
+<div id="outline-container-org8ac7ce3" class="outline-4">
+<h4 id="org8ac7ce3">assertLocation, assertTitle</h4>
+<div class="outline-text-4" id="text-org8ac7ce3">
+<p>
+assertLocation(relativelLocation)
+</p>
+<ul class="org-ul">
+<li>判断当前是在正确页面</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyLocation</td>
+<td class="org-left">/mypage</td>
+</tr>
+
+<tr>
+<td class="org-left">assertLocation</td>
+<td class="org-left">/mypage</td>
+</tr>
+</tbody>
+</table>
+<p>
+assertTitle(titlePattern)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyTitle</td>
+<td class="org-left">My Page</td>
+</tr>
+
+<tr>
+<td class="org-left">assertTitle</td>
+<td class="org-left">My Page</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org512f136" class="outline-4">
+<h4 id="org512f136">assertValue</h4>
+<div class="outline-text-4" id="text-org512f136">
+<p>
+asserValue(inputLocator, valuePattern)
+</p>
+<ul class="org-ul">
+<li>检查 input 的值</li>
+<li>对于 checkbox 或 radio，如果已选择，则值为 <code>on</code> ，反之为 <code>off</code></li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyValue</td>
+<td class="org-left">nameField</td>
+<td class="org-left">John Smith</td>
+</tr>
+
+<tr>
+<td class="org-left">assertValue</td>
+<td class="org-left">document.forms[a].nameField</td>
+<td class="org-left">John Smith</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org90d41b6" class="outline-4">
+<h4 id="org90d41b6">assertSelected, assertSelectedOptions</h4>
+<div class="outline-text-4" id="text-org90d41b6">
+<p>
+assertSelected(selectLocator, optionSpecifier)
+</p>
+<ul class="org-ul">
+<li>检查 select 的下拉菜单中选中的选型是否和 optionSpecifer(select 选择选项器)的选项相同</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifySelected</td>
+<td class="org-left">dropdown2</td>
+<td class="org-left">John Smith</td>
+</tr>
+
+<tr>
+<td class="org-left">verifySelected</td>
+<td class="org-left">dropdown2</td>
+<td class="org-left">value = js * 123</td>
+</tr>
+
+<tr>
+<td class="org-left">assertSelected</td>
+<td class="org-left">document.forms[a].dropDown</td>
+<td class="org-left">label = J * Smith</td>
+</tr>
+
+<tr>
+<td class="org-left">assertSelected</td>
+<td class="org-left">document.forms[a].dropDown</td>
+<td class="org-left">index = 0</td>
+</tr>
+</tbody>
+</table>
+<p>
+assertSelectedOptions(selectLocator, optionLabelList)
+</p>
+<ul class="org-ul">
+<li>检查下拉菜单中的选项的文本是否和 optionLabelList 相同</li>
+<li>optionLabelList 是以逗号分割的一个字符串</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifySelectOption</td>
+<td class="org-left">dropdown2</td>
+<td class="org-left">John Smith,Dave Bird</td>
+</tr>
+
+<tr>
+<td class="org-left">assertSelectedOptions</td>
+<td class="org-left">dropdown2</td>
+<td class="org-left">Smith, J, Bird, D</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgc2088fd" class="outline-4">
+<h4 id="orgc2088fd">assertText</h4>
+<div class="outline-text-4" id="text-orgc2088fd">
+<p>
+assertText(elementLocator, textPattern)
+</p>
+<ul class="org-ul">
+<li>检查指定元素的文本</li>
+<li>只对有包含文本的元素生效</li>
+<li>对于 Mozilla 类型的浏览器，用 textContent 取元素的文本，对于 IE 类型的浏览器，用 innerText 取元素文本</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyText</td>
+<td class="org-left">statusMessage</td>
+<td class="org-left">Successful</td>
+</tr>
+
+<tr>
+<td class="org-left">assertText</td>
+<td class="org-left">//div[@id='foo']//h1</td>
+<td class="org-left">Successful</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org37ecd93" class="outline-4">
+<h4 id="org37ecd93">assertTextPresent, assertAttribute</h4>
+<div class="outline-text-4" id="text-org37ecd93">
+<p>
+assertTextPresent(text)
+</p>
+<ul class="org-ul">
+<li>检查在当前给用户显示的页面上是否有出现指定的文本</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyTextPresent</td>
+<td class="org-left">You are now logged in</td>
+</tr>
+
+<tr>
+<td class="org-left">assertTextPresent</td>
+<td class="org-left">You are now logged in</td>
+</tr>
+</tbody>
+</table>
+<p>
+assertAttribute(.{} elementLocator@attributeName. {},ValuePattern)
+</p>
+<ul class="org-ul">
+<li>检查当前指定元素的属性的值</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyAttribute</td>
+<td class="org-left">txt1@class</td>
+<td class="org-left">bigAndBlod</td>
+</tr>
+
+<tr>
+<td class="org-left">assertAttribute</td>
+<td class="org-left">document.images[a]@alt</td>
+<td class="org-left">alt-text</td>
+</tr>
+
+<tr>
+<td class="org-left">verifyAttribute</td>
+<td class="org-left">//img[@id='foo']/alt</td>
+<td class="org-left">alt-text</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org060a706" class="outline-4">
+<h4 id="org060a706">assertTextPresent, etc.</h4>
+<div class="outline-text-4" id="text-org060a706">
+<p>
+assertTextPresent(text)
+assertTextPresent(text)
+assertTextNotPresent(text)
+assertElementPresent(elementLocator)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyElementPresent</td>
+<td class="org-left">submitButton</td>
+</tr>
+
+<tr>
+<td class="org-left">assertElementPresent</td>
+<td class="org-left">//img[@alt='foo']</td>
+</tr>
+
+<tr>
+<td class="org-left">assertElementPresent</td>
+<td class="org-left">dropDown2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org1bc92df" class="outline-4">
+<h4 id="org1bc92df">assertTable</h4>
+<div class="outline-text-4" id="text-org1bc92df">
+<p>
+assertTable(cellAddress, valuePattern)
+</p>
+<ul class="org-ul">
+<li>检查 table 里的某个 cell 中的值</li>
+<li>cellAddress 的语法是 tableName.row.column,注意行列序号是从 0 开始的</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyTable</td>
+<td class="org-left">myTbale.1.5</td>
+<td class="org-right">Submitted</td>
+</tr>
+
+<tr>
+<td class="org-left">assertTable</td>
+<td class="org-left">results0.2</td>
+<td class="org-right">13</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org3370968" class="outline-4">
+<h4 id="org3370968">assertVisible, assertNotVisible</h4>
+<div class="outline-text-4" id="text-org3370968">
+<p>
+assertVisible(elementLocator)
+</p>
+<ul class="org-ul">
+<li>检查指定的元素是否可视的</li>
+<li>隐藏一个元素可以用设置 css 的 <code>visibility</code> 属性为 <code>hidden</code> ,也可以设置 <code>display</code> 属性为 <code>none</code></li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyVisible</td>
+<td class="org-left">postcode</td>
+</tr>
+
+<tr>
+<td class="org-left">assertVisible</td>
+<td class="org-left">postcode</td>
+</tr>
+</tbody>
+</table>
+<p>
+assertNotVisible(elementLocator)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyNotVisible</td>
+<td class="org-left">postcode</td>
+</tr>
+
+<tr>
+<td class="org-left">assertNotVisible</td>
+<td class="org-left">postcode</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org47dbd6d" class="outline-4">
+<h4 id="org47dbd6d">Editable, non-editable</h4>
+<div class="outline-text-4" id="text-org47dbd6d">
+<p>
+assertEditable(inputLocator)
+</p>
+<ul class="org-ul">
+<li>检查指定的 input 是否可以编辑</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">verifyEditalbe</td>
+<td class="org-left">shape</td>
+</tr>
+
+<tr>
+<td class="org-left">assertEditable</td>
+<td class="org-left">color</td>
+</tr>
+</tbody>
+</table>
+<p>
+assertNotEditable(inputLocator)
+</p>
+<ul class="org-ul">
+<li>检查指定的 input 是否不可以编辑</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org06db5a3" class="outline-4">
+<h4 id="org06db5a3">assertAlert</h4>
+<div class="outline-text-4" id="text-org06db5a3">
+<p>
+assertAlert(messagePattern)
+</p>
+<ul class="org-ul">
+<li>检查 JavaScript 是否产生带指定 message 的 alert 对话框</li>
+<li>alert 产生的顺序必须与检查的顺序一致</li>
+<li>检查 alert 时会产生与手动点击 <code>OK</code> 按钮一样的效果。如果一个 alert 产生了，而你却没有去检查它。selenium 会在下个 action 中报错</li>
+<li>注意：Selenium 不支持 JavaScript 在 onload() 事件时，调用 alert()，在这种情况下，Selenium 需要你手动来点击 <code>OK</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7f1ee1c" class="outline-4">
+<h4 id="org7f1ee1c">assertConfirmation</h4>
+<div class="outline-text-4" id="text-org7f1ee1c">
+<p>
+assertConfirmation(messagePattern)
+</p>
+<ul class="org-ul">
+<li>检查 JavaScript 是否有产生带指定 messages 的 confirmation 对话框和 alert 怦呈样，confirmation 也必须在它们产生的时候进行检查</li>
+<li>默认情况下，Seleniu 会让 confirm() 返回 true，相当于手动点击 <code>OK</code> 按钮的效果。你能够通过 chooseCancelOnNextConfirmation 命令让 confirm() 返回 false。同样的，如果一个 confirmation 对话框出现了，但你却没有检查的话，Selenium 将会在下个 action 中报错</li>
+<li>注意：在 Selenium 的环境下，confirmation 对话框将不会再出现弹出显式对话框</li>
+<li>注意：Selenium 不支持在 onload() 事件时调用 confirmation 对话框，在这种情况下，会出现显示的 confirmation 的对话框，并需要你自己动手点击</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9c6d3c7" class="outline-4">
+<h4 id="org9c6d3c7">assertPrompt</h4>
+<div class="outline-text-4" id="text-org9c6d3c7">
+<p>
+assertPrompt(messagePattern)
+</p>
+<ul class="org-ul">
+<li>检查 JavaScript 是否有产生带指定 message 的 Prompt 对话框</li>
+<li>检查的 prompt 的顺序与 Prompt 对话框的顺序必须相同</li>
+<li>必须在 verifyPrompt 之前调用 answerOnNextPrompt 命令</li>
+<li>如果 prompt 对话框出现了，但你却没有检查，则 Selenium 会在下个 action 中报错</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">answerOnNextPrompt</td>
+<td class="org-left">Joe</td>
+</tr>
+
+<tr>
+<td class="org-left">click</td>
+<td class="org-left">id = delegate</td>
+</tr>
+
+<tr>
+<td class="org-left">verifyPrompt</td>
+<td class="org-left">Delegate to who?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org983b980" class="outline-3">
+<h3 id="org983b980">Parameters and Variables</h3>
+<div class="outline-text-3" id="text-org983b980">
+<p>
+参数和变量的声明范围由简单的赋值到 JavaScript 表达式的赋值
+Store, storeValue 和 storeText 为下次访问保存值
+在 Selenium 内部是用一个叫 storeVars 的 map 来保存变量名
+</p>
+</div>
+<div id="outline-container-orged0e48e" class="outline-4">
+<h4 id="orged0e48e">Variable Substitution 变量替换</h4>
+<div class="outline-text-4" id="text-orged0e48e">
+<p>
+提供了一个简单的方法去访问变量，语法 ${xxx}
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">store</td>
+<td class="org-left">Mr</td>
+<td class="org-left">title</td>
+</tr>
+
+<tr>
+<td class="org-left">storeValue</td>
+<td class="org-left">nameField</td>
+<td class="org-left">suname</td>
+</tr>
+
+<tr>
+<td class="org-left">store</td>
+<td class="org-left">$.{title} $.{suname}</td>
+<td class="org-left">fullname</td>
+</tr>
+
+<tr>
+<td class="org-left">type</td>
+<td class="org-left">textElement</td>
+<td class="org-left">Full name is: $.{fullname}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgec270b3" class="outline-4">
+<h4 id="orgec270b3">JavaScript Evaluation JavaScript 赋值</h4>
+<div class="outline-text-4" id="text-orgec270b3">
+<p>
+你能用 JavaScript 来构建任何你所需要的值
+这个参数是以 javascript 开头，语法是 javascript.{'with a trailing'}
+可以通过 JavaScript 表达式给某元素赋值
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">store</td>
+<td class="org-left">javascript.{'merchant' + (new Date()).getTime()}</td>
+<td class="org-left">merchantId</td>
+</tr>
+
+<tr>
+<td class="org-left">type</td>
+<td class="org-left">textElement</td>
+<td class="org-left">javascript.{storeVars['merchantId'].toUpperCase()}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-01-06</span>
+        <span title="last modification date" class="post-info">2018-02-04</span>
+        <span title="tags" class="post-info"><a href="/tags/selenium/">Selenium</a>, <a href="/tags/xpath/">XPath</a></span>
+        <span title="author" class="post-info">Dylan Yang</span>
+      </div>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:banshiliuli1990 &lt;at&gt; sina &lt;dot&gt; com">Dylan Yang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
