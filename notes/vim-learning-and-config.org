@@ -1,0 +1,92 @@
+#+TITLE:       Vim 配置
+#+AUTHOR:      Dylan Yang
+#+EMAIL:       banshiliuli1990@sina.com
+#+DATE:        2016-04-29 五
+#+URI:         /notes/%y/%m/%d/vim-learning-and-configuration
+#+KEYWORDS:    Vim, IDE
+#+TAGS:        Vim
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 像 IDE 一样使用 Vim
+
+* MinGW 下编译 Vim
+=make.exe -f Make_ming.mak PYTHON=C:/Python27 PYTHON_VER=27 DYNAMIC_PYTHON=yes PYTHON3=C:/Python34 PYTHON3_VER=32 DYNAMIC_PYTHON3=yes USERNAME=Turmoil USERDOMAIN=z7ed.tk GUI=yes IME=yes=
+* 大神的 Vim 配置
+- [[https://github.com/yangyangwithgnu/use_vim_as_ide][《像 IDE 一样使用 vim》]]
+* 安装 Vim 和 Chinese doc
+安装之后，gVim 需要解决中文乱码问题，安下面的方案，加入到  =_vimrc=  中。
+#+BEGIN_SRC sh
+" 配置多语言环境,解决中文乱码问题
+if has("multi_byte")
+    " UTF-8 编码
+    set encoding=utf-8
+    set termencoding=utf-8
+    set formatoptions+=mM
+    set fencs=utf-8,gbk
+    if v:lang =~? '^/(zh/)/|/(ja/)/|/(ko/)'
+        set ambiwidth=double
+    endif
+    if has("win32")
+        source $VIMRUNTIME/delmenu.vim
+        source $VIMRUNTIME/menu.vim
+        language messages zh_CN.utf-8
+    endif
+else
+    echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
+endif
+#+END_SRC
+* 编码的制表与空格：
+- expandtab，把制表符转换为多个空格，具体空格数量参考 tabstop 和 shiftwidth 变量；
+- tabstop 与 shiftwidth 是有区别的。tabstop 指定我们在插入模式下输入一个制表符占据的空格数量，linux 内核编码规范建议是 8，看个人需要；shiftwidth 指定在进行缩进格式化源码时制表符占据的空格数。所谓缩进格式化，指的是通过 vim 命令由 vim 自动对源码进行缩进处理，比如其他人的代码不满足你的缩进要求，你就可以对其进行缩进格式化。缩进格式化，需要先选中指定行，要么键入 = 让 vim 对该行进行智能缩进格式化，要么按需键入多次 < 或 > 手工缩进格式化；
+- softtabstop，如何处理连续多个空格。因为 expandtab 已经把制表符转换为空格，当你要删除制表符时你得连续删除多个空格，该设置就是告诉 vim 把连续数量的空格视为一个制表符，即，只删一个字符即可。通常应将这 tabstop、shiftwidth、softtabstop 三个变量设置为相同值
+* 重新处理空格与制表符
+输入命令：retab，可以让 Vim 按定义的规则去重新载入空格
+* 代码折叠
+za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠。
+* 接口文件与实现文件跳转
+#+BEGIN_QUOTE
+a.vim 放到 =VIM/vim74/plugin 路径下
+#+END_QUOTE
+- 键入 ;ch 就能在实现文件和接口文件间切换，
+- 键入 ;sch 子窗口中将显示实现文件/接口文件。
+- 键入 ;ch 后，vim 在新 buffer 中打开实现文件 MyClass.cpp，并在当前窗口中显示；
+- 键入 ;ch 后，当前窗口切回接口文件；
+- 键入 ;sch 后，当前窗口分裂了一个子窗口显示实现文件
+* 书签设定
+- 书签设定。mx，设定/取消当前行名为 x 的标签；m,，自动设定下一个可用书签名，前面提说，独立书签名是不能重复的，在你已经有了多个独立书签，当想再设置书签时，需要记住已经设定的所有书签名，否则很可能会将已有的书签冲掉，这可不好，所以，vim-signature 为你提供了 m, 快捷键，自动帮你选定下一个可用独立书签名；mda，删除当前文件中所有独立书签。
+- 书签罗列。ms，罗列出当前文件中所有书签，选中后回车可直接跳转；
+- 书签跳转。mn，按行号前后顺序，跳转至下个独立书签；mp，按行号前后顺序，跳转至前个独立书签。书签跳转方式很多，除了这里说的行号前后顺序，还可以基于书签名字母顺序跳转、分类书签同类跳转、分类书签不同类间跳转等等
+* ctags 使用
+先将 ctags.exe 配置到某一个 path 路径中，然后在 vim 中输入
+#+BEGIN_SRC sh
+:set tags+=/data/workplace/example/tags
+#+END_SRC
+* 标签的遍历
+先键入 ctrl-]，若没导航至需要的标签，再键入 <leader>tn 往后或者 <leader>tp 往前遍历即可
+** 打开一个 C/C++ 源码文件，键入 <leader>tl，将在左侧的 tagbar 窗口中将可看到标签列表： （标签列表） 其中，注意几个特点：
+
+- 按作用域归类不同标签。按名字空间 n_foo、类 Foo 进行归类，在内部有声明、有定义；
+- 显示标签类型。名字空间、类、函数等等；
+- 显示完整函数原型；
+- 图形化显示共有成员（+）、私有成员（-）、保护成员（#）；
+操作：如果从标签找源码，选择对应标签后回车即可跳至源码中对应标签位置；如果从源码找标签，在源码中暂停几秒鼠标和键盘操作，tagbar 子窗口中对应标签将高亮；每次保存文件时或者切换到不同代码文件时 tagbar 自动调用 ctags 更是标签数据库；tagbar 有两种排序方式，一是按标签名字母先后顺序、一是按标签在源码中出现的先后顺序，在 .vimrc 中我配置选用后者，键入 s 切换不同不同排序方式
+* 快速注释
+常用操作：
+
+<leader>cc，注释当前选中文本，如果选中的是整行则在每行首添加 //，如果选中一行的部分内容则在选中部分前后添加分别 /*、*/；
+<leader>cu，取消选中文本块的注释。
+* Vim 一些常用的快捷键操作
+** 读入外部文件
+#+BEGIN_SRC sh
+:read readme.md
+#+END_SRC
+** 读入命令的结果
+#+BEGIN_SRC sh
+:read !command
+:read !ls -al
+#+END_SRC
+** 切换到上次修改的位置
+#+BEGIN_SRC sh
+# normal 模式下
+g;
+#+END_SRC

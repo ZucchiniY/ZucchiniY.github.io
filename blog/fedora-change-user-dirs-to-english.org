@@ -1,0 +1,32 @@
+#+TITLE:       Fedora 修改 user 目录为英文
+#+AUTHOR:      Dylan Yang
+#+EMAIL:       banshiliuli1990@sina.com
+#+DATE:        2017-07-31 一
+#+URI:         /blog/%y/%m/%d/fedora-change-user-dirs-to-english
+#+KEYWORDS:    Linux, gnome, user
+#+TAGS:        Fedora
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Fedora 小技巧
+
+* 将下载等目录改为英文
+
+这里主要是因为中文在使用 shell 的时候并不方便，但是如果系统语言为中文的话这些目录都是中文的。可以使用下面的方法修改为英文。
+
+#+BEGIN_SRC sh
+# 将语言修改为英文
+export LANG=en_US
+# 更新用户目录
+xdg-user-dirs-gtk-update
+#+END_SRC
+
+这个时候，会提示是否要将用户目录下的文件夹改为英文，选择是。
+
+#+BEGIN_SRC sh
+# 将语言调为中文
+export LANG=zh_CN.UTF-8
+#+END_SRC
+
+会提示是否改为中文，选择否，并选择不再提醒即可。经过测试这种方法适用于
+=GNOME= 桌面环境。
+

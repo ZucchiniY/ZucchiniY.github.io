@@ -1,0 +1,38 @@
+#+TITLE:       Emacs 快捷键
+#+AUTHOR:      Dylan Yang
+#+EMAIL:       banshiliuli1990@sina.com
+#+DATE:        2016-04-26 二
+#+URI:         /notes/%y/%m/%d/emacs-keybinds
+#+KEYWORDS:    Emacs, Keybinds
+#+TAGS:        Keybinds
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Emacs 快捷键记录。
+
+* 设置 Emacs 的默认编码格式
+#+BEGIN_SRC emacs
+(prefer-coding-system 'utf-8-unix)
+#+END_SRC
+
+* 改变文件编码格式
+
+- C-x C-m f utf-8-unix RET 将当前文件转换为 utf-8 编码
+- C-x C-m c RET C-x C-w RET 另存为指定编码
+  
+* 查看需要的库文件
+
+- M-: image-library-alist RET 查看 emacs 支持需要的库文件
+#+BEGIN_EXAMPLE
+((xpm "libxpm.dll" "xpm4.dll" "libXpm-nox4.dll")
+(png "libpng16.dll" "libpng16-16.dll")
+(tiff "libtiff-5.dll" "libtiff3.dll" "libtiff.dll")
+(jpeg "libjpeg-9.dll")
+(gif "libgif-7.dll")
+(svg "librsvg-2-2.dll")
+(gdk-pixbuf "libgdk_pixbuf-2.0-0.dll")
+(glib "libglib-2.0-0.dll")
+(gobject "libgobject-2.0-0.dll")
+(gnutls "libgnutls-28.dll" "libgnutls-26.dll")
+(libxml2 "libxml2-2.dll" "libxml2.dll")
+(zlib "zlib1.dll" "libz-1.dll"))
+#+END_EXAMPLE

@@ -1,0 +1,33 @@
+#+TITLE: 关于
+#+AUTHOR: Dylan Yang
+#+EMAIL: banshiliuli1990@sina.com
+#+DATE: 2018-02-02 fri
+#+URI: /about/
+#+KEYWORD: 关于, Dylan Yang, about
+#+LANGUAGE: en
+#+OPTIONS: H:3 num:nil toc:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+DESCRIPTION: about Dylan Yang
+
+* 个人信息
+
+ - Dylan Yang
+ - 邮箱：banshiliuli1990@sina.com
+ - 技术博客：https://zucchiniy.github.io
+ - github：https://github.com/zucchiniy
+ - Emacs 用户，喜欢学习，喜欢折腾
+ - 重度手残，五笔用户，文学爱好者，假文青。
+
+* 技术文章
+
+- [[https://github.com/lujun9972/emacs-document][emacs document]] emacs 相关文档翻译、部分翻译进行中
+
+* 技能清单
+
+*以下均为我熟练使用的技能:*
+
+** 熟练使用 linux 系统
+** 熟悉 mysql
+** 了解 shell
+** 了解 java、c、c++、python
+** 熟悉 emacslisp
+** 熟练使用 vim、emacs

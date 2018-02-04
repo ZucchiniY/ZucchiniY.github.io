@@ -1,0 +1,392 @@
+#+TITLE:       Selenium 笔记
+#+AUTHOR:      Dylan Yang
+#+EMAIL:       banshiliuli1990@sina.com
+#+DATE:        2016-01-06 三
+#+URI:         /notes/%y/%m/%d/selenium-learning
+#+KEYWORDS:    Selenium API, XPath
+#+TAGS:        Selenium, XPath
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Selenium 进行自动化的入门
+
+* xpath 语法
+XPath 是 XML 的查询语言，和 SQL 的角色很类似。以下面 XML 为例，介绍 XPath 的语法
+#+BEGIN_SRC html
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<catalog>
+
+   <cd country="USA">
+      <title>Empire Burlesque</title>
+      <artist>Bob Dylan</artist>
+      <price>10.90</price>
+   </cd>
+
+   <cd country="UK">
+     <title>Hide your heart</title>
+     <artist>Bonnie Tyler</artist>
+     <price>9.90</price>
+   </cd>
+
+   <cd country="USA">
+     <title>Greatest Hits</title>
+     <artist>Dolly Parton</artist>
+     <price>9.90</price>
+   </cd></catalog>
+
+</catalog>
+#+END_SRC
+** 定位节点
+XML 是树状结构，类似档案系统内数据夹的结构，XPath 也类似档案系统的路径命名方式。不过 XPath 是一种模式(Pattern)，可以选出 XML 档案中，路径符合某个模式的所有节点出来。例如要选 catalog 底下的 cd 中所有 price 元素可以用:
+#+BEGIN_EXAMPLE
+/catalog/cd/price
+#+END_EXAMPLE
+如果 XPath 的开头是一个斜线（/）代表这是绝对路径。如果开头是两个斜线（//）表示文件中所有符合模式的元素都会被选出来，即使是处于树中不同的层级也会被选出来。以下的语法会选出文件中所有叫做 cd 的元素（在树中的任何层级都会被选出来）：
+#+BEGIN_EXAMPLE
+//cd
+#+END_EXAMPLE
+** 选择未知的元素
+使用星号（Wildcards,＊）可以选择未知的元素。下面这个语法会选出/catalog/cd 的所有子元素：
+#+BEGIN_EXAMPLE
+/catalog/cd/*
+#+END_EXAMPLE
+以下的语法会选出所有 catalog 的子元素中，包含有 price 作为子元素的元素。
+#+BEGIN_EXAMPLE
+/catalog/*/price
+#+END_EXAMPLE
+以下的语法会选出有两层父节点，叫做 price 的所有元素。
+#+BEGIN_EXAMPLE
+/*/*/price
+#+END_EXAMPLE
+以下的语法会选择出文件中的所有元素。
+#+BEGIN_EXAMPLE
+//*
+#+END_EXAMPLE
+要注意的是，想要存取不分层级的元素，XPath 语法必须以两个斜线开头(//)，想要存取未知元素才用星号(*)，星号只能代表未知名称的元素，不能代表未知层级的元素。
+** 选择分支
+使用中括号可以选择分支。以下的语法从 catalog 的子元素中取出第一个叫做 cd 的元素。XPath 的定义中没有第 0 元素这种东西。
+#+BEGIN_EXAMPLE
+/catalog/cd[1]
+#+END_EXAMPLE
+以下语法选择 catalog 中的最后一个 cd 元素：（XPathj 并没有定义 first() 这种函式喔，用上例的 [ 1 ] 就可以取出第一个元素。
+#+BEGIN_EXAMPLE
+/catalog/cd[last()]
+#+END_EXAMPLE
+以下语法选出含有 price 子元素的所有/catalog/cd 元素。
+#+BEGIN_EXAMPLE
+/catalog/cd[price]
+#+END_EXAMPLE
+以下语法选出 price 元素的值等于 10.90 的所有/catalog/cd 元素
+#+BEGIN_EXAMPLE
+/catalog/cd[price=10.90]
+#+END_EXAMPLE
+以下语法选出 price 元素的值等于 10.90 的所有/catalog/cd 元素 的 price 元素
+#+BEGIN_EXAMPLE
+/catalog/cd[price=10.90]/price
+#+END_EXAMPLE
+** 选择一个以上的路径
+使用 Or 操作数(|)就可以选择一个以上的路径。例如：
+#+BEGIN_EXAMPLE
+/catalog/cd/title | catalog/cd/artist
+#+END_EXAMPLE
+选择所有 title 以及 artist 元素
+#+BEGIN_EXAMPLE
+//title | //artist
+#+END_EXAMPLE
+选择所有 title 以及 artist 以及 price 元素
+#+BEGIN_EXAMPLE
+//title | //artist | //price
+#+END_EXAMPLE
+** 选择属性
+在 XPath 中，除了选择元素以外，也可以选择属性。属性都是以@开头。例如选择文件中所有叫做 country 的属性。
+#+BEGIN_EXAMPLE
+//@country
+#+END_EXAMPLE
+选择所有含有 country 这个属性的 cd 元素：
+#+BEGIN_EXAMPLE
+//cd[@country]
+#+END_EXAMPLE
+以下语法选择出含有属性的所有 cd 元素
+#+BEGIN_EXAMPLE
+//cd[@*]
+#+END_EXAMPLE
+以下语法选择出 country 属性值为 UK 的 cd 元
+#+BEGIN_EXAMPLE
+//cd[@country='UK']
+#+END_EXAMPLE
+选择多个属性
+#+BEGIN_EXAMPLE
+//cd[@country='UK'][@name='hyddd']
+#+END_EXAMPLE
+* selenium 常见 API
+** Commands
+ Action：对学前状态进行操作，失败时，停止测试。
+ Assertion：校验是否有产生正确的值。
+ Element Locators：指定 HTML 中的元素。
+ Patterns：用于模式匹配。
+*** Element Locators(元素定位）
+如果没有 locator 前序的情况下，如果以 "document" 开头，就默认使用 dom locator,如果是以 "//" 开头，就默认使用 xpath locator, 其余情况均认作 identifier locator。
+***** id = id
+id locator 指定 HTML 中的唯一 id 元素
+***** name = name
+name locator 指定 HTML 中相同 name 的元素中的第一个元素
+***** identifier = id
+identifier locator 首先查找 HTML 是否存在该 id 的元素，若不存在，查找第一个该 name 的元素
+***** dom = javascriptExpression
+dom locator 用 JavaScript 表达式来定位 HTML 中的元素，注意必须要以 "document" 开头
+例如：
+#+BEGIN_SRC java
+dom = document.forms['myForm'].myDropdown
+dom = document.images[56]
+#+END_SRC
+***** xpath = xpathExpression
+xpath locator 用 Xpath 表达式来定位 HTML 中的元素，必须注意要以 ="//"= 开头
+例如：
+#+BEGIN_SRC java
+xpath = //[@alt='The image alt text']
+xpath = //table[@id='table1']//tr[4]/td[2]
+#+END_SRC
+***** link = textPattern
+link locator 用 link 来选择 HTML 中的连接或锚元素
+例如：
+#+BEGIN_SRC java
+link = The link text
+#+END_SRC
+*** String Matching Patterns(字符串匹配）
+在没有指定字符串匹配前序的时候，selenium 默认使用 golb 匹配模式
+***** glob : patthern
+glob 模式，用通用匹配符 "*" 代表任意长度字符， "?" 代表一个字符
+***** regexp : regexp
+正则表达式模式，用 JavaScript 正则表达式的形式匹配字符串
+***** exact : string
+精确匹配模式，精确匹配整个字符串，不能用通配符
+*** Select Option Specifiers(select 选项指定器)
+在没有选择前序的情况下，默认是匹配选项的文本
+***** label = labelPattern
+通过匹配选项中的文本指定选项
+例如：
+#+BEGIN_SRC java
+label = regexp:^[Oo]ther
+#+END_SRC
+***** value = valuePattern
+通过匹配选项中的指定选项
+例如：
+#+BEGIN_SRC java
+value = other
+#+END_SRC
+***** id = id
+通过匹配选项的 id 指定选项
+例如：
+#+BEGIN_SRC java
+id = option1
+#+END_SRC
+***** index = index
+通过匹配选项的序号指定选项，序号从 0 开始
+例如：
+#+BEGIN_SRC java
+inde = 2
+#+END_SRC
+** Action
+描述了用户所会作出的操作
+Action 有两种形式：action 和 actionAndWait，action 会立即执行，面 actionAndWait 会假设需要较长时间才能得到该 action 的响应，而作出等待，open 则是会处运算理等待时间。
+*** click
+ click(elementLocator)
+- 点击连接按钮，筛选和单选框
+- 如果点击后需要待响应，则用 =clickAndWait=
+- 如果需要经过 JavaScript 的 alert 或 confirm 对话框后才能继续操作，则需要调用 verify 或 assert 来告诉 Selenium 你期望对对话框进行什么操作
+| clickAndWait | aCheckbox    |
+| clickAndWait | submitButton |
+| clickAndWait | anyLink      |
+*** open
+open(url)
+- 在浏览器中打开 URL，可以授受相对和绝对路径两种形式
+- 注意：该 URL 必须在与浏览器相同的安全限定范围之内
+| open | /mypage           |
+| open | http://localhost/ |
+*** type
+ type(inputLocator, value)
+- 模拟人手的输入过程，往指定的 input 中输入值
+- 也适合给复选和单选框赋值
+- 在这个例子中，则只是给钩选了的复选框赋值，注意：而不是改写其文本
+| type        | nameField                  | John Smith |
+| typeAndWait | textBoxThatSubmitsOnChange | newValue   |
+*** select
+select(dropDownLocator, optionSpecifier)
+- 根据 optionSpecifier 选项选择器来选择一个下拉菜单选项
+- 如果有多于一个选择器的时候，如在用通配符模式，如 =f*b*= ，或者超过一个选项有相同的文本或值，则会选择第一个匹配到的值
+| select        | dropDown         | Australian Dollars      |
+| select        | dropDown         | index = 0               |
+| selectAndWait | currencySelector | value = AUD             |
+| selectAndWait | currencySelector | label = Australian D*rs |
+*** goBack, close
+goBack()
+- 模拟点击浏览器后退按钮
+close()
+- 模拟点击浏览器关闭按钮
+*** selectWindow
+select(windowId)
+- 选择一个弹出窗口
+- 当选中那个窗口的时候，所有的命令将会转移到那个窗口中执行
+| selectWindow | myPopupWindow |
+| selectWindow | null          |
+*** pause
+pause(millisenconds)
+- 根据指定时间暂停 Selenium 脚本执行
+- 常用在调试脚本或等待服务器段响应时
+| pause | 5000 |
+| pause | 2000 |
+*** fireEvent
+fireEvent(elementLocator,evenName)
+- 模拟页面元素事件被激活的处理动作
+| fireEvent | textField | focus |
+| fireEvent | dropDown  | blur  |
+*** waitForCondition
+waitForCondition(JavaSvriptSnippet,time)
+- 在限定时间内，等待一段 JavaScript 代码返回 true 值，超时则停止等待
+| waitForCondition | var value = selenium.getText("foo"); | 3000 |
+|                  | value.match(/bar/);                  |      |
+*** waitForValue
+waitForValue(inputLocator,value)
+- 等待 input，如：hidden input 待被赋予某值
+- 会轮流检测该值，所以要注意如果该值长时间一直未赋予该 input 值的话，可能会导致阻塞
+| waitForValue | finishIndication | isfinished |
+*** store, storeValue
+store(valueToStore, variablename)
+- 保存一个值到变量里
+- 该值可以由自其它变量组合而成或者通过 JavaScript 表达式赋值给变量
+| store      | Mr John Smith                             | fullname     |
+| store      | $. {firstname} $. {suname}                | fullname     |
+| store      | javascript. {Math.round(Math.PI*100)/100} | PI           |
+| storeValue | inputLocator                              | variableName |
+- 把指定的 input 中的值保存到变量中
+| storeValue | userName | userID      |
+| type       | userName | $. {userID} |
+*** storeText, storeAttribute
+storeText(elementLocator,variablename)
+- 把指定元素的文本值赋予给变量
+| storeText   | currentDate | expectedStartDate      |
+| verifyValue | startDate   | $. {expectedStartDate} |
+storeAttribute(.{} elementLocator@attributeName, variableName.{})
+- 把指定元素的属性的值赋予变量
+| storeAttribute  | input1@class | classOfInput1     |
+| verifyAttribute | input2@class | $.{classOfInput1} |
+*** chooseCancel.., answer..
+chooseCancelOnNextConfirmation()
+- 当下次 JavaScript 弹出 confirm 对话框的时候，让 selenium 选择 Cancel
+- 如果没有该命令时，遇到 confirm 对话框的，selenium 默认返回 true，和手动选择 OK 按钮一样
+| chooseCancelOnNextConfirmation |
+- 如果已经运行过该命令，当下一次又有 confirm 对话框出现时，也会同样地再次选择 Cancel
+answerOnNextPrompt(answerString)
+- 在下次 JavaScript 弹出 prompt 提示框时，赋予其 answerString 的值，并选择确定
+| answerOnNextPrompt | Kangaroo |
+** Assertions
+允许用户去检查当前状态，两种模式：Assert 和 Verify，当 Assert 失败，则退出测试；当 Verify 失败，测试会继续运行
+*** assertLocation, assertTitle
+assertLocation(relativelLocation)
+- 判断当前是在正确页面
+| verifyLocation | /mypage |
+| assertLocation | /mypage |
+assertTitle(titlePattern)
+| verifyTitle | My Page |
+| assertTitle | My Page |
+*** assertValue
+asserValue(inputLocator, valuePattern)
+- 检查 input 的值
+- 对于 checkbox 或 radio，如果已选择，则值为 =on= ，反之为 =off=
+| verifyValue | nameField                   | John Smith |
+| assertValue | document.forms[a].nameField | John Smith |
+*** assertSelected, assertSelectedOptions
+assertSelected(selectLocator, optionSpecifier)
+- 检查 select 的下拉菜单中选中的选型是否和 optionSpecifer(select 选择选项器)的选项相同
+| verifySelected | dropdown2                  | John Smith        |
+| verifySelected | dropdown2                  | value = js * 123  |
+| assertSelected | document.forms[a].dropDown | label = J * Smith |
+| assertSelected | document.forms[a].dropDown | index = 0         |
+assertSelectedOptions(selectLocator, optionLabelList)
+- 检查下拉菜单中的选项的文本是否和 optionLabelList 相同
+- optionLabelList 是以逗号分割的一个字符串
+| verifySelectOption    | dropdown2 | John Smith,Dave Bird |
+| assertSelectedOptions | dropdown2 | Smith, J, Bird, D    |
+*** assertText
+assertText(elementLocator, textPattern)
+- 检查指定元素的文本
+- 只对有包含文本的元素生效
+- 对于 Mozilla 类型的浏览器，用 textContent 取元素的文本，对于 IE 类型的浏览器，用 innerText 取元素文本
+| verifyText | statusMessage        | Successful |
+| assertText | //div[@id='foo']//h1 | Successful |
+*** assertTextPresent, assertAttribute
+assertTextPresent(text)
+- 检查在当前给用户显示的页面上是否有出现指定的文本
+| verifyTextPresent | You are now logged in |
+| assertTextPresent | You are now logged in |
+assertAttribute(.{} elementLocator@attributeName. {},ValuePattern)
+- 检查当前指定元素的属性的值
+| verifyAttribute | txt1@class             | bigAndBlod |
+| assertAttribute | document.images[a]@alt | alt-text   |
+| verifyAttribute | //img[@id='foo']/alt   | alt-text   |
+*** assertTextPresent, etc.
+assertTextPresent(text)
+assertTextPresent(text)
+assertTextNotPresent(text)
+assertElementPresent(elementLocator)
+| verifyElementPresent | submitButton      |
+| assertElementPresent | //img[@alt='foo'] |
+| assertElementPresent | dropDown2         |
+*** assertTable
+assertTable(cellAddress, valuePattern)
+- 检查 table 里的某个 cell 中的值
+- cellAddress 的语法是 tableName.row.column,注意行列序号是从 0 开始的
+| verifyTable | myTbale.1.5 | Submitted |
+| assertTable | results0.2  | 13        |
+*** assertVisible, assertNotVisible
+assertVisible(elementLocator)
+- 检查指定的元素是否可视的
+- 隐藏一个元素可以用设置 css 的 =visibility= 属性为 =hidden= ,也可以设置 =display= 属性为 =none=
+| verifyVisible | postcode |
+| assertVisible | postcode |
+assertNotVisible(elementLocator)
+| verifyNotVisible | postcode |
+| assertNotVisible | postcode |
+*** Editable, non-editable
+assertEditable(inputLocator)
+- 检查指定的 input 是否可以编辑
+| verifyEditalbe | shape |
+| assertEditable | color |
+assertNotEditable(inputLocator)
+- 检查指定的 input 是否不可以编辑
+*** assertAlert
+assertAlert(messagePattern)
+- 检查 JavaScript 是否产生带指定 message 的 alert 对话框
+- alert 产生的顺序必须与检查的顺序一致
+- 检查 alert 时会产生与手动点击 =OK= 按钮一样的效果。如果一个 alert 产生了，而你却没有去检查它。selenium 会在下个 action 中报错
+- 注意：Selenium 不支持 JavaScript 在 onload() 事件时，调用 alert()，在这种情况下，Selenium 需要你手动来点击 =OK=
+*** assertConfirmation
+assertConfirmation(messagePattern)
+- 检查 JavaScript 是否有产生带指定 messages 的 confirmation 对话框和 alert 怦呈样，confirmation 也必须在它们产生的时候进行检查
+- 默认情况下，Seleniu 会让 confirm() 返回 true，相当于手动点击 =OK= 按钮的效果。你能够通过 chooseCancelOnNextConfirmation 命令让 confirm() 返回 false。同样的，如果一个 confirmation 对话框出现了，但你却没有检查的话，Selenium 将会在下个 action 中报错
+- 注意：在 Selenium 的环境下，confirmation 对话框将不会再出现弹出显式对话框
+- 注意：Selenium 不支持在 onload() 事件时调用 confirmation 对话框，在这种情况下，会出现显示的 confirmation 的对话框，并需要你自己动手点击
+*** assertPrompt
+assertPrompt(messagePattern)
+- 检查 JavaScript 是否有产生带指定 message 的 Prompt 对话框
+- 检查的 prompt 的顺序与 Prompt 对话框的顺序必须相同
+- 必须在 verifyPrompt 之前调用 answerOnNextPrompt 命令
+- 如果 prompt 对话框出现了，但你却没有检查，则 Selenium 会在下个 action 中报错
+| answerOnNextPrompt | Joe              |
+| click              | id = delegate    |
+| verifyPrompt       | Delegate to who? |
+** Parameters and Variables
+参数和变量的声明范围由简单的赋值到 JavaScript 表达式的赋值
+Store, storeValue 和 storeText 为下次访问保存值
+在 Selenium 内部是用一个叫 storeVars 的 map 来保存变量名
+*** Variable Substitution 变量替换
+提供了一个简单的方法去访问变量，语法 ${xxx}
+| store      | Mr                   | title                      |
+| storeValue | nameField            | suname                     |
+| store      | $.{title} $.{suname} | fullname                   |
+| type       | textElement          | Full name is: $.{fullname} |
+*** JavaScript Evaluation JavaScript 赋值
+你能用 JavaScript 来构建任何你所需要的值
+这个参数是以 javascript 开头，语法是 javascript.{'with a trailing'}
+可以通过 JavaScript 表达式给某元素赋值
+| store | javascript.{'merchant' + (new Date()).getTime()} | merchantId                                         |
+| type  | textElement                                      | javascript.{storeVars['merchantId'].toUpperCase()} |

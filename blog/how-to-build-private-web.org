@@ -1,0 +1,53 @@
+#+TITLE:       如何搭建私有网站
+#+AUTHOR:      Dylan Yang
+#+EMAIL:       banshiliuli1990@sina.com
+#+DATE:        2016-11-17 四
+#+URI:         /blog/%y/%m/%d/how-to-build-private-web
+#+KEYWORDS:    Tomcat, Website
+#+TAGS:        Tomcat
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 如何在局域网搭建网站
+
+* 配置服务
+** 下载
+首先下载最新的 Tomcat：
+#+BEGIN_SRC xml
+http://tomcat.apache.org/download-90.cgi
+#+END_SRC
+[[file:../images/tomcat-configuration.PNG]]
+
+* 首先需要安装 appach tomcat
+配置/conf 下的两个文件，web.xml 和 server.xml
+server.xml
+#+BEGIN_SRC html
+<Host name="localhost"  appBase="D:\org"<!-- 配置主目录，然后所有的网站都可以放在此目录下-->
+            unpackWARs="true" autoDeploy="true">
+
+        <!-- SingleSignOn valve, share authentication between web applications
+             Documentation at: /docs/config/valve.html -->
+        <!--
+        <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+        -->
+        <!-- 增加下面的目录，可以访问 -->
+    <Context path="/wiki" docBase="/public_html" debug="0" reloadable="true" />
+
+        <!-- Access log processes all example.
+             Documentation at: /docs/config/valve.html
+             Note: The pattern used is equivalent to using pattern="common" -->
+        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+               prefix="localhost_access_log." suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+
+      </Host>
+#+END_SRC
+然后修改 web.xml
+#+BEGIN_SRC html
+    <welcome-file-list>
+    <!-- 在此处加上自己定义的起始页 -->
+      <welcome-file>sitemap.html</welcome-file>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+#+END_SRC

@@ -1,0 +1,37 @@
+#+TITLE:       Pandoc 命令
+#+AUTHOR:      Dylan Yang
+#+EMAIL:       banshiliuli1990@sina.com
+#+DATE:        2016-01-19 二
+#+URI:         /notes/%y/%m/%d/pandoc-command
+#+KEYWORDS:    Pandoc,CLI
+#+TAGS:        Pandoc
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: org 使用 pandoc 进行格式转换
+
+* org 转换为 docx
+- 基本命令
+#+BEGIN_SRC sh
+pandoc xxx.org -o xxx.docx
+#+END_SRC
+- 利用 css 进行配置着色
+#+BEGIN_SRC sh
+pandoc 01-chapter2.markdown -o chapter2.docx -c Github.css
+#+END_SRC
+* org 转换为 letex
+- 使用指定字体
+#+BEGIN_SRC sh
+pandoc pandocCh.org -o pandocCh.pdf --latex-engine=xelatex -V mainfont="SimSun"
+#+END_SRC
+- 使用指定模板
+#+BEGIN_SRC sh
+pandoc pandocCh.org -o pandocCh.pdf --latex-engine=xelatex -template=pm-template.latex
+#+END_SRC
+* org 转换为 html
+#+BEGIN_SRC sh
+pandoc 01-chapter2.org -o chapter2.html -c Github.css
+#+END_SRC
+* org 转换为 Markdown
+#+BEGIN_SRC sh
+pandoc -f org -t markdown -o output.md input.org
+#+END_SRC

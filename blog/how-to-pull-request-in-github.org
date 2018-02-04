@@ -1,0 +1,46 @@
+#+TITLE:       如何在 Github 上提交 PR
+#+AUTHOR:      Dylan Yang
+#+EMAIL:       banshiliuli1990@sina.com
+#+DATE:        2017-08-07 一
+#+URI:         /blog/%y/%m/%d/how-to-pull-request-in-github
+#+KEYWORDS:    GitHub, Pull Request, Git
+#+TAGS:        Pull Request
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 如何在 GitHub 上提交一交 Pull Request
+
+* 操作流程
+
+1. *Fork* 一下原始项目。
+2. *clone* 到本地
+3. 为了追踪原始仓库的更新，需要添加要更新的分支的原始仓库为远程分支
+
+  #+BEGIN_SRC sh
+    git remote add upstream <origin>/<xxxx>
+  #+END_SRC
+
+4. 创建私有分支 _develop_ ，用来开发项目
+
+   #+BEGIN_SRC sh
+     git checkout -b develop
+   #+END_SRC
+
+5. 本地 _develop_ 分支提交
+6. 切换 _master_ 分支，同步原始仓库
+ 
+   #+BEGIN_SRC sh
+     git checkout master
+     git pull upstream master
+   #+END_SRC
+ 
+7. 切换本地 _develop_ 分支，合并本地 _master_ 分支并解决冲突
+8. 提交本地 _develop_ 分支到自己的 _develop_ 分支
+9. 向原始仓库发起 Pull Request 请求
+10. 等待原作者回复 (接受/拒绝)
+
+* 注意点
+
+在拉取新分支时，最好使用 =rebase= ，需如果使用 =merge= 的话，会增加许多 =commit= 信息，这会降低更新的整洁性。
+
+ 
+
