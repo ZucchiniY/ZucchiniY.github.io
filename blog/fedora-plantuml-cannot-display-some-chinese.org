@@ -1,0 +1,23 @@
+#+TITLE:       Fedora 下中文显示不全的解决方案
+#+AUTHOR:      Dylan Yang
+#+EMAIL:       banshiliuli1990@sina.com
+#+DATE:        2017-08-04 五
+#+URI:         /blog/%y/%m/%d/fedora-plantuml-cannot-display-some-chinese
+#+KEYWORDS:    Linux, Fedora, PlantUML, Chinese
+#+TAGS:        Chinese Font
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Fedora 环境下，Org mode 生成 PlantUML 图片中的中文有一小部分无法显示。
+
+* 默认安装 jdk 解决方案
+
+经过测试之后发现，无论是官方 =JDK= 还是 =OpenJDK= 都有这个问题，经过测试发现是 JDK 使用的中文字库不全导致的。
+
+百度查找更换 jdk 字库的方案，但是都无法解决，不知道是否需要重启，后来查到，可以通过安装默认字体来解决这个问题：
+
+#+BEGIN_SRC sh
+sudo dnf install cjkuni-uming-fonts
+#+END_SRC
+
+安装之后，重新执行 =PlantUML= 代码块，中文可以正常显示。
+

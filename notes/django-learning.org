@@ -1,0 +1,204 @@
+#+TITLE:       django 学习笔记
+#+AUTHOR:      Dylan Yang
+#+EMAIL:       banshiliuli1990@sina.com
+#+DATE:        2017-02-13 一
+#+URI:         /notes/%y/%m/%d/django-learning
+#+KEYWORDS:    Python, Django, Learning
+#+TAGS:        Learning
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: django 学习笔记
+
+* 安装说明
+- 先安装 Python 和 Django
+- 创建 django 项目
+#+BEGIN_SRC python
+django-admin startproject mysite
+#+END_SRC
+- 在命令行里，输入对应的命令来启动测试用的网站
+#+BEGIN_SRC sh
+python manage.py runserver
+#+END_SRC
+- 创建子项目
+#+BEGIN_SRC sh
+python manage.py startapp lists
+#+END_SRC
+- 执行 start 命令以及在项目文件夹中存放一个应用还不够，需要告诉 Django 确实要开发一个应用，并把这个应用添加到文件 settings.py 中才可以。
+  - settings.py 中找到变量 INSTALLED_APPS, 将 lists 加进去
+  #+BEGIN_SRC python
+  INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'lists',
+    )
+  #+END_SRC
+* 常用语法参数
+
+#+BEGIN_SRC python
+assert 'To-Do' in brower.title, "Brower title was " + brower.title
+#+END_SRC
+unittest.TestCase 内特殊方法
+1. *setUp* : 测试方法之前执行，可以在测试之前打开浏览器
+2. *tearDown* : 测试方法之后执行，可以在测试之后关闭浏览器
+   1. 这两个方法有点类似于 *try* / *except*  语句，即使在测试中出错了，也依然后执行相关的语句
+3. *self.fail*  都会失败，生成抒写的错误信息，用来提醒测试结束等必要信息
+4. *warnings='ignore'* 的作用是禁止抛出 *ResourceWarning* 异常，可以删除这个参数
+5. *implicitly_wait()* : 隐式等待，用来加载页面
+* TDD 中的功能测试与单元测试
+- 功能测试站在高层驱动开发，单元测试则从低层驱动代码的进展
+  - 先功能测试，从用户角度去描述新的功能
+  - 功能测试失败后进行单元测试，驱动代码
+  - 再进行功能测试，看是否已经能完成
+- TDD 总体流程
+#+BEGIN_SRC dot :file images/django-01.png :cmdline -Kdot -Tpng :exports both 
+digraph G {
+edge [fontname="YouYuan"];
+node [fontname="YouYuan"];
+splines = spline; 
+a1 [shape=box, style=filled, label="编写测试"];
+a2 [shape=box, style=filled, label="编写最少量的代码"];
+a3 [shape=Mdiamond, style=filled, label="运行测试。\n 是否通过测试?"];
+a4 [shape=Mdiamond, style=filled, label="是否需要重构?"];
+a1:e->a3:w;
+a3:e->a4:w[label="是"];
+a4:s->a2:e[label="是"];
+a3:s->a2:n[label="否"];
+a2:ne->a3:se;
+a4:n->a1:n[style=dotted,label="否"]
+rankdir=TB;
+{rank=same; a1;a3;a4}
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:images/django-01.png]]
+
+- 包含功能测试和单元测试的 TDD 流程
+#+BEGIN_SRC dot :file images/django-02.png :cmdline -Kdot -Tpng :exports both 
+  digraph G {
+  compound=true;
+  edge [fontname="YouYuan"];
+  node [fontname="YouYuan"];
+  fontname="YouYuan";
+  rankdir=LR;
+
+  subgraph cluster0 {
+  style = filled;
+  color = lightgrey;
+  a1 [shape=box, label="编写单元测试"];
+  a2 [shape=Mdiamond,  label="运行单元测试。\n 是否通过测试?"];
+  a3 [shape=box, label="编写最少量的代码"];
+  a4 [shape=Mdiamond, label="代码是否需要重构?"];
+
+  a1:e->a3:w;
+  a3:e->a4:w[label="是"];
+
+  a4:s->a2:e[label="是"];
+  a3:s->a2:n[label="否"];
+  a2:ne->a3:se;
+
+  {rank=min;a1}
+  {rank=same;a2;a3}
+  {rank=max;a4}
+
+  label="TDD 流程" 
+  }
+
+  {rank=min;a5}
+  {rank=same;a6}
+  {rank=max;a7}
+
+
+  a5 [shape=box, label="编写功能测试"];
+  a6 [shape=Mdiamond,  label="运行功能测试。\n 是否通过？"];
+  a7 [shape=Mdiamond, label="应用是否需要重构?"];
+
+  a7:e->a4:e[lhead=cluster0];
+  a5:e->a6:w;
+  a6:e->a7:w[label="是"];
+
+  a6:s->a3:n[label="否"];
+  a3:n->a6:se;
+  a7:n->a5:n[label="否",style=dotted];
+
+  newrank=true;
+  {rank=same;a1;a5}
+  {rank=same;a2;a6}
+  {rank=same;a4;a7}
+  }
+
+#+END_SRC
+
+#+RESULTS:
+[[file:images/django-02.png]]
+
+* 利用 git 进行管理发布内容
+#+BEGIN_SRC sh
+git add .
+echo "something" >> .gitignore
+git commit -m "something"
+#+END_SRC
+
+* 单元测试笔记
+ - 用户在浏览器中请求网页时，Django 看到的就是 HttpRequest 对象
+   - 关于 request 和 response 
+    - request 对象用于接收客户端浏览器提交的数据
+    - response 对象是将服务器端的娄氯送到客户端浏览
+
+* 有用的命令和概念
+** 启动 Django 开发服务器
+#+BEGIN_SRC sh
+python manage.py runserver
+#+END_SRC
+** 运行功能测试
+#+BEGIN_SRC sh
+python functional_test.py
+#+END_SRC
+** 运行单元测试
+#+BEGIN_SRC sh
+python manage.py test
+#+END_SRC
+- 单元测试是用来测试逻辑、流程控制和配置。
+
+* Django 中的模板
+#+BEGIN_EXAMPLE
+模板是 Django 中一个很强大的功能，使用模板的主要优势之一是能把 Python 变量代入 HTML 文本。
+模板作为 Django 中的一个非常重要的功能，需要在后续过程中，学习模板的其它用法，主要在 templates 中.
+#+END_EXAMPLE
+
+* Django 迁移
+#+BEGIN_QUOTE
+迁移 migration
+#+END_QUOTE
+- 在 Django 中，ORM 的任务是模型化数据库
+- 创建数据库是由迁移(migration)系统完成的，其任务是：
+  - 根据你对 models.py 文件的改动情况，添加或删除表和列
+  - 可以把迁移想象成数据库使用的版本控制系统
+    - 在把应用部署到线上服务器升级数据库时，迁移十分有用
+#+BEGIN_SRC sh
+python manage.py makemigrations
+#+END_SRC
+- 再次执行迁移，可以发现要求我们对新增的列提供一个默认值来完成操作
+- 在使用 models.py 文件和后来创建的迁移文件中告诉 Django 创建数据库所需要一切信息，为了创建真正的数据库，使用 migrate 命令。
+#+BEGIN_SRC python
+python manage.py migrate
+#+END_SRC
+- 需要增加一种自动清理机制，可以手动清理，即：先删除数据库再执行一遍 migrate 命令
+#+BEGIN_SRC sh
+rm db.sqlite3
+python manage.py migrate --noinput
+#+END_SRC
+
+* Django 中的常用方法
+- 重定向
+#+BEGIN_SRC python
+redirect('/') # 重定向到/路径
+#+END_SRC
+* 问题
+** 在使用过程中，无法定位到 Iedriver，已经修改为使用 Chromedriver.exe 来完成。
+** 事不过三，三则重构
+*** 在代码过程中，如果复制粘贴三次，就需要删除该重复，进行代码的重构。

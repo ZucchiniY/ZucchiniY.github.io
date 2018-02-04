@@ -1,3 +1,17 @@
-#+TITLE: Index
+#+TITLE:       首页
+#+AUTHOR:      DylanYang
+#+EMAIL:       banshiliuli1990@sina.com
+#+DATE:        2018-02-02 五
+#+URI:         /
+#+KEYWORDS:    Lisp, Emacs, Linux, Mac, Java, Org mode, Blog, 博客, 编程, Programming
+#+TAGS:        Blog
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Dylan Yang home page
 
-This is the home page of Dylan Yang.
+桃花坞里桃花庵，桃花庵里桃花仙。\\
+桃花仙人种桃树，又摘桃花换酒钱。\\
+酒醒只在花前坐，酒醉还来花下眠。\\
+半醒半醉日复日，花落花开年复年。\\
+但愿老死花酒间，不愿鞠躬车马前。\\
+
