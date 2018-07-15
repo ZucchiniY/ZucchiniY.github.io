@@ -1,0 +1,20 @@
+sudo: false
+language: go
+os: osx
+install:
+  go get -v github.com/gohugoio/hugo
+
+script:
+  - hugo --config jane-config.toml
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github_token: $TRAVIS_GITHUB_PAGES
+  on:
+    branch: source
+  local_dir: public  
+  repo: ZucchiniY/ZucchiniY.github.io
+  target_branch: master
+  email: banshiliuli1990@sina.com
+  name: ZucchiniY
