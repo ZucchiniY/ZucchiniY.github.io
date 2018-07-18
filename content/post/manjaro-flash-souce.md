@@ -18,3 +18,4 @@ sudo pacman-mirrors -gb testing -c China
 ``` shell
 sudo pacman -Syyu
 ```
+<!--more-->

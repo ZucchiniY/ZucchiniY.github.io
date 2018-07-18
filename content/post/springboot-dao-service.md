@@ -12,6 +12,7 @@ author: "Dylan Yang"
 > 进行数据检查
 
 数据访问对象，即 _Data Access Object_ ，提供单一表的 _CRUD_ 操作，也就是创建(create)、读取(select)、更新(update)、删除(delete)。另外还包括了查询方法、排序和分页方法等内容。
+<!--more-->
 
 # Service 层
 

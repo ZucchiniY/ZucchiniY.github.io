@@ -11,6 +11,8 @@ author: "Dylan Yang"
 
 Hugo 作为一个原生支持 *Org* 的静态站点生成器，是非常好用的，但是和 *Markdown* 比较来看，整体就比较简单了，所以有些时候，可以选择先将 *Org* 转为 *Markdown* 再转成静态站点。
 
+<!--more-->
+
 # ox-hugo
 
 但是有些时候，可能直接将 *Org* 导出为 *Html* 然后再对 *Html* 进行渲染，也是一个不错的选择。

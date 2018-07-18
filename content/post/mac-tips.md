@@ -14,3 +14,4 @@ author: "Dylan Yang"
 # 打开文件夹
 
 **finder** 下使用 `Command+G` 即 `Command+Shift+g` 可以前往任何文件夹，包括隐藏文件夹。
+<!--more-->

@@ -7,6 +7,9 @@ categories: ["GCC"]
 author: "Dylan Yang"
 ---
 
+GCC 中如何使用命令行编译。
+<!--more-->
+
 `gcc -E sourcefile.c` -E，只执行到预编译，直接输出预编译结果
 
 `gcc -S sourcefile.c` -S，只执行到源代码到汇编代码的转换，输出汇编代码

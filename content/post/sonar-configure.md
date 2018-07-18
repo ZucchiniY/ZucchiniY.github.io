@@ -21,6 +21,7 @@ $ vi ~/.bash_profile
 ``` shell
 export PATH="$HOME/usr/local/mysql/bin:$PATH"
 ```
+<!--more-->
 
 - 并使文件中的环境变量生效
 

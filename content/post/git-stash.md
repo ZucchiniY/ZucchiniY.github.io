@@ -7,6 +7,9 @@ categories: ["git"]
 author: "Dylan Yang"
 ---
 
+本文记录了如何使用 Git Stash 功能时报错的解决方案。
+<!--more-->
+
 - Git stash apply 的时候，报错 :
 
 ```text

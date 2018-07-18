@@ -15,7 +15,7 @@ author: "Dylan Yang"
 /usr/bin/ruby -e "$(curl -fsSL //
 https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-
+<!--more-->
 
 # 常用命令
 

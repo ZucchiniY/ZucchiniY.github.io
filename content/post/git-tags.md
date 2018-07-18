@@ -7,7 +7,8 @@ categories: ["Git"]
 author: "Dylan Yang"
 ---
 
-基础命令
+Git tags 的基础命令的使用。
+<!--more-->
 
 - 查看
 

@@ -7,6 +7,9 @@ categories: ["Web"]
 author: "Dylan Yang"
 ---
 
+CSS 是前端开发的基础。
+<!--more-->
+
 # css 語法
 css 規則由兩個主要的部分構成:選擇器，以及一條或者多條聲明。
 

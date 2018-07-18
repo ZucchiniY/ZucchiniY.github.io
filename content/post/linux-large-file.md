@@ -22,6 +22,7 @@ find . -type f -size +800M | xargs ls -lh
 ```
 
 这里的 `xargs` 是把管理参数切分成多个部分，可以将命令进行组合
+<!--more-->
 
 # du 查找大目录
 

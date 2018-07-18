@@ -11,6 +11,8 @@ author: "Dylan Yang"
 
 在 vim 的世界中，surround 可以说是被仰望的一个神器，作者是 **Tim Pope** ，在 evil 的世界中，也有一个对应的神器 *evil-surround* 。为了记录这个工具，先从 *surround* 本身说起。
 
+<!--more-->
+
 项目的地址如下
 
 - [vim surround](https://github.com/tpope/vim-surround)

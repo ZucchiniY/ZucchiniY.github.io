@@ -15,6 +15,7 @@ logging:
   level:
     com.xxxx.mapper: DEBUG
 ```
+<!--more-->
 
 > com.xxxx.mapper 是 Mybatis 接口的影射文件包
 

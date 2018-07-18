@@ -7,6 +7,9 @@ categories: ["Web"]
 author: "Dylan Yang"
 ---
 
+JavaScript 判断子串方法。
+<!--more-->
+
 # String 对象方法
 
 - `indexOf()`

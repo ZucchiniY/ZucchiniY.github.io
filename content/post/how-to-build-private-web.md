@@ -7,6 +7,9 @@ categories: ["Web"]
 author: "Dylan Yang"
 ---
 
+如何在本地环境下用 tomcat 打造一个个人网站。
+<!--more-->
+
 # 配置服务
 
 ## 下载

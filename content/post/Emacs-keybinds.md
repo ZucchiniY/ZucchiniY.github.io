@@ -7,6 +7,9 @@ categories: ["Emacs"]
 author: "Dylan Yang"
 ---
 
+本文主要详解如何设置 Emacs 的默认编码格式和改变文件格式，以及如何查看图片所需要的库文件。
+<!--more-->
+
 # 设置 Emacs 的默认编码格式
 
 ``` emacs

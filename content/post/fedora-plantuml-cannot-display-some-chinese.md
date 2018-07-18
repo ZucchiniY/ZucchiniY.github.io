@@ -19,4 +19,4 @@ sudo dnf install cjkuni-uming-fonts
 ```
 
 安装之后，重新执行 _PlantUML_ 代码块，中文可以正常显示。
-
+<!--more-->

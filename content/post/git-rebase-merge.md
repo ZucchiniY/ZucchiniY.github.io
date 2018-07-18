@@ -7,7 +7,8 @@ categories: ["git"]
 author: "Dylan Yang"
 ---
 
-# Git feature 与 master(develop)分支冲突解决方案
+本文主要讨论 Git feature 与 master(develop)分支冲突解决方案。
+<!--more-->
 
 - 同步远程分支
 

@@ -7,6 +7,9 @@ categories: ["Java"]
 author: "Dylan Yang"
 ---
 
+如何使用命令创建一个 Maven 项目。
+<!--more-->
+
 # 常用命令
 ## 创建一个项目
 

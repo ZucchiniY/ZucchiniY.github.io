@@ -24,3 +24,4 @@ SELECT * FROM DB.SQL WHERE MYNAME LIKE CONCAT('%' , '${myName}' , '%')
 ``` sql
 SELECT * FROM DB.SQL WHERE MYNAME LIKE '%'||#{myName}||'%'
 ```
+<!--more-->

@@ -16,6 +16,8 @@ author: "Dylan Yang"
 ## 蟹黄小笼包
 ![IMG_0312.JPG](https://i.loli.net/2018/06/10/5b1cfe659a947.jpg)
 
+<!--more-->
+
 ## 笋丁鲜肉小笼包
 ![IMG_0313.JPG](https://i.loli.net/2018/06/10/5b1cfe7ba15f5.jpg)
 

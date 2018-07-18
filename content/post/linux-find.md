@@ -7,6 +7,9 @@ categories: ["Linux"]
 author: "Dylan Yang"
 ---
 
+Linux 下 使用 find 命令查找文件。
+<!--more-->
+
 # 常用组合
 
 - 查找所有 `.h` 文件

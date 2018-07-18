@@ -22,6 +22,7 @@ select concat(o.user_name,o.user_number) from user o where user_id = '1'
 ```
 
 但是如果查询过程中有一个字符串为 `null` 则整个结果都将是 `null`，这时可以将 `null` 转换为 ''
+<!--more-->
 
 ``` sql
 select concat(IFNULL(o.user_name,''),o.user_number) from user o where user_id = '1'

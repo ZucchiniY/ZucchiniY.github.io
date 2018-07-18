@@ -8,7 +8,9 @@ description: "解决 xcode 卸载后的问题。"
 author: "Dylan Yang"
 ---
 
-mac 执行 git 命令时候出现：
+mac 执行 git 命令时候出现 `invalid active developer path` ：
+<!--more-->
+具体如下：
 
 ``` shell
 xcrun: error: invalid active developer path
@@ -17,8 +19,6 @@ xcrun: error: invalid active developer path
 
 /Library/Developer/CommandLineTools/usr/bin/xcrun
 ```
-
-<!--more-->
 
 解决方法：
 

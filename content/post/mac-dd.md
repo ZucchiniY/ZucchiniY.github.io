@@ -29,6 +29,7 @@ sudo dd if=isopath of=/dev/disk[num] bs=1m rdisk
 
 `rdisk` 是指定方式后，可以加快写入速度。
 
+<!--more-->
 # iso 转换为 dmg
 
 ``` shell

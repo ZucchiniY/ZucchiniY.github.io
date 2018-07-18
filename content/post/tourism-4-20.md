@@ -14,6 +14,7 @@ author: "Dylan Yang"
 **走断腿的西溪湿地一日游。😵**
 
 ![IMG_0056.JPG](https://i.loli.net/2018/06/10/5b1cfd9c3667a.jpg)
+<!--more-->
 
 ![IMG_0064.JPG](https://i.loli.net/2018/06/10/5b1cfdaece3a4.jpg)
 

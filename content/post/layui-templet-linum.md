@@ -7,6 +7,9 @@ categories: ["Web"]
 author: "Dylan Yang"
 ---
 
+在 Layui 中实现复选框。
+<!--more-->
+
 # 实现
 
 首先要在 **templet** 加上行号数据

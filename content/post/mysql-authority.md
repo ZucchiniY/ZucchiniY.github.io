@@ -19,6 +19,7 @@ mysql>grant all privileges on test.* to 'root'@'%';
 ``` sh
 mysql>grant all privileges on *.* to 'root'@'%';
 ```
+<!--more-->
 
 # 设置指定用户名访问权限
 - 指定用户名为 liuhui，密码为空，可以访问所有数据库

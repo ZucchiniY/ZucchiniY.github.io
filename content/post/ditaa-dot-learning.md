@@ -2,11 +2,13 @@
 title: "ditaa、dot 代码实例"
 date: 2016-01-08T22:10:21+08:00
 draft: false
-tags: ["dot","ditaa", "Emacs","Org mode"]
+tags: ["dot","ditaa","Org mode"]
 categories: ["Emacs"]
 author: "Dylan Yang"
 ---
 
+ditta 和 dot 是非常方便的图片生成工具，Emacs 可以非常方便的在 Org Mode 中使用。
+<!--more-->
 
 # ditta
 

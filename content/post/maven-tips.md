@@ -22,6 +22,7 @@ author: "Dylan Yang"
 ``` shell
 mvn dependency:copy-dependencies
 ```
+<!--more-->
 
 - 导出到指定目录下
 

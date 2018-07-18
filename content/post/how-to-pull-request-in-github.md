@@ -13,6 +13,7 @@ author: "Dylan Yang"
 - *Fork* 一下原始项目。
 - *clone* 到本地
 - 为了追踪原始仓库的更新，需要添加要更新的分支的原始仓库为远程分支
+<!--more-->
 
 ``` shell
 git remote add upstream <origin>/<xxxx>

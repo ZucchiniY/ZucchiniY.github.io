@@ -16,4 +16,4 @@ author: "Dylan Yang"
 ``` emacs-lisp
 :spacemacs/recompile-elpa
 ```
-
+<!--more-->

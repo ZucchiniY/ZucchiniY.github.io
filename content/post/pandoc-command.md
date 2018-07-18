@@ -22,6 +22,8 @@ pandoc 01-chapter2.markdown -o chapter2.docx -c Github.css
 ``` sh
 pandoc pandocCh.org -o pandocCh.pdf --latex-engine=xelatex -V mainfont="SimSun"
 ```
+<!--more-->
+
 - 使用指定模板
 ``` sh
 pandoc pandocCh.org -o pandocCh.pdf --latex-engine=xelatex -template=pm-template.latex

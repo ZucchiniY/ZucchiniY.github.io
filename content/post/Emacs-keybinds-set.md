@@ -7,6 +7,9 @@ categories: ["Emacs"]
 author: "Dylan Yang"
 ---
 
+Emacs 的快捷键和 Vim 的快捷键是编辑器中的两坐高山，其中 Emacs 的快捷键主要有四类。
+<!--more-->
+
 # 四大类型
 
 - 全局快捷键

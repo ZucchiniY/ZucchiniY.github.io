@@ -20,6 +20,7 @@ SELECT expression1, expression2, ... expression_n
 FROM tables
 [WHERE conditions];
 ```
+<!--more-->
 
 参数：
 

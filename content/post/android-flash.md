@@ -11,6 +11,8 @@ author: "Dylan Yang"
 
 在刷机之前，需要在电脑上下载 *Android Preview* 包，一般我都是到 [安卓中国](https://developer.android.google.cn/preview/download#flash)，这里可以下载最新的包。
 
+<!--more-->
+
 # 手机
 
 相对下载包的获取，比较难的是有一部支持最新的安卓系统的手机，一般 **Preview** 版的系统都是默认支持 **Google** 自己的手机的。

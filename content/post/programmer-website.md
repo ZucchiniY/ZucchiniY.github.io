@@ -20,6 +20,7 @@ author: "Dylan Yang"
 - [CodeChef](https://codechef.com)
 - [CodeEval](https://codeeval.com)
 - [SPOJ](https://www.spoj.com)
+<!--more-->
 
 # 程序员学习网站
 
