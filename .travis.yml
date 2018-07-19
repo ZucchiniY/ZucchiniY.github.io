@@ -1,10 +1,8 @@
 sudo: false
-language: go
 os: osx
-install:
-  go get -v github.com/gohugoio/hugo
 
 script:
+  - brew install hugo
   - hugo --config jane-config.toml
 
 deploy:
