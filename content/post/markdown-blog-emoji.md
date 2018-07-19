@@ -11,7 +11,7 @@ author: "Dylan Yang"
 
 <!--more-->
 
-可以从 [emoji在线获取](https://twitter.github.io/twemoji/2/test/preview.html) 获取 *emoji* 图。
+可以从 [twitter emoji](https://twitter.github.io/twemoji/2/test/preview.html) 或者从 [https://emojipedia.org/people/](https://emojipedia.org/people/)获取 *emoji* 图。
 
 当然，如果可以支持 *emoji* 代码的话，可以使用 `:blush:` 来插入一个 😊 图片。
 
