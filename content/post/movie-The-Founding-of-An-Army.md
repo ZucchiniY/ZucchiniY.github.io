@@ -3,8 +3,7 @@ title: "电影——《建军大业》"
 date: 2017-08-02T22:10:21+08:00
 draft: false
 tags: ["影评"]
-description: "一部名字很差，但是剧情不错的电影。"
-categories: ["电影"]
+categories: ["观影观剧"]
 author: "Dylan Yang"
 ---
 

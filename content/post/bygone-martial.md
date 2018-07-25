@@ -3,7 +3,7 @@ title: "逝去的武林"
 date: 2018-05-28T14:36:43+08:00
 draft: false
 tags: ["一个人的武林","影评"]
-categories: ["电影"]
+categories: ["观影观剧"]
 author: "Dylan Yang"
 ---
 
