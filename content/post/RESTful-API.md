@@ -3,7 +3,7 @@ title: "Springboot RESTful API 构建"
 date: 2018-04-28T19:51:02+08:00
 draft: false
 tags: ["RESTful","API"]
-categories: ["Springboot"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

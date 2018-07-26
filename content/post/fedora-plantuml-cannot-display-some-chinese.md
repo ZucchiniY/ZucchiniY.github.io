@@ -2,9 +2,8 @@
 title: "Fedora 下中文显示不全的解决方案"
 date: 2017-08-04T22:10:21+08:00
 draft: false
-description: "Fedora 环境下，Org mode 生成 PlantUML 图片中的中文有一小部分无法显示。"
-tags: ["Linux","Fedora","PlantUML", "中文"]
-categories: ["Linux"]
+tags: ["Linux","PlantUML", "中文"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

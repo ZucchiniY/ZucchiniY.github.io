@@ -4,7 +4,7 @@ date: 2018-04-24T22:10:21+08:00
 draft: false
 description: "Springboot 在 yml 配置文件中如何打印日志"
 tags: ["logging","springboot"]
-categories: ["Springboot"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -2,8 +2,8 @@
 title: "Markdown 插入 emoji"
 date: 2018-06-08T22:10:21+08:00
 draft: false
-tags: ["emoji"]
-categories: ["markdown"]
+tags: ["Markdown Emoji"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

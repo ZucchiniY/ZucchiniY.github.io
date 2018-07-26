@@ -3,7 +3,7 @@ title: "配置 Sonarqube"
 date: 2016-11-17T22:10:21+08:00
 draft: false
 tags: ["Sonarqube","配置"]
-categories: ["Sonar Qube"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

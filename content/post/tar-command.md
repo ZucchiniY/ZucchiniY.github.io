@@ -3,7 +3,7 @@ title: "tar 命令整理"
 date: 2017-03-19T22:10:21+08:00
 draft: false
 tags: ["tar"]
-categories: ["Linux"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

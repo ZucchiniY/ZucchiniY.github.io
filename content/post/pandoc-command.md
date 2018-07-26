@@ -3,8 +3,7 @@ title: "Pandoc 命令"
 date: 2016-01-19T22:10:21+08:00
 draft: false
 tags: ["Pandoc"]
-categories: ["Pandoc"]
-description: "Org 使用 Pandoc 进行格式转换"
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -2,8 +2,8 @@
 title: "刷新 Manjaro 源"
 date: 2017-06-08T22:35:21+08:00
 draft: false
-tags: ["刷新源"]
-categories: ["Manjaro"]
+tags: ["Manjaro 刷新源"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

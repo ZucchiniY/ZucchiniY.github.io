@@ -3,7 +3,7 @@ title: "Layui 在表格中实现复选框选择"
 date: 2018-05-16T22:10:21+08:00
 draft: false
 tags: ["Layui","table"]
-categories: ["Web"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

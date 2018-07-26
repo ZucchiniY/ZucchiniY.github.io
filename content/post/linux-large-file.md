@@ -3,7 +3,7 @@ title: "Linux 空间占用分析"
 date: 2018-05-06T21:51:02+08:00
 draft: false
 tags: ["du", "find"]
-categories: ["Linux"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

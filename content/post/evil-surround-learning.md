@@ -2,8 +2,8 @@
 title: "Surround 笔记"
 date: 2018-02-12T22:10:21+08:00
 draft: false
-tags: ["Surround"]
-categories: ["Vim"]
+tags: ["Vim Surround"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

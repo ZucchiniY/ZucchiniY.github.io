@@ -3,8 +3,7 @@ title: "Mac 下执行 Git 命令报错"
 date: 2017-12-07T22:10:21+08:00
 draft: false
 tags: ["xcrun","Mac OS", "xcrun error"]
-categories: ["xcode"]
-description: "解决 xcode 卸载后的问题。"
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -3,7 +3,7 @@ title: "Git Submodule 管理项目子模块"
 date: 2018-07-06T14:49:27+08:00
 draft: false
 tags: ["submodule"]
-categories: ["git"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

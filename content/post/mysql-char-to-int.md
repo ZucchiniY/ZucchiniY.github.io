@@ -3,7 +3,7 @@ title: "Mysql 将字符串按数字进行排序"
 date: 2018-05-22T22:10:21+08:00
 draft: false
 tags: ["varchar","排序"]
-categories: ["Mysql"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

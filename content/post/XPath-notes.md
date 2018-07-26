@@ -3,7 +3,7 @@ title: "XPath 使用笔记"
 date: 2016-01-06T22:10:21+08:00
 draft: false
 tags: ["Selenium"]
-categories: ["Web"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

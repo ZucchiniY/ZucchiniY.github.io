@@ -3,7 +3,7 @@ title: "时间管理——工具"
 date: 2018-06-11T15:10:21+08:00
 draft: false
 tags: ["滴答清单", "时间管理"]
-categories: ["journal"]
+categories: ["生活"]
 author: "Dylan Yang"
 ---
 

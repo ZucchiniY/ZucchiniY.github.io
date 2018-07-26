@@ -3,7 +3,7 @@ title: "Mac OS 下 dd 命令"
 date: 2018-04-25T22:35:21+08:00
 draft: false
 tags: ["dd"]
-categories: ["Mac OS"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -3,7 +3,7 @@ title: "Mac 下使用 tmux"
 date: 2018-07-06T22:35:21+08:00
 draft: false
 tags: ["tmux"]
-categories: ["Mac OS"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

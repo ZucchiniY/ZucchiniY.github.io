@@ -3,7 +3,7 @@ title: "Hugo 常用命令"
 date: 2018-07-20T10:15:21+08:00
 draft: false
 tags: ["hugo 命令使用"]
-categories: ["博客"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -3,8 +3,7 @@ title: "Mysql 数据库设置远程权限"
 date: 2016-04-29T22:10:21+08:00
 draft: false
 tags: ["Remote Connection"]
-categories: ["Mysql"]
-description: "Mysql 数据远程访问权限授权"
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

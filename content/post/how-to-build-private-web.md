@@ -3,7 +3,7 @@ title: "如何搭建私有网站"
 date: 2016-11-17T22:10:21+08:00
 draft: false
 tags: ["Tomcat","局域网"]
-categories: ["Web"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

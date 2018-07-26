@@ -2,8 +2,8 @@
 title: "杭州游 4-21"
 date: 2018-04-21T15:10:21+08:00
 draft: false
-tags: ["旅游", "杭州"]
-categories: ["journal"]
+tags: ["杭州"]
+categories: ["旅行"]
 author: "Dylan Yang"
 ---
 

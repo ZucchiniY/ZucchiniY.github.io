@@ -3,7 +3,7 @@ title: "Homebrew 常用命令"
 date: 2018-04-27T22:40:21+08:00
 draft: false
 tags: ["homebrew"]
-categories: ["Mac OS"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -37,15 +37,15 @@ metaDataFormat = "YAML"
     idengifier = "home"
     url = "/"
 [[menu.main]]
-    name = "归档"
+    name = "目录"
     weight = 20
     idengifier = "archives"
     url = "/post.html"
-[[menu.main]]
-    name = "标签"
-    weight = 30
-    idengifier = "tags"
-    url = "/tags.html"
+#[[menu.main]]
+#    name = "标签"
+#    weight = 30
+#    idengifier = "tags"
+#    url = "/tags.html"
 [[menu.main]]
     name = "分类"
     weight = 40

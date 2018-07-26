@@ -3,7 +3,7 @@ title: "《知行合一王阳明2》"
 date: 2018-07-24T14:36:11+08:00
 draft: false
 tags: ["心学","王阳明"]
-categories: ["阅读与记录"]
+categories: ["爱好"]
 author: "Dylan Yang"
 ---
 

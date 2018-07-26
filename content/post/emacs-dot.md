@@ -3,7 +3,7 @@ title: "dot 代码实例"
 date: 2016-01-08T22:10:21+08:00
 draft: false
 tags: ["dot","Org mode"]
-categories: ["Emacs"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

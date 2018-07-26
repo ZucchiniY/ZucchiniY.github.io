@@ -3,7 +3,7 @@ title: "gitignore 文件配置"
 date: 2018-05-28T22:10:21+08:00
 draft: false
 tags: ["git ignore"]
-categories: ["Git"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

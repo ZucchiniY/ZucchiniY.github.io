@@ -3,7 +3,7 @@ title: "时间管理——GTD"
 date: 2018-06-08T15:10:21+08:00
 draft: false
 tags: ["GTD", "时间管理"]
-categories: ["journal"]
+categories: ["生活"]
 author: "Dylan Yang"
 ---
 

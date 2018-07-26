@@ -3,7 +3,7 @@ title: "Mac 使用小技巧"
 date: 2018-04-27T22:35:21+08:00
 draft: false
 tags: ["打开文件夹","隐藏文件"]
-categories: ["Mac OS"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -2,8 +2,8 @@
 title: "2018，走过上半年，准备下半年"
 date: 2018-07-01T22:10:21+08:00
 draft: false
-tags: ["半年计划","半年总结"]
-categories: ["journal"]
+tags: ["半年计划"]
+categories: ["生活"]
 author: "Dylan Yang"
 ---
 

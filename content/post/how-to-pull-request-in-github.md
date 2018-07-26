@@ -4,7 +4,7 @@ date: 2017-08-07T22:10:21+08:00
 draft: false
 tags: ["GitHub","Pull Request"]
 description: "如何在 GitHub 上提交一交 Pull Request"
-categories: ["Git"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

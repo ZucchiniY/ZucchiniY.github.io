@@ -3,7 +3,7 @@ title: "通配符和正则表达式"
 date: 2018-05-20T22:10:21+08:00
 draft: false
 tags: ["正则表达式","通配符"]
-categories: ["Linux"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -2,8 +2,8 @@
 title: "Ajax 关闭异步请求"
 date: 2018-06-20T17:04:12+08:00
 draft: false
-tags: ["ajax 同步请求"]
-categories: ["Web"]
+tags: ["ajax 同步请求","Web"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

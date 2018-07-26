@@ -3,7 +3,7 @@ title: "🎞️观影观剧清单"
 date: 2018-06-24T09:40:46+08:00
 draft: false
 tags: ["电影清单","电视剧清单"]
-categories: ["观影观剧"]
+categories: ["爱好"]
 author: "Dylan Yang"
 ---
 

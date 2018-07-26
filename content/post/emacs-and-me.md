@@ -2,8 +2,8 @@
 title: "Emacs 学习之路"
 date: 2017-03-20T22:10:21+08:00
 draft: false
-tags: ["Emacs","编辑器"]
-categories: ["journal"]
+tags: ["Emacs 编辑器"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -3,7 +3,7 @@ title: "Mysql 中的时间戳使用方式"
 date: 2018-05-08T22:35:21+08:00
 draft: false
 tags: ["时间戳","自动更新"]
-categories: ["MySql"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

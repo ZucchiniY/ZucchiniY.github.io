@@ -3,7 +3,7 @@ title: "Mysql Union操作符"
 date: 2018-06-14T13:48:54+08:00
 draft: false
 tags: ["UNION"]
-categories: ["Mysql"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

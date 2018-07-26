@@ -3,7 +3,7 @@ title: "zsh shell"
 date: 2018-04-29T22:10:21+08:00
 draft: false
 tags: ["zsh shell"]
-categories: ["Linux"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

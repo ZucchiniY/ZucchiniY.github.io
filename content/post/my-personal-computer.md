@@ -3,7 +3,7 @@ title: "个人电脑与操作系统"
 date: 2017-05-17T22:10:21+08:00
 draft: false
 tags: ["操作系统","个人电脑"]
-categories: ["journal"]
+categories: ["爱好"]
 author: "Dylan Yang"
 ---
 

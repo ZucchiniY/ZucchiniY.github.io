@@ -3,7 +3,7 @@ title: "Android 刷机笔记"
 date: 2018-05-24T22:10:21+08:00
 draft: false
 tags: ["Android flash"]
-categories: ["Android"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

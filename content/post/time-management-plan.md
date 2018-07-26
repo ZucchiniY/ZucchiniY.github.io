@@ -3,7 +3,7 @@ title: "时间管理——计划"
 date: 2018-06-10T15:10:21+08:00
 draft: false
 tags: ["手帐计划", "时间管理"]
-categories: ["journal"]
+categories: ["生活"]
 author: "Dylan Yang"
 ---
 

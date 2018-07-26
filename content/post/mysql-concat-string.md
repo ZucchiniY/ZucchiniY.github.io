@@ -3,7 +3,7 @@ title: "Mysql 查询结果中处理字符串"
 date: 2018-05-15T22:35:21+08:00
 draft: false
 tags: ["字符串","select"]
-categories: ["MySql"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

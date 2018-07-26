@@ -3,7 +3,7 @@ title: "JavaScript 中判断是否包含某个字符串"
 date: 2018-06-15T15:41:18+08:00
 draft: false
 tags: ["subString","javaScript"]
-categories: ["Web"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -3,7 +3,7 @@ title: "Git 基础知识"
 date: 2016-04-27T22:10:21+08:00
 draft: false
 tags: ["Git basic"]
-categories: ["Git"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

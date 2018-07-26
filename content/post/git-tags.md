@@ -3,7 +3,7 @@ title: "Git tags 常用功能"
 date: 2018-06-04T22:10:21+08:00
 draft: false
 tags: ["git tags"]
-categories: ["Git"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

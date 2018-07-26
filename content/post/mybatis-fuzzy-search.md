@@ -2,8 +2,8 @@
 title: "mybatis 模糊查询"
 date: 2018-04-28T22:35:21+08:00
 draft: false
-tags: ["模糊查询","Mysql","Oracle"]
-categories: ["Mybatis"]
+tags: ["模糊查询"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

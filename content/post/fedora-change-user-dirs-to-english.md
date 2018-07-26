@@ -2,8 +2,8 @@
 title: "Fedora 修改 user 目录为英文"
 date: 2017-07-31T22:10:21+08:00
 draft: false
-tags: ["Linux","gnome","user home"]
-categories: ["Linux"]
+tags: ["gnome","user home"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -2,8 +2,8 @@
 title: "Emacs 快捷键"
 date: 2018-05-05T22:10:21+08:00
 draft: false
-tags: ["Keybinds"]
-categories: ["Emacs"]
+tags: ["Emacs Keybinds"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

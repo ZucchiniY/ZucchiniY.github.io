@@ -3,7 +3,7 @@ title: "利用 Travis 自动部署博客"
 date: 2018-07-15T09:58:52+08:00
 draft: false
 tags: ["Travis CI","GitHub Pages"]
-categories: ["journal"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

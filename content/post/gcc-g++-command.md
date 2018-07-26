@@ -2,8 +2,8 @@
 title: "gcc/g++命令行"
 date: 2015-12-23T22:10:21+08:00
 draft: false
-tags: ["gcc","g++"]
-categories: ["GCC"]
+tags: ["gcc && g++"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

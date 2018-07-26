@@ -3,7 +3,7 @@ title: "Linux 的 grep 命令"
 date: 2018-05-31T22:10:21+08:00
 draft: false
 tags: ["grep"]
-categories: ["Linux"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

@@ -2,8 +2,8 @@
 title: "形意拳的学与练"
 date: 2018-05-28T15:24:32+08:00
 draft: false
-tags: ["拳与道"]
-categories: ["journal"]
+tags: ["拳与道","转载"]
+categories: ["生活"]
 author: "Dylan Yang"
 ---
 

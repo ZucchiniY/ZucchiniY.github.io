@@ -4,7 +4,7 @@ date: 2017-08-02T22:10:21+08:00
 draft: false
 description: ""
 tags: ["git commit","git rebase"]
-categories: ["Git"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

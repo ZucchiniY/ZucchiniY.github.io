@@ -2,8 +2,8 @@
 title: "Hexo 博客与我"
 date: 2017-04-26T21:51:02+08:00
 draft: false
-tags: ["Hexo","blog","GitHub Pages"]
-categories: ["journal"]
+tags: ["Hexo blog"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

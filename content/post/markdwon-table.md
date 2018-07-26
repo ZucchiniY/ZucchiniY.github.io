@@ -2,8 +2,8 @@
 title: "Markdown 中的表格"
 date: 2018-07-12T15:35:21+08:00
 draft: false
-tags: ["table"]
-categories: ["Markdown"]
+tags: ["Markdown Table"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

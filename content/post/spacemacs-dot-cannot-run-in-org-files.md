@@ -3,7 +3,7 @@ title: "Org mode 下 dot、Python 等无法执行"
 date: 2017-07-31T22:10:21+08:00
 draft: false
 tags: ["Emacs","Org mode"]
-categories: ["Emacs"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

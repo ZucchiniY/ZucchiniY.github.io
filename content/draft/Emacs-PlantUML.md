@@ -3,7 +3,7 @@ title: "Emacs 绘制 PlantUML"
 date: 2016-10-19T22:10:21+08:00
 draft: true
 tags: ["Emacs","PlantUML", "Org mode"]
-categories: ["Emacs"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

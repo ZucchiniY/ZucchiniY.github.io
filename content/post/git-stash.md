@@ -3,7 +3,7 @@ title: "Git Stash 常用功能"
 date: 2018-04-11T22:10:21+08:00
 draft: false
 tags: ["git stash"]
-categories: ["git"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

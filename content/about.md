@@ -16,15 +16,16 @@ author: "Dylan Yang"
 
 # 技术文章
 
-- [emacs document](https://github.com/lujun9972/emacs-document) emacs 相关文档翻译、部分翻译进行中
+- [emacs document](https://github.com/lujun9972/emacs-document) emacs 相关文档翻译
 
 # 技能清单
 
  **以下均为我熟练使用的技能:**
 
-- 熟练使用 linux 系统
-- 熟悉 mysql
-- 了解 shell
-- 了解 java、c、c++、python
-- 熟悉 emacslisp
-- 熟练使用 vim、emacs
+- 熟练使用 Linux 系统
+- 熟悉 Mac、Linux 下的环境配置
+- 熟悉 MySQL
+- 了解 Shell
+- 了解 Java、C、C++、Python
+- 熟悉 Emacs Lisp
+- 熟练使用 Vim、Emacs

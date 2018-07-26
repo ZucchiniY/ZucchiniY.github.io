@@ -3,7 +3,7 @@ title: "Git 提交方案"
 date: 2017-05-07T21:51:02+08:00
 draft: false
 tags: ["git merge","git rebase"]
-categories: ["git"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

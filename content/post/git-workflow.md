@@ -3,7 +3,7 @@ title: "Git 常见工作流"
 date: 2016-03-17T22:10:21+08:00
 draft: false
 tags: ["Git Flow"]
-categories: ["Git"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

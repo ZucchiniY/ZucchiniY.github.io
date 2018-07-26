@@ -3,7 +3,7 @@ title: "bujo 手账"
 date: 2018-07-11T11:02:44+08:00
 draft: false
 tags: ["bujo"]
-categories: ["journal"]
+categories: ["生活"]
 author: "Dylan Yang"
 ---
 

@@ -3,7 +3,7 @@ title: "Linux 下使用 find 查找文件"
 date: 2018-06-07T22:10:21+08:00
 draft: false
 tags: ["find"]
-categories: ["Linux"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

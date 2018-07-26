@@ -3,7 +3,7 @@ title: "Hugo 博客写作与管理"
 date: 2018-05-09T22:10:21+08:00
 draft: false
 tags: ["easy hugo"]
-categories: ["Emacs"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

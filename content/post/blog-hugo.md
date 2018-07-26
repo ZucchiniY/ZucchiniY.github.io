@@ -2,8 +2,8 @@
 title: "Hugo 搭建自己的博客"
 date: 2018-04-25T19:51:02+08:00
 draft: false
-tags: ["hugo","blog"]
-categories: ["journal"]
+tags: ["hugo blog"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

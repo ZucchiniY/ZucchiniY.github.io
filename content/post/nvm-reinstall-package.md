@@ -3,8 +3,7 @@ title: "nvm 重装 package"
 date: 2018-04-23T22:10:21+08:00
 draft: false
 tags: ["nvm","reinstall package"]
-categories: ["nodejs"]
-description: "nvm 将已安装的模块重新进行安装"
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 

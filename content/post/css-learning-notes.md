@@ -3,7 +3,7 @@ title: "CSS 语法记录"
 date: 2016-01-06T22:10:21+08:00
 draft: false
 tags: ["CSS"]
-categories: ["Web"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 
