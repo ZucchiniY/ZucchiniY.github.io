@@ -69,7 +69,7 @@ brew cask install android-platform-tools
 1. 连接手机
 2. `adb devices` 获取手机的 *device id*
 3. `adb reboot bootloader` 进入 *bootloader* 模式
-4. 如果已经解锁了，则进入第8步，如果未解锁则进入第五步
+4. **如果已经解锁了，则进入第8步，如果未解锁则进入第五步**
 5. 进入到 *bootloader* 之后，执行 `fastboot flashing unlock`
 6. 如果是 *Pixel 2 XL* 则执行 `fastboot flashing unlock_critical`
 7. 如果是更早的设备，则需要执行 `fastboot oem unlock`
@@ -77,9 +77,9 @@ brew cask install android-platform-tools
 9. 一般情况下，**flash-all** 都会报错，这时我们需要解压目录下的 *image* 对应的包，然后执行下面的命令
 
 ```shell
-fashboot flash vendor vendor.img
-fashboot flash boot boot.img
-fashboot flash system system.img
+fastboot flash vendor vendor.img
+fastboot flash boot boot.img
+fastboot flash system system.img
 ```
 然后重启手机就可以了。
 
