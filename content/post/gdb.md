@@ -13,6 +13,8 @@ GDB 有着相当多的命令，但是常用的只有大概十个左右。
 
 gdb命令一般可以使用 `gdb program` 或者使用 `gdb progrma core` 如果想对正在执行的进程进行调试，则可以使用 `gdb -p 123` 。
 
+<!--more-->
+
 <table>
 <tr>
     <th>命令</th>
