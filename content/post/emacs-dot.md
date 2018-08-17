@@ -9,6 +9,28 @@ author: "Dylan Yang"
 
 # Graphviz dot
 
+## Dot 生成图的默认命令
+
+`dot -T<type> -o <outfile> <infile.dot>`
+
+dot 可以替换为circo等其他算法，详细见[命令的选择](#命令的选择)章节。
+
+输入文件是<infile.dot>，生成的格式由<type>指定，生成的文件是<outfile>。
+其中-T<type>包括：
+
+``` shell
+-Tps (PostScript)
+-Tsvg -Tsvgz (Structured Vector Graphics)
+-Tfig (XFIG  graphics)
+-Tmif  (FrameMaker graphics)
+-Thpgl (HP pen plotters)
+-Tpcl (Laserjet printers)
+-Tpng -Tgif (bitmap graphics)
+-Tdia (GTK+ based diagrams)
+-Timap (imagemap files for httpd servers for each node or edge  that  has a non-null "href" attribute.)
+-Tcmapx (client-side imagemap for use in html and xhtml)
+```
+
 ## rank
 
 rank 约束了子图的节点位置，有向图中，一个箭头的指向，带有级别，一般是

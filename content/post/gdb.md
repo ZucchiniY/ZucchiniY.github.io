@@ -1,7 +1,7 @@
 ---
 title: "GDB调试整理"
 date: 2018-06-11T09:21:34+08:00
-draft: true
+draft: false 
 tags: ["GDB"]
 categories: ["技术"]
 author: "Dylan Yang"
@@ -14,6 +14,8 @@ GDB 有着相当多的命令，但是常用的只有大概十个左右。
 gdb命令一般可以使用 `gdb program` 或者使用 `gdb progrma core` 如果想对正在执行的进程进行调试，则可以使用 `gdb -p 123` 。
 
 <!--more-->
+
+### 常见命令
 
 <table>
 <tr>
@@ -97,3 +99,18 @@ gdb命令一般可以使用 `gdb program` 或者使用 `gdb progrma core` 如果
     <td>(gdb) help display</td>
 </tr>
 </table>
+
+### 用法总结
+
+这里的总结主要是整理自[gdb 调试入门，大牛写的高质量指南](http://blog.jobbole.com/107759/)，我觉得这篇文章是可以反复阅读的好文章。
+
+![](/images/gdb.png)
+
+### 补充小工具
+
+python dbg工具，可以通过 `apt-get install -y python-dbg` 进行安装，然后可以在其中使用 `py-bt`、`py-list·、`等命令。
+
+另外还有一个工具是 **cscope** ，主要用来遍历代码用的。
+
+- `cscope -bqR` 建立查找数据库
+- `cscope -dq` 启动cscope
