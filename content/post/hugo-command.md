@@ -43,4 +43,4 @@ author: "Dylan Yang"
 
 使用的时候，可以像 `hugo server` 一样，指定配置文件，即增加 `--config [config]` 。
 
-现在将生成的过程放到 travis 上去完成，这样可以简化博客过程，只需要专注与写就可以了，具体见 [利用 Travis 自动部署博客](https://zucchiniy.github.io/blog/2018/%E5%88%A9%E7%94%A8-travis-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2.html) 。
+现在将生成的过程放到 travis 上去完成，这样可以简化博客过程，只需要专注与写就可以了，具体见 [利用 Travis 自动部署博客](https://zucchiniy.github.io/blog/2018/利用-travis-自动部署博客.html) 。
