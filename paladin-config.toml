@@ -3,7 +3,6 @@ languageCode = "zh"
 defaultContentLanguage = "zh-cn"
 title = "游行侠Z"
 
-description = "世事洞明皆学问，人情练达即文章。"
 theme = "paladin"
 
 hasCJKLanguage = true
@@ -16,17 +15,17 @@ metaDataFormat = "YAML"
     name = "Dylan Yang"
 
 [[menu.main]]
-    name = "首页"
+    name = "HOME"
     weight = 10
     idengifier = "home"
     url = "/"
 [[menu.main]]
-    name = "归档"
+    name = "ARCHIVE"
     weight = 20
     idengifier = "archives"
     url = "/post"
 [[menu.main]]
-    name = "关于"
+    name = "ABOUT"
     weight = 50
     idengifier = "about"
     url = "/about"
@@ -35,6 +34,12 @@ metaDataFormat = "YAML"
     since = "2015" # 站点建立时间
     archive-paginate = 10 # 归档、标签、分类每页显示的文章数目，建议修改为一个较大的值
     dateFormatToUse = "2006-01-02"
+    footer = "[Hugo](https://gohugo.io) &copy; [Paladin](https://github.com/ZCodingTime/hugo-theme-paladin) [DylanYang](https://zucchiniy.github.io) 2018"
+    description = "世事洞明皆学问，人情练达即文章。"
+    keywords = ["coding","learning"]
+
+[permalinks]
+	post = "/:slug"
 
 [params.social]                                         # 社交链接
     a-email = "mailto:banshiliuli1990@sina.com"
