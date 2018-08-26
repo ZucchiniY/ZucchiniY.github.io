@@ -33,7 +33,7 @@ metaDataFormat = "YAML"
 [params]
     since = "2015" # 站点建立时间
     archive-paginate = 10 # 归档、标签、分类每页显示的文章数目，建议修改为一个较大的值
-    dateFormatToUse = "2006-01-02"
+    dateFormatToUse = "January 02,2006"
     footer = "[Hugo](https://gohugo.io) &copy; [Paladin](https://github.com/ZCodingTime/hugo-theme-paladin) [DylanYang](https://zucchiniy.github.io) 2018"
     description = "世事洞明皆学问，人情练达即文章。"
     keywords = ["coding","learning"]
