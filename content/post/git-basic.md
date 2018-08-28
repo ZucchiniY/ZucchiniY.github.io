@@ -51,7 +51,7 @@ author: "Dylan Yang"
 
 ## 新建代码库
 
-``` shell
+``` sh
 #在当前目录新建一个 git 代码库
 $ git init
 #新建一个目录，将其初始化为 git 代码库
@@ -63,7 +63,7 @@ $ git clone [url]
 ## 全局配置和项目配置
 
 git 的设置文件为 =.gitconfig= ，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）
-``` shell
+``` sh
 #显示当前 git 配置
 $ git config --list
 #编辑 git 配置文件
@@ -75,7 +75,7 @@ $ git config [--global] user.email "[email address]"
 
 ## 增加/删除文件
 
-``` shell
+``` sh
 #添加指定文件到暂存区
 $ git add [file1] [file2] ...
 #添加指定目录到暂存区，包括子目录
@@ -92,7 +92,7 @@ $ git mv [file-original] [file-renamed]
 
 ## 代码提交
 
-``` shell
+``` sh
 #提交暂存区到仓库区
 $ git commit -m [message]
 #提交暂存区的指定文件到仓库区
@@ -110,7 +110,7 @@ $ git commit --amend [file1] [file2] ...
 
 ## 分支
 
-``` shell
+``` sh
 #列出所有本地分支
 $ git branch
 #列出所有远程分支
@@ -146,7 +146,7 @@ $ git push origin :[branch-name]
 
 ## 标签
 
-``` shell
+``` sh
 #列出所有 tag
 $ git tag
 #在当前 commit，新建一个 tag
@@ -175,7 +175,7 @@ $ git push --tags
 
 ## 查看信息
 
-``` shell
+``` sh
 #显示所有变更的文件
 $ git status
 #显示当前分支的版本历史
@@ -213,7 +213,7 @@ $ git reflog
 
 ## 远程同步
 
-``` shell
+``` sh
 #下载运程仓库的所有变动
 $ git fetch [remote]
 #显示所有远程分支
@@ -234,7 +234,7 @@ $ git push [remote] --all
 
 ## 修改远程仓库地址
 
-``` shell
+``` sh
 # 先删除远程分支地址
 $ git remote rm origin
 # 然后重新增加远程分支地址
@@ -243,7 +243,7 @@ $ git remote add origin [url]
 
 ## 撤销
 
-``` shell
+``` sh
 #恢复暂存区的指定文件到工作区
 $ git checkout [file]
 #恢复某个 commit 的指定文件到工作区
@@ -267,7 +267,7 @@ $ git revert [commit]
 
 ## 其它
 
-``` shell
+``` sh
 #生成一个可供发布的压缩包
 $ git archive
 ```
@@ -276,7 +276,7 @@ $ git archive
 
 - 储藏暂存内容
   
-```shell
+``` sh
 # 想要切换分支，但是还不想要提交之前的工作，可以储存修改信息，将新的储藏推送到栈上
 $ git stash / git stash save
 # 在这时，能够轻易的切换分支并在其他地方工作，你的修改被存储在栈上。要查看储藏的东西，可以使用 git stash list
@@ -289,7 +289,7 @@ $ git stash apply stash@{1}
 
 - 核武器级选项 filter-branch
 
-``` shell
+``` sh
 # 从每一个提交移除一个文件：指 git add . 的内容完整的上传到仓库，但是当希望开源这个内容的时候，需要移除一些无用的文件，--tre-filter 选项在的每一个提交后，运行指定的命令，然后重新提交结果。
 $ git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
 # 使一个子目录做为新的根目录：假设已经从另一个源代码控制系统中导入，并且有几个没意义的子目录（trunk/tags 等等）。如果想要让 trunk 子目录作为每一个提交的新的项目根目录，filter-branch 也可以帮助你那么做，再在新项目根目录是 trunk 子目录且 Git 会自动移除所有不影响子目录的提交。

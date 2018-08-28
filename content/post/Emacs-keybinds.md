@@ -12,7 +12,7 @@ author: "Dylan Yang"
 
 # 设置 Emacs 的默认编码格式
 
-``` emacs
+``` lisp
 (prefer-coding-system 'utf-8-unix)
 ```
 
@@ -25,7 +25,7 @@ author: "Dylan Yang"
 
 - **M-: image-library-alist RET** 查看 *emacs* 支持需要的库文件
 
-``` text
+``` yaml
 ((xpm "libxpm.dll" "xpm4.dll" "libXpm-nox4.dll")
 (png "libpng16.dll" "libpng16-16.dll")
 (tiff "libtiff-5.dll" "libtiff3.dll" "libtiff.dll")

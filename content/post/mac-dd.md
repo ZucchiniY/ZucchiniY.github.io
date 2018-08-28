@@ -11,19 +11,19 @@ author: "Dylan Yang"
 
 - 找出 U 盘挂载位置
 
-``` shell
+``` sh
 diskutil list
 ```
 
 - 将 U 盘移除
 
-``` shell
+``` sh
 diskutil unmountDisk /dev/disk[num]
 ```
 
 - 写入 U 盘
 
-``` shell
+``` sh
 sudo dd if=isopath of=/dev/disk[num] bs=1m rdisk
 ```
 
@@ -32,12 +32,12 @@ sudo dd if=isopath of=/dev/disk[num] bs=1m rdisk
 <!--more-->
 # iso 转换为 dmg
 
-``` shell
+``` sh
 sudo hdiutil convert -format UDRW -o linux.dmg kali.iso
 ```
 
 # 弹出 U 盘
 
-``` shell
+``` sh
 diskutil eject /dev/disk[num]
 ```

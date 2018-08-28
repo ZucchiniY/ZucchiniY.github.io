@@ -13,7 +13,7 @@ author: "Dylan Yang"
 
 创建之后，在 **themes** 目录下可以看到整个项目结构:
 
-``` text
+``` yaml
 themes/paladin
 ├── LICENSE
 ├── archetypes

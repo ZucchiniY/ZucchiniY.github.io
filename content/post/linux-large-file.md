@@ -9,7 +9,7 @@ author: "Dylan Yang"
 
 # find 查找大文件
 
-``` shell
+``` sh
 find . -type f -size +800M
 ```
 
@@ -17,7 +17,7 @@ find . -type f -size +800M
 - name 文件名：支持通配符
 - size 文件大小：`+` 表示大于， `-` 表示小于，支持 k/M/G 的单位
 
-```shell
+``` sh
 find . -type f -size +800M | xargs ls -lh
 ```
 
@@ -26,7 +26,7 @@ find . -type f -size +800M | xargs ls -lh
 
 # du 查找大目录
 
-``` shell
+``` sh
 du -h --max-depth=1
 du -hm --max-depth=2 | sort -n
 du -hm --max-depth=2 | sort -nr | head -12

@@ -27,7 +27,7 @@ git 使用过程中，有许多文件或者文件夹是不希望更新到远程�
 
 所以我们只需要在对应的 `git` 目录下，创建一个 **.gitignore** 文件，然后配置上 **.DS_Store** 即可。
 
-``` shell
+``` sh
 touch .gitignore
 echo */.DS_Store" > .gitignore
 ```
@@ -40,7 +40,7 @@ echo */.DS_Store" > .gitignore
 
 在每个项目下的 `.gitignore` 文件中，我们可以引用这个 global文件。
 
-``` shell
+``` sh
 git config --global core.excludesfile ~/.gitignore_global
 ```
 

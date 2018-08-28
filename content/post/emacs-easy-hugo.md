@@ -47,7 +47,7 @@ Hugo 作为一个原生支持 *Org* 的静态站点生成器，是非常好用�
 
 hugo 文章信息
 
-``` text
+``` md
 #+HUGO_BASE_DIR: ../
 #+TITLE: 
 #+DATE: `(format-time-string "%Y-%m-%d")`

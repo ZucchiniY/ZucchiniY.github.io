@@ -17,6 +17,7 @@ author: "Dylan Yang"
 # 技术文章
 
 - [emacs document](https://github.com/lujun9972/emacs-document) emacs 相关文档翻译
+- [hugo-theme-paladin](https://github.com/ZCodingTime/hugo-theme-paladin) 自己编写的hugo theme
 
 # 技能清单
 
@@ -26,6 +27,7 @@ author: "Dylan Yang"
 - 熟悉 Mac、Linux 下的环境配置
 - 熟悉 MySQL
 - 了解 Shell
-- 了解 Java、C、C++、Python
+- 了解 Java、C、C++
 - 熟悉 Emacs Lisp
 - 熟练使用 Vim、Emacs
+- 不熟练使用 VS Code

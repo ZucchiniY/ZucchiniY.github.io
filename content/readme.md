@@ -16,9 +16,30 @@ draft: true
         - draft # 草稿
 ```
 
-## travis 方案 (待实现)
+## travis 方案
 
-1. 更新 context 内容
-2. 将 `*.md` 内容复制到 hugo-blog/content/post 下
-3. 在 hugo-blog 下执行 `hugo` 命令
-4. 将 hugo-blog/public 下的内容发布到 zucchiniy.github.io 的 master 分支
+1. 更新 **source** 分支下的文章
+2. 上传 [github](https://github.com)
+3. 自动生成网站并更新到 **master** 分支
+
+``` yml
+sudo: false
+os: osx
+
+script:
+  - brew install hugo
+  - hugo --config jane-config.toml
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github_token: $TRAVIS_GITHUB_PAGES
+  on:
+    branch: source
+  local_dir: public  
+  repo: ZucchiniY/ZucchiniY.github.io
+  target_branch: master
+  email: banshiliuli1990@sina.com
+  name: ZucchiniY
+
+```

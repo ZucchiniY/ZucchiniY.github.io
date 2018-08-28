@@ -18,7 +18,7 @@ dot 可以替换为circo等其他算法，详细见[命令的选择](#命令的�
 输入文件是<infile.dot>，生成的格式由<type>指定，生成的文件是<outfile>。
 其中-T<type>包括：
 
-``` shell
+``` sh
 -Tps (PostScript)
 -Tsvg -Tsvgz (Structured Vector Graphics)
 -Tfig (XFIG  graphics)
@@ -52,7 +52,7 @@ rank 约束了子图的节点位置，有向图中，一个箭头的指向，带
 
 ## dot 线条
 
-```
+``` md
 splines = ortho #直角拆线
 splines = spline #曲线（不遮挡）
 splines = cuvved #曲线（可遮挡）
@@ -83,7 +83,7 @@ splines = polyline #直线（不遮挡）
 
 - 語言可以用來繪製流程圖,如下:
 
-```
+``` md
  #+BEGIN_SRC dot :file ../images/dot04.png :cmdline -Kdot -Tpng
    digraph structs {
     node[shape=record]
@@ -98,7 +98,7 @@ splines = polyline #直线（不遮挡）
 
 ![](/images/dot04.png)
 
-``` org
+``` md
 #+BEGIN_SRC dot :file ../images/dot01.png :cmdline -Kdot -Tpng
   digraph G {
   size="8,6"
@@ -142,7 +142,7 @@ splines = polyline #直线（不遮挡）
 
 ![](/images/dot01.png)
 
-```
+``` md
 #+BEGIN_SRC dot :file ../images/dot_html01.png :cmdline -Kdot -Tpng
   digraph G {
   rankdir=LR

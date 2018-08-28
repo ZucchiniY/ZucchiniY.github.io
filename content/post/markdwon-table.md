@@ -12,7 +12,7 @@ author: "Dylan Yang"
 Markdown 是支持表格的，但是对于表格的支持，只限于简单的表格，复杂的内容并不多。
 <!--more-->
 
-``` txt
+``` md
 |目录|内容|
 |---|----|
 |xxx|xxxx|

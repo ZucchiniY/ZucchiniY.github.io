@@ -1,6 +1,7 @@
 baseURL = "http://zucchiniy.github.io"
 languageCode = "zh"
-defaultContentLanguage = "zh-cn"
+#defaultContentLanguage = "zh-cn"
+defaultContentLanguage = "en"
 title = "游行侠Z"
 
 theme = "paladin"
@@ -36,6 +37,9 @@ metaDataFormat = "YAML"
     dateFormatToUse = "January 02,2006"
     description = "世事洞明皆学问，人情练达即文章。"
     keywords = ["coding","learning"]
+    # paginate style, default use numbered pagination links
+    # if true, use original "Previous" and "Next" links.
+    paginateOriginalStyle = true 
 
 [permalinks]
 	post = "/:slug"

@@ -13,7 +13,7 @@ author: "Dylan Yang"
 
 重新编译或者重新下载 *Org* 相关 *package* 即可，也可以使用下面的命令进行更新。
 
-``` emacs-lisp
+``` lisp
 :spacemacs/recompile-elpa
 ```
 <!--more-->

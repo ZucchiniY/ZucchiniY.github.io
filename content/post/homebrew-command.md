@@ -11,7 +11,7 @@ author: "Dylan Yang"
 
 使用下面的命令进行安装，但是需要先安装 `curl` :
 
-``` shell
+``` sh
 /usr/bin/ruby -e "$(curl -fsSL //
 https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
@@ -21,13 +21,13 @@ https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 - 搜索
 
-``` shell
+``` sh
 brew search mysql
 ```
 
 - 查询
 
-``` shell
+``` sh
 brew info mysql
 ```
 
@@ -35,7 +35,7 @@ brew info mysql
 
 - 更新
 
-``` shell
+``` sh
 brew update
 ```
 
@@ -43,7 +43,7 @@ brew update
 
 - 检查过时
 
-``` shell
+``` sh
 brew outdated
 ```
 
@@ -51,7 +51,7 @@ brew outdated
 
 - 升级
 
-``` shell
+``` sh
 brew upgrade
 ```
 
@@ -59,7 +59,7 @@ brew upgrade
 
 - 清理
 
-``` shell
+``` sh
 brew cleanup
 ```
 

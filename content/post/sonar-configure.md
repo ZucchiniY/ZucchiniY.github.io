@@ -11,21 +11,21 @@ author: "Dylan Yang"
 
 - 创建一个 =.bash_profile= 文件
 
-``` bash
+``` sh
 $ touch ~/.bash_profile
 $ vi ~/.bash_profile
 ```
 
 - 在文件中增加环境变量
 
-``` shell
+``` sh
 export PATH="$HOME/usr/local/mysql/bin:$PATH"
 ```
 <!--more-->
 
 - 并使文件中的环境变量生效
 
-``` bash
+``` sh
 source ~/.bash_profile
 ```
 
@@ -35,11 +35,11 @@ source ~/.bash_profile
  
   编辑 *<install_directory>/conf/sonar.properties* 文件，配置数据库设置，默认已经提供了数据库的支持，这里使用 mysql，因此取消 mysql 模块的注释。
 
-    ``` bash
+    ``` sh
     $ vi sonar.properties
     ```
 
-    ``` bash
+    ``` sh
     sonar.jdbc.username: sonar
     sonar.jdbc.password: sonar
     sonar.jdbc.url jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true  

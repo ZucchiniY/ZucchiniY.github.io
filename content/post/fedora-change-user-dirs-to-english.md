@@ -21,7 +21,7 @@ export LANG=en_US
 ```
 然后更新用户目录：
 
-```shell
+``` sh
 # 更新用户目录
 xdg-user-dirs-gtk-update
 ```
@@ -35,7 +35,7 @@ export LANG=zh_CN.UTF-8
 
 再执行更新用户目录命令：
 
-```shell
+``` sh
 xdg-user-dirs-gtk-update
 ```
 

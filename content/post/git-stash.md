@@ -12,26 +12,26 @@ author: "Dylan Yang"
 
 - Git stash apply 的时候，报错 :
 
-```text
+``` yaml
 error Your local changes to the follow files would be overwritten by merge: xxxx
 Please commit your changes or stash them before you merge .
 ```
 
 可以先add 修改的文件，然后再apply
 
-``` bash
+``` sh
 git add test.txt
 git stash apply
 ```
 
 - 比较 stash 与当前分支的区别
 
-``` bash
+``` sh
 git stash show -p
 ```
 
 比较指定的 stash
 
-``` bash
+``` sh
 git stash show -p stash@{0}
 ```

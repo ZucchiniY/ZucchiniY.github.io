@@ -15,7 +15,7 @@ author: "Dylan Yang"
 
 develop 分支做开发，可能会进行多次提交，但是在发布或者进行 PR 的时候，我们只希望看到一次提交。这个时候，我们需要进行 `git rebase` 之后进行合并。
 
-``` shell
+``` sh
 # HEAD~3 表示将近三次提交都合并，如果是将 2 次合并则为 HEAD~2
 git rebase -i HEAD~3
 ```
@@ -93,7 +93,7 @@ pick c6da035 ~~
 
 修改成正确的 commit 信息之后，保存存并退出，可以看到下面的内容
 
-``` shell
+``` sh
 $ git rebase -i HEAD~2
 [detached HEAD 0238691] 2017 年 8 月 2 日
  Date: Tue Aug 1 10:24:44 2017 +0800
@@ -113,7 +113,7 @@ Successfully rebased and updated refs/heads/develop.
 
 然后将我们合并之后的 **develop** 分支的内容更新过来
 
-``` shell
+``` sh
 git log -b develop
 ```
 
@@ -138,7 +138,7 @@ Date:   Tue Aug 1 10:24:44 2017 +0800
 或者使用上次的操作的中的提示 _[detached HEAD 0238691] 2017 年 8 月 2 日_
 其中的 *0238691* 就是我们需要
 
-``` shell
+``` sh
 git cherry-pick 0238691
 ```
 

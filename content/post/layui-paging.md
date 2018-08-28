@@ -20,7 +20,7 @@ table.render({
 
 这样就可以进行分页了，但是如果想要修改分页的样式，可以按下面的方式进行修改：
 
-``` js
+``` javascript
 table.render({
     page: {
         layout: ['limit','count','prev','page','next','skip'] // 分页布局
