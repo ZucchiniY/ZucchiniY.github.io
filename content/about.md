@@ -2,6 +2,7 @@
 title: "关于"
 date: 2018-02-02T22:17:27+08:00
 draft: false
+type: about
 author: "Dylan Yang"
 ---
 

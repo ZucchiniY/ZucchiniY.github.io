@@ -39,10 +39,7 @@ metaDataFormat = "YAML"
     keywords = ["coding","learning"]
     # paginate style, default use numbered pagination links
     # if true, use original "Previous" and "Next" links.
-    paginateOriginalStyle = true 
-
-[permalinks]
-	post = "/:slug"
+    paginateOriginalStyle = true
 
 [params.social]                                         # 社交链接
     a-email = "mailto:banshiliuli1990@sina.com"
