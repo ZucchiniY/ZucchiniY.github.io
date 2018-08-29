@@ -15,7 +15,7 @@ author: "Dylan Yang"
 
 ## 常规用法
 
-``` shell
+``` sh
 grep [-acinv] [--color=auto] 'string to search' filename
 ```
 
@@ -50,7 +50,7 @@ grep [-acinv] [--color=auto] 'string to search' filename
 
 ### 递归查找目录
 
-``` shell
+``` sh
 grep 'title' # 在当前目录搜索
 grep -r 'title' # 在当前目录及其子目录搜索
 grep -r -l 'title' # 在当前目录及其子目录下搜索但不输入匹配的行，只显示文件

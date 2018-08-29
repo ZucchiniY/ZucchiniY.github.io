@@ -17,7 +17,7 @@ author: "Dylan Yang"
 
 `formula` 更新使用
 
-``` shell
+``` sh
 cd "$(brew --repo)"
 git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 
@@ -31,7 +31,7 @@ brew update
 
 `bottles` 镜像则需要配置到环境变量中，我使用的是 zsh shell 所以配置到 **.zshrc** 文件中
 
-``` shell
+``` sh
 echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles' >> ~/.zshrc
 source ~/.zshrc
 ```

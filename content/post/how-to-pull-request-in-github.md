@@ -15,7 +15,7 @@ author: "Dylan Yang"
 - 为了追踪原始仓库的更新，需要添加要更新的分支的原始仓库为远程分支
 <!--more-->
 
-``` shell
+``` sh
 git remote add upstream <origin>/<xxxx>
 ```
 

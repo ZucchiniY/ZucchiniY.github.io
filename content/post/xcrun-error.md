@@ -11,7 +11,7 @@ mac 执行 git 命令时候出现 `invalid active developer path` ：
 <!--more-->
 具体如下：
 
-``` shell
+``` sh
 xcrun: error: invalid active developer path
 
 (/Library/Developer/CommandLineTools), missing xcrun at: 
@@ -23,7 +23,7 @@ xcrun: error: invalid active developer path
 
 打开终端输入
 
-``` shell
+``` sh
 xcode-select --install
 ```
 

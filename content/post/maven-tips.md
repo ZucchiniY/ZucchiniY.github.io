@@ -38,20 +38,20 @@ mvn archetype:generate -DarchetypeCatalog=internal
 
 - 导出到默认目录下
 
-``` shell
+``` sh
 mvn dependency:copy-dependencies
 ```
 <!--more-->
 
 - 导出到指定目录下
 
-``` shell
+``` sh
 mvn dependency:copy-dependencied -DoutputDirecrtory=lib
 ```
 
 - 设置依赖级别，并导出到对应的目录下
 
-``` shell
+``` sh
 mvn dependency:copy-dependencied -DoutputDirecrtory=lib -DincludeScope=jcompile
 ```
 

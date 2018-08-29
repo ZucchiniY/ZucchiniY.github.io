@@ -9,7 +9,7 @@ author: "Dylan Yang"
 
 今天在学习*python*数据处理的时候报错`No coordinate is specified for {}".format(name))`，测试后发现是因为新版的**pyecharts**并未安装相关地图的js文件，所以需要单独安装：
 
-``` shell
+``` sh
 pip install echarts-countries-pypkg
 pip install echarts-china-provinces-pypkg
 pip install echarts-china-cities-pypkg

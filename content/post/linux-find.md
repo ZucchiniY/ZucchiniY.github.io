@@ -14,13 +14,13 @@ Linux 下 使用 find 命令查找文件。
 
 - 查找所有 `.h` 文件
 
-``` shell
+``` sh
 find /PATH -name "*.h"
 ```
 
 - 查找所有 `.h` 文件中的含有 **helloworld** 字符串的文件
 
-``` shell
+``` sh
 find /PATH -name "*.h" -exec grep -in "helloworld" {} \;
 find /PATH -name "*.h" | xargs grep -in "helloworld"
 ```
@@ -31,13 +31,13 @@ find /PATH -name "*.h" | xargs grep -in "helloworld"
 
 - 查找所有 `.h` 和 `.c` 文件中的含有 `helloworld` 字符串的文件
 
-``` shell
+``` sh
 find /PATH /( -name "*.h" -or -name "*.c" /) -exec grep -in "helloworld" {} \;
 ```
 
 - 查找非备份文件中的含有 `helloworld` 字符串的文件
 
-```shell
+``` sh
 find /PATH /( -not -name "*~" /) -exec grep -in "helloworld" {} \;
 ```
 
@@ -52,13 +52,13 @@ find /PATH /( -not -name "*~" /) -exec grep -in "helloworld" {} \;
 
 ## -name:按照文件名查找
 
-```shell
+``` sh
 find ~ -name “*.txt” -print
-find ~ -name “[a-z][0-9].txt” -print
+find ~ -name “[a-z][0-9].txt -print
 ```
 
 ## -perm:按照权限查找文件
-```shell
+``` sh
 find ~ -perm 755 -print #查找权限为755的文件
 find ~ -perm 007 -print #查找o位置上具有7权限的文件
 find ~ -perm 4000 -print #查找具有suid的文件
@@ -69,20 +69,20 @@ find ~ -perm 4000 -print #查找具有suid的文件
 
 ## -user 和 -nouser
 
-```shell
+``` sh
 find ~ -user zhao -print #查找文件属主是zhao的文件
 find ~ -nouser -print #查找文件属主已经被删除的文件
 ```
 
 ## -group和－nogroup
 
-```shell
+``` sh
 find ~ -group zhao -print #查找文件群组是zhao的文件
 ```
 
 ## 按照时间
 
-```shell
+``` sh
 find ~ -mtime -5 -print #文件更改时间在5天内的文件
 find ~ -mtime +3 -print #文件更改时间在3天前的文件
 find ~ -newer file1 -print #查找比文件file1新的文件
@@ -90,26 +90,26 @@ find ~ -newer file1 -print #查找比文件file1新的文件
 
 ## 按照类型查找
 
-```shell
+``` sh
 find ~ -type d -print #查找所有目录
 ```
 
 ## 按照大小
 
-```shell
+``` sh
 find ~ -size +1000000C -print #查找文件大小大于1000000字节(1M)的文件
 ```
 
 ## 查找位于本文件系统里面的文件
 
-```shell
+``` sh
 find / -name "*.txt" -mount -print
 ```
 
 `-exec` , `-ok` : `find` 命令对于匹配文件执行该参数所给出 *shell* 命令，相应命令形式为: `'command' {} \;`
 `-ok` 在执行命令前要确认
 
-```shell
+``` sh
 find ~ -type f -exec ls -l {} \;
 find / -name “*.log” -mtime +5 -ok rm {} \;
 find . -name core -exec rm {} \;
@@ -120,7 +120,7 @@ find . -name core -exec rm {} \;
 `find . -size 0 -exec rm {} \;` 删除尺寸为０的文件
 
 - xargs 与-exec 功能类似
-```shell
+``` sh
 find ~ -type f | xargs ls -l
 find / -name “*.log” -type f -print| xargs grep -i DB0
 find . -type f |xargs grep -i “Mary”
@@ -142,7 +142,7 @@ find . -type f |xargs grep -i “Mary”
 
 ## 或操作
 
-```shell
+``` sh
 grep -E '123|abc' filename  # 找出文件（filename）中包含123或者包含abc的行
 egrep '123|abc' filename    # 用egrep同样可以实现
 awk '/123|abc/' filename   # awk 的实现方式
@@ -156,7 +156,7 @@ awk '/123|abc/' filename   # awk 的实现方式
 
 ## 其他操作
 
-```shell
+``` sh
 grep -i pattern files #不区分大小写地搜索。默认情况区分大小写，
 grep -l pattern files #只列出匹配的文件名，
 grep -L pattern files #列出不匹配的文件名，

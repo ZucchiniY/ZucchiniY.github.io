@@ -9,13 +9,13 @@ author: "Dylan Yang"
 
 刷新 *Manjaro* 源，由快到慢并指定为中国源
 
-``` shell
+``` sh
 sudo pacman-mirrors -gb testing -c China
 ```
 
 然后更新系统：
 
-``` shell
+``` sh
 sudo pacman -Syyu
 ```
 <!--more-->

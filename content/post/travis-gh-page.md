@@ -37,7 +37,7 @@ author: "Dylan Yang"
 
 我们可以这样实现我们的博客部署脚本
 
-``` shell
+``` sh
 sudo: false
 language: go
 os: osx
@@ -72,7 +72,7 @@ after_success:
 
 在项目中新增 `.travis.yml` ，内容如下：
 
-``` shell
+``` sh
 deploy:
   provider: pages
   skip-cleanup: true

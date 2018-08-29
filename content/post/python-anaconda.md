@@ -19,7 +19,7 @@ author: "Dylan Yang"
 
 在命令行中按清华源的配置进行设置：
 
-``` shell
+``` sh
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 conda config --set show_channel_urls yes

@@ -44,7 +44,7 @@ author: "Dylan Yang"
 
 将下面的内容放到 *profile* 文件中
 
-``` shell
+``` sh
 ANDROID_HOME=~/developerTools/adt-mac/sdk
 export ANDROID_HOME
 PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
@@ -58,7 +58,7 @@ Mac 电脑提供了一个自动安装的内容，可以将 `adb` 相关的内容
 
 然后执行下面的命令
 
-```shell
+```sh
 brew cask install android-platform-tools
 ```
 
@@ -76,7 +76,7 @@ brew cask install android-platform-tools
 8. 进入下载的目录，然后执行 **flash-all** 脚本，如果是 *Windows* 则是 `flash-all.bat`，其它的则执行 `flash-all.sh`
 9. 一般情况下，**flash-all** 都会报错，这时我们需要解压目录下的 *image* 对应的包，然后执行下面的命令
 
-```shell
+``` sh
 fastboot flash vendor vendor.img
 fastboot flash boot boot.img
 fastboot flash system system.img
@@ -87,7 +87,7 @@ fastboot flash system system.img
 
 需要刷入一个工具，才能解锁
 
-``` shell
+``` sh
 adb push dePixel8 /data/local/tmp
 adb shell chmod 755 /data/local/tmp/dePixel8
 adb shell /data/local/tmp/dePixel8
@@ -98,7 +98,7 @@ adb shell /data/local/tmp/dePixel8
 [dePixel8.zip 下载](http://theroot.ninja/depixel8.html)
 
 判断是否 V 版手机
-```shell
+```sh
 adb shell getprop|grep cid
 ```
 

@@ -68,7 +68,7 @@ Emacser 不使用 Github 搭建一个自己的博客，感觉就已经落伍了�
 在几次试验之后，Node.js 环境还是使用 nvm
 管理比较好用，下载的时候可以使用 `npm --registry=https://registry.npm.taobao.org install` 进行安装下面的模块。
 
-``` shell
+``` sh
 npm install -g hexo-cli
 npm install hexo-deployer-git --save
 npm install hexo-generator-search --save

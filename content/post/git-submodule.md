@@ -15,7 +15,7 @@ author: "Dylan Yang"
 
 # 常用命令
 
-``` shell
+``` sh
 git clone <repository> --recursive # 递归方式克隆整个项目
 git submodule add <repository> path # 添加子模块
 git submodule init # 初始化子模块

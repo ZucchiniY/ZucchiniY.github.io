@@ -12,26 +12,26 @@ Git tags 的基础命令的使用。
 
 - 查看
 
-``` shell
+``` sh
 git tag
 ```
 
 - 创建
 
-``` shell
+``` sh
 git tag tag_name
 ```
 
 - 推送
 
-``` shell
+``` sh
 git push origin tag_name
 git push --tags # 推送所有 tags
 ```
 
 - 删除
 
-``` shell
+``` sh
 # 删除本地
 git tag -d tag_name
 # 删除远程
@@ -41,6 +41,6 @@ git push origin :refs/tags/tag_name
 
 - 拉取
 
-``` shell
+``` sh
 git fatch origin tag tag_name
 ```
