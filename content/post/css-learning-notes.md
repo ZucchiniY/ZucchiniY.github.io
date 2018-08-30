@@ -8,7 +8,6 @@ author: "Dylan Yang"
 ---
 
 CSS 是前端开发的基础。
-<!--more-->
 
 # css 語法
 css 規則由兩個主要的部分構成:選擇器，以及一條或者多條聲明。
@@ -22,6 +21,8 @@ selector { declaration1; declaration2; ... declarationN;}
 每條聲明由一個屬性和一個值組成。
 
 屬性是希望設置的樣式/屬性.每個屬性有一個值.屬性和值被冒號分開。
+
+<!--more-->
 
 ``` css
 selector {property: value}

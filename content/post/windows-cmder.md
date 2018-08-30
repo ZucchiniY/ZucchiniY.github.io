@@ -14,3 +14,5 @@ set LANG=zh_CN.UTF8
 ```
 
 然后重启 cmder 即可。
+
+<!--more-->

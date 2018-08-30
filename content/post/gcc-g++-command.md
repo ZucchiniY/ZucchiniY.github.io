@@ -8,7 +8,6 @@ author: "Dylan Yang"
 ---
 
 GCC 中如何使用命令行编译。
-<!--more-->
 
 `gcc -E sourcefile.c` -E，只执行到预编译，直接输出预编译结果
 
@@ -21,6 +20,8 @@ GCC 中如何使用命令行编译。
     -E 预编译结果将被输出到标准输出端口
     -S 生成名为 sourcefile.s 的汇编文件
     -c 生成名为 sourcefile.o 的目标文件
+
+<!--more-->
 
 > 无标签的时候，生成名为 a.out 的可执行文件
 

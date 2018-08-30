@@ -9,7 +9,6 @@ author: "Dylan Yang"
 
 # xpath 语法
 XPath 是 XML 的查询语言，和 SQL 的角色很类似。以下面 XML 为例，介绍 XPath 的语法
-<!--more-->
 
 ``` html
 <?xml version="1.0" encoding="ISO-8859-1"?>
@@ -49,6 +48,8 @@ XML 是树状结构，类似档案系统内数据夹的结构，XPath 也类似�
 ``` html
 //cd
 ```
+
+<!--more-->
 
 ## 选择未知的元素
 
