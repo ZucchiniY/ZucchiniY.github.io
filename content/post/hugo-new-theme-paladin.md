@@ -71,14 +71,18 @@ themes/paladin
 
 这里定义了网页脚标位置的相关内容。
 
-# 已实现内容
+# 实现
 
 主题参照了[hugo-theme-hiruko](https://github.com/GenkunAbe/hugo-theme-hiruko)的样式，去掉了一些用不到的功能。
 
-主要使用了[bootstrap4](https://getbootstrap.com)，其中的一些内容来源自[阿里巴巴的矢量库](http://www.iconfont.cn)，用起来方便快捷。
+主要使用了[bootstrap4](https://getbootstrap.com)，其中的一些图标来源自[阿里巴巴的矢量库](http://www.iconfont.cn)，用起来方便快捷。
 
-# 待实现内容
+当文章过多时，可以使用连续页面的样式，如果不想使用，可以用上一页下一页的方式。通过参数 `paginateOriginalStyle` 来控制，如果为 `true` 则是上一页下一页的样子，如果是 `false` 则如下图：
 
-1. 由于文章过多，目前使用的上一页下一页的样式太过麻烦，所以希望可以实现连续页面的方案。
-2. 社交链接想增加到 *about.html* 页面中，准备实现。
-3. 增加博客的 *logo* 。
+![](/images/sn03.PNG)
+
+将社交链接和logo放到到 *about.html* 页面中，可以方便的看到作者的相关内容。
+
+![](/images/sn04.PNG)
+
+如果想修改logo的话，需要修改主题目录下的 *static/media/zlogo.png* 文件即可。
