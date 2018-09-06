@@ -3,7 +3,7 @@ title: "创建Hugo新主题"
 date: 2018-08-22T09:40:38+08:00
 draft: false
 tags: ["hugo主题"]
-categories: ["主题"]
+categories: ["技术"]
 author: "Dylan Yang"
 ---
 
