@@ -4,6 +4,7 @@ date: 2018-08-31T21:25:19+08:00
 draft: false
 tags: ["减肥"]
 categories: ["生活"]
+url: "post/ab-ripper-x"
 author: "Dylan Yang"
 ---
 
