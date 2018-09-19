@@ -1,6 +1,6 @@
 ---
 title: "程序员学习网站"
-date: 2018-06-13T22:10:21+08:00
+date: 2018-09-19T22:10:21+08:00
 draft: false
 tags: ["程序员网站"]
 categories: ["技术"]
@@ -29,3 +29,8 @@ author: "Dylan Yang"
 - [StackOverflow](https://stackoverflow.com/) 太有名了！
 - [HackerRank](https://www.hackerrank.com/) 巧不巧！又有它！
 - [CodeBeautify](https://codebeautify.org/)
+
+# 程序员工具网站
+
+- [大数据导航](http://hao.199it.com)
+- [脚本之家在线工具](http://hao.199it.com)
