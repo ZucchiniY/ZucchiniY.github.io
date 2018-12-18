@@ -93,7 +93,7 @@ adb shell chmod 755 /data/local/tmp/dePixel8
 adb shell /data/local/tmp/dePixel8
 ```
 
-然后再执行 `adb reboot tootloader` 就可以正常解锁了。
+然后再执行 `adb reboot bootloader` 就可以正常解锁了。
 
 [dePixel8.zip 下载](http://theroot.ninja/depixel8.html)
 
