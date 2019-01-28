@@ -1,0 +1,47 @@
+baseURL = "http://zucchiniy.github.io"
+languageCode = "en-us"
+#defaultContentLanguage = "zh-cn"
+defaultContentLanguage = "en"
+title = "游行侠Z"
+
+theme = "LeaveIt"
+
+paginate = 12
+enableEmoji = true
+enableRobotsTXT = true
+preserveTaxonomyNames = true
+
+[blackfriday]
+hrefTargetBlank = true
+nofollowLinks = true
+noreferrerLinks = true
+
+[Permalinks]
+posts = "/:year/:filename/"
+
+[[menu.main]]
+    name = "Blog"
+    url = "/post/"
+    weight = 1
+[[menu.main]]
+    name = "Categories"
+    weight = 2
+    url = "/categories/"
+[[menu.main]]
+    name = "Tags"
+    weight = 3
+    url = "/tags/"
+[[menu.main]]
+    name = "About"
+    url="/about/"
+    weight = 4
+
+[params]
+    since = "2015" # 站点建立时间
+    author = "Dylan Yang"
+    avatar = "/images/me/avatar.jpg" 
+    subtitle = "世事洞明皆学问，人情练达即文章。"
+
+[params.social]                                         # 社交链接
+    Email = "mailto:banshiliuli1990@sina.com"
+    GitHub = "https://github.com/ZucchiniY"
