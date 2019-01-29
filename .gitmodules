@@ -6,4 +6,4 @@
 	url = https://github.com/ZCodingTime/hugo-theme-paladin.git
 [submodule "themes/leaveit"]
 	path = themes/leaveit
-	url = git@github.com:liuzc/LeaveIt.git
+	url = https://github.com/liuzc/LeaveIt.git
