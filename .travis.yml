@@ -3,7 +3,7 @@ os: osx
 
 script:
   - brew install hugo
-  - hugo --config paladin-config.toml
+  - hugo --config leaveit-config.toml
 
 deploy:
   provider: pages

@@ -71,7 +71,7 @@ Emacs 的快捷键和 Vim 的快捷键是编辑器中的两坐高山，其中 Em
 (add-hook 'python-mode-hook 'f-python-mode)
 ```
 
-**注意**当键进行重新绑定后，还应该将之前的功能重新绑定到另一个键上。
+ **注意** 当键进行重新绑定后，还应该将之前的功能重新绑定到另一个键上。
 
 # Minor Mode Map
 

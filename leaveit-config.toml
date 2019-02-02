@@ -21,7 +21,7 @@ posts = "/:year/:filename/"
 
 [[menu.main]]
     name = "Blog"
-    url = "/post/"
+    url = "/posts/"
     weight = 1
 [[menu.main]]
     name = "Categories"
@@ -43,5 +43,5 @@ posts = "/:year/:filename/"
     subtitle = "世事洞明皆学问，人情练达即文章。"
 
 [params.social]                                         # 社交链接
-    Email = "mailto:banshiliuli1990@sina.com"
-    GitHub = "https://github.com/ZucchiniY"
+    Email = "banshiliuli1990@sina.com"
+    GitHub = "ZucchiniY"
