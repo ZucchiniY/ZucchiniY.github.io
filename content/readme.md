@@ -2,17 +2,13 @@
 draft: true
 ---
 
-# 博客备份文档
-
-## 博客优先更新这个，然后再发布
-
-### hugo blog
+## hugo blog
 
 ``` sh
 - content
     - about.md # 关于
     - images/ # 图片
-    - post/ # 文章
+    - posts/ # 文章
         - draft # 草稿
 ```
 

@@ -1,0 +1,17 @@
++++
+title = "Evil 和 Org Mode 必读"
+author = ["Dylan Yang"]
+date = 2019-02-25T17:26:00+08:00
+tags = ["笔记"]
+categories = ["Emacs"]
+draft = false
++++
+
+这篇就文章非常简单，就是推荐两篇入门文章，一个是
+[evil guide](https://github.com/noctuid/evil-guide) ，我觉得认真的将这篇文章读完，对于 Evil Mode 的使用就算入门了，如果能
+多读几将，就可以自由的使用 Evil mode 了。
+
+[另外一篇文章](http://mudan.github.io/Emacs/The%5FOrg%5FManual/The%5FOrg%5FManual.html) 是我的 Org Mode 的使用入门阅读，虽然很久没有更新了，但是在使用了一段
+时间之后，再重读这篇文章，会发现又有新的感受，可以说是非常好用的一个帮助手册了。
+
+这里主要是怕忘记这两篇好文章，做一个记录。
