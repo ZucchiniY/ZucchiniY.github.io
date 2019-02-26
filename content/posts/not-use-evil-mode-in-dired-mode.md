@@ -2,6 +2,7 @@
 title = "dired 中不使用 Evil"
 author = ["Dylan Yang"]
 date = 2019-02-25T16:59:00+08:00
+tags = ["Evil"]
 categories = ["Emacs"]
 draft = false
 +++
