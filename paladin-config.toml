@@ -24,7 +24,7 @@ metaDataFormat = "YAML"
     name = "ARCHIVE"
     weight = 20
     idengifier = "archives"
-    url = "/post"
+    url = "/posts"
 [[menu.main]]
     name = "ABOUT"
     weight = 50
@@ -44,3 +44,13 @@ metaDataFormat = "YAML"
 [params.social]                                         # 社交链接
     a-email = "mailto:banshiliuli1990@sina.com"
     b-github = "https://github.com/ZucchiniY"
+
+[params.valine]
+    enable = true
+    appId = '0CS13cNBUV5BJj7PQWupnVWq-gzGzoHsz'
+    appKey = 'xsz3vAzEbda56D3RK5aomNSW'
+    notify = false
+    verify = false
+    avatar = 'hide'
+    placeholder = '啥也不想说'
+    visitor = true
