@@ -2,8 +2,8 @@
 title = "MySQL 笔记"
 author = ["Dylan Yang"]
 date = 2019-01-18T10:13:00+08:00
-tags = ["笔记"]
-categories = ["MySQL"]
+tags = ["MySQL"]
+categories = ["笔记"]
 draft = false
 +++
 

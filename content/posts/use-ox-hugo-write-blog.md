@@ -2,8 +2,8 @@
 title = "ox-hugo 配置"
 author = ["Dylan Yang"]
 date = 2019-02-26T16:08:00+08:00
-tags = ["hugo"]
-categories = ["Emacs"]
+tags = ["Emacs", "hugo"]
+categories = ["笔记"]
 draft = false
 +++
 

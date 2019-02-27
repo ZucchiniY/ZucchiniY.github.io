@@ -2,8 +2,8 @@
 title = "Python无师自通"
 author = ["Dylan Yang"]
 date = 2019-02-02T21:50:00+08:00
-tags = ["笔记"]
-categories = ["Python"]
+tags = ["Python"]
+categories = ["笔记"]
 draft = true
 +++
 

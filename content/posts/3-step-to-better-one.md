@@ -2,7 +2,8 @@
 title = "让自己生活的更好"
 author = ["Dylan Yang"]
 date = 2019-02-11T16:13:00+08:00
-categories = ["生活"]
+tags = ["生活"]
+categories = ["随笔"]
 draft = false
 +++
 

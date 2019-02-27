@@ -2,8 +2,8 @@
 title = "Git 重新命名分支名称"
 author = ["Dylan Yang"]
 date = 2019-02-18T10:25:00+08:00
-tags = ["笔记"]
-categories = ["Git"]
+tags = ["Git"]
+categories = ["笔记"]
 draft = false
 +++
 
