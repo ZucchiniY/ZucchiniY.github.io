@@ -1,0 +1,1 @@
++++title = "博客中的分类与标签"author = ["Dylan Yang"]date = 2019-03-01T10:29:00+08:00tags = ["标签"]categories = ["笔记"]draft = true+++思考如何对自己的博客选择分类和标签
