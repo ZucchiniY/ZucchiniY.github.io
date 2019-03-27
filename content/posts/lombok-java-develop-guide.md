@@ -1,0 +1,1 @@
++++title = "Lombok 简化 Java 开发"author = ["Dylan Yang"]date = 2019-03-25T15:19:00+08:00draft = true+++<http://codepub.cn/2015/07/30/Lombok-development-guidelines/>
