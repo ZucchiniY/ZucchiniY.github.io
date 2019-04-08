@@ -1,0 +1,1 @@
++++title = "zypper 使用"author = ["Dylan Yang"]date = 2019-04-02T11:04:00+08:00tags = ["Zypper"]categories = ["笔记"]draft = true+++<https://cn.opensuse.org/Zypper/%E7%94%A8%E6%B3%95>
