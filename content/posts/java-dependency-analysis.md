@@ -1,1 +1,10 @@
-+++title = "java 依赖关系分析"author = ["Dylan Yang"]date = 2019-04-09T14:32:00+08:00categories = ["Java"]draft = true+++<https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html><http://nickylin.github.io/2017/01/16/java-how-to-check-depends/>
++++
+title = "java 依赖关系分析"
+author = ["Dylan Yang"]
+date = 2019-04-09T14:32:00+08:00
+categories = ["Java"]
+draft = true
++++
+
+<https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html>
+<http://nickylin.github.io/2017/01/16/java-how-to-check-depends/>

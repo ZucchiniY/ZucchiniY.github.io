@@ -1,1 +1,10 @@
-+++title = "yield from 方法"author = ["Dylan Yang"]date = 2019-01-22T10:26:00+08:00tags = ["yield"]categories = ["Python"]draft = true+++-   <https://blog.csdn.net/soonfly/article/details/78361819>
++++
+title = "yield from 方法"
+author = ["Dylan Yang"]
+date = 2019-01-22T10:26:00+08:00
+tags = ["yield"]
+categories = ["Python"]
+draft = true
++++
+
+-   <https://blog.csdn.net/soonfly/article/details/78361819>
