@@ -7,10 +7,7 @@ categories = ["Java"]
 draft = false
 +++
 
-使用 Sql2o 方法读取数据库的时候，发现表名类似，但是有一些差别，如果使
-用 `select *` 方式查询，需要针对对象声明多个内容，但是实际上用的都是一
-样的，所以想通过获取成员变量的名称来拼接成 `select` 后面的内容，经过尝
-试，发现可以用下面的方法获取：
+使用 Sql2o 方法读取数据库的时候，发现表名类似，但是有一些差别，如果使用 `select *` 方式查询，需要针对对象声明多个内容，但是实际上用的都是一样的，所以想通过获取成员变量的名称来拼接成 `select` 后面的内容，经过尝试，发现可以用下面的方法获取：
 
 ```java
 public String allName(){
@@ -24,3 +21,5 @@ public String allName(){
 ```
 
 这样之后，调用 `allName()` 方法就能直接获取对应的变量名称了。
+
+Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

@@ -8,8 +8,7 @@ draft = false
 +++
 
 质数求解是一个非常好的由数据思维转换为计算思维的过程，也是我在初学 C
-语言的时候，学的第一个算法，这次在学习 python 的时候，又看到了这个方法，
-所以针对原来的谅地，实现了一个 Python 的版本。
+语言的时候，学的第一个算法，这次在学习 python 的时候，又看到了这个方法，所以针对原来的谅地，实现了一个 Python 的版本。
 
 ```python
 import math
@@ -24,3 +23,5 @@ for i in range(2,101):
         primes.append(i)
 print(sum(primes))
 ```
+
+Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

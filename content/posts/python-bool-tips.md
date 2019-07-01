@@ -21,8 +21,8 @@ print('hello,', b or 'world')
 ('hello,', 'world')
 ```
 
-这是因为在输出的时候，判断 `a or 'world'` ，当 a 为 True 的时候，会输
-出 a ，同样的道理，当 `b = ''` 的时候，也就是 b 为 False， 这个时候会
-输出后面为真的内容。也就是 `'world'` 。
+这是因为在输出的时候，判断 `a or 'world'` ，当 a 为 True 的时候，会输出 a ，同样的道理，当 `b = ''` 的时候，也就是 b 为 False， 这个时候会输出后面为真的内容。也就是 `'world'` 。
 
 这主要是因为在 Python 中，把 0 ，空字符 '' 和 None 都看成 False 。
+
+Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

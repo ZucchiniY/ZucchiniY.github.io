@@ -20,8 +20,7 @@ gcc -c sourcefile.c
 : -c，只执行到编译，输出目标文件
 
 gcc (-E/-S/-c) sourcefile.c -o output-file
-: -o，指定输出文件名，可
-    以使用以上三种标签中的一种。
+: -o，指定输出文件名，可以使用以上三种标签中的一种。
 
     -o 参数可以被省略，这种情况下编译器按以下默认名方式输出:<br />
     - -E 预编译结果将被输出到标准输出端口<br />
@@ -53,3 +52,5 @@ gcc sourcefile.c -L/path/to/lib -lxxx -l/path/to/include
 : - -l 指定所使用到的函数库，本例中是尝试链接名为 libxxx.a 的函数库<br />
     - -L 指定函数库所在的文件，本例中链接器会尝试搜索/path/to/lib 文件夹<br />
     - -I 指定文件所在的文件夹，本例中预编译器会尝试搜索/path/to/include 文件夹<br />
+
+Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

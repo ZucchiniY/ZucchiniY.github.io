@@ -61,8 +61,7 @@ PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 #### Mac {#mac}
 
-Mac 电脑提供了一个自动安装的内容，可以将 `adb` 相关的内容直接安装，但
-是如果是想开发 **Android** 应用的话，则必须要按上面的方案进行配置。
+Mac 电脑提供了一个自动安装的内容，可以将 `adb` 相关的内容直接安装，但是如果是想开发 **Android** 应用的话，则必须要按上面的方案进行配置。
 
 首先需要先安装 **brew** ，具体方案见 [Homebrew](https://brew.sh/index%5Fzh-cn) ，或者可以直接看其
 **GitHub** 的主页 [Homebrew/brew](https://github.com/Homebrew/brew) 。
@@ -74,15 +73,13 @@ brew cask install android-platform-tools
 ```
 
 如果执行刷机的时候，提示 **fastboot is too old** 则需要重新安装
-_android-platform-tools_ , 因为 `brew update` 更新是不能更新 _cask_ 库
-的内容的。
+_android-platform-tools_ , 因为 `brew update` 更新是不能更新 _cask_ 库的内容的。
 
 ```shell
 brew cask reinstall android-platform-tools
 ```
 
-最后，在命令行中执行 `adb devices` 不报错刚配置成功。如果配置之后，还
-依然报错的话，可以检查一下是否在使用过程中，将 **USB 调试功能** 关闭了。
+最后，在命令行中执行 `adb devices` 不报错刚配置成功。如果配置之后，还依然报错的话，可以检查一下是否在使用过程中，将 **USB 调试功能** 关闭了。
 
 
 ### 操作 {#操作}
@@ -129,3 +126,5 @@ adb shell getprop|grep cid
 ```
 
 如果出现 **VZW\_001** 就是 V 版手机
+
+Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

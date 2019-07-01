@@ -7,9 +7,7 @@ categories = ["Emacs"]
 draft = false
 +++
 
-Emacs 和 Vim 最大的就是快捷键的体系不同，在 Emacs 中，快捷键要有对应的控制键配合，
-才能正常使用，比如打开 **Agenda** `C-c a` 一般指的是 `Ctrl + c a` 而在 Emacs 中，
-使用的控制键主要有以下几种：
+Emacs 和 Vim 最大的就是快捷键的体系不同，在 Emacs 中，快捷键要有对应的控制键配合，才能正常使用，比如打开 **Agenda** `C-c a` 一般指的是 `Ctrl + c a` 而在 Emacs 中，使用的控制键主要有以下几种：
 
 ```text
 s- : supper -
@@ -19,9 +17,7 @@ C- : Ctrl -
 H- : Hyper -
 ```
 
-其中 Ctrl、Meta/Alt、Shift这几种快捷键比较常见，但是 supper 这个键就比较少见了，
-而且在键盘上，一般也看不到，所以我们在配置的时候，需要在配置中声明这几个键被绑定
-在哪些键上，增加如下的配置：
+其中 Ctrl、Meta/Alt、Shift这几种快捷键比较常见，但是 supper 这个键就比较少见了，而且在键盘上，一般也看不到，所以我们在配置的时候，需要在配置中声明这几个键被绑定在哪些键上，增加如下的配置：
 
 ```emacs-lisp
 (setq w32-lwindow-modifier 'supper
@@ -37,5 +33,6 @@ H- : Hyper -
       ns-function-modifier 'hyper)
 ```
 
-但是这样的情况又有另外一个问题，需要在特定的系统中使用，所以我们要在对应的配置上
-增加上对系统的判断。这样就可以自由的使用各种快捷键了。
+但是这样的情况又有另外一个问题，需要在特定的系统中使用，所以我们要在对应的配置上增加上对系统的判断。这样就可以自由的使用各种快捷键了。
+
+Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

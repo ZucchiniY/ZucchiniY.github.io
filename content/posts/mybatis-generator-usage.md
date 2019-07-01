@@ -3,7 +3,7 @@ title = "MyBatis Generator 使用"
 author = ["Dylan Yang"]
 date = 2019-04-19T09:52:00+08:00
 tags = ["MyBatis"]
-categories = ["笔记"]
+categories = ["Java"]
 draft = true
 +++
 
