@@ -9,8 +9,6 @@ author: "Dylan Yang"
 
 # Debian 的包管理器
 
-- `update` 是更新 *`/etc/apt/sources.list`* 和 *`/etc/apt/sources.list.d`* 中列出的源的地址,这样才能获取到最新的软件包。
-- `upgrade` 是升级已安装的所有软件包，升级之后的版本就是本地地址里的，因此，在执行 `upgrade` 之前一定要执行 `update`, 这样才能更新到最新的。
 
 <!--more-->
 
