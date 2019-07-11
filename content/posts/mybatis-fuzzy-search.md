@@ -1,27 +1,27 @@
----
-title: "mybatis 模糊查询"
-date: 2018-04-28T22:35:21+08:00
-draft: false
-tags: ["模糊查询"]
-categories: ["技术"]
-author: "Dylan Yang"
----
++++
+title = "MyBatis 模糊查询"
+author = ["Dylan Yang"]
+date = 2018-04-28T15:14:00+08:00
+tags = ["模糊查询"]
+categories = ["MySQL"]
+draft = false
++++
 
-# mysql
+## mysql {#mysql}
 
-``` sql
+```sql
 SELECT * FROM DB.SQL WHERE MYNAME LIKE CONCAT('%' , #{myName} , '%')
 ```
 
-或者使用 `${}` 来进行查询
+或者使用 **${}** 来进行查询
 
-``` sql
+```sql
 SELECT * FROM DB.SQL WHERE MYNAME LIKE CONCAT('%' , '${myName}' , '%')
 ```
 
-# Oracle
 
-``` sql
+## Oracle {#oracle}
+
+```sql
 SELECT * FROM DB.SQL WHERE MYNAME LIKE '%'||#{myName}||'%'
 ```
-<!--more-->
