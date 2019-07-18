@@ -1,28 +1,27 @@
----
-title: "Git 合并多次提交"
-date: 2017-08-02T22:10:21+08:00
-draft: false
-description: ""
-tags: ["git commit","git rebase"]
-categories: ["技术"]
-author: "Dylan Yang"
----
++++
+title = "Git 合并多次提交"
+author = ["Dylan Yang"]
+date = 2017-08-02T19:33:00+08:00
+tags = ["rebase"]
+categories = ["Git"]
+draft = false
++++
 
 在合并分支的时候，希望将多次提交合并成一个，然后再 cherry-pick 到主分支。
-<!--more-->
 
-# 合并分支
 
-develop 分支做开发，可能会进行多次提交，但是在发布或者进行 PR 的时候，我们只希望看到一次提交。这个时候，我们需要进行 `git rebase` 之后进行合并。
+## 合并分支 {#合并分支}
 
-``` sh
+develop 分支做开发，可能会进行多次提交，但是在发布或者进行 PR 的时候，我们只希望看到一次提交。这个时候，我们需要进行 \`git rebase\` 之后进行合并。
+
+```shell
 # HEAD~3 表示将近三次提交都合并，如果是将 2 次合并则为 HEAD~2
 git rebase -i HEAD~3
 ```
 
-这个时候，看到的是一上对 *COMMIT* 信息的提示
+这个时候，看到的是一上对 **COMMIT** 信息的提示
 
-``` text
+```text
 pick 9ba5122 2017 年 8 月 2 日
 pick c6da035 ~~
 
@@ -48,22 +47,23 @@ pick c6da035 ~~
 
 第一列对应的是 `rebase` 具体的操作，其含义如下
 
-| 命令          | 作用                                                           |
-| ------------- | ------------------------------                                 |
+| 命令          | 作用                                     |
+|-------------|----------------------------------------|
+| ------------- | ------------------------------           |
 | pick(p)       | git 会应用这个补丁，以同样的提交信息（commit message）保存提交 |
-| reword\(r\)    | git 会应用这个补丁，但需要重新编辑提交信息                     |
-| edit(e)       | git 会应用这个补丁，但会因为 amending 而终止                   |
-| squash(s)     | git 会应用这个补丁，但会与之前的提交合并                       |
-| fixup(f)      | git 会应用这个补丁，但会丢掉提交日志                           |
-| exec(x)       | git 会在 shell 中运行这个命令                                  |
-| drop(d)       | git 会移除这次 COMMIT                                          |
+| reword\\(r\\) | git 会应用这个补丁，但需要重新编辑提交信息 |
+| edit(e)       | git 会应用这个补丁，但会因为 amending 而终止 |
+| squash(s)     | git 会应用这个补丁，但会与之前的提交合并 |
+| fixup(f)      | git 会应用这个补丁，但会丢掉提交日志     |
+| exec(x)       | git 会在 shell 中运行这个命令            |
+| drop(d)       | git 会移除这次 COMMIT                    |
 
 将第二个 `pick c6da035 ~~~` 这一行修改成 `squash c6da035 ~~~` ，使之与之前的提交合并。
 
 保存之后可以看到下面的内容
 
-``` text
- This is a combination of 2 commits.
+```text
+This is a combination of 2 commits.
 # This is the 1st commit message:
 
 2017 年 8 月 2 日
@@ -91,9 +91,9 @@ pick c6da035 ~~
 
 ```
 
-修改成正确的 commit 信息之后，保存存并退出，可以看到下面的内容
+修改成正确的 `commit` 信息之后，保存存并退出，可以看到下面的内容
 
-``` sh
+```shell
 $ git rebase -i HEAD~2
 [detached HEAD 0238691] 2017 年 8 月 2 日
  Date: Tue Aug 1 10:24:44 2017 +0800
@@ -105,7 +105,8 @@ Successfully rebased and updated refs/heads/develop.
 
 这个时候，就已经将我们这几次的更改都合并到一次中了。
 
-# cherry-pick 分支并更新
+
+## cherry-pick 分支并更新 {#cherry-pick-分支并更新}
 
 这个时候，就可以更新我们的代码了。
 
@@ -113,13 +114,13 @@ Successfully rebased and updated refs/heads/develop.
 
 然后将我们合并之后的 **develop** 分支的内容更新过来
 
-``` sh
+```shell
 git log -b develop
 ```
 
 看到如下内容
 
-``` text
+```text
 commit 02386914b9e5ab13c23451a3463813bfdecb157a
 Author: 语乱 <banshiliuli1990@sina.com>
 Date:   Tue Aug 1 10:24:44 2017 +0800
@@ -135,10 +136,10 @@ Date:   Tue Aug 1 10:24:44 2017 +0800
     4. 增加 parinfer 配置，用来优化 lisp 的编写速度
 ```
 
-或者使用上次的操作的中的提示 _[detached HEAD 0238691] 2017 年 8 月 2 日_
-其中的 *0238691* 就是我们需要
+或者使用上次的操作的中的提示 `[detached HEAD 0238691] 2017 年 8 月 2 日`
+其中的 **0238691** 就是我们需要
 
-``` sh
+```shell
 git cherry-pick 0238691
 ```
 
