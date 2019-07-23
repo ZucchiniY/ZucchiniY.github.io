@@ -1,57 +1,15 @@
----
-title: "Git 基础知识"
-date: 2016-04-27T22:10:21+08:00
-draft: false
-tags: ["Git basic"]
-categories: ["技术"]
-author: "Dylan Yang"
----
++++
+title = "Git 基础命令"
+author = ["Dylan Yang"]
+date = 2016-04-27T15:02:00+08:00
+tags = ["基础"]
+categories = ["Git"]
+draft = false
++++
 
-# git 与 svn 间的基本区别
+## 新建代码库 {#新建代码库}
 
-## git 是分布式的，svn 不是：
-
-1. git 和 svn 一样有自己的集中式版本库或者服务器。但 git 更倾向于用于分布式模式，即每个开发人员从中心版本库/服务器 check out 代码后会在自己机器上克隆一个自己的版本库。可以在无网络的情况下，提交文件，查看历史版本记录，创建分支。等恢复网络后，再进行提交。
-
-2. 当有补丁或者修改时，可以创建一个分支，向版本库提交一个推送请求，以完成更新或者修改。
-<!--more-->
-
-## git 把内容按元数据方式存储，而 svn 按文件：
-
-- .git 目录是处于机器上的一个克隆版本库，拥有中心版本库上所有的东西。
-
-    例如：标签，分支，版本记录等
-
-## git 分支与 svn 分支不同：
-
-1. 在 svn 中是版本库中的另一个目录，如果想知道是否合并了会，需要手工运行命令，来确认代码是否被合并，所以经常会有分支被遗漏的情况。
-
-2. 在 git 中分支却是不同的，可以在同一个工作目录下快速在几个分支间切换，可以发现未被合并的分支，并能简单而快捷的合并这些文件。
-
-## git 没有全局版本号，而 svn 有：
-
-1. svn 的版本号实际是任何一个相应时间的源码快照。
- 
-2. git 使用的是 sha-1 来唯一标识源码快照的，但并不是很易读。
-
-## git 的内容完整性优于 svn:
-
-- git 内容存储使用的是 sha-1 哈希算法，这能确保代码内容的完整性，在遇到磁盘故障和网络问题时，降低对版本库的破坏。
-
-## git 进行代码管理
-
-![](/images/git-file.jpg)
-
-|Git 工作区    | 中文名   |
-|--------------|----------|
-| workspace    | 工作区   |
-| index / stage | 暂存区   |
-| repository   | 仓库区   |
-| remote       | 远程仓库 |
-
-## 新建代码库
-
-``` sh
+```shell
 #在当前目录新建一个 git 代码库
 $ git init
 #新建一个目录，将其初始化为 git 代码库
@@ -60,10 +18,12 @@ $ git init [project-name]
 $ git clone [url]
 ```
 
-## 全局配置和项目配置
 
-git 的设置文件为 =.gitconfig= ，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）
-``` sh
+## 全局配置和项目配置 {#全局配置和项目配置}
+
+git 的设置文件为 `.gitconfig` ，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）
+
+```shell
 #显示当前 git 配置
 $ git config --list
 #编辑 git 配置文件
@@ -73,9 +33,10 @@ $ git config [--global] user.name "[name]"
 $ git config [--global] user.email "[email address]"
 ```
 
-## 增加/删除文件
 
-``` sh
+## 增加/删除文件 {#增加-删除文件}
+
+```shell
 #添加指定文件到暂存区
 $ git add [file1] [file2] ...
 #添加指定目录到暂存区，包括子目录
@@ -90,9 +51,10 @@ $ git rm --cached [file]
 $ git mv [file-original] [file-renamed]
 ```
 
-## 代码提交
 
-``` sh
+## 代码提交 {#代码提交}
+
+```shell
 #提交暂存区到仓库区
 $ git commit -m [message]
 #提交暂存区的指定文件到仓库区
@@ -108,9 +70,10 @@ $ git commit --amend -m [message]
 $ git commit --amend [file1] [file2] ...
 ```
 
-## 分支
 
-``` sh
+## 分支 {#分支}
+
+```shell
 #列出所有本地分支
 $ git branch
 #列出所有远程分支
@@ -144,9 +107,10 @@ $ git branch -r -d origin/[branch-name]
 $ git push origin :[branch-name]
 ```
 
-## 标签
 
-``` sh
+## 标签 {#标签}
+
+```shell
 #列出所有 tag
 $ git tag
 #在当前 commit，新建一个 tag
@@ -173,9 +137,10 @@ $ git push origin :refs/tags/[old-tagName]
 $ git push --tags
 ```
 
-## 查看信息
 
-``` sh
+## 查看信息 {#查看信息}
+
+```shell
 #显示所有变更的文件
 $ git status
 #显示当前分支的版本历史
@@ -211,9 +176,10 @@ $ git show [commit]:[filename]
 $ git reflog
 ```
 
-## 远程同步
 
-``` sh
+## 远程同步 {#远程同步}
+
+```shell
 #下载运程仓库的所有变动
 $ git fetch [remote]
 #显示所有远程分支
@@ -232,18 +198,20 @@ $ git push [remote] --force
 $ git push [remote] --all
 ```
 
-## 修改远程仓库地址
 
-``` sh
+## 修改远程仓库地址 {#修改远程仓库地址}
+
+```shell
 # 先删除远程分支地址
 $ git remote rm origin
 # 然后重新增加远程分支地址
 $ git remote add origin [url]
 ```
 
-## 撤销
 
-``` sh
+## 撤销 {#撤销}
+
+```shell
 #恢复暂存区的指定文件到工作区
 $ git checkout [file]
 #恢复某个 commit 的指定文件到工作区
@@ -265,18 +233,20 @@ $ git reset --keep [commit]
 $ git revert [commit]
 ```
 
-## 其它
 
-``` sh
+## 其它 {#其它}
+
+```shell
 #生成一个可供发布的压缩包
 $ git archive
 ```
 
-## git 提升内容
 
-- 储藏暂存内容
-  
-``` sh
+## git 提升内容 {#git-提升内容}
+
+-   储藏暂存内容
+
+```shell
 # 想要切换分支，但是还不想要提交之前的工作，可以储存修改信息，将新的储藏推送到栈上
 $ git stash / git stash save
 # 在这时，能够轻易的切换分支并在其他地方工作，你的修改被存储在栈上。要查看储藏的东西，可以使用 git stash list
@@ -287,9 +257,9 @@ $ git stash apply
 $ git stash apply stash@{1}
 ```
 
-- 核武器级选项 filter-branch
+-   核武器级选项 filter-branch
 
-``` sh
+```shell
 # 从每一个提交移除一个文件：指 git add . 的内容完整的上传到仓库，但是当希望开源这个内容的时候，需要移除一些无用的文件，--tre-filter 选项在的每一个提交后，运行指定的命令，然后重新提交结果。
 $ git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
 # 使一个子目录做为新的根目录：假设已经从另一个源代码控制系统中导入，并且有几个没意义的子目录（trunk/tags 等等）。如果想要让 trunk 子目录作为每一个提交的新的项目根目录，filter-branch 也可以帮助你那么做，再在新项目根目录是 trunk 子目录且 Git 会自动移除所有不影响子目录的提交。

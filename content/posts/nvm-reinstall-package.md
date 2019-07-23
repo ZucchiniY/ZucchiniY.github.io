@@ -1,15 +1,14 @@
----
-title: "nvm 重装 package"
-date: 2018-04-23T22:10:21+08:00
-draft: false
-tags: ["nvm","reinstall package"]
-categories: ["技术"]
-author: "Dylan Yang"
----
++++
+title = "nvm 安装最新 nodejs 时重装 package"
+author = ["Dylan Yang"]
+date = 2018-04-22T14:38:00+08:00
+tags = ["nvm"]
+categories = ["前端"]
+draft = false
++++
 
-- 更新新的node版本，将旧版本模块全部同步安装到新版本下，可以使用下面的命令:
+-   更新新的node版本，将旧版本模块全部同步安装到新版本下，可以使用下面的命令:
 
-``` bash
-nvm install node --reinstall-packages-from=node
-```
-<!--more-->
+    ```shell
+    nvm install node --reinstall-packages-from=node
+    ```
