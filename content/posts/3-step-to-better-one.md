@@ -50,5 +50,3 @@ draft = false
 或者我们忽然读到了一篇好文章，但是现在不适合详读，我们可以在这个是时候把文章通过工具记录下来，等有时间了，再重新详读这篇文章。
 
 当然，除了这些，还可以把自己心中的那些不满啊、忧愁啊都记下来，这样也可以有效的控制我们的感情，让自己更开心的生活。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

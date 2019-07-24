@@ -34,5 +34,3 @@ draft = false
 : 终于到了最重要的功能了，但是经过了之前的学习之后，应该也就能把这本特别长的文档看完看明白了，然后按大神的思路，一页一页的挨着看, 一个 API 一个 API 的读, 不要跳过每个 API , 都在 ielm 里面实践一下，遇到不知道啥鬼用的 API , 去 Google 或 EmacsWiki 上搜索一下, 看看别人怎么用这些API的。
 
 暂时先就这些工作，等我到了这个技术之后，再进行第二次更新。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org
