@@ -3,7 +3,7 @@ title = "MySQL 将字符串按数据进行排序"
 author = ["Dylan Yang"]
 date = 2018-05-22T19:06:00+08:00
 tags = ["CAST", "CONVERT"]
-categories = ["MySQL"]
+categories = ["SQL"]
 draft = false
 +++
 

@@ -3,7 +3,7 @@ title = "MyBatis 模糊查询"
 author = ["Dylan Yang"]
 date = 2018-04-28T15:14:00+08:00
 tags = ["模糊查询"]
-categories = ["MySQL"]
+categories = ["SQL"]
 draft = false
 +++
 

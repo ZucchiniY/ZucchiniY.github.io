@@ -1,37 +1,36 @@
----
-title: "Git Stash 常用功能"
-date: 2018-04-11T22:10:21+08:00
-draft: false
-tags: ["git stash"]
-categories: ["技术"]
-author: "Dylan Yang"
----
++++
+title = "Git Stash 常用功能"
+author = ["Dylan Yang"]
+date = 2018-04-11T16:57:00+08:00
+tags = ["stash"]
+categories = ["Git"]
+draft = false
++++
 
 本文记录了如何使用 Git Stash 功能时报错的解决方案。
-<!--more-->
 
-- Git stash apply 的时候，报错 :
+-   Git stash apply 的时候，报错 :
 
-``` yaml
-error Your local changes to the follow files would be overwritten by merge: xxxx
-Please commit your changes or stash them before you merge .
-```
+    ```text
+    error Your local changes to the follow files would be overwritten by merge: xxxx
+    Please commit your changes or stash them before you merge .
+    ```
 
 可以先add 修改的文件，然后再apply
 
-``` sh
+```shell
 git add test.txt
 git stash apply
 ```
 
-- 比较 stash 与当前分支的区别
+-   比较 stash 与当前分支的区别
 
-``` sh
-git stash show -p
-```
+    ```shell
+    git stash show -p
+    ```
 
 比较指定的 stash
 
-``` sh
+```shell
 git stash show -p stash@{0}
 ```

@@ -3,7 +3,7 @@ title = "MySQL 10060 报错"
 author = ["Dylan Yang"]
 date = 2019-07-12T17:32:00+08:00
 tags = [10060]
-categories = ["MySQL"]
+categories = ["SQL"]
 draft = false
 +++
 

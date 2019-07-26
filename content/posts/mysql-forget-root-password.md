@@ -3,7 +3,7 @@ title = "忘记 MySQL Root 用户密码"
 author = ["Dylan Yang"]
 date = 2018-09-27T16:01:00+08:00
 tags = ["Root"]
-categories = ["MySQL"]
+categories = ["SQL"]
 draft = false
 +++
 

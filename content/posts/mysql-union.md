@@ -3,7 +3,7 @@ title = "MySQL Union 操作符"
 author = ["Dylan Yang"]
 date = 2018-06-14T14:58:00+08:00
 tags = ["union"]
-categories = ["MySQL"]
+categories = ["SQL"]
 draft = false
 +++
 

@@ -3,7 +3,7 @@ title = "MySQL 连接数清理"
 author = ["Dylan Yang"]
 date = 2019-01-18T10:13:00+08:00
 tags = ["调整连接数"]
-categories = ["MySQL"]
+categories = ["SQL"]
 draft = false
 +++
 

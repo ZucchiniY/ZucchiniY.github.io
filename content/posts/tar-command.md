@@ -1,29 +1,29 @@
----
-title: "tar 命令整理"
-date: 2017-03-19T22:10:21+08:00
-draft: false
-tags: ["tar"]
-categories: ["技术"]
-author: "Dylan Yang"
----
++++
+title = "tar 命令整理"
+author = ["Dylan Yang"]
+date = 2017-03-19T10:04:00+08:00
+tags = ["tar"]
+categories = ["Linux"]
+draft = false
++++
 
-# 命令格式
+## 命令格式 {#命令格式}
 
-``` sh
+```shell
 tar [必要参数] [选择参数] [文件]
 ```
 
-# 命令功能
+
+## 命令功能 {#命令功能}
 
 > 用来压缩和解压文件。tar 本身不具有压缩功能。他是调用压缩功能实现的。
 
-<!--more-->
 
-# 命令参数
+## 命令参数 {#命令参数}
 
 必要参数如下：
 
-``` yaml
+```yaml
 -A 新增压缩文件到已经存在的压缩
 -B 设置区块大小
 -c 建立新的压缩文件
@@ -44,7 +44,7 @@ tar [必要参数] [选择参数] [文件]
 
 可选参数如下：
 
-``` yaml
+```yaml
 -b 设置区块数目
 -C 切换到指定目录
 -f 指定压缩文件
@@ -52,29 +52,30 @@ tar [必要参数] [选择参数] [文件]
 --version 显示版本信息
 ```
 
-# 常见解压/压缩命令
 
-- tar
+## 常见解压、压缩命令 {#常见解压-压缩命令}
 
-解包：`tar xvf FileName.tar`
+-   tar
 
-打包：`tar cvf FileName.tar DirName`
+解包： `tar xvf FileName.tar`
 
-- .gz
+打包： `tar cvf FileName.tar DirName`
 
-解压 1：`gunzip FileName.gz`
+-   .gz
 
-解压 2：`gzip -d FileName.gz`
+解压 1： `gunzip FileName.gz`
 
-压缩 : `gzip FileName`
+解压 2： `gzip -d FileName.gz`
 
-- .tar.gz 和 .tgz
+压缩 :  `gzip FileName`
 
-解压：`tar zxvf FileName.tar.gzip`
+-   .tar.gz 和 .tgz
 
-压缩：`tar zcvf FileName.tar.gz DirName`
+解压： `tar zxvf FileName.tar.gzip`
 
-- .bz2
+压缩： `tar zcvf FileName.tar.gz DirName`
+
+-   .bz2
 
 解压: `bzip2 -d FileName.bz2`
 
@@ -82,48 +83,45 @@ tar [必要参数] [选择参数] [文件]
 
 压缩: `bzip2 -z FileName`
 
-- tar.bz2
+-   tar.bz2
 
 解压: `tar jxvf FileName.tar.bz2`
 
 压缩: `tar jcvf FileName.tar.bz2 DirName`
 
-- .bz
+-   .bz
 
 解压: `bzip2 -d FileName.bz`
 
 解压: `bunzip2 FileName.bz`
 
-压缩: `未知`
+压缩: **未知**
 
-- .tar.bz
+-   .tar.bz
 
 解压: `tar jxvf FileName.tar.bz`
 
 压缩: `tar jcvf FileName.tar.bz DirName`
 
-- .Z
+-   .Z
 
 解压: `uncompress FileName.Z`
 
 压缩: `compress FileName`
 
-- .tar.Z
+-   .tar.Z
 
 解压: `tar Zxvf filename.tar.Z`
 
 压缩: `tar Zcvf FileName.tar.Z DirName`
 
-
-- .zip
+-   .zip
 
 解压: `unzip FileName.zip`
 
 压缩: `zip FileName.zip DirName`
 
-
-- .rar
-
+-   .rar
 
 解压: `rar x filename.rar`
 

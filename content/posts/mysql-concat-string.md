@@ -3,7 +3,7 @@ title = "MySQL 查询结果中处理字符串"
 author = ["Dylan Yang"]
 date = 2018-05-15T18:59:00+08:00
 tags = ["CONCAT", "string"]
-categories = ["MySQL"]
+categories = ["SQL"]
 draft = false
 +++
 

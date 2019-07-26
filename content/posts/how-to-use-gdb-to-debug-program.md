@@ -1,21 +1,20 @@
----
-title: "GDB调试整理"
-date: 2018-06-11T09:21:34+08:00
-draft: false 
-tags: ["GDB"]
-categories: ["技术"]
-author: "Dylan Yang"
----
++++
+title = "GDB 调试笔记"
+author = ["Dylan Yang"]
+date = 2018-06-11T11:19:00+08:00
+tags = ["gdb"]
+categories = ["Linux"]
+draft = false
++++
 
-GDB 是一个由 GNU 开源组织发布的 `*.nix` 下的、基于命令行的一款比较知名的程序调试工具。
+GDB 是一个由 GNU 开源组织发布的 \`\*.nix\` 下的、基于命令行的一款比较知名的程序调试工具。
 
 GDB 有着相当多的命令，但是常用的只有大概十个左右。
 
-gdb命令一般可以使用 `gdb program` 或者使用 `gdb progrma core` 如果想对正在执行的进程进行调试，则可以使用 `gdb -p 123` 。
+gdb命令一般可以使用 \`gdb program\` 或者使用 \`gdb progrma core\` 如果想对正在执行的进程进行调试，则可以使用 \`gdb -p 123\` 。
 
-<!--more-->
 
-### 常见命令
+## 常见命令 {#常见命令}
 
 <table>
 <tr>
@@ -39,9 +38,9 @@ gdb命令一般可以使用 `gdb program` 或者使用 `gdb progrma core` 如果
     <td>(gdb) c</td>
 </tr>
 <tr>
-    <td>b &lt;行号&gt;<br />b &lt;函数名称&gt;<br />b *&lt;函数名称&gt;<br />b *&lt;代码地址&gt; <br />d [编号]</td>
-    <td>b: Breakpoint的简写，设置断点。两可以使用“行号”“函数名称”“执行地址”等方式指定断点位置。<br />其中在函数名称前面加“*”符号表示将断点设置在“由编译器生成的prolog代码处”。如果不了解汇编，可以不予理会此用法。<br />d: Delete breakpoint的简写，删除指定编号的某个断点，或删除所有断点。断点编号从1开始递增。</td>
-    <td>(gdb) b 8<br />(gdb) b main<br />(gdb) b *main<br />(gdb) b *0x804835c<br />(gdb) d</td>
+    <td>b &lt;行号&gt;<br />b &lt;函数名称&gt;<br />b \*&lt;函数名称&gt;<br />b \*&lt;代码地址&gt; <br />d [编号]</td>
+    <td>b: Breakpoint的简写，设置断点。两可以使用“行号”“函数名称”“执行地址”等方式指定断点位置。<br />其中在函数名称前面加“\*”符号表示将断点设置在“由编译器生成的prolog代码处”。如果不了解汇编，可以不予理会此用法。<br />d: Delete breakpoint的简写，删除指定编号的某个断点，或删除所有断点。断点编号从1开始递增。</td>
+    <td>(gdb) b 8<br />(gdb) b main<br />(gdb) b \*main<br />(gdb) b \*0x804835c<br />(gdb) d</td>
 </tr>
 <tr>
     <td>bt</td>
@@ -100,17 +99,22 @@ gdb命令一般可以使用 `gdb program` 或者使用 `gdb progrma core` 如果
 </tr>
 </table>
 
-### 用法总结
+
+## 用法总结 {#用法总结}
 
 这里的总结主要是整理自[gdb 调试入门，大牛写的高质量指南](http://blog.jobbole.com/107759/)，我觉得这篇文章是可以反复阅读的好文章。
 
-![](/images/gdb.png)
+{{< figure src="/images/gdb.png" >}}
 
-### 补充小工具
 
-python dbg工具，可以通过 `apt-get install -y python-dbg` 进行安装，然后可以在其中使用 `py-bt`、`py-list·、`等命令。
+## 补充小工具 {#补充小工具}
+
+python dbg工具，可以通过 `apt-get install -y python-dbg` 进行安装，然后可以在其中使用 `py-bt` 、 `py-list` 等命令。
 
 另外还有一个工具是 **cscope** ，主要用来遍历代码用的。
 
-- `cscope -bqR` 建立查找数据库
-- `cscope -dq` 启动cscope
+cscope -bqR
+: 建立查找数据库
+
+cscope -dq
+: 启动cscope

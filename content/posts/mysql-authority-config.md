@@ -3,7 +3,7 @@ title = "MySQL 数据库设置远程权限"
 author = ["Dylan Yang"]
 date = 2016-04-29T18:55:00+08:00
 tags = ["authority"]
-categories = ["MySQL"]
+categories = ["SQL"]
 draft = false
 +++
 
