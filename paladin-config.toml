@@ -46,7 +46,7 @@ metaDataFormat = "YAML"
     b-github = "https://github.com/ZucchiniY"
 
 [params.valine]
-    enable = true
+    enable = false 
     appId = '0CS13cNBUV5BJj7PQWupnVWq-gzGzoHsz'
     appKey = 'xsz3vAzEbda56D3RK5aomNSW'
     notify = false
