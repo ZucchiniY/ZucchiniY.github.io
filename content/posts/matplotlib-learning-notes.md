@@ -1,8 +1,10 @@
 +++
 title = "Matplotlib 学习笔记"
 author = ["Dylan Yang"]
-date = 2019-07-26T15:41:00+08:00
-draft = true
+date = 2019-07-30T10:38:00+08:00
+tags = ["Matplotlib"]
+categories = ["Python"]
+draft = false
 +++
 
 记录了几个好入的可视化库，学习还是要从基础—— Matplotlib 开始学习。
@@ -45,7 +47,13 @@ return '/images/python-matplot-fig.png'  # return filename to org-mode
 `plt.gcf().clear()`
 : 每次清空图标内的内容
 
+
+## Matplotlib 图例 {#matplotlib-图例}
+
 {{< figure src="/images/matplotlib-anatomy.png" >}}
+
+
+## 折线图 {#折线图}
 
 ```python
 import pandas as pd
@@ -183,7 +191,8 @@ return '/images/matplotlib05.png'
 
 {{< figure src="/images/matplotlib05.png" >}}
 
--   Series 直接生成图表
+
+## Series 直接生成图表 {#series-直接生成图表}
 
 ```python
 import pandas as pd
@@ -218,7 +227,8 @@ return '/images/matplotlib06.png'
 
 {{< figure src="/images/matplotlib06.png" >}}
 
--   Dataframe 直接生成图表
+
+## Dataframe 直接生成图表 {#dataframe-直接生成图表}
 
 ```python
 import pandas as pd
@@ -246,7 +256,8 @@ return '/images/matplotlib07.png'
 
 {{< figure src="/images/matplotlib07.png" >}}
 
--   柱关图与堆叠图
+
+## 柱关图与堆叠图 {#柱关图与堆叠图}
 
 ```python
 import pandas as pd
@@ -275,28 +286,195 @@ return '/images/matplotlib08.png'
 
 {{< figure src="/images/matplotlib08.png" >}}
 
--   柱状图
+
+## 堆叠柱状图 {#堆叠柱状图}
 
 ```python
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib
 
-plt.figure(figsize=(10, 4))
-x = np.arange(10)
-y1 = np.random.rand(10)
-y2 = np.random.rand(10)
-plt.bar(x, y1, width=0.8, facecolor='green', edgecolor='black', yerr=y1*0.1)
-plt.bar(x, -y2, width=0.8, facecolor='yellow', edgecolor='black', yerr=y2*0.1)
-for i, j in zip(x, y1):
-    plt.text(i-0.2, j+0.1, '%.2f' % j, color='blue')
+category_names = ['Strongly disagree', 'Disagree',
+                  'Neither agree nor disagree', 'Agree', 'Strongly agree']
+results = {
+    'Question 1': [10, 15, 17, 32, 26],
+    'Question 2': [26, 22, 29, 10, 13],
+    'Question 3': [35, 37, 7, 2, 19],
+    'Question 4': [32, 11, 9, 15, 33],
+    'Question 5': [21, 29, 5, 5, 40],
+    'Question 6': [8, 19, 5, 30, 38]
+}
 
-for i, j in zip(x, y2):
-    plt.text(i, -j-0.2, '%.2f' % j, color='blue')
+
+def survey(results, category_names):
+    labels = list(results.keys())
+    data = np.array(list(results.values()))
+    data_cum = data.cumsum(axis=1)
+    category_colors = plt.get_cmap('RdYlGn')(
+        np.linspace(0.15, 0.85, data.shape[1]))
+
+    fig, ax = plt.subplots(figsize=(9.2, 5))
+    ax.invert_yaxis()
+    ax.xaxis.set_visible(False)
+    ax.set_xlim(0, np.sum(data, axis=1).max())
+
+    for i, (colname, color) in enumerate(zip(category_names, category_colors)):
+        widths = data[:, i]
+        starts = data_cum[:, i] - widths
+        ax.barh(labels, widths, left=starts, height=0.5,
+                label=colname, color=color)
+        xcenters = starts + widths / 2
+
+        r, g, b, _ = color
+        text_color = 'white' if r * g * b < 0.5 else 'darkgrey'
+        for y, (x, c) in enumerate(zip(xcenters, widths)):
+            ax.text(x, y, str(int(c)), ha='center', va='center',
+                    color=text_color)
+    ax.legend(ncol=len(category_names), bbox_to_anchor=(0, 1),
+              loc='lower left', fontsize='small')
+
+    return fig, ax
+
+
+survey(results, category_names)
 
 plt.savefig('./images/matplotlib09.png')
 return '/images/matplotlib09.png'
 ```
 
 {{< figure src="/images/matplotlib09.png" >}}
+
+
+## 散点图 {#散点图}
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+data = {'a': np.arange(50),
+        'c': np.random.randint(0, 50, 50),
+        'd': np.random.randn(50)}
+data['b'] = data['a'] + 10 * np.random.randn(50)
+data['d'] = np.abs(data['d']) * 100
+
+plt.scatter('a', 'b', c='c', s='d', data=data)
+plt.xlabel('entry a')
+plt.ylabel('entry b')
+
+plt.savefig('./images/matplotlib010.png')
+return '/images/matplotlib010.png'
+```
+
+{{< figure src="/images/matplotlib010.png" >}}
+
+
+## 图中插入数据表 {#图中插入数据表}
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = [[66386, 174296, 75131, 577908, 32015],
+        [58230, 381139, 78045, 99308, 160454],
+        [89135, 80552, 152558, 497981, 603535],
+        [78415, 81858, 150656, 193263, 69638],
+        [139361, 331509, 343164, 781380, 52269]]
+
+columns = ('Freeze', 'Wind', 'Flood', 'Quake', 'Hail')
+rows = ['%d year' % x for x in (100, 50, 20, 10, 5)]
+
+values = np.arange(0, 2500, 500)
+value_increment = 1000
+colors = plt.cm.BuPu(np.linspace(0, 0.5, len(rows)))
+n_rows = len(data)
+
+index = np.arange(len(columns)) + 0.3
+bar_width = 0.4
+y_offset = np.zeros(len(columns))
+cell_text = []
+for row in range(n_rows):
+    plt.bar(index, data[row], bar_width, bottom=y_offset,
+            color=colors[row], edgecolor='black')
+    y_offset = y_offset+data[row]
+    cell_text.append(['%1.1f' % (x/1000.0) for x in y_offset])
+
+colors_col = plt.cm.Reds(np.linspace(0, 0.5, len(rows)))
+colors = colors[::-1]
+cell_text.reverse()
+
+the_table = plt.table(cellText=cell_text,
+                      rowLabels=rows,
+                      rowColours=colors,
+                      colLabels=columns,
+                      colColours=colors_col,
+                      loc='bottom')
+plt.subplots_adjust(left=0.2, bottom=0.2)
+
+plt.ylabel("Loss in ${0}'s".format(value_increment))
+plt.yticks(values * value_increment, ['%d' % val for val in values])
+plt.xticks([])
+plt.title('Loss by Disaster')
+
+plt.savefig('./images/matplotlib011.png')
+return '/images/matplotlib011.png'
+```
+
+{{< figure src="/images/matplotlib011.png" >}}
+
+
+## 面积图 {#面积图}
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+fig, axes = plt.subplots(2, 1, figsize=(10, 8))
+df1 = pd.DataFrame(np.random.rand(10, 4), columns=list('abcd'))
+df2 = pd.DataFrame(np.random.randn(10, 4), columns=list('abcd'))
+df1.plot.area(colormap='Greens_r', alpha=0.8, ax=axes[0])
+df2.plot.area(stacked=False, colormap='Set2', alpha=0.8, ax=axes[1])
+plt.savefig('./images/matplotlib012.png')
+return '/images/matplotlib012.png'
+```
+
+{{< figure src="/images/matplotlib012.png" >}}
+
+
+## 3d 图例 {#3d-图例}
+
+```python
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+import numpy as np
+
+np.random.seed(196608081)
+
+
+def randrange(n, vmin, vmax):
+    return (vmax-vmin)*np.random.rand(n)+vmin
+
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+n = 100
+
+for m, zlow, zhigh in [('o', -50, -25), ('^', -30, -5)]:
+    xs = randrange(n, 23, 32)
+    ys = randrange(n, 0,100)
+    zs = randrange(n, zlow, zhigh)
+    ax.scatter(xs, ys, zs, marker=m)
+
+ax.set_xlabel('X Label')
+ax.set_ylabel('Y Label')
+ax.set_zlabel('Z Label')
+plt.savefig('./images/matplotlib013.png')
+return '/images/matplotlib013.png'
+```
+
+{{< figure src="/images/matplotlib013.png" >}}
+
+
+## 更多图例 {#更多图例}
+
+更多内容内 [Matplotlib
+Gallery](https://matplotlib.org/gallery/index.html)，可以从中找到想使用的图例进行使用。
