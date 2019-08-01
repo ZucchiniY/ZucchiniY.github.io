@@ -1,7 +1,7 @@
 +++
 title = "Mac 下使用 tmux"
 author = ["Dylan Yang"]
-date = 2018-07-06T17:16:00+08:00
+date = 2019-08-01T14:37:00+08:00
 tags = ["tmux"]
 categories = ["笔记"]
 draft = false
@@ -183,8 +183,12 @@ draft = false
         </tr>
     </tr>
     <tr>
-        <td>其它</td>
+        <td rowspan="2">其它</td>
         <td>t</td>
         <td>在当前窗格显示时间</td>
+        <tr>
+        <td>z</td>
+        <td>最大化和最小化当前窗口</td>
+        </tr>
     </tr>
 </table>
