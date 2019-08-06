@@ -22,10 +22,12 @@ gcc -c sourcefile.c
 gcc (-E/-S/-c) sourcefile.c -o output-file
 : -o，指定输出文件名，可以使用以上三种标签中的一种。
 
+    <p class="verse">
     -o 参数可以被省略，这种情况下编译器按以下默认名方式输出:<br />
     - -E 预编译结果将被输出到标准输出端口<br />
     - -S 生成名为 sourcefile.s 的汇编文件<br />
     - -c 生成名为 sourcefile.o 的目标文件<br />
+    </p>
 
 **无标签的时候，生成名为 a.out 的可执行文件**
 
@@ -41,7 +43,9 @@ gcc -s sourcefile.c
 gcc -O sourcefile.c
 : -O 编译器对代码进行自动化编译，输出效率更高的可执行文件
 
+    <p class="verse">
     -O2 可以跟上数字表示优化等级 gcc -O2 sourcefile.c 数字越大越加优化。但是也会有出 bug 的风险<br />
+    </p>
 
 
 gcc -Wall sourcefile.c
@@ -49,8 +53,10 @@ gcc -Wall sourcefile.c
 
 
 gcc sourcefile.c -L/path/to/lib -lxxx -l/path/to/include
-: - -l 指定所使用到的函数库，本例中是尝试链接名为 libxxx.a 的函数库<br />
+: <p class="verse">
+    - -l 指定所使用到的函数库，本例中是尝试链接名为 libxxx.a 的函数库<br />
     - -L 指定函数库所在的文件，本例中链接器会尝试搜索/path/to/lib 文件夹<br />
     - -I 指定文件所在的文件夹，本例中预编译器会尝试搜索/path/to/include 文件夹<br />
+    </p>
 
 Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org
