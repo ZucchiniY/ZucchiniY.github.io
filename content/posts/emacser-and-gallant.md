@@ -21,5 +21,3 @@ draft = false
 的配置就像是侠客的武术，使用 Emacs 就像是行侠仗义，在那种行云流水的操作过程中，解决了我在生活和工作中一个又一个的问题，就像是李白的诗中的那种「十步杀一人，千里不留行。」的感觉，这种感觉让我对 Emacs 的使用欲罢不能，让我对 Emacs 的配置精益求精，就像是侠客对华山论剑的希望，让我们不停的追求更好用，更方便的 Emacs 的使用。
 
 这就是为什么我喜欢用 Emacs 的原因。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

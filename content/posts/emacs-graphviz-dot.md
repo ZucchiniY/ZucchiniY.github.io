@@ -94,30 +94,27 @@ splines = polyline #直线（不遮挡）
 
 -   語言可以用來繪製流程圖,如下:
 
-    ```org
-    #+BEGIN_SRC dot :file ../images/dot04.png :cmdline -Kdot -Tpng
-      digraph structs {
-       node[shape=record]
-       struct1 [label="<f0> left|<f1> mid\ dle|<f2> right"];
-       struct2 [label="{<f0> one|<f1> two\n\n\n}" shape=Mrecord];
-       struct3 [label="hello\nworld |{ b |{c|<here> d|e}| f}| g | h"];
-       struct1:f1 -> struct2:f0;
-       struct1:f0 -> struct3:f1;
-      }
-    #+END_SRC
+    ```dot
+    digraph structs {
+    node[shape=record]
+    struct1 [label="<f0> left|<f1> mid\ dle|<f2> right"];
+    struct2 [label="{<f0> one|<f1> two\n\n\n}" shape=Mrecord];
+    struct3 [label="hello\nworld |{ b |{c|<here> d|e}| f}| g | h"];
+    struct1:f1 -> struct2:f0;
+    struct1:f0 -> struct3:f1;
+    }
     ```
 
 {{< figure src="/images/dot04.png" >}}
 
-```org
-#+BEGIN_SRC dot :file ../images/dot01.png :cmdline -Kdot -Tpng
-  digraph G {
+```dot
+  digraph g {
   size="8,6"
   ratio=expand
   edge [dir=both]
-  plcnet [shape=box, label="PLC Network"]
+  plcnet [shape=box, label="plc network"]
   subgraph cluster_wrapline {
-    label="Wrapline Control System"
+    label="wrapline control system"
     color=purple
     subgraph {
     rank=same
@@ -135,12 +132,12 @@ splines = polyline #直线（不遮挡）
     sharedmem -> opserver
   }
   plcnet -> plc [constraint=false]
-  millwide [shape=box, label="Millwide System"]
+  millwide [shape=box, label="millwide system"]
   db -> millwide
   subgraph cluster_opclients {
     color=blue
-    label="Operator Client"
-    rankdir=LR
+    label="operator client"
+    rankdir=lr
     labelloc=b
     node[label=client]
     opserver -> client1
@@ -148,58 +145,55 @@ splines = polyline #直线（不遮挡）
     opserver -> client3
   }
 }
-#+end_src
 ```
 
 {{< figure src="/images/dot01.png" >}}
 
-```org
-#+BEGIN_SRC dot :file ../images/dot_html01.png :cmdline -Kdot -Tpng
-  digraph G {
-  rankdir=LR
-  node [shape=plaintext]
-  a [
-     label=<
+```dot
+digraph G {
+rankdir=LR
+node [shape=plaintext]
+a [
+label=<
 <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-  <TR><TD ROWSPAN="3" BGCOLOR="yellow">class</TD></TR>
-  <TR><TD PORT="here" BGCOLOR="lightblue">qualifier</TD></TR>
+<TR><TD ROWSPAN="3" BGCOLOR="yellow">class</TD></TR>
+<TR><TD PORT="here" BGCOLOR="lightblue">qualifier</TD></TR>
 </TABLE>>
-  ]
-    b [shape=ellipse style=filled
-  label=<
+]
+b [shape=ellipse style=filled
+label=<
 <TABLE BGCOLOR="bisque">
-  <TR><TD COLSPAN="3">elephant</TD>
-      <TD ROWSPAN="2" BGCOLOR="chartreuse"
-          VALIGN="bottom" ALIGN="right">two</TD> </TR>
-  <TR><TD COLSPAN="2" ROWSPAN="2">
-        <TABLE BGCOLOR="grey">
-          <TR> <TD>corn</TD> </TR>
-          <TR> <TD BGCOLOR="yellow">c</TD> </TR>
-          <TR> <TD>f</TD> </TR>
-        </TABLE> </TD>
-      <TD BGCOLOR="white">penguin</TD>
-  </TR>
-  <TR> <TD COLSPAN="2" BORDER="4" ALIGN="right" PORT="there">4</TD> </TR>
+<TR><TD COLSPAN="3">elephant</TD>
+<TD ROWSPAN="2" BGCOLOR="chartreuse"
+VALIGN="bottom" ALIGN="right">two</TD> </TR>
+<TR><TD COLSPAN="2" ROWSPAN="2">
+<TABLE BGCOLOR="grey">
+<TR> <TD>corn</TD> </TR>
+<TR> <TD BGCOLOR="yellow">c</TD> </TR>
+<TR> <TD>f</TD> </TR>
+</TABLE> </TD>
+<TD BGCOLOR="white">penguin</TD>
+</TR>
+<TR> <TD COLSPAN="2" BORDER="4" ALIGN="right" PORT="there">4</TD> </TR>
 </TABLE>>
-  ]
-  c [
-  label=<long line 1<BR/>line 2<BR ALIGN="LEFT"/>line 3<BR ALIGN="RIGHT"/>>
-  ]
-  subgraph { rank=same b c }
-  a:here -> b:there [dir=both arrowtail = diamond]
-  c -> b
-  d [shape=triangle]
-  d -> c [label=<
+]
+c [
+label=<long line 1<BR/>line 2<BR ALIGN="LEFT"/>line 3<BR ALIGN="RIGHT"/>>
+]
+subgraph { rank=same b c }
+a:here -> b:there [dir=both arrowtail = diamond]
+c -> b
+d [shape=triangle]
+d -> c [label=<
 <TABLE>
-  <TR><TD BGCOLOR="red" WIDTH="10"> </TD>
-      <TD>Edge labels<BR/>also</TD>
-      <TD BGCOLOR="blue" WIDTH="10"> </TD>
-  </TR>
+<TR><TD BGCOLOR="red" WIDTH="10"> </TD>
+<TD>Edge labels<BR/>also</TD>
+<TD BGCOLOR="blue" WIDTH="10"> </TD>
+</TR>
 </TABLE>>
-  ]
+]
 
-  }
-  #+END_SRC
+}
 ```
 
 {{< figure src="/images/dot_html01.png" >}}

@@ -23,5 +23,3 @@ for i in range(2,101):
         primes.append(i)
 print(sum(primes))
 ```
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

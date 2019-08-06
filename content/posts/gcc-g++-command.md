@@ -58,5 +58,3 @@ gcc sourcefile.c -L/path/to/lib -lxxx -l/path/to/include
     - -L 指定函数库所在的文件，本例中链接器会尝试搜索/path/to/lib 文件夹<br />
     - -I 指定文件所在的文件夹，本例中预编译器会尝试搜索/path/to/include 文件夹<br />
     </p>
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

@@ -72,10 +72,7 @@ df.tail()
 : 查看默认的后 10 行数据
 
 
-### 数据表清洗 {#数据表清洗}
-
-df.fillna(value=0)
-: 用数字 0 填充空值
+### 数据表清洗 - df.fillna(value=0) :: 用数字 0 填充空值 {#数据表清洗-df-dot-fillna--value-0--用数字-0-填充空值}
 
 df['pr'].fillna(df['pr'].mean())
 : 用列 pr 的平均值对 na 进行填充

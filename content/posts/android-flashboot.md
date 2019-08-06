@@ -126,5 +126,3 @@ adb shell getprop|grep cid
 ```
 
 如果出现 **VZW\_001** 就是 V 版手机
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

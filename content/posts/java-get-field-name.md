@@ -21,5 +21,3 @@ public String allName(){
 ```
 
 这样之后，调用 `allName()` 方法就能直接获取对应的变量名称了。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

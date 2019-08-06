@@ -19,5 +19,3 @@ dropdown.selectByVisibleText("content");
 ```
 
 这样就可以操作下拉框了。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

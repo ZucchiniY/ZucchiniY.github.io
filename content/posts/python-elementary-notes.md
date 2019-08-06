@@ -223,5 +223,3 @@ for index , value in enumerate(L):
 `[x.upper() for x in L if isinstance(x, str)]` 是用来判断每个在 L 中的内容是否是字符串。
 
 利用这种方式，可以将许多方法简化成一个表达式。 其中 `ininstance(x,str)` 方法可以判断变量 x 是否是字符串。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

@@ -13,5 +13,3 @@ draft = false
 [另外一篇文章](http://mudan.github.io/Emacs/The%5FOrg%5FManual/The%5FOrg%5FManual.html) 是我的 Org Mode 的使用入门阅读，虽然很久没有更新了，但是在使用了一段时间之后，再重读这篇文章，会发现又有新的感受，可以说是非常好用的一个帮助手册了。
 
 这里主要是怕忘记这两篇好文章，做一个记录。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

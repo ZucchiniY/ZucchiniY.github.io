@@ -64,5 +64,3 @@ _.org_ 格式转换成 _.md_ 格式。
 
 通过上面这个，就可以生成对应的 capture templates 了，而且在执行
 `org-export-dispatch` 时就可以看到 hugo 导出配置了。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

@@ -88,7 +88,6 @@ This is a combination of 2 commits.
 # interactive rebase in progress; onto 9b6bae1
 # Last commands done (2 commands done):
 "~/spacemacs/spacemacs.d/.git/COMMIT_EDITMSG" 36L, 1003C
-
 ```
 
 修改成正确的 `commit` 信息之后，保存存并退出，可以看到下面的内容

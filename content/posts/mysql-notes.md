@@ -21,5 +21,3 @@ show OPEN TABLES where In_use > 0;
 ```
 
 这时可以找到真正占用数据库资源的进程，然后使用 `kill <process id>` 结束掉进程。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

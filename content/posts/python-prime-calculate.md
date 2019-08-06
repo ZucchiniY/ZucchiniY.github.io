@@ -59,8 +59,15 @@ while i < 5:
 print(','.join(primes))
 ```
 
-这次给自己提了一个醒，虽然 Python 这门语言特别简单，但是编程这件事儿却是特别复杂的一件事，不能因为是一个老程序员就觉得自己特别厉害，老手和高手是完全不一样的两个东西。
+这次给自己提了个醒，虽然 Python 这门语言特别简单，但是编程这件事儿却手是完全不一样的两个东西。
 
 **希望自己能成为一个高手，而不是一个没用的老手。**
 
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org
+-   changeSet:
+    id: 1
+    author: your\_name
+    changs:
+      encoding: utf8
+      path: classpath: path/file.sql
+
+\#+END\_SRC

@@ -40,5 +40,3 @@ xxxx
 4.  Git
 5.  MySQL
 6.  JavaScript
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

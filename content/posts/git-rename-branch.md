@@ -15,5 +15,3 @@ git branch -m <new name>
 ```
 
 上面的命令是用来修改指定的一个分支名称的，下面的是用来修改当前分支的命令。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

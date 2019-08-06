@@ -34,9 +34,7 @@ draft = false
 x+a start.sh` 然后将启动的脚本增加如果下内容：
 
 ```text
-nohup java -Dloader.path=./lib -jar ./springboot.jar &
+
 ```
 
 再启动的时候，更新了代码，打包再上传服务器，也就一分钟的事儿。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

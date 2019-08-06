@@ -25,5 +25,3 @@ draft = false
 ```
 
 这样就可以让我们在使用过程中更适合的方式操作了。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org

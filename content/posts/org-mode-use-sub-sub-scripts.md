@@ -11,5 +11,3 @@ draft = false
 
 我又查询了一下，发现还可以通过配置 `(setq org-use-sub-superscripts
 nil)` 的方式来实现，在 org 的配置文件中加上了配置，果然可以了。但是对于这个还是耿耿于怀，到底为什么呢？又测试了一次，发现可以了，原来是因为新增加的配置没事更新导致的，重新打开 buffer 就可以了。
-
-Archived entries from file /Users/zucchini/workspace/org/blog/hugo-posts.org
