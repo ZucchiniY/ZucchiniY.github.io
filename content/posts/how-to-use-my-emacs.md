@@ -2,8 +2,7 @@
 title = "Emacs 个人使用"
 author = ["Dylan Yang"]
 date = 2019-02-13T19:07:00+08:00
-tags = ["Emacs"]
-categories = ["随笔"]
+categories = ["随笔", "Emacs"]
 draft = false
 +++
 
