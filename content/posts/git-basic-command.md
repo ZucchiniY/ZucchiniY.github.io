@@ -246,6 +246,8 @@ $ git archive
 
 -   储藏暂存内容
 
+<!--listend-->
+
 ```shell
 # 想要切换分支，但是还不想要提交之前的工作，可以储存修改信息，将新的储藏推送到栈上
 $ git stash / git stash save
@@ -258,6 +260,8 @@ $ git stash apply stash@{1}
 ```
 
 -   核武器级选项 filter-branch
+
+<!--listend-->
 
 ```shell
 # 从每一个提交移除一个文件：指 git add . 的内容完整的上传到仓库，但是当希望开源这个内容的时候，需要移除一些无用的文件，--tre-filter 选项在的每一个提交后，运行指定的命令，然后重新提交结果。

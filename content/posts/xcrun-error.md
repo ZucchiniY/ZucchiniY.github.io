@@ -3,7 +3,7 @@ title = "Mac 下执行 Git 命令报错"
 author = ["Dylan Yang"]
 date = 2017-12-07T15:31:00+08:00
 tags = ["xcrun"]
-categories = ["笔记"]
+categories = ["笔记", "Mac"]
 draft = false
 +++
 

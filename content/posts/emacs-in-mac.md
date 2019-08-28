@@ -2,8 +2,7 @@
 title = "Mac 电脑上使用 Emacs"
 author = ["Dylan Yang"]
 date = 2019-07-29T11:17:00+08:00
-tags = ["Mac"]
-categories = ["Emacs"]
+categories = ["Emacs", "Mac"]
 draft = false
 +++
 

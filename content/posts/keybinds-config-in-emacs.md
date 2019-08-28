@@ -14,11 +14,15 @@ draft = false
 
 -   全局快捷键
 
+<!--listend-->
+
 ```emacs-lisp
 (global-set-key (kdb "a") 'command)
 ```
 
 -   全局映射键
+
+<!--listend-->
 
 ```emacs-lisp
 (define-key key-translation-map (kbd "a") (kdb "b"))
@@ -26,11 +30,15 @@ draft = false
 
 -   Major-mode 局部快捷键
 
+<!--listend-->
+
 ```emacs-lisp
 (local-set-key (kdb "a") 'command)
 ```
 
 -   Minor-mode 局部快捷键
+
+<!--listend-->
 
 ```emacs-lisp
 (define-key your-minor-mode-map (kbd "a") 'command)

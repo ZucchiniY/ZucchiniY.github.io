@@ -9,6 +9,8 @@ draft = false
 
 -   ditaa 可以繪製對應的矩形圖,如下
 
+<!--listend-->
+
 ```org
 #+BEGIN_SRC ditaa :file ../images/linux02.png :cmdline -E -r -s 1.0
 +---------------------------------------+

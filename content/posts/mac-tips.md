@@ -2,8 +2,7 @@
 title = "Mac Tips"
 author = ["Dylan Yang"]
 date = 2018-04-27T16:45:00+08:00
-tags = ["Mac"]
-categories = ["笔记"]
+categories = ["笔记", "Mac"]
 draft = false
 +++
 

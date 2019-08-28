@@ -105,6 +105,8 @@ return '/images/matplotlib02.png'
 
 -   图表基本样式
 
+<!--listend-->
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt

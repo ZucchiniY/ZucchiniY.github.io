@@ -29,6 +29,8 @@ draft = false
 
 -   删除暂存区和工作区的文件
 
+<!--listend-->
+
 ```shell
 git rm -f fileName
 ```
@@ -40,17 +42,23 @@ git rm -f fileName
 
 -   仅仅撤销已经提交的版本库，不会个性暂存区和工作区
 
+<!--listend-->
+
 ```shell
 git reset --soft commitId
 ```
 
 -   撤销已提交的版本库和暂存区，不会修改工作区
 
+<!--listend-->
+
 ```shell
 git reset --mixed commitId
 ```
 
 -   彻底将工作区、暂存区和版本库记录恢复到指定的版本
+
+<!--listend-->
 
 ```shell
 git reset --hard commitId

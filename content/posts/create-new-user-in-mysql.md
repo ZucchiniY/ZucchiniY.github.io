@@ -9,11 +9,15 @@ draft = false
 
 -   创建本地用户
 
+<!--listend-->
+
 ```sql
 create user 'test'@'localhost' identified by 'password';
 ```
 
 -   创建局域网用户
+
+<!--listend-->
 
 ```sql
 create user 'test'@'%' identified by 'password';
@@ -21,11 +25,15 @@ create user 'test'@'%' identified by 'password';
 
 -   刷新
 
+<!--listend-->
+
 ```sql
 flush privileges;
 ```
 
 -   修改密码
+
+<!--listend-->
 
 ```sql
 set password for 'test'@'localhost' = password('newpassword');
@@ -48,6 +56,8 @@ REVOKE privilege ON databasename.tablename FROM 'username'@'localhost';
 ```
 
 -   删除用户
+
+<!--listend-->
 
 ```sql
 drop user 'username'@'localhost'

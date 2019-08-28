@@ -21,11 +21,15 @@ https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 -   搜索
 
+<!--listend-->
+
 ```shell
 brew search mysql
 ```
 
 -   查询
+
+<!--listend-->
 
 ```shell
 brew info mysql
@@ -35,6 +39,8 @@ brew info mysql
 
 -   更新
 
+<!--listend-->
+
 ```shell
 brew update
 ```
@@ -42,6 +48,8 @@ brew update
 这会更新 Homebrew 自己，并且使得接下来的两个操作有意义
 
 -   检查过时
+
+<!--listend-->
 
 ```shell
 brew outdated
@@ -51,6 +59,8 @@ brew outdated
 
 -   升级
 
+<!--listend-->
+
 ```shell
 brew upgrade
 ```
@@ -58,6 +68,8 @@ brew upgrade
 升级所有可以升级的软件们
 
 -   清理
+
+<!--listend-->
 
 ```shell
 brew cleanup

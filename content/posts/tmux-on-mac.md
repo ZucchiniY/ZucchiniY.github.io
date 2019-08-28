@@ -3,7 +3,7 @@ title = "Mac 下使用 tmux"
 author = ["Dylan Yang"]
 date = 2019-08-01T14:37:00+08:00
 tags = ["tmux"]
-categories = ["笔记"]
+categories = ["笔记", "Mac"]
 draft = false
 +++
 

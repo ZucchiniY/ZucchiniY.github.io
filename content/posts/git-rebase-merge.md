@@ -11,6 +11,8 @@ draft = false
 
 -   同步远程分支
 
+<!--listend-->
+
 ```shell
 git pull
 ```
@@ -25,6 +27,8 @@ git pull
 
 -   Git rebase master
 
+<!--listend-->
+
 ```shell
 git rebase master
 ```
@@ -32,6 +36,8 @@ git rebase master
 -   解决冲突，将 **`=`** **>>>>** **<<<<** 中冲突的内容进行个性
 
 -   提交解决冲突后的内容
+
+<!--listend-->
 
 ```shell
 git add .
@@ -41,6 +47,8 @@ git add -A
 
 -   继续 rebase 操作
 
+<!--listend-->
+
 ```shell
 git rebase --continue
 ```
@@ -49,17 +57,23 @@ git rebase --continue
 
 -   切换到要提交的分支
 
+<!--listend-->
+
 ```shell
 git checkout master
 ```
 
 -   将原分支 merge 到想提交的分支
 
+<!--listend-->
+
 ```shell
 git merge feature
 ```
 
 -   提交到远程分支
+
+<!--listend-->
 
 ```shell
 git push -u origin master

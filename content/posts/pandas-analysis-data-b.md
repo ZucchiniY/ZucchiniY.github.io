@@ -112,11 +112,15 @@ df['city'].replace('sh', 'shanghai')
 
 -   设置索引列
 
+<!--listend-->
+
 ```python
 df.set_index('id')
 ```
 
 -   按照特定列的值排序
+
+<!--listend-->
 
 ```python
 df.sort_values(by=['age'])
@@ -124,11 +128,15 @@ df.sort_values(by=['age'])
 
 -   按照索引列排序
 
+<!--listend-->
+
 ```python
 df.sort_index()
 ```
 
 -   如果 pr 列的值大于 3000 ， group 列显示 hight , 否则显示 low
+
+<!--listend-->
 
 ```python
 df['group'] = np.where(df['pr'] > 3000, 'hight', 'low')
@@ -136,11 +144,15 @@ df['group'] = np.where(df['pr'] > 3000, 'hight', 'low')
 
 -   对复合多个条件的数据进行分级标记
 
+<!--listend-->
+
 ```python
 df.loc[(df['city'] == 'beijing') & (df['pr'] >= 4000), 'sign'] = 1
 ```
 
 -   对 category 字段的值依次进行分列，并创建数据表，索引值 df 的索引列，列名称为 category 和 size
+
+<!--listend-->
 
 ```python
 pd.DataFrame((x.split('-')
@@ -203,6 +215,8 @@ pd.DataFrame(category.str[:3])
 
 -   使用与进行筛选
 
+<!--listend-->
+
 ```python
 df.loc[(df['age'] > 25) & (df['city'] == 'beijing'),
        ['id', 'city', 'age', 'category']]
@@ -210,17 +224,23 @@ df.loc[(df['age'] > 25) & (df['city'] == 'beijing'),
 
 -   使用或进行筛选
 
+<!--listend-->
+
 ```python
 df.loc[(df['age'] > 25) | (df['city'] == 'beijing'), ['id', 'city', 'age']]
 ```
 
 -   使用非进行筛选
 
+<!--listend-->
+
 ```python
 df.loc[(df['city'] != 'beijing'), ['id', 'city', 'age']].sort(['id'])
 ```
 
 -   筛选后的灵气按 city 列进行计数
+
+<!--listend-->
 
 ```python
 df.loc[(df['city'] != 'beijing'), ['id', 'city', 'age']].sort(
@@ -229,11 +249,15 @@ df.loc[(df['city'] != 'beijing'), ['id', 'city', 'age']].sort(
 
 -   使用 query 函数进行筛选
 
+<!--listend-->
+
 ```python
 df.query('city' == ['beijing', 'shanghai'])
 ```
 
 -   对筛选后的结果按 pr 进行求和
+
+<!--listend-->
 
 ```python
 df.query('city' == ['beijing', 'shanghai']).pr.sum()
@@ -263,11 +287,15 @@ df.groupby('city')['pr'].agg([len, np.sum,np.mean])
 
 -   简单数据采样
 
+<!--listend-->
+
 ```python
 df.sample(n=3)
 ```
 
 -   手动设置采样权重
+
+<!--listend-->
 
 ```python
 weights = [0, 0, 0, 0, 0, 0.5, 0.5]
@@ -276,11 +304,15 @@ df.sample(n=2, weights=weights)
 
 -   采样后不放回
 
+<!--listend-->
+
 ```python
 df.sample(n=6, replace=False) # 如果 replace = True 采样后放回
 ```
 
 -   数据表描述性统计
+
+<!--listend-->
 
 ```python
 df.describe().round(2).T  # round 表示显示的小数位数，T 表示转置
@@ -288,11 +320,15 @@ df.describe().round(2).T  # round 表示显示的小数位数，T 表示转置
 
 -   计算列的标准差
 
+<!--listend-->
+
 ```python
 df['pr'].std()
 ```
 
 -   计算两个字段间的协方差
+
+<!--listend-->
 
 ```python
 df['pr'].cov(df['m-point'])
@@ -300,17 +336,23 @@ df['pr'].cov(df['m-point'])
 
 -   计算表中所有字段间的协方差
 
+<!--listend-->
+
 ```python
 df.cov()
 ```
 
 -   两个字段间的相关性分析
 
+<!--listend-->
+
 ```python
 df['pr'].corr(df['m-point'])  # 相关系数在 [-1, 1] 之间，接近 -1 为负相关，1 为正相关，0 为不相关
 ```
 
 -   数据表的相关性分析
+
+<!--listend-->
 
 ```python
 df.corr()
@@ -341,6 +383,8 @@ print(df)
 ```
 
 -   分组
+
+<!--listend-->
 
 ```python
 import pandas as pd

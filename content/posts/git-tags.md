@@ -11,11 +11,15 @@ draft = false
 
 -   查看
 
+<!--listend-->
+
 ```shell
 git tag
 ```
 
 -   创建
+
+<!--listend-->
 
 ```shell
 git tag tag_name
@@ -23,12 +27,16 @@ git tag tag_name
 
 -   推送
 
+<!--listend-->
+
 ```shell
 git push origin tag_name
 git push --tags # 推送所有 tags
 ```
 
 -   删除
+
+<!--listend-->
 
 ```shell
 # 删除本地
@@ -39,6 +47,8 @@ git push origin :refs/tags/tag_name
 ```
 
 -   拉取
+
+<!--listend-->
 
 ```shell
 git fatch origin tag tag_name

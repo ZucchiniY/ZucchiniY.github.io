@@ -1,5 +1,5 @@
 +++
-title = "Linux 查找文件"
+title = "Linux 利用 find 查找文件"
 author = ["Dylan Yang"]
 date = 2018-06-07T11:05:00+08:00
 tags = ["find", "grep"]
@@ -14,11 +14,15 @@ Linux 下 使用 find 命令查找文件。
 
 -   查找所有 **.h** 文件
 
+<!--listend-->
+
 ```shell
 find /PATH -name "*.h"
 ```
 
 -   查找所有 **.h** 文件中的含有 **helloworld** 字符串的文件
+
+<!--listend-->
 
 ```shell
 find /PATH -name "*.h" -exec grep -in "helloworld" {} \;
@@ -32,11 +36,15 @@ find /PATH -name "*.h" | xargs grep -in "helloworld"
 
 -   查找所有 **.h** 和 **.c** 文件中的含有 **helloworld** 字符串的文件
 
+<!--listend-->
+
 ```shell
 find /PATH /( -name "*.h" -or -name "*.c" /) -exec grep -in "helloworld" {} \;
 ```
 
 -   查找非备份文件中的含有 **helloworld** 字符串的文件
+
+<!--listend-->
 
 ```shell
 find /PATH /( -not -name "*~" /) -exec grep -in "helloworld" {} \;
@@ -131,6 +139,8 @@ find . -name core -exec rm {} \;
 `find . -size 0 -exec rm {} \;` 删除尺寸为０的文件
 
 -   xargs 与-exec 功能类似
+
+<!--listend-->
 
 ```shell
 find ~ -type f | xargs ls -l

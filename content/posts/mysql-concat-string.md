@@ -11,6 +11,8 @@ draft = false
 
 -   将多个结果作为字符串拼接在一起
 
+<!--listend-->
+
 ```sql
 concat(str1,str2,...)
 ```
@@ -40,6 +42,8 @@ select concat(o.user_name,',',o.user_number) from user o where user_id = '1'
 
 -   将多个结果拼接在一起，使用指定的分隔符
 
+<!--listend-->
+
 ```sql
 concat_ws(separator,str1,str2,...)
 ```
@@ -56,6 +60,8 @@ select concat_ws(';',o.user_name,o.user_number) from user o where user_id = '1'
 ## GROUP\_CONCAT {#group-concat}
 
 -   将多行的字符串分组整合成一个字符串，必须配合 **group** 使用
+
+<!--listend-->
 
 ```sql
 group_concat([distinct] str1 [order by asc/desc] [separator])

@@ -3,7 +3,7 @@ title = "使用 Mac 电脑制作 U 盘"
 author = ["Dylan Yang"]
 date = 2018-04-25T10:47:00+08:00
 tags = ["dd"]
-categories = ["笔记"]
+categories = ["笔记", "Mac"]
 draft = false
 +++
 
@@ -11,17 +11,23 @@ draft = false
 
 -   找出 U 盘挂载位置
 
+<!--listend-->
+
 ```shell
 diskutil list
 ```
 
 -   将 U 盘移除
 
+<!--listend-->
+
 ```shell
 diskutil unmountDisk /dev/disk[num]
 ```
 
 -   写入 U 盘
+
+<!--listend-->
 
 ```shell
 sudo dd if=isopath of=/dev/disk[num] bs=1m rdisk

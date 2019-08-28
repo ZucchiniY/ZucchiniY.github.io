@@ -2,7 +2,8 @@
 title = "自动化生成报表"
 author = ["Dylan Yang"]
 date = 2019-08-09T14:53:00+08:00
-categories = ["Python", "透视表"]
+tags = ["透视表"]
+categories = ["Python"]
 draft = false
 +++
 

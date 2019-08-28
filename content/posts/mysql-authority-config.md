@@ -11,6 +11,8 @@ draft = false
 
 -   设置用户名为 root，密码为空，可以访问数据库 test
 
+<!--listend-->
+
 ```shell
 mysql>grant all privileges on test.* to 'root'@'%';
 ```
@@ -19,6 +21,8 @@ mysql>grant all privileges on test.* to 'root'@'%';
 ## 设置访问全部数据库权限 {#设置访问全部数据库权限}
 
 -   设置用户名为 root，密码为空，可以访问所有数据库
+
+<!--listend-->
 
 ```shell
 mysql>grant all privileges on *.* to 'root'@'%';
@@ -29,6 +33,8 @@ mysql>grant all privileges on *.* to 'root'@'%';
 
 -   指定用户名为 liuhui，密码为空，可以访问所有数据库
 
+<!--listend-->
+
 ```shell
 mysql>grant all privileges on *.* to 'liuhui'@'%';
 ```
@@ -38,6 +44,8 @@ mysql>grant all privileges on *.* to 'liuhui'@'%';
 
 -   设置用户名为 liuhui，密码为 liuhui，可以访问所有数据库
 
+<!--listend-->
+
 ```shell
 mysql>grant all privileges on *.* to 'liuhui'@'%' IDENTIFIED BY 'liuhui';
 ```
@@ -46,6 +54,8 @@ mysql>grant all privileges on *.* to 'liuhui'@'%' IDENTIFIED BY 'liuhui';
 ## 设置指定可访问主机权限 {#设置指定可访问主机权限}
 
 -   设置用户名为 liuhui，密码为 liuhui，可以访问所有数据库，只有 10.1.1.1 这台机器有权限访问
+
+<!--listend-->
 
 ```shell
 mysql>grant all privileges on *.* to 'liuhui'@'10.1.1.1';
@@ -61,6 +71,8 @@ mysql>grant all privileges on *.* to 'liuhui'@'10.1.1.1';
     -   **validate\_password\_number\_count:** 密码至少要包含的数字个数
     -   **validate\_password\_policy:** 密码强度难 0/LOW 1/MEDIUM 2/STRONG
     -   **validate\_password\_special\_char\_count:** 密码至少要包含的特殊字符数
+
+<!--listend-->
 
 ```shell
 mysql>show variables like 'validate_password%';

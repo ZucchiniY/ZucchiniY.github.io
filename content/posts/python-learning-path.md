@@ -126,8 +126,4 @@ Language Reference]]
 
 ## 路径图 {#路径图}
 
-```python
-
-```
-
 {{< figure src="/images/python-learning-path.png" >}}
