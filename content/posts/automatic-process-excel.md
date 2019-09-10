@@ -75,12 +75,3 @@ data6 = pd.pivot_table(data5, values="分成贷款金额", columns="用途", ind
                        aggfunc='sum', fill_value=0, observed=False).reset_index()
 print(data6.head())
 ```
-
-```text
-用途     单位    住房贷款    抵押贷款
-0    东莞网点  2668.4  2466.5
-1    中山网点  2723.8  2351.0
-2    佛山网点  2723.9  2478.3
-3    惠州网点  2674.0  2156.9
-4   梅州市网点  2471.1  2428.2
-```

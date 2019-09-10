@@ -122,8 +122,3 @@ Language Reference]]
 > 做也许好过不做，但不假思索就动手还不如不做 <br />
 > 如果你无法向人描述你的方案，那肯定不是一个好方案；反之亦然 <br />
 > 命名空间是一种绝妙的理念，我们应当多加利用 <br />
-
-
-## 路径图 {#路径图}
-
-{{< figure src="/images/python-learning-path.png" >}}
