@@ -370,18 +370,6 @@ df = pd.DataFrame({'Country': ['China', 'China', 'India', 'India', 'America', 'J
 print(df)
 ```
 
-```text
-   Country  Income   Age
-0    China   10000  5000
-1    China   10000  4321
-2    India    5000  1234
-3    India    5002  4010
-4  America   40000   250
-5    Japan   50000   250
-6    China    8000  4500
-7    India    5000  4321
-```
-
 -   分组
 
 <!--listend-->
@@ -398,25 +386,6 @@ for index, data in df_gb:
     print(data)
 ```
 
-```text
-America
-   Country  Income  Age
-4  America   40000  250
-China
-  Country  Income   Age
-0   China   10000  5000
-1   China   10000  4321
-6   China    8000  4500
-India
-  Country  Income   Age
-2   India    5000  1234
-3   India    5002  4010
-7   India    5000  4321
-Japan
-  Country  Income  Age
-5   Japan   50000  250
-```
-
 多列分组
 
 ```python
@@ -429,29 +398,6 @@ df_gb = df.groupby([ 'Country','Income' ])
 for (index1,index2), data in df_gb:
     print((index1,index2))
     print(data)
-```
-
-```text
-('America', 40000)
-   Country  Income  Age
-4  America   40000  250
-('China', 8000)
-  Country  Income   Age
-6   China    8000  4500
-('China', 10000)
-  Country  Income   Age
-0   China   10000  5000
-1   China   10000  4321
-('India', 5000)
-  Country  Income   Age
-2   India    5000  1234
-7   India    5000  4321
-('India', 5002)
-  Country  Income   Age
-3   India    5002  4010
-('Japan', 50000)
-  Country  Income  Age
-5   Japan   50000  250
 ```
 
 -   聚合
@@ -468,16 +414,6 @@ df_agg = df.groupby('Country').agg(['min', 'mean', 'max'])
 print(df_agg)
 ```
 
-```text
-        Income                        Age
-           min          mean    max   min         mean   max
-Country
-America  40000  40000.000000  40000   250   250.000000   250
-China     8000   9333.333333  10000  4321  4607.000000  5000
-India     5000   5000.666667   5002  1234  3188.333333  4321
-Japan    50000  50000.000000  50000   250   250.000000   250
-```
-
 对分组后的部分列进行聚合
 
 ```python
@@ -491,16 +427,6 @@ num_agg = {'Age': ['min', 'mean', 'max']}
 print(df.groupby('Country').agg(num_agg))
 ```
 
-```text
-          Age
-          min         mean   max
-Country
-America   250   250.000000   250
-China    4321  4607.000000  5000
-India    1234  3188.333333  4321
-Japan     250   250.000000   250
-```
-
 ```python
 import pandas as pd
 
@@ -510,16 +436,6 @@ df = pd.DataFrame({'Country': ['China', 'China', 'India', 'India', 'America', 'J
 
 num_agg = {'Age': ['min', 'mean', 'max'], 'Income':['min','max']}
 print(df.groupby('Country').agg(num_agg))
-```
-
-```text
-          Age                    Income
-          min         mean   max    min    max
-Country
-America   250   250.000000   250  40000  40000
-China    4321  4607.000000  5000   8000  10000
-India    1234  3188.333333  4321   5000   5002
-Japan     250   250.000000   250  50000  50000
 ```
 
 
@@ -558,23 +474,6 @@ ss.reset_index()
 print(ss)
 ```
 
-```text
-Index(['Age', 'Age', 'Age', 'Income', 'Income'], dtype='object')
-Index(['min', 'mean', 'max', 'min', 'max'], dtype='object')
-         Age_min     Age_mean  Age_max  Income_min  Income_max
-Country
-America      250   250.000000      250       40000       40000
-China       4321  4607.000000     5000        8000       10000
-India       1234  3188.333333     4321        5000        5002
-Japan        250   250.000000      250       50000       50000
-         Age_min     Age_mean  Age_max  Income_min  Income_max
-Country
-America      250   250.000000      250       40000       40000
-China       4321  4607.000000     5000        8000       10000
-India       1234  3188.333333     4321        5000        5002
-Japan        250   250.000000      250       50000       50000
-```
-
 pandas 默认会将分组后将所有分组列放在索引中，但是可以使用
 as\_index=False 来避免这样。
 
@@ -590,15 +489,6 @@ ss = df.groupby(['Country'], as_index=False).agg(num_agg)
 print(ss)
 ```
 
-```text
-   Country   Age                    Income
-             min         mean   max    min    max
-0  America   250   250.000000   250  40000  40000
-1    China  4321  4607.000000  5000   8000  10000
-2    India  1234  3188.333333  4321   5000   5002
-3    Japan   250   250.000000   250  50000  50000
-```
-
 
 ### appy 用法 {#appy-用法}
 
@@ -607,13 +497,6 @@ import pandas as pd
 
 df = pd.DataFrame([[4, 9], ]*3, columns=list('AB'))
 print(df)
-```
-
-```text
-   A  B
-0  4  9
-1  4  9
-2  4  9
 ```
 
 ```python
@@ -625,13 +508,6 @@ df = pd.DataFrame([[4, 9], ]*3, columns=list('AB'))
 print(df.apply(np.sqrt))
 ```
 
-```text
-     A    B
-0  2.0  3.0
-1  2.0  3.0
-2  2.0  3.0
-```
-
 ```python
 import pandas as pd
 import numpy as np
@@ -641,12 +517,6 @@ df = pd.DataFrame([[4, 9], ]*3, columns=list('AB'))
 print(df.apply(np.sum, axis=0))
 ```
 
-```text
-A    12
-B    27
-dtype: int64
-```
-
 ```python
 import pandas as pd
 import numpy as np
@@ -654,13 +524,6 @@ import numpy as np
 df = pd.DataFrame([[4, 9], ]*3, columns=list('AB'))
 
 print(df.apply(lambda x: [1, 2], axis=1))
-```
-
-```text
-0    [1, 2]
-1    [1, 2]
-2    [1, 2]
-dtype: object
 ```
 
 result\_type='expand' 的时候，可以将结果扩展为列表。
@@ -674,13 +537,6 @@ df = pd.DataFrame([[4, 9], ]*3, columns=list('AB'))
 print(df.apply(lambda x: [1, 2], axis=1, result_type='expand'))
 ```
 
-```text
-   0  1
-0  1  2
-1  1  2
-2  1  2
-```
-
 ```python
 import pandas as pd
 import numpy as np
@@ -688,13 +544,6 @@ import numpy as np
 df = pd.DataFrame([[4, 9], ]*3, columns=list('AB'))
 
 print(df.apply(lambda x: pd.Series([1, 2], index=['foo', 'bar']), axis=1))
-```
-
-```text
-   foo  bar
-0    1    2
-1    1    2
-2    1    2
 ```
 
 ```python
@@ -706,13 +555,6 @@ df = pd.DataFrame([[4, 9], ]*3, columns=list('AB'))
 print(df.apply(lambda x: [1, 2], axis=1, result_type='broadcast'))
 ```
 
-```text
-   A  B
-0  1  2
-1  1  2
-2  1  2
-```
-
 ```python
 import pandas as pd
 import numpy as np
@@ -720,11 +562,4 @@ import numpy as np
 df = pd.DataFrame([[4, 9], ]*3, columns=list('AB'))
 
 print(df.applymap(lambda x: x**2))
-```
-
-```text
-    A   B
-0  16  81
-1  16  81
-2  16  81
 ```

@@ -26,6 +26,12 @@ draft = false
 -   [ ] Python 学习手册 ⭐️⭐️
 
 
+### 其它书籍 {#其它书籍}
+
+-   [X] Python Web 开发——测试驱动方法
+-   [ ] 轻量经 Django
+
+
 ## 数据分析挖掘 {#数据分析挖掘}
 
 -   [ ] Head First Data Analysis ⭐️ **[已购]**

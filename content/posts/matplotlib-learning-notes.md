@@ -101,7 +101,7 @@ plt.savefig('./images/matplotlib02.png')
 return '/images/matplotlib02.png'
 ```
 
-{{< figure src="/images/matplotlib02.png" >}}
+<>
 
 -   图表基本样式
 
@@ -138,7 +138,7 @@ plt.savefig('./images/matplotlib03.png')
 return '/images/matplotlib03.png'
 ```
 
-{{< figure src="/images/matplotlib03.png" >}}
+<>
 
 -   线样式
     -   **'-':** 直线
@@ -173,7 +173,7 @@ plt.savefig('./images/matplotlib04.png')
 return '/images/matplotlib04.png'
 ```
 
-{{< figure src="/images/matplotlib04.png" >}}
+<>
 
 ```python
 import pandas as pd
@@ -191,7 +191,7 @@ plt.savefig('./images/matplotlib05.png')
 return '/images/matplotlib05.png'
 ```
 
-{{< figure src="/images/matplotlib05.png" >}}
+<>
 
 
 ## Series 直接生成图表 {#series-直接生成图表}
@@ -227,7 +227,7 @@ plt.savefig('./images/matplotlib06.png')
 return '/images/matplotlib06.png'
 ```
 
-{{< figure src="/images/matplotlib06.png" >}}
+<>
 
 
 ## Dataframe 直接生成图表 {#dataframe-直接生成图表}
@@ -256,7 +256,7 @@ plt.savefig('./images/matplotlib07.png')
 return '/images/matplotlib07.png'
 ```
 
-{{< figure src="/images/matplotlib07.png" >}}
+<>
 
 
 ## 柱关图与堆叠图 {#柱关图与堆叠图}
@@ -286,7 +286,7 @@ plt.savefig('./images/matplotlib08.png')
 return '/images/matplotlib08.png'
 ```
 
-{{< figure src="/images/matplotlib08.png" >}}
+<>
 
 
 ## 堆叠柱状图 {#堆叠柱状图}
@@ -343,7 +343,7 @@ plt.savefig('./images/matplotlib09.png')
 return '/images/matplotlib09.png'
 ```
 
-{{< figure src="/images/matplotlib09.png" >}}
+<>
 
 
 ## 散点图 {#散点图}
@@ -367,7 +367,7 @@ plt.savefig('./images/matplotlib010.png')
 return '/images/matplotlib010.png'
 ```
 
-{{< figure src="/images/matplotlib010.png" >}}
+<>
 
 
 ## 图中插入数据表 {#图中插入数据表}
@@ -421,7 +421,7 @@ plt.savefig('./images/matplotlib011.png')
 return '/images/matplotlib011.png'
 ```
 
-{{< figure src="/images/matplotlib011.png" >}}
+<>
 
 
 ## 面积图 {#面积图}
@@ -439,7 +439,7 @@ plt.savefig('./images/matplotlib012.png')
 return '/images/matplotlib012.png'
 ```
 
-{{< figure src="/images/matplotlib012.png" >}}
+<>
 
 
 ## 3d 图例 {#3d-图例}
@@ -473,7 +473,7 @@ plt.savefig('./images/matplotlib013.png')
 return '/images/matplotlib013.png'
 ```
 
-{{< figure src="/images/matplotlib013.png" >}}
+<>
 
 
 ## 更多图例 {#更多图例}
