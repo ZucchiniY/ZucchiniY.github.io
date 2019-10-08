@@ -55,6 +55,9 @@ draft = false
 -   [ ] 东方快车谋杀案
 -   [ ] 致命ID
 -   [ ] 七宗罪
+-   [X] 深夜食堂 <span class="timestamp-wrapper"><span class="timestamp">[2019-10-04 Fri]</span></span>
+-   [X] 大侦探皮卡丘 <span class="timestamp-wrapper"><span class="timestamp">[2019-10-05 Sat]</span></span>
+-   [X] 超能陆战队 <span class="timestamp-wrapper"><span class="timestamp">[2019-10-06 Sun]</span></span>
 
 
 ### 连续剧 {#连续剧}
@@ -77,7 +80,7 @@ draft = false
 -   [ ] 布雷德利夫人探案
 -   [ ] 骇人命案事件簿
 -   [ ] 无妄之灾
--   [ ] 无人生还
+-   [X] 无人生还
 -   [ ] 我的恐怖妻子
 
 
