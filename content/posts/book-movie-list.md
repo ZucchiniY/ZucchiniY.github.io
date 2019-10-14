@@ -1,7 +1,7 @@
 +++
 title = "读书/观影清单"
 author = ["Dylan Yang"]
-date = 2019-10-05T19:04:00+08:00
+date = 2019-10-14T17:24:00+08:00
 tags = ["读书", "电影"]
 categories = ["生活"]
 draft = false
@@ -58,6 +58,7 @@ draft = false
 -   [X] 深夜食堂 <span class="timestamp-wrapper"><span class="timestamp">[2019-10-04 Fri]</span></span>
 -   [X] 大侦探皮卡丘 <span class="timestamp-wrapper"><span class="timestamp">[2019-10-05 Sat]</span></span>
 -   [X] 超能陆战队 <span class="timestamp-wrapper"><span class="timestamp">[2019-10-06 Sun]</span></span>
+-   [X] 沉默的证人 <span class="timestamp-wrapper"><span class="timestamp">[2019-10-10 Thu]</span></span>
 
 
 ### 连续剧 {#连续剧}
@@ -88,7 +89,7 @@ draft = false
 
 -   [ ] 深入浅出数据分析
 -   [X] Python Web 开发——测试驱动方法
--   [ ] 轻量级 Django
+-   [X] 轻量级 Django
 -   [X] Python 编程无师自通
 -   [ ] Python 高性能编程
 -   [ ] 单页 Web 应用

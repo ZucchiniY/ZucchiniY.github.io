@@ -1,7 +1,7 @@
 +++
 title = "Python 学习书单"
 author = ["Dylan Yang"]
-date = 2019-08-06T15:02:00+08:00
+date = 2019-10-14T17:30:00+08:00
 tags = ["学习计划"]
 categories = ["生活", "Python"]
 draft = false
@@ -12,7 +12,7 @@ draft = false
 
 ### 入门书单 {#入门书单}
 
--   [X] Python 编程无师自通 **[已购]**
+-   [X] Python 编程无师自通 **[已购]** <span class="timestamp-wrapper"><span class="timestamp">[2019-09-11 Wed]</span></span>
 -   [ ] Python 核心编程 二 **[已购]**
 -   [ ] Python 核心编程 三 **[已购]**
 
@@ -28,8 +28,8 @@ draft = false
 
 ### 其它书籍 {#其它书籍}
 
--   [X] Python Web 开发——测试驱动方法
--   [ ] 轻量经 Django
+-   [X] Python Web 开发——测试驱动方法 <span class="timestamp-wrapper"><span class="timestamp">[2019-10-05 Sat]</span></span>
+-   [X] 轻量经 Django <span class="timestamp-wrapper"><span class="timestamp">[2019-10-14 Mon]</span></span>
 
 
 ## 数据分析挖掘 {#数据分析挖掘}
