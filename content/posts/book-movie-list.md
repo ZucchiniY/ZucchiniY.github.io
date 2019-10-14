@@ -85,20 +85,6 @@ draft = false
 -   [ ] 我的恐怖妻子
 
 
-### 技术类书籍 {#技术类书籍}
-
--   [ ] 深入浅出数据分析
--   [X] Python Web 开发——测试驱动方法
--   [X] 轻量级 Django
--   [X] Python 编程无师自通
--   [ ] Python 高性能编程
--   [ ] 单页 Web 应用
--   [ ] 代码整洁之道
--   [X] Vue 前端开发
--   [X] Java RESTful Web Service 实战
--   [X] Spring MVC MyBatis 开发从入门到项目实战
-
-
 ## 专题电影记录 {#专题电影记录}
 
 
