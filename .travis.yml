@@ -1,8 +1,11 @@
 sudo: false
 os: osx
-
+language: go
+go:
+        - master
+install:
+        - go get github.com/gohugoio/hugo
 script:
-  - brew install hugo
   - hugo --config leaveit-config.toml
 
 deploy:
