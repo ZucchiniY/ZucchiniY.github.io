@@ -13,14 +13,14 @@ draft = false
 ### 入门书单 {#入门书单}
 
 -   [X] Python 编程无师自通 **[已购]** <span class="timestamp-wrapper"><span class="timestamp">[2019-09-11 Wed]</span></span>
--   [ ] Python 核心编程 二 **[已购]**
+-   [ ] 虽然推荐的书单里并没有这本书，但是做为入门和进阶书来说，非常好，有一些非常好的点可以让我对 Python 理解更深入。值得入手。
 -   [ ] Python 核心编程 三 **[已购]**
 
 
 ### 进阶系列 {#进阶系列}
 
--   [ ] 流畅的 Python ⭐️⭐️⭐️⭐️️
--   [ ] Python Cookbook 中文版 ⭐️⭐️⭐️
+-   [ ] 流畅的 Python ⭐️⭐️⭐️⭐️ **[已购]**
+-   [ ] Python Cookbook 中文版 ⭐️⭐️⭐️ **[已购]**
 -   [ ] Effective Python ⭐️
 -   [ ] Python 高性能编程 ⭐️ **[已购]**
 -   [ ] Python 学习手册 ⭐️⭐️
