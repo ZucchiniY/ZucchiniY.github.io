@@ -6,7 +6,7 @@ go:
 install:
         - go get github.com/gohugoio/hugo
 script:
-  - hugo --config leaveit-config.toml
+  - hugo --config paladin-config.toml
 
 deploy:
   provider: pages
