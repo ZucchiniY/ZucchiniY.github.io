@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Valine 评论使用报错 504</title>
+      <link href="/2019/12/19/valine-504-error/"/>
+      <url>/2019/12/19/valine-504-error/</url>
+      
+        <content type="html"><![CDATA[<p>最近准备重新配置一下 <a href="https://www.zucchiniy.cn">个人博客</a> ，由原来的 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 改到 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 来做。</p><p>评论系统也由之前的 <a href="https://disqus.com/" target="_blank" rel="noopener">disqus</a> 改成现在的 <a href="https://valine.js.org/" target="_blank" rel="noopener">valine</a> 。</p><p>主题也使用了非常好看的 Material Design 的样式的 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" rel="noopener">Material-x</a> ，并在此之上进行修改。</p><p>完成初始的配置之后，做一下测试。</p><p>恩。。。报错了？！</p><!-- ![Code 504: The app is archived, please restore in console before use.](https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/valine-504-error-1.png) --><p><img src="/images/valine-504-error-1.png" alt="Code 504: The app is archived, please restore in console before use."></p><a id="more"></a><p>虽然报错，但是可以正确的显示对应的服务，查询了一下原因，发现是因为长时间未使用 LeanCode 的服务，导致文件上传域名无法访问了，需要在 <strong>设置-&gt;应用 Keys</strong> 下面，选择重启 <strong>文件上传域名</strong> 和 <strong>文件访问域名</strong> 的服务即可。</p><p>具体的位置如下：</p><img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/valine-504-error-2.png" class="" width="300" height="150" title="valine-504-error-2">]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> valine </tag>
+            
+            <tag> Code 504 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/12/18/hello-world/"/>
+      <url>/2019/12/18/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>emacs/emacs-keymap-priority</title>
+      <link href="/2019/11/21/emacs/emacs-keymap-priority/"/>
+      <url>/2019/11/21/emacs/emacs-keymap-priority/</url>
+      
+        <content type="html"><![CDATA[<p>+++<br>title = “Emacs Keymap 优先级”<br>author = [“Dylan Yang”]<br>date = 2019-07-31T17:09:00+08:00<br>tags = [“keybinds”, “priority”]<br>categories = [“Emacs”]<br>draft = false<br>+++</p><p>编写 Emacs 的配置文件，无论如何也不能绕开快捷键，对于快捷键一般都是<br><code>define-key</code> 来实现绑定，但是对于不同的 <strong>keymap</strong> 拥有不同的优先级，了解了这个，就知道了为什么有时候快捷键不启作用了。</p><dl><dt>key-translation-map</dt><dd>最高级，就是把这个键的意义改变了，想使用原来的快捷键，要重新进行绑定</dd></dl><dl><dt>minor-mode-map</dt><dd>二级，只在 <strong>minor mode</strong> 激活时启作用，其它时候会被其它的快捷键覆盖掉</dd></dl><dl><dt>local-set-key</dt><dd>三级，在 <strong>major mode</strong> 中启作用</dd></dl><dl><dt>global-set-key</dt><dd>最弱的级别，但是也是遇简单的方式</dd></dl>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>emacs/emacs-learning-way</title>
+      <link href="/2019/11/21/emacs/emacs-learning-way/"/>
+      <url>/2019/11/21/emacs/emacs-learning-way/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title = “Emacs 学习之旅”<br>author = [“Dylan Yang”]<br>date = 2017-03-02T14:38:00+08:00<br>tags = [“Emacs”]<br>categories = [“随笔”]<br>draft = false</p><hr><p><strong>Emacs 的使用过程，就像是程序员的生涯一样——路漫漫其修远兮，吾将上下而求索。</strong></p><h2 id="万物始于-Emacs"><a href="#万物始于-Emacs" class="headerlink" title="万物始于 Emacs"></a>万物始于 Emacs</h2><p>最早知道 <span class="underline">Emacs</span> 是从编辑器的圣战开始的，即编辑器之神——Vi，和神的编辑器——Emacs。两个编辑器在经历了几十年的战争之后，仍然是编辑世界不可超越的高峰。</p><p>但在一开始，我选择的是 Vi，因为在 <strong>*nix</strong> 中，基本都是有的，在服务器编辑文件——即使是很大的文件，Vi 也可以非常容易的使用，所以在一段时间内，我几乎是跪着使用 Vi 的。</p><p>后来随着想用的功能越来越多，而被一些大神安利，我就选择了使用 Emacs 来记笔记（装逼）。于是下载了当时正流行的 <em>Purcell</em> 大神的配置，并开始尝试使用，不过没过多少就放弃了。</p><p>推荐内容：</p><ul><li><a href="https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org" target="_blank" rel="noopener">《一年成为 Emacs 高手（像神一样使用编辑器）》</a></li><li><a href="https://github.com/bbatsov/prelude" target="_blank" rel="noopener">Prelude 入门级 Emacs 配置</a></li><li><a href="https://github.com/purcell/emacs.d" target="_blank" rel="noopener">Purcell 大神的配置</a></li></ul><h2 id="Emacs-始于-Org"><a href="#Emacs-始于-Org" class="headerlink" title="Emacs 始于 Org"></a>Emacs 始于 Org</h2><p><code>Emacs</code> 学习的无疾而终，让我的装逼大计一度沉沦。直到我看到另外两个大神，利用 <span class="underline">Org-mode</span> 进行博客写作日程管理，并详细阅读了他们的文章之后，才真正开始了 <span class="underline">Emacs</span> 的学习苦旅。</p><p>如果说 <span class="underline">Emacs</span> 是神的编辑器的话， <code>Org</code> 可能是神器之中的神器，随着对 <span class="underline">Org</span> 的学习和使用，我从最初的装逼，到后来的逼格提升，都是因为 <span class="underline">Org-mode</span> 。</p><p>推荐内容：</p><ul><li><a href="https://github.com/mudan/mudan.github.io/blob/master/Emacs/The%5FOrg%5FManual/The%5FOrg%5FManual.org" target="_blank" rel="noopener">mudan 大神的 Org-mode 入门级手册</a></li><li><a href="https://github.com/mudan/mudan.github.io/blob/master/read/dx.org" target="_blank" rel="noopener">mudan 大神的漂亮的文言文排版</a></li><li><a href="http://forrestchang.com/14824097554043.html" target="_blank" rel="noopener">Tisoga 大神的 Org + GitHub 的博客教学</a></li></ul><h2 id="终于-Spacemacs-的战争"><a href="#终于-Spacemacs-的战争" class="headerlink" title="终于 Spacemacs 的战争"></a>终于 Spacemacs 的战争</h2><p>从最开始的学习，到现在已经习惯于使用 Emacs 的人来说，Emacs 确实是可以提升工具效率的，当然这里要把配置他的时间拿走。虽然开始使用的原因有所不同，但是大家最后的目标却都是一样的——提高工作（学习）效率。</p><p>但是经过了 Emacs 几次配置之后，虽然说不上大神，也就知道了一些 Emacs 的坑是如何解决的。</p><p>后来加入了一个 Emacs 的微信群——毫不夸张的说，这是我加入过的群里面质量最高的，学习效果最好的，而且所有的成员都自发的维护群里的闲聊问题，每一次讨论都是提问解决和讨论的过程。</p><p>在偶然的一次机会，被安利了一把 Spacemacs，Vi 的操作加上 Emacs 的扩展，不要太吸引人！</p><p>推荐关注的大神：</p><ul><li><a href="https://github.com/hick" target="_blank" rel="noopener">Hick</a> 高质量 <span class="underline">Emacs</span> 微信群群主，应该也是发起人，水的人自觉加入闲聊群，是我所有技术相关微信群中质量最高的。</li><li><a href="https://github.com/zilongshanren" target="_blank" rel="noopener">子龙山人</a> <span class="underline">Spacemacs Rock</span> 视频作者，我的配置里抄的最多的就是这位大神的。</li><li><a href="https://github.com/lujun9972" target="_blank" rel="noopener">DarkSun</a>  黑日大神，大神的文章非常好，多读读，可以找到一些自己需要的配置。</li><li><a href="https://github.com/tumashu" target="_blank" rel="noopener">tumashu</a> 天然二呆，呆神，之前看到呆神在闲聊群里水，后来又看到呆神在帮忙解决问题，好奇的关注了一下 <span class="underline">GitHub</span> ，才发现，竟然这几个好用的 package<br>都是呆神写的，而且呆神竟然不是程序员！</li></ul><p>大神太多了，不一一推荐，如果需要，可以联系 Hick 加一下群，就都有了。</p><p>再推荐一下中文的 Emacs 论坛，可以提问，也可以讨论：</p><ul><li><a href="https://emacs-china.org" target="_blank" rel="noopener">Emacs China</a> 一堆大神在维护的论坛，经常看看，非常好用</li></ul><h2 id="语乱的-Spacemacs-配置"><a href="#语乱的-Spacemacs-配置" class="headerlink" title="语乱的 Spacemacs 配置"></a>语乱的 Spacemacs 配置</h2><h3 id="初始"><a href="#初始" class="headerlink" title="初始"></a>初始</h3><p>为了更好管理配置，推荐使用 <span class="underline">.spacemacs.d</span> 文件夹进行管理配置，而不是使用<br><span class="underline">.spacemacs</span> 文件。也为了方便后续的扩展。</p><h3 id="可能会遇到的问题"><a href="#可能会遇到的问题" class="headerlink" title="可能会遇到的问题"></a>可能会遇到的问题</h3><p>如果是在 Windows 下使用，需要注意几个问题：</p><ol><li>推荐用编译版本，或者用官方网站加部分 <span class="underline">.dll</span> 文件来解决</li><li>使用过程中，为了配置的时候好用——更适合 Linux，我是使用在环境变量中增加默认的 <span class="underline">HOME</span> 的方案，也可以使用其它方法</li><li>直接下载就可以使用，维护的是 <span class="underline">develop</span> 分支，后续会慢慢往 <span class="underline">master</span><br>分支中合并</li></ol><h3 id="最终选择"><a href="#最终选择" class="headerlink" title="最终选择"></a>最终选择</h3><p>在几经周折之后，最后还是选择自己从头开始配置一套 <span class="underline">.emacs.d</span> 的内容，但是 <span class="underline">.spacemacs.d</span> 的相关内容也没有清楚。</p><p><a href="https://github.com/AboutEmacs/.emacs.d" target="_blank" rel="noopener">我的 emacs 原生配置</a></p><h2 id="我的博客地址"><a href="#我的博客地址" class="headerlink" title="我的博客地址"></a>我的博客地址</h2><p>如果想看我的博客，可以访问：<a href="https://zucchiniy.github.io" target="_blank" rel="noopener">我的博客地址</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Emacs 中辅助键设置</title>
+      <link href="/2019/07/31/emacs/emacs-hyper-keybinds/"/>
+      <url>/2019/07/31/emacs/emacs-hyper-keybinds/</url>
+      
+        <content type="html"><![CDATA[<p>使用 Emacs 的人，一般都对快捷键的前缀 <em>C</em> 和 <em>M</em> 键不陌生，但其实在 Emacs 中，除了常见的 <em>C</em> 和 <em>M</em> 之外，还有 <em>s</em> 和 <em>H</em> 两个辅助键，但是在不同的操作系统中，辅助键的设置方法也是不一样的，但是我们可以通过在 <code>init.el</code> 文件中设置键位来保证快捷键的一致。</p><ul><li>在 windows 系统下</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(setq w32-pass-lwindow-to-system nil)</span><br><span class="line">(setq w32-lwindow-modifier &#39;super) ; Left Windows key</span><br><span class="line"></span><br><span class="line">(setq w32-pass-rwindow-to-system nil)</span><br><span class="line">(setq w32-rwindow-modifier &#39;super) ; Right Windows key</span><br><span class="line"></span><br><span class="line">(setq w32-pass-apps-to-system nil)</span><br><span class="line">(setq w32-apps-modifier &#39;hyper) ; Menu&#x2F;App key</span><br></pre></td></tr></table></figure><ul><li>在 Mac 系统下</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(setq mac-command-modifier &#39;meta) ; make cmd key do Meta</span><br><span class="line">(setq mac-option-modifier &#39;super) ; make opt key do Super</span><br><span class="line">(setq mac-control-modifier &#39;control) ; make Control key do Control</span><br><span class="line">(setq ns-function-modifier &#39;hyper)  ; make Fn key do Hyper</span><br></pre></td></tr></table></figure><a id="more"></a><p>在如此配置之后，绑定快捷键过程中，super 对应的是 <em>s</em> 前缀，hyper 对应的是 <em>H</em> 的前缀。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;H-b&quot;) &#39;backward-word) ; 绑定的 Hyper 键</span><br><span class="line">(global-set-key (kbd &quot;s-b&quot;) &#39;backward-word) ; 绑定的 super 键</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Emacs </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> super </tag>
+            
+            <tag> hyper </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mac 电脑上使用 Emacs</title>
+      <link href="/2019/07/29/emacs/emacs-in-mac/"/>
+      <url>/2019/07/29/emacs/emacs-in-mac/</url>
+      
+        <content type="html"><![CDATA[<p>在 Mac 上使用 Emacs 有两个方案，从 <a href="https://emacsformacosx.com/" target="_blank" rel="noopener">Emacs For Mac OS X</a> 手工下载，然后更新本地，或者是在 <strong>homebrew</strong> 中增加配置，然后利用 <code>brew upgrade</code> 从 <a href="https://github.com/railwaycat/homebrew-emacsmacport" target="_blank" rel="noopener">homebrw-emacsmacport</a> 上进行下载和更新。</p><p>两种方式获取的 Emacs 有少许不同，具体的见两个项目的简介。</p><p>第二种方法的命令如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap railwaycat/emacsmacport</span><br><span class="line">brew install emacs-mac</span><br></pre></td></tr></table></figure><p>安装之后，如果要从启动台启动应用，需要在 <em>/applications</em> 和安装位置增加软链接，命令如下</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/opt/emacs-mac/Emacs.app/Applications</span><br></pre></td></tr></table></figure><p>这样之后就可以直接在 <strong>Alfred</strong> 中输入 <code>emacs</code> 直接启动。</p><a id="more"></a>]]></content>
+      
+      
+      <categories>
+          
+          <category> Emacs </category>
+          
+          <category> Mac </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Emacs 功能键配置</title>
+      <link href="/2019/02/26/emacs/emacs-tips/"/>
+      <url>/2019/02/26/emacs/emacs-tips/</url>
+      
+        <content type="html"><![CDATA[<p>Emacs 和 Vim 最大的就是快捷键的体系不同，在 Emacs 中，快捷键要有对应的控制键配合，才能正常使用，比如打开 <strong>Agenda</strong> <code>C-c a</code> 一般指的是 <code>Ctrl + c a</code> 而在 Emacs 中，使用的控制键主要有以下几种：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s- : supper -</span><br><span class="line">S- : Shift -</span><br><span class="line">M- : Meta - &#x2F; Alt -</span><br><span class="line">C- : Ctrl -</span><br><span class="line">H- : Hyper -</span><br></pre></td></tr></table></figure><a id="more"></a><p>其中 Ctrl、Meta/Alt、Shift这几种快捷键比较常见，但是 supper 这个键就比较少见了，而且在键盘上，一般也看不到，所以我们在配置的时候，需要在配置中声明这几个键被绑定在哪些键上，增加如下的配置：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(setq w32-lwindow-modifier &#39;supper</span><br><span class="line">      w32-apps-modifier &#39;hyper)</span><br></pre></td></tr></table></figure><p>但是如果使用的是 mac 的话又要增加另外的一些配置：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(setq mac-command-modifier &#39;meta</span><br><span class="line">      mac-option-modifier &#39;super</span><br><span class="line">      mac-control-modifier &#39;control</span><br><span class="line">      ns-function-modifier &#39;hyper)</span><br></pre></td></tr></table></figure><p>但是这样的情况又有另外一个问题，需要在特定的系统中使用，所以我们要在对应的配置上增加上对系统的判断。这样就可以自由的使用各种快捷键了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Emacs </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 功能键 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Emacs 快捷键使用</title>
+      <link href="/2016/04/26/emacs/emacs-keybinds-basic/"/>
+      <url>/2016/04/26/emacs/emacs-keybinds-basic/</url>
+      
+        <content type="html"><![CDATA[<p>本文主要详解如何设置 Emacs 的默认编码格式和改变文件格式，以及如何查看图片所需要的库文件。</p><h2 id="设置-Emacs-的默认编码格式"><a href="#设置-Emacs-的默认编码格式" class="headerlink" title="设置 Emacs 的默认编码格式"></a>设置 Emacs 的默认编码格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(prefer-coding-system &#39;utf-8-unix)</span><br></pre></td></tr></table></figure><h2 id="改变文件编码格式"><a href="#改变文件编码格式" class="headerlink" title="改变文件编码格式"></a>改变文件编码格式</h2><dl><dt><strong>C-x C-m f utf-8-unix RET</strong></dt><dd>将当前文件转换为 <strong>utf-8</strong> 编码</dd></dl><dl><dt><strong>C-x C-m c RET C-x C-w RET</strong></dt><dd>另存为指定编码</dd></dl><h2 id="查看需要的库文件"><a href="#查看需要的库文件" class="headerlink" title="查看需要的库文件"></a>查看需要的库文件</h2><dl><dt><strong>M-: image-library-alist RET</strong></dt><dd>查看 <strong>emacs</strong> 支持需要的库文件</dd></dl><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">((xpm &quot;libxpm.dll&quot; &quot;xpm4.dll&quot; &quot;libXpm-nox4.dll&quot;)</span><br><span class="line">(png &quot;libpng16.dll&quot; &quot;libpng16-16.dll&quot;)</span><br><span class="line">(tiff &quot;libtiff-5.dll&quot; &quot;libtiff3.dll&quot; &quot;libtiff.dll&quot;)</span><br><span class="line">(jpeg &quot;libjpeg-9.dll&quot;)</span><br><span class="line">(gif &quot;libgif-7.dll&quot;)</span><br><span class="line">(svg &quot;librsvg-2-2.dll&quot;)</span><br><span class="line">(gdk-pixbuf &quot;libgdk_pixbuf-2.0-0.dll&quot;)</span><br><span class="line">(glib &quot;libglib-2.0-0.dll&quot;)</span><br><span class="line">(gobject &quot;libgobject-2.0-0.dll&quot;)</span><br><span class="line">(gnutls &quot;libgnutls-28.dll&quot; &quot;libgnutls-26.dll&quot;)</span><br><span class="line">(libxml2 &quot;libxml2-2.dll&quot; &quot;libxml2.dll&quot;)</span><br><span class="line">(zlib &quot;zlib1.dll&quot; &quot;libz-1.dll&quot;))</span><br></pre></td></tr></table></figure></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Emacs </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> keybind </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
