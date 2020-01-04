@@ -243,8 +243,141 @@
             
                 
   <h2 class="title">
-    <a href="/test/2019/07/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs-hyper-keybinds/">
-      Emacs 中辅助键设置
+    <a href="/test/2019/08/09/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/python-process-excel/">
+      利用 Python 生成数据透视表
+    </a>
+  </h2>
+
+
+            
+            <div class='new-meta-box'>
+                
+                    
+                
+                    
+                        
+  <div class='new-meta-item author'>
+    
+      <a href="https://www.zucchiniy.cn/test" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/avatar/lvzai.jpg">
+        
+        <p>zucchiniy</p>
+      </a>
+    
+  </div>
+
+
+                    
+                
+                    
+                        <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-08-09</p>
+  </a>
+</div>
+
+                    
+                
+                    
+                        
+  
+  <div class='new-meta-item category'>
+    <a href='/test/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>后台技术&nbsp;/&nbsp;Python</p>
+    </a>
+  </div>
+
+
+                    
+                
+                    
+                        
+  
+    <div class="new-meta-item wordcount">
+      <a class='notlink'>
+        <i class="fas fa-keyboard" aria-hidden="true"></i>
+        <p>字数统计:</p>
+        <p>641字</p>
+      </a>
+    </div>
+    <div class="new-meta-item readtime">
+      <a class='notlink'>
+        <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+        <p>阅读时长≈</p>
+        <p>2分</p>
+      </a>
+    </div>
+  
+
+                    
+                
+                    
+                        
+
+                    
+                
+            </div>
+            
+                <hr>
+            
+        </div>
+    </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>利用 <code>read_excel()</code> 的 <em>usecols</em> 参数来指定表的某一列，以方便排除不必要的干扰列</li>
+<li>养成数据加载以后，使用 <code>head()</code> 进行预览的习惯</li>
+<li>养成使用 <code>shape()</code> 及 <code>info()</code> 了解表格基本情况的习惯</li>
+</ul>
+<p>利用 <code>info()</code> 方法查看数据中是否有空值，如果有空值的话，则可以使用 <code>dropna()</code> 方法将其移除。</p>
+<p>需要掌握的主要有两个方法:</p>
+<ul>
+<li><code>DataFrame.insert()</code> 方法，用来增加对应的列</li>
+<li><code>DataFrame.pivot_table()</code> 产生透视图，展示重要的数据</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/test/2019/08/09/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/python-process-excel/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/test/blog/tags/%E9%80%8F%E8%A7%86%E8%A1%A8/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 透视表</a>
+        
+          <a href="/test/blog/tags/read-excel/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> read_excel()</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+    <section class='meta'>
+        
+        <div class="meta" id="header-meta">
+            
+                
+  <h2 class="title">
+    <a href="/test/2019/07/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs-keymap-priority/">
+      Emacs Keymap 优先级
     </a>
   </h2>
 
@@ -300,7 +433,7 @@
       <a class='notlink'>
         <i class="fas fa-keyboard" aria-hidden="true"></i>
         <p>字数统计:</p>
-        <p>270字</p>
+        <p>173字</p>
       </a>
     </div>
     <div class="new-meta-item readtime">
@@ -329,19 +462,14 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>使用 Emacs 的人，一般都对快捷键的前缀 <em>C</em> 和 <em>M</em> 键不陌生，但其实在 Emacs 中，除了常见的 <em>C</em> 和 <em>M</em> 之外，还有 <em>s</em> 和 <em>H</em> 两个辅助键，但是在不同的操作系统中，辅助键的设置方法也是不一样的，但是我们可以通过在 <code>init.el</code> 文件中设置键位来保证快捷键的一致。</p>
-<ul>
-<li>在 windows 系统下</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(setq w32-pass-lwindow-to-system nil)</span><br><span class="line">(setq w32-lwindow-modifier &#39;super) ; Left Windows key</span><br><span class="line"></span><br><span class="line">(setq w32-pass-rwindow-to-system nil)</span><br><span class="line">(setq w32-rwindow-modifier &#39;super) ; Right Windows key</span><br><span class="line"></span><br><span class="line">(setq w32-pass-apps-to-system nil)</span><br><span class="line">(setq w32-apps-modifier &#39;hyper) ; Menu&#x2F;App key</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在 Mac 系统下</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(setq mac-command-modifier &#39;meta) ; make cmd key do Meta</span><br><span class="line">(setq mac-option-modifier &#39;super) ; make opt key do Super</span><br><span class="line">(setq mac-control-modifier &#39;control) ; make Control key do Control</span><br><span class="line">(setq ns-function-modifier &#39;hyper)  ; make Fn key do Hyper</span><br></pre></td></tr></table></figure>
+      <p>编写 Emacs 的配置文件，无论如何也不能绕开快捷键，对于快捷键一般都是 <code>define-key</code> 方法来实现按键绑定，但是对于不同的 <strong>keymap</strong> 拥有不同的优先级，通过 <strong>keymap</strong> 优先级，可以了解到快捷键间的覆盖关系。</p>
+<p><code>key-translation-map</code> : 最高级，就是把这个键的意义改变了，想使用原来的快捷键，要重新进行绑定</p>
+<p><code>minor-mode-map</code> : 二级，只在 <strong>minor mode</strong> 激活时启作用，其它时候会被其它的快捷键覆盖掉</p>
+<p><code>local-set-key</code> : 三级，在 <strong>major mode</strong> 中启作用</p>
+<p><code>global-set-key</code> : 最弱的级别，但是也是最简单的键绑定方式</p>
       
         <div class="readmore">
-          <a href="/test/2019/07/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs-hyper-keybinds/" class="flat-box">
+          <a href="/test/2019/07/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs-keymap-priority/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -353,9 +481,7 @@
         
           <a href="/test/blog/tags/keymap/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> keymap</a>
         
-          <a href="/test/blog/tags/super/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> super</a>
-        
-          <a href="/test/blog/tags/hyper/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> hyper</a>
+          <a href="/test/blog/tags/keybinds/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> keybinds</a>
         
       </div>
     
@@ -377,8 +503,8 @@
             
                 
   <h2 class="title">
-    <a href="/test/2019/07/29/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs-in-mac/">
-      Mac 电脑上使用 Emacs
+    <a href="/test/2019/07/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/brew-unused-command/">
+      brew 不常用命令
     </a>
   </h2>
 
@@ -408,7 +534,7 @@
                         <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-07-29</p>
+    <p>2019-07-31</p>
   </a>
 </div>
 
@@ -418,9 +544,9 @@
                         
   
   <div class='new-meta-item category'>
-    <a href='/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/' rel="nofollow">
+    <a href='/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Mac/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>工具环境&nbsp;/&nbsp;Emacs</p>
+      <p>工具环境&nbsp;/&nbsp;Mac</p>
     </a>
   </div>
 
@@ -434,7 +560,7 @@
       <a class='notlink'>
         <i class="fas fa-keyboard" aria-hidden="true"></i>
         <p>字数统计:</p>
-        <p>157字</p>
+        <p>159字</p>
       </a>
     </div>
     <div class="new-meta-item readtime">
@@ -463,18 +589,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>在 Mac 上使用 Emacs 有两个方案，从 <a href="https://emacsformacosx.com/" target="_blank" rel="noopener">Emacs For Mac OS X</a> 手工下载，然后更新本地，或者是在 <strong>homebrew</strong> 中增加配置，然后利用 <code>brew upgrade</code> 从 <a href="https://github.com/railwaycat/homebrew-emacsmacport" target="_blank" rel="noopener">homebrw-emacsmacport</a> 上进行下载和更新。</p>
-<p>两种方式获取的 Emacs 有少许不同，具体的见两个项目的简介。</p>
-<p>第二种方法的命令如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap railwaycat/emacsmacport</span><br><span class="line">brew install emacs-mac</span><br></pre></td></tr></table></figure>
-
-<p>安装之后，如果要从启动台启动应用，需要在 <em>/applications</em> 和安装位置增加软链接，命令如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/opt/emacs-mac/Emacs.app/Applications</span><br></pre></td></tr></table></figure>
-
-<p>这样之后就可以直接在 <strong>Alfred</strong> 中输入 <code>emacs</code> 直接启动。</p>
+      <p><code>brew services</code> 命令是用来管理 Mac 系统中后台服务的，比如在 Mac 上安装了 MySQL ，当我希望将这个变成一个后台服务启动的时候，可以使用，有点像 Linux 下的 <code>service</code> 和 <code>systemctl</code> 两个命令。</p>
       
         <div class="readmore">
-          <a href="/test/2019/07/29/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs-in-mac/" class="flat-box">
+          <a href="/test/2019/07/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/brew-unused-command/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -484,138 +602,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/test/blog/tags/install-Emacs/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> install Emacs</a>
+          <a href="/test/blog/tags/brew/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> brew</a>
         
-          <a href="/test/blog/tags/Mac-OS/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> Mac OS</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-    <section class='meta'>
-        
-        <div class="meta" id="header-meta">
-            
-                
-  <h2 class="title">
-    <a href="/test/2019/04/10/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/android-flashboot/">
-      Android 刷机实践
-    </a>
-  </h2>
-
-
-            
-            <div class='new-meta-box'>
-                
-                    
-                
-                    
-                        
-  <div class='new-meta-item author'>
-    
-      <a href="https://www.zucchiniy.cn/test" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/avatar/lvzai.jpg">
-        
-        <p>zucchiniy</p>
-      </a>
-    
-  </div>
-
-
-                    
-                
-                    
-                        <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-04-10</p>
-  </a>
-</div>
-
-                    
-                
-                    
-                        
-  
-  <div class='new-meta-item category'>
-    <a href='/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Android/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>工具环境&nbsp;/&nbsp;Android</p>
-    </a>
-  </div>
-
-
-                    
-                
-                    
-                        
-  
-    <div class="new-meta-item wordcount">
-      <a class='notlink'>
-        <i class="fas fa-keyboard" aria-hidden="true"></i>
-        <p>字数统计:</p>
-        <p>732字</p>
-      </a>
-    </div>
-    <div class="new-meta-item readtime">
-      <a class='notlink'>
-        <i class="fas fa-hourglass-half" aria-hidden="true"></i>
-        <p>阅读时长≈</p>
-        <p>2分</p>
-      </a>
-    </div>
-  
-
-                    
-                
-                    
-                        
-
-                    
-                
-            </div>
-            
-                <hr>
-            
-        </div>
-    </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h2><p>#在刷机之前，需要在电脑上下载 <strong>Android Preview</strong> 包，一般我都是到<a href="https://developer.android.google.cn/preview/download#flash" target="_blank" rel="noopener">安卓中国</a> ，这里可以下载最新的包。</p>
-<h2 id="手机"><a href="#手机" class="headerlink" title="手机"></a>手机</h2><p>相对下载包的获取，比较难的是有一部支持最新的安卓系统的手机，一般 <strong>Preview</strong> 版的系统都是默认支持 <strong>Google</strong> 自己的手机的。</p>
-<p>目前只支持 Pixel 系列的手机，包括 XL 系列。</p>
-<ul>
-<li>Pixel n</li>
-<li>Pixel n XL</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/test/2019/04/10/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/android-flashboot/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/test/blog/tags/%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 安卓系统</a>
-        
-          <a href="/test/blog/tags/%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%89%8B%E6%9C%BA%E7%B3%BB%E7%BB%9F/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 手动更新手机系统</a>
+          <a href="/test/blog/tags/%E6%9C%8D%E5%8A%A1%E5%88%97%E8%A1%A8/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 服务列表</a>
         
       </div>
     
@@ -640,7 +629,7 @@
             </a>
           
           <p class="current">
-            2 / 4
+            2 / 5
           </p>
           
             <a class="next" rel="next" href="/test/page/3/">
@@ -894,7 +883,7 @@
         
           <li><a class="flat-box child" title="/test/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/" href="/test/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"><div class='name'>Python</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/" href="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"><div class='name'>工具环境</div><div class='badge'>(7)</div></a></li>
+          <li><a class="flat-box" title="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/" href="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"><div class='name'>工具环境</div><div class='badge'>(9)</div></a></li>
         
           <li><a class="flat-box child" title="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Android/" href="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Android/"><div class='name'>Android</div><div class='badge'>(1)</div></a></li>
         
@@ -902,11 +891,19 @@
         
           <li><a class="flat-box child" title="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/" href="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/test/blog/categories/%E6%80%BB%E7%BB%93%E6%80%9D%E8%80%83/" href="/test/blog/categories/%E6%80%BB%E7%BB%93%E6%80%9D%E8%80%83/"><div class='name'>总结思考</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box child" title="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Mac/" href="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Mac/"><div class='name'>Mac</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" href="/test/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"><div class='name'>静态博客</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/test/blog/categories/%E6%80%BB%E7%BB%93%E6%80%9D%E8%80%83/" href="/test/blog/categories/%E6%80%BB%E7%BB%93%E6%80%9D%E8%80%83/"><div class='name'>总结思考</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/test/blog/categories/%E6%80%BB%E7%BB%93%E6%80%9D%E8%80%83/Emacs/" href="/test/blog/categories/%E6%80%BB%E7%BB%93%E6%80%9D%E8%80%83/Emacs/"><div class='name'>Emacs</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/test/blog/categories/%E6%80%BB%E7%BB%93%E6%80%9D%E8%80%83/%E7%94%9F%E6%B4%BB/" href="/test/blog/categories/%E6%80%BB%E7%BB%93%E6%80%9D%E8%80%83/%E7%94%9F%E6%B4%BB/"><div class='name'>生活</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/test/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" href="/test/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"><div class='name'>生活总结</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child" title="/test/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/%E5%B9%B4%E5%BA%A6%E6%B8%85%E5%8D%95/" href="/test/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/%E5%B9%B4%E5%BA%A6%E6%B8%85%E5%8D%95/"><div class='name'>年度清单</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/test/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/%E7%94%9F%E6%B4%BB/" href="/test/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/%E7%94%9F%E6%B4%BB/"><div class='name'>生活</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -957,7 +954,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/test/blog/tags/Code-504/" style="font-size: 14px; color: #999">Code 504</a> <a href="/test/blog/tags/Emacs/" style="font-size: 14px; color: #999">Emacs</a> <a href="/test/blog/tags/Mac-OS/" style="font-size: 14px; color: #999">Mac OS</a> <a href="/test/blog/tags/apt/" style="font-size: 14px; color: #999">apt</a> <a href="/test/blog/tags/apt-get/" style="font-size: 14px; color: #999">apt-get</a> <a href="/test/blog/tags/async/" style="font-size: 14px; color: #999">async</a> <a href="/test/blog/tags/coding-system/" style="font-size: 14px; color: #999">coding system</a> <a href="/test/blog/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/test/blog/tags/hyper/" style="font-size: 14px; color: #999">hyper</a> <a href="/test/blog/tags/image-library/" style="font-size: 14px; color: #999">image library</a> <a href="/test/blog/tags/install-Emacs/" style="font-size: 14px; color: #999">install Emacs</a> <a href="/test/blog/tags/keybind/" style="font-size: 14px; color: #999">keybind</a> <a href="/test/blog/tags/keybinds/" style="font-size: 14px; color: #999">keybinds</a> <a href="/test/blog/tags/keymap/" style="font-size: 24px; color: #555">keymap</a> <a href="/test/blog/tags/modifier-keys/" style="font-size: 14px; color: #999">modifier keys</a> <a href="/test/blog/tags/org-mode/" style="font-size: 14px; color: #999">org mode</a> <a href="/test/blog/tags/read-excel/" style="font-size: 14px; color: #999">read_excel()</a> <a href="/test/blog/tags/super/" style="font-size: 14px; color: #999">super</a> <a href="/test/blog/tags/valine/" style="font-size: 14px; color: #999">valine</a> <a href="/test/blog/tags/%E5%87%8F%E6%B3%95%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">减法生活</a> <a href="/test/blog/tags/%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">安卓系统</a> <a href="/test/blog/tags/%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82/" style="font-size: 14px; color: #999">异步请求</a> <a href="/test/blog/tags/%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%89%8B%E6%9C%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">手动更新手机系统</a> <a href="/test/blog/tags/%E9%80%8F%E8%A7%86%E8%A1%A8/" style="font-size: 14px; color: #999">透视表</a>
+      <a href="/test/blog/tags/Code-504/" style="font-size: 14px; color: #999">Code 504</a> <a href="/test/blog/tags/Emacs/" style="font-size: 14px; color: #999">Emacs</a> <a href="/test/blog/tags/GitHub-Pages/" style="font-size: 14px; color: #999">GitHub Pages</a> <a href="/test/blog/tags/Mac-OS/" style="font-size: 14px; color: #999">Mac OS</a> <a href="/test/blog/tags/apt/" style="font-size: 14px; color: #999">apt</a> <a href="/test/blog/tags/apt-get/" style="font-size: 14px; color: #999">apt-get</a> <a href="/test/blog/tags/async/" style="font-size: 14px; color: #999">async</a> <a href="/test/blog/tags/brew/" style="font-size: 14px; color: #999">brew</a> <a href="/test/blog/tags/coding-system/" style="font-size: 14px; color: #999">coding system</a> <a href="/test/blog/tags/hexo/" style="font-size: 24px; color: #555">hexo</a> <a href="/test/blog/tags/hugo/" style="font-size: 14px; color: #999">hugo</a> <a href="/test/blog/tags/hyper/" style="font-size: 14px; color: #999">hyper</a> <a href="/test/blog/tags/image-library/" style="font-size: 14px; color: #999">image library</a> <a href="/test/blog/tags/install-Emacs/" style="font-size: 14px; color: #999">install Emacs</a> <a href="/test/blog/tags/keybind/" style="font-size: 14px; color: #999">keybind</a> <a href="/test/blog/tags/keybinds/" style="font-size: 14px; color: #999">keybinds</a> <a href="/test/blog/tags/keymap/" style="font-size: 24px; color: #555">keymap</a> <a href="/test/blog/tags/modifier-keys/" style="font-size: 14px; color: #999">modifier keys</a> <a href="/test/blog/tags/org-mode/" style="font-size: 14px; color: #999">org mode</a> <a href="/test/blog/tags/read-excel/" style="font-size: 14px; color: #999">read_excel()</a> <a href="/test/blog/tags/super/" style="font-size: 14px; color: #999">super</a> <a href="/test/blog/tags/valine/" style="font-size: 14px; color: #999">valine</a> <a href="/test/blog/tags/%E5%87%8F%E6%B3%95%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">减法生活</a> <a href="/test/blog/tags/%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">安卓系统</a> <a href="/test/blog/tags/%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82/" style="font-size: 14px; color: #999">异步请求</a> <a href="/test/blog/tags/%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%89%8B%E6%9C%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">手动更新手机系统</a> <a href="/test/blog/tags/%E6%9C%8D%E5%8A%A1%E5%88%97%E8%A1%A8/" style="font-size: 14px; color: #999">服务列表</a> <a href="/test/blog/tags/%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/" style="font-size: 14px; color: #999">电影清单</a> <a href="/test/blog/tags/%E7%94%B5%E8%A7%86%E6%B8%85%E5%8D%95/" style="font-size: 14px; color: #999">电视清单</a> <a href="/test/blog/tags/%E8%AF%BB%E4%B9%A6%E6%B8%85%E5%8D%95/" style="font-size: 14px; color: #999">读书清单</a> <a href="/test/blog/tags/%E9%80%8F%E8%A7%86%E8%A1%A8/" style="font-size: 14px; color: #999">透视表</a>
     </div>
   </section>
 
