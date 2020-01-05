@@ -356,6 +356,33 @@
     
     
     <entry>
+      <title>cmder 无法显示中文</title>
+      <link href="/hexo-blog/2018/08/29/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/cmder-cannot-display-chinese/"/>
+      <url>/hexo-blog/2018/08/29/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/cmder-cannot-display-chinese/</url>
+      
+        <content type="html"><![CDATA[<p>cmder 默认是不支持中文字符的，可以在 <strong>Setting &gt; Startup &gt; Environment</strong> 下增加一行语言设置：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set LANG=zh_CN.UTF8</span><br></pre></td></tr></table></figure><p>然后重启 cmder 即可。</p><a id="more"></a>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Windows </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cmder </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>apt-get 中 update 与 upgrade 的区别</title>
       <link href="/hexo-blog/2018/08/02/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/apt-get-update-and-upgrade/"/>
       <url>/hexo-blog/2018/08/02/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/apt-get-update-and-upgrade/</url>
@@ -432,9 +459,9 @@
       
         <tags>
             
-            <tag> 设置电脑的默认语言 </tag>
+            <tag> 默认语言 </tag>
             
-            <tag> 设置用户目录语言 </tag>
+            <tag> 目录语言 </tag>
             
         </tags>
       
