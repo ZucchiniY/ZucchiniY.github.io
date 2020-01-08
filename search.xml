@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Emacs 快捷键配置方案</title>
+      <link href="/hexo-blog/2020/01/08/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs/keybinds-config-in-emacs/"/>
+      <url>/hexo-blog/2020/01/08/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs/keybinds-config-in-emacs/</url>
+      
+        <content type="html"><![CDATA[<p><strong>Emacs 的快捷键和 Vim 的快捷键是编辑器中的两坐高山，其中 Emacs 的快捷键主要有四类。</strong></p><h2 id="四大类型"><a href="#四大类型" class="headerlink" title="四大类型"></a>四大类型</h2><ul><li>全局快捷键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kdb &quot;a&quot;) &#39;command)</span><br></pre></td></tr></table></figure><ul><li>全局映射键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key key-translation-map (kbd &quot;a&quot;) (kdb &quot;b&quot;))</span><br></pre></td></tr></table></figure><ul><li>Major-mode 局部快捷键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(local-set-key (kdb &quot;a&quot;) &#39;command)</span><br></pre></td></tr></table></figure><ul><li>Minor-mode 局部快捷键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key your-minor-mode-map (kbd &quot;a&quot;) &#39;command)</span><br></pre></td></tr></table></figure><h2 id="删除、禁用快捷键"><a href="#删除、禁用快捷键" class="headerlink" title="删除、禁用快捷键"></a>删除、禁用快捷键</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(global&#x2F;local-unset-key (kbd &quot;a&quot;))</span><br><span class="line">(global&#x2F;local-set-key (kbd &quot;a&quot;) &#39;ignore&#x2F;nil)</span><br></pre></td></tr></table></figure><h2 id="键冲突与解决"><a href="#键冲突与解决" class="headerlink" title="键冲突与解决"></a>键冲突与解决</h2><p>最方便的解决方案是找一个空置的 <strong>prefix</strong> 键，先映射到这个键上，再全局或者局部设置它。</p><h3 id="先映射到空闲键上"><a href="#先映射到空闲键上" class="headerlink" title="先映射到空闲键上"></a>先映射到空闲键上</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key key-translation-map (kbd &quot;a&quot;) (kbd &quot;M-g A&quot;))</span><br></pre></td></tr></table></figure><h3 id="全局或者局部设置"><a href="#全局或者局部设置" class="headerlink" title="全局或者局部设置"></a>全局或者局部设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global&#x2F;local-set-key (kbd &quot;M-g A&quot;) &#39;command)</span><br></pre></td></tr></table></figure><h2 id="快捷键优先级"><a href="#快捷键优先级" class="headerlink" title="快捷键优先级"></a>快捷键优先级</h2><p><code>key-translation-map</code> : 最高级，就是把这个键的意义改变了，想使用原来的快捷键，要重新进行绑定</p><p><code>minor-mode-map</code> : 二级，只在 <strong>minor mode</strong> 激活时启作用，其它时候会被其它的快捷键覆盖掉</p><p><code>local-set-key</code> : 三级，在 <strong>major mode</strong> 中启作用</p><p><code>global-set-key</code> : 最弱的级别，但是也是最简单的键绑定方式</p><h3 id="设置局域快捷键"><a href="#设置局域快捷键" class="headerlink" title="设置局域快捷键"></a>设置局域快捷键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun f-python-mode ()</span><br><span class="line">  (local-set-key (kbd &quot;C-x C-e&quot;)&#39;f-python-shell-send-line)</span><br><span class="line">  (local-set-key (kbd &quot;M-g C-y&quot;) &#39;f-python-shell-send-line))</span><br><span class="line">(add-hook &#39;python-mode-hook &#39;f-python-mode)</span><br></pre></td></tr></table></figure><p><strong>注意</strong> 当键进行重新绑定后，还应该将之前的功能重新绑定到另一个键上。</p><h2 id="Minor-Mode-Map"><a href="#Minor-Mode-Map" class="headerlink" title="Minor Mode Map"></a>Minor Mode Map</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(define-minor-mode visual-mode</span><br><span class="line">  :init-value nil</span><br><span class="line">  :global t</span><br><span class="line">  :keymap (make-sparse-keymap)</span><br><span class="line">  (if (not visual-mode) (setq cursor-type &#39;bar)</span><br><span class="line">    (setq cursor-type &#39;box)))</span><br><span class="line">(define-key visual-mode-map (kbd &quot;h&quot;) &#39;mark-paragraph)</span><br></pre></td></tr></table></figure><p>定义之后，可以利用 <code>define-key</code> 来设置当前快捷键。然后在需要启用 <strong>Visual mode</strong> 的时候可以启用这个 <strong>minor mode</strong> 的相关快捷键。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Emacs </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> keybinds </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>GDB 调试笔记</title>
+      <link href="/hexo-blog/2020/01/08/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/how-to-use-gdb-to-debug-program/"/>
+      <url>/hexo-blog/2020/01/08/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/how-to-use-gdb-to-debug-program/</url>
+      
+        <content type="html"><![CDATA[<p>GDB 是一个由 GNU 开源组织发布的 *.nix 下的、基于命令行的一款比较知名的程序调试工具。</p><p>GDB 有着相当多的命令，但是常用的只有大概十个左右。</p><p>gdb命令一般可以使用 <code>gdb program</code> 或者使用 <code>gdb progrma core</code> 。如果想对正在执行的进程进行调试，则可以使用 <code>gdb -p 123</code> 。</p><h2 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h2><table><tr>    <th>命令</th>    <th> 解释</th>    <th> 示例</th></tr><tr>    <td>file <文件名></td>    <td>加载被调试的可执行程序文件。<br />因为一般都在被调试程序所在目录下执行GDB，因而文本名不需要带路径。</td>    <td>(gdb) file gdb-sample</td></tr><tr>    <td>r</td>    <td>run的简写，运行被调试的程序。<br />如果此前没有下过断点，则执行完整个程序；如果有断点，则程序暂停在第一个可用断点处。</td>    <td>(gdb) r</td></tr><tr>    <td>c</td>    <td>Continue的简写，继续执行被调试程序，直至下一个断点或程序结束。</td>    <td>(gdb) c</td></tr><tr>    <td>b &lt;行号&gt;<br />b &lt;函数名称&gt;<br />b \*&lt;函数名称&gt;<br />b \*&lt;代码地址&gt; <br />d [编号]</td>    <td>b: Breakpoint的简写，设置断点。两可以使用“行号”“函数名称”“执行地址”等方式指定断点位置。<br />其中在函数名称前面加“\*”符号表示将断点设置在“由编译器生成的prolog代码处”。如果不了解汇编，可以不予理会此用法。<br />d: Delete breakpoint的简写，删除指定编号的某个断点，或删除所有断点。断点编号从1开始递增。</td>    <td>(gdb) b 8<br />(gdb) b main<br />(gdb) b \*main<br />(gdb) b \*0x804835c<br />(gdb) d</td></tr><tr>    <td>bt</td>    <td>查看函数运行时堆栈</td>    <td>(gdb) bt</td></tr><tr>    <td>disas <functionName></td>    <td>默认反汇编对应的方法</td>    <td>(gdb) disas </td></tr><tr>    <td>s, n</td>    <td>s: 执行一行源程序代码，如果此行代码中有函数调用，则进入该函数；<br />n: 执行一行源程序代码，此行代码中的函数调用也一并执行。<br />s 相当于其它调试器中的“Step Into (单步跟踪进入)”；<br />n 相当于其它调试器中的“Step Over (单步跟踪)”。<br />这两个命令必须在有源代码调试信息的情况下才可以使用（GCC编译时使用“-g”参数）。</td>    <td>(gdb) s<br />(gdb) n</td></tr><tr>    <td>si, ni</td>    <td>si命令类似于s命令，ni命令类似于n命令。所不同的是，这两个命令（si/ni）所针对的是汇编指令，而s/n针对的是源代码。</td>    <td>(gdb) si<br />(gdb) ni</td></tr><tr>    <td>p &lt;变量名称&gt;</td>    <td>Print的简写，显示指定变量（临时变量或全局变量）的值。</td>    <td>(gdb) p i<br />(gdb) p nGlobalVar<br />(gdb) p/a</td></tr><tr>    <td>display ... <br />undisplay &lt;编号&gt;</td>    <td>display，设置程序中断后欲显示的数据及其格式。<br />例如，如果希望每次程序中断后可以看到即将被执行的下一条汇编指令，可以使用命令<br />“display /i $pc”<br />其中 $pc 代表当前汇编指令，/i 表示以十六进行显示。当需要关心汇编代码时，此命令相当有用。<br />undispaly，取消先前的display设置，编号从1开始递增。</td>    <td>(gdb) display /i $pc<br />(gdb) undisplay 1</td></tr><tr>    <td>i</td>    <td>Info的简写，用于显示各类信息，详情请查阅“help i”。</td>    <td>(gdb) i r 打印寄存器<br />(gdb) i proc m 检查是否为有效地址</td></tr><tr>    <td>reverse-stepi</td>    <td>回退之前执行过的指令</td>    <td>(gdb) reverse-stepi</td></tr><tr>    <td>q</td>    <td>Quit的简写，退出GDB调试环境。</td>    <td>(gdb) q</td></tr><tr>    <td>record</td>    <td>录制程序过程</td>    <td>(gdb) record</td></tr><tr>    <td>help [命令名称]</td>    <td>GDB帮助命令，提供对GDB名种命令的解释说明。<br />如果指定了“命令名称”参数，则显示该命令的详细说明；如果没有指定参数，则分类显示所有GDB命令，供用户进一步浏览和查询。</td>    <td>(gdb) help display</td></tr></table><h2 id="用法总结"><a href="#用法总结" class="headerlink" title="用法总结"></a>用法总结</h2><p><del>这里的总结主要是整理自 <a href="http://blog.jobbole.com/107759/" target="_blank" rel="noopener">gdb 调试入门，大牛写的高质量指南</a>，我觉得这篇文章是可以反复阅读的好文章。</del></p><p>发现这篇文章已经不存在了，希望我现在写的这篇总结对大家有帮助吧。</p><img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/gdb.png" class=""><h2 id="补充小工具"><a href="#补充小工具" class="headerlink" title="补充小工具"></a>补充小工具</h2><p>python dbg工具，可以通过 <code>apt-get install -y python-dbg</code> 进行安装，然后可以在其中使用 <code>py-bt</code> 、 <code>py-list</code> 等命令。</p><p>另外还有一个工具是 <strong>cscope</strong> ，主要用来遍历代码用的。</p><p>cscope -bqR : 建立查找数据库</p><p>cscope -dq : 启动cscope</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gdb </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>利用 find 和 grep 联合查找文件</title>
       <link href="/hexo-blog/2020/01/07/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/find-files-on-linux/"/>
       <url>/hexo-blog/2020/01/07/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/find-files-on-linux/</url>
@@ -70,19 +124,19 @@
       <link href="/hexo-blog/2020/01/04/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/book-movie-list/"/>
       <url>/hexo-blog/2020/01/04/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/book-movie-list/</url>
       
-        <content type="html"><![CDATA[<h2 id="2020-年读书观影清单"><a href="#2020-年读书观影清单" class="headerlink" title="2020 年读书观影清单"></a>2020 年读书观影清单</h2><h3 id="东野圭吾小说阅读"><a href="#东野圭吾小说阅读" class="headerlink" title="东野圭吾小说阅读"></a>东野圭吾小说阅读</h3><h4 id="非系列小说"><a href="#非系列小说" class="headerlink" title="非系列小说"></a>非系列小说</h4><ul><li><input disabled="" type="checkbox"> 白夜行</li><li><input disabled="" type="checkbox"> 幻夜</li><li><input disabled="" type="checkbox"> 解忧杂货店</li><li><input disabled="" type="checkbox"> 超杀人事件</li><li><input disabled="" type="checkbox"> 彷徨之刃</li><li><input disabled="" type="checkbox"> 秘密</li><li><input disabled="" type="checkbox"> 流星之绊</li><li><input disabled="" type="checkbox"> 时生</li><li><input disabled="" type="checkbox"> 信</li><li><input checked="" disabled="" type="checkbox"> 放学后 &lt;2019-12-06 Fri&gt;</li><li><input disabled="" type="checkbox"> 单恋</li><li><input disabled="" type="checkbox"> 虚无的十字架</li><li><input disabled="" type="checkbox"> 宿命</li><li><input disabled="" type="checkbox"> 杀人之门分身</li><li><input disabled="" type="checkbox"> 导论13</li><li><input disabled="" type="checkbox"> 绑架游戏</li><li><input disabled="" type="checkbox"> 使命与魂的尽头</li><li><input disabled="" type="checkbox"> 湖边杀人案</li><li><input disabled="" type="checkbox"> 平等世界 爱情故事</li></ul><h4 id="四笑小说"><a href="#四笑小说" class="headerlink" title="四笑小说"></a>四笑小说</h4><ul><li><input disabled="" type="checkbox"> 怪笑小说</li><li><input disabled="" type="checkbox"> 毒笑小说</li><li><input disabled="" type="checkbox"> 黑笑小说</li><li><input disabled="" type="checkbox"> 歪笑小说</li></ul><h4 id="滑雪场系列"><a href="#滑雪场系列" class="headerlink" title="滑雪场系列"></a>滑雪场系列</h4><ul><li><input checked="" disabled="" type="checkbox"> 疾风回旋曲 &lt;2017-11-24 Fri&gt; 2.0</li><li><input disabled="" type="checkbox"> 风雪追击</li></ul><h4 id="加贺一郎系列"><a href="#加贺一郎系列" class="headerlink" title="加贺一郎系列"></a>加贺一郎系列</h4><ul><li><input checked="" disabled="" type="checkbox"> 毕业 &lt;2019-12-14 Sat&gt;</li><li><input checked="" disabled="" type="checkbox"> 沉睡的森林 &lt;2019-12-16 Mon&gt;</li><li><input checked="" disabled="" type="checkbox"> 谁杀了她 &lt;2019-12-17 Tue&gt;</li><li><input checked="" disabled="" type="checkbox"> 恶意 &lt;2019-12-18 Wed&gt;</li><li><input checked="" disabled="" type="checkbox"> 我杀了他 &lt;2019-12-22 Sun&gt;</li><li><input checked="" disabled="" type="checkbox"> 只差一个谎言 &lt;2019-12-29 Sun&gt;</li><li><input checked="" disabled="" type="checkbox"> 红手指 &lt;2019-12-31 Tue&gt;</li><li><input checked="" disabled="" type="checkbox"> 新参者 &lt;2020-01-02 Thu&gt;</li><li><input checked="" disabled="" type="checkbox"> 麒麟之翼 &lt;2020-01-03 Fri&gt;</li><li><input checked="" disabled="" type="checkbox"> 祈祷落幕时 &lt;2019-12-12 Thu&gt;</li></ul><h4 id="神探伽利略系列"><a href="#神探伽利略系列" class="headerlink" title="神探伽利略系列"></a>神探伽利略系列</h4><ul><li><input checked="" disabled="" type="checkbox"> 侦探伽利略 &lt;2020-01-06 Mon&gt;</li><li><input disabled="" type="checkbox"> 预知梦</li><li><input checked="" disabled="" type="checkbox"> 嫌疑人 x 的献身 &lt;2019-12-09 Mon&gt;</li><li><input disabled="" type="checkbox"> 圣女的救济</li><li><input disabled="" type="checkbox"> 伽利略的苦恼</li><li><input disabled="" type="checkbox"> 盛夏的方程式</li><li><input disabled="" type="checkbox"> 虚像小丑</li><li><input disabled="" type="checkbox"> 禁忌魔术</li></ul><h3 id="其它推理小说"><a href="#其它推理小说" class="headerlink" title="其它推理小说"></a>其它推理小说</h3><ul><li><input disabled="" type="checkbox"> 罗杰疑案</li><li><input disabled="" type="checkbox"> 东方快车谋杀案</li><li><input disabled="" type="checkbox"> 无人生还</li><li><input disabled="" type="checkbox"> 啤酒谋杀案</li><li><input disabled="" type="checkbox"> ABC 杀人案</li><li><input disabled="" type="checkbox"> 福尔摩斯探案全集</li><li><input disabled="" type="checkbox"> 消失的爱人</li><li><input disabled="" type="checkbox"> 告白</li><li><input disabled="" type="checkbox"> 逻辑王子的演绎</li><li><input disabled="" type="checkbox"> 化工女王的逆袭</li><li><input disabled="" type="checkbox"> 物理教师时空诡计</li><li><input disabled="" type="checkbox"> 代上帝之手</li><li><input disabled="" type="checkbox"> 无证之罪</li><li><input disabled="" type="checkbox"> 坏小孩</li><li><input disabled="" type="checkbox"> 长夜难明</li><li><input disabled="" type="checkbox"> 络新妇之理</li><li><input disabled="" type="checkbox"> 姑获鸟之夏</li><li><input disabled="" type="checkbox"> 福尔摩斯探案集</li><li><input disabled="" type="checkbox"> 占星术杀人魔法</li><li><input disabled="" type="checkbox"> 死了七次的男人</li><li><input disabled="" type="checkbox"> 一桩事先张扬的凶杀案</li><li><input disabled="" type="checkbox"> 半落</li><li><input disabled="" type="checkbox"> 别相信任何人</li><li><input disabled="" type="checkbox"> 护士学院杀人事件</li><li><input disabled="" type="checkbox"> 所罗门的伪证</li><li><input disabled="" type="checkbox"> 达芬奇密码</li><li><input disabled="" type="checkbox"> 金色梦乡</li><li><input disabled="" type="checkbox"> 余生皆假期</li><li><input disabled="" type="checkbox"> 铁鼠之槛</li><li><input disabled="" type="checkbox"> 罗杰疑案</li><li><input disabled="" type="checkbox"> 尼罗河上的惨案</li><li><input disabled="" type="checkbox"> 十角馆事件</li><li><input disabled="" type="checkbox"> 一朵桔梗花</li><li><input disabled="" type="checkbox"> 夏与冬的奏鸣曲</li><li><input disabled="" type="checkbox"> 异邦骑士</li><li><input disabled="" type="checkbox"> 七个证人</li></ul><h3 id="电影"><a href="#电影" class="headerlink" title="电影"></a>电影</h3><ul><li><input disabled="" type="checkbox"> 控方证人</li><li><input disabled="" type="checkbox"> 消失的爱人</li><li><input disabled="" type="checkbox"> 彗星来的那一夜</li><li><input disabled="" type="checkbox"> 穆赫兰道</li><li><input disabled="" type="checkbox"> 搏击俱乐部</li><li><input disabled="" type="checkbox"> 东方快车谋杀案</li><li><input disabled="" type="checkbox"> 致命ID</li><li><input disabled="" type="checkbox"> 七宗罪</li><li><input checked="" disabled="" type="checkbox"> 天使与魔鬼 &lt;2020-01-05 Sun&gt;</li><li><input checked="" disabled="" type="checkbox"> 达芬奇密码 &lt;2020-01-05 Sun&gt;</li></ul><h3 id="连续剧"><a href="#连续剧" class="headerlink" title="连续剧"></a>连续剧</h3><ul><li><input checked="" disabled="" type="checkbox"> 神探伽利略 &lt;2020-01-04 Sat&gt;</li><li><input disabled="" type="checkbox"> 犯罪心理2</li><li><input disabled="" type="checkbox"> 犯罪心理3</li><li><input disabled="" type="checkbox"> 犯罪心理4</li><li><input disabled="" type="checkbox"> 犯罪心理5</li><li><input disabled="" type="checkbox"> 犯罪心理6</li><li><input disabled="" type="checkbox"> 犯罪心理7</li><li><input disabled="" type="checkbox"> 犯罪心理8</li><li><input disabled="" type="checkbox"> 不死法医</li><li><input disabled="" type="checkbox"> 劳拉之谜</li><li><input disabled="" type="checkbox"> 大小谎言</li><li><input disabled="" type="checkbox"> Lie to me</li><li><input disabled="" type="checkbox"> 神探夏洛克</li><li><input disabled="" type="checkbox"> 布雷德利夫人探案</li><li><input disabled="" type="checkbox"> 骇人命案事件簿</li><li><input disabled="" type="checkbox"> 无妄之灾</li><li><input disabled="" type="checkbox"> 我的恐怖妻子</li></ul><h2 id="2019-年读书观影清单"><a href="#2019-年读书观影清单" class="headerlink" title="2019 年读书观影清单"></a>2019 年读书观影清单</h2><h3 id="小说"><a href="#小说" class="headerlink" title="小说"></a>小说</h3><ul><li><input checked="" disabled="" type="checkbox"> 尸语者</li><li><input checked="" disabled="" type="checkbox"> 无声的证词</li><li><input checked="" disabled="" type="checkbox"> 十一根手指</li><li><input checked="" disabled="" type="checkbox"> 清道夫</li><li><input checked="" disabled="" type="checkbox"> 幸存者</li><li><input checked="" disabled="" type="checkbox"> 偷窥者</li><li><input checked="" disabled="" type="checkbox"> 天谴者</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 一</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 二</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 三</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 四</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 五</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 六</li><li><input checked="" disabled="" type="checkbox"> 心理罪系列</li></ul><h3 id="电影-1"><a href="#电影-1" class="headerlink" title="电影"></a>电影</h3><ul><li><input checked="" disabled="" type="checkbox"> 惊奇队长</li><li><input checked="" disabled="" type="checkbox"> 复仇者联盟 4</li><li><input checked="" disabled="" type="checkbox"> 惊声尖笑 1</li><li><input checked="" disabled="" type="checkbox"> 惊声尖笑 2</li><li><input checked="" disabled="" type="checkbox"> 惊声尖笑 3</li><li><input checked="" disabled="" type="checkbox"> 惊声尖笑 4</li><li><input checked="" disabled="" type="checkbox"> x 战警：黑凤凰</li><li><input checked="" disabled="" type="checkbox"> 黑衣人：全球追缉</li><li><input checked="" disabled="" type="checkbox"> 蜘蛛侠：英雄远征</li><li><input checked="" disabled="" type="checkbox"> 看不见的客人</li><li><input checked="" disabled="" type="checkbox"> 深夜食堂 &lt;2019-10-04 Fri&gt;</li><li><input checked="" disabled="" type="checkbox"> 大侦探皮卡丘 &lt;2019-10-05 Sat&gt;</li><li><input checked="" disabled="" type="checkbox"> 超能陆战队 &lt;2019-10-06 Sun&gt;</li><li><input checked="" disabled="" type="checkbox"> 沉默的证人 &lt;2019-10-10 Thu&gt;</li></ul><h3 id="连续剧-1"><a href="#连续剧-1" class="headerlink" title="连续剧"></a>连续剧</h3><ul><li><input checked="" disabled="" type="checkbox"> 东宫</li><li><input checked="" disabled="" type="checkbox"> 知否知否应是绿肥红瘦</li><li><input checked="" disabled="" type="checkbox"> 犯罪心理1</li><li><input checked="" disabled="" type="checkbox"> 无人生还</li><li><input checked="" disabled="" type="checkbox"> 心理法医</li></ul><h2 id="专题电影记录"><a href="#专题电影记录" class="headerlink" title="专题电影记录"></a>专题电影记录</h2><h3 id="漫威系列"><a href="#漫威系列" class="headerlink" title="漫威系列"></a>漫威系列</h3><ul><li><input checked="" disabled="" type="checkbox"> 《钢铁侠》</li><li><input checked="" disabled="" type="checkbox"> 《钢铁侠》</li><li><input checked="" disabled="" type="checkbox"> 《无敌浩克》</li><li><input checked="" disabled="" type="checkbox"> 《钢铁侠2》</li><li><input checked="" disabled="" type="checkbox"> 《雷神》</li><li><input checked="" disabled="" type="checkbox"> 《美国队长》</li><li><input checked="" disabled="" type="checkbox"> 《复仇者联盟》</li><li><input checked="" disabled="" type="checkbox"> 《钢铁侠3》</li><li><input checked="" disabled="" type="checkbox"> 《雷神2》</li><li><input checked="" disabled="" type="checkbox"> 《美国队长2》</li><li><input checked="" disabled="" type="checkbox"> 《银河护卫队》</li><li><input checked="" disabled="" type="checkbox"> 《复仇者联盟2》</li><li><input checked="" disabled="" type="checkbox"> 《蚊人》</li><li><input checked="" disabled="" type="checkbox"> 《美国队长3》</li><li><input checked="" disabled="" type="checkbox"> 《奇异博士》</li><li><input checked="" disabled="" type="checkbox"> 《银河护卫队2》</li><li><input checked="" disabled="" type="checkbox"> 《蜘蛛侠》</li><li><input checked="" disabled="" type="checkbox"> 《雷神3》</li><li><input checked="" disabled="" type="checkbox"> 《黑豹》</li><li><input checked="" disabled="" type="checkbox"> 《复仇者联盟3》</li><li><input checked="" disabled="" type="checkbox"> 《死待》</li><li><input checked="" disabled="" type="checkbox"> 《死待2》</li><li><input checked="" disabled="" type="checkbox"> 《蜘蛛侠-英雄归来》 『2017-9-15』</li><li><input checked="" disabled="" type="checkbox"> 《复仇者联盟3:无限战争》『2018-5-13』</li><li><input checked="" disabled="" type="checkbox"> 《蚁人2:黄蜂女现身》『2018-8-24』</li><li><input checked="" disabled="" type="checkbox"> 《毒液:致命守护者》『2018-11-11』</li><li><input checked="" disabled="" type="checkbox"> 《蜘蛛侠》</li><li><input checked="" disabled="" type="checkbox"> 《蜘蛛侠2》</li><li><input checked="" disabled="" type="checkbox"> 《蜘蛛侠3》</li></ul><h3 id="DC-影业"><a href="#DC-影业" class="headerlink" title="DC 影业"></a>DC 影业</h3><ul><li><input checked="" disabled="" type="checkbox"> 《正义联盟》『2017-11-22』</li><li><input checked="" disabled="" type="checkbox"> 《海王》『2018-12-09』</li></ul><h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ul><li><input checked="" disabled="" type="checkbox"> 《神奇动物在哪里：格林德沃之罪》『2018-11-24』</li><li><input checked="" disabled="" type="checkbox"> 《你的名字》『2017-11-20』</li><li><input checked="" disabled="" type="checkbox"> 《银魂》『2017-9-1』</li><li><input checked="" disabled="" type="checkbox"> 《疯狂动物城》</li><li><input checked="" disabled="" type="checkbox"> 《看不见的客人》 『2017-9-17』</li><li><input checked="" disabled="" type="checkbox"> 《天才枪手》</li><li><input checked="" disabled="" type="checkbox"> 《环太平洋 雷霆再起》『2018-6-24』</li><li><input checked="" disabled="" type="checkbox"> 《神探》『2018-5-25』</li><li><input checked="" disabled="" type="checkbox"> 《古墓丽影 缘起之战》『2018-6-27』</li><li><input checked="" disabled="" type="checkbox"> 《玛丽与魔女之花》 『2018-6-28』</li><li><input checked="" disabled="" type="checkbox"> 《泄密者》『2018-7-19』</li><li><input checked="" disabled="" type="checkbox"> 《唐人街探案2》『2018-2-22』</li><li><input checked="" disabled="" type="checkbox"> 《无双》</li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="2020-年读书观影清单"><a href="#2020-年读书观影清单" class="headerlink" title="2020 年读书观影清单"></a>2020 年读书观影清单</h2><h3 id="东野圭吾小说阅读"><a href="#东野圭吾小说阅读" class="headerlink" title="东野圭吾小说阅读"></a>东野圭吾小说阅读</h3><h4 id="非系列小说"><a href="#非系列小说" class="headerlink" title="非系列小说"></a>非系列小说</h4><ul><li><input disabled="" type="checkbox"> 白夜行</li><li><input disabled="" type="checkbox"> 幻夜</li><li><input disabled="" type="checkbox"> 解忧杂货店</li><li><input disabled="" type="checkbox"> 超杀人事件</li><li><input disabled="" type="checkbox"> 彷徨之刃</li><li><input disabled="" type="checkbox"> 秘密</li><li><input disabled="" type="checkbox"> 流星之绊</li><li><input disabled="" type="checkbox"> 时生</li><li><input disabled="" type="checkbox"> 信</li><li><input checked="" disabled="" type="checkbox"> 放学后 &lt;2019-12-06 Fri&gt;</li><li><input disabled="" type="checkbox"> 单恋</li><li><input disabled="" type="checkbox"> 虚无的十字架</li><li><input disabled="" type="checkbox"> 宿命</li><li><input disabled="" type="checkbox"> 杀人之门分身</li><li><input disabled="" type="checkbox"> 导论13</li><li><input disabled="" type="checkbox"> 绑架游戏</li><li><input disabled="" type="checkbox"> 使命与魂的尽头</li><li><input disabled="" type="checkbox"> 湖边杀人案</li><li><input disabled="" type="checkbox"> 平等世界 爱情故事</li></ul><h4 id="四笑小说"><a href="#四笑小说" class="headerlink" title="四笑小说"></a>四笑小说</h4><ul><li><input disabled="" type="checkbox"> 怪笑小说</li><li><input disabled="" type="checkbox"> 毒笑小说</li><li><input disabled="" type="checkbox"> 黑笑小说</li><li><input disabled="" type="checkbox"> 歪笑小说</li></ul><h4 id="滑雪场系列"><a href="#滑雪场系列" class="headerlink" title="滑雪场系列"></a>滑雪场系列</h4><ul><li><input checked="" disabled="" type="checkbox"> 疾风回旋曲 &lt;2017-11-24 Fri&gt; 2.0</li><li><input disabled="" type="checkbox"> 风雪追击</li></ul><h4 id="加贺一郎系列"><a href="#加贺一郎系列" class="headerlink" title="加贺一郎系列"></a>加贺一郎系列</h4><ul><li><input checked="" disabled="" type="checkbox"> 毕业 &lt;2019-12-14 Sat&gt;</li><li><input checked="" disabled="" type="checkbox"> 沉睡的森林 &lt;2019-12-16 Mon&gt;</li><li><input checked="" disabled="" type="checkbox"> 谁杀了她 &lt;2019-12-17 Tue&gt;</li><li><input checked="" disabled="" type="checkbox"> 恶意 &lt;2019-12-18 Wed&gt;</li><li><input checked="" disabled="" type="checkbox"> 我杀了他 &lt;2019-12-22 Sun&gt;</li><li><input checked="" disabled="" type="checkbox"> 只差一个谎言 &lt;2019-12-29 Sun&gt;</li><li><input checked="" disabled="" type="checkbox"> 红手指 &lt;2019-12-31 Tue&gt;</li><li><input checked="" disabled="" type="checkbox"> 新参者 &lt;2020-01-02 Thu&gt;</li><li><input checked="" disabled="" type="checkbox"> 麒麟之翼 &lt;2020-01-03 Fri&gt;</li><li><input checked="" disabled="" type="checkbox"> 祈祷落幕时 &lt;2019-12-12 Thu&gt;</li></ul><h4 id="神探伽利略系列"><a href="#神探伽利略系列" class="headerlink" title="神探伽利略系列"></a>神探伽利略系列</h4><ul><li><input checked="" disabled="" type="checkbox"> 侦探伽利略 &lt;2020-01-06 Mon&gt;</li><li><input checked="" disabled="" type="checkbox"> 预知梦 &lt;2020-01-06 Mon&gt;</li><li><input checked="" disabled="" type="checkbox"> 嫌疑人 x 的献身 &lt;2019-12-09 Mon&gt;</li><li><input disabled="" type="checkbox"> 圣女的救济</li><li><input disabled="" type="checkbox"> 伽利略的苦恼</li><li><input disabled="" type="checkbox"> 盛夏的方程式</li><li><input disabled="" type="checkbox"> 虚像小丑</li><li><input disabled="" type="checkbox"> 禁忌魔术</li></ul><h3 id="其它推理小说"><a href="#其它推理小说" class="headerlink" title="其它推理小说"></a>其它推理小说</h3><ul><li><input disabled="" type="checkbox"> 罗杰疑案</li><li><input disabled="" type="checkbox"> 东方快车谋杀案</li><li><input disabled="" type="checkbox"> 无人生还</li><li><input disabled="" type="checkbox"> 啤酒谋杀案</li><li><input disabled="" type="checkbox"> ABC 杀人案</li><li><input disabled="" type="checkbox"> 福尔摩斯探案全集</li><li><input disabled="" type="checkbox"> 消失的爱人</li><li><input disabled="" type="checkbox"> 告白</li><li><input disabled="" type="checkbox"> 逻辑王子的演绎</li><li><input disabled="" type="checkbox"> 化工女王的逆袭</li><li><input disabled="" type="checkbox"> 物理教师时空诡计</li><li><input disabled="" type="checkbox"> 代上帝之手</li><li><input disabled="" type="checkbox"> 无证之罪</li><li><input disabled="" type="checkbox"> 坏小孩</li><li><input disabled="" type="checkbox"> 长夜难明</li><li><input disabled="" type="checkbox"> 络新妇之理</li><li><input disabled="" type="checkbox"> 姑获鸟之夏</li><li><input disabled="" type="checkbox"> 福尔摩斯探案集</li><li><input disabled="" type="checkbox"> 占星术杀人魔法</li><li><input disabled="" type="checkbox"> 死了七次的男人</li><li><input disabled="" type="checkbox"> 一桩事先张扬的凶杀案</li><li><input disabled="" type="checkbox"> 半落</li><li><input disabled="" type="checkbox"> 别相信任何人</li><li><input disabled="" type="checkbox"> 护士学院杀人事件</li><li><input disabled="" type="checkbox"> 所罗门的伪证</li><li><input disabled="" type="checkbox"> 达芬奇密码</li><li><input disabled="" type="checkbox"> 金色梦乡</li><li><input disabled="" type="checkbox"> 余生皆假期</li><li><input disabled="" type="checkbox"> 铁鼠之槛</li><li><input disabled="" type="checkbox"> 罗杰疑案</li><li><input disabled="" type="checkbox"> 尼罗河上的惨案</li><li><input disabled="" type="checkbox"> 十角馆事件</li><li><input disabled="" type="checkbox"> 一朵桔梗花</li><li><input disabled="" type="checkbox"> 夏与冬的奏鸣曲</li><li><input disabled="" type="checkbox"> 异邦骑士</li><li><input disabled="" type="checkbox"> 七个证人</li></ul><h3 id="电影"><a href="#电影" class="headerlink" title="电影"></a>电影</h3><ul><li><input disabled="" type="checkbox"> 控方证人</li><li><input disabled="" type="checkbox"> 消失的爱人</li><li><input disabled="" type="checkbox"> 彗星来的那一夜</li><li><input disabled="" type="checkbox"> 穆赫兰道</li><li><input disabled="" type="checkbox"> 搏击俱乐部</li><li><input disabled="" type="checkbox"> 东方快车谋杀案</li><li><input disabled="" type="checkbox"> 致命ID</li><li><input disabled="" type="checkbox"> 七宗罪</li><li><input checked="" disabled="" type="checkbox"> 天使与魔鬼 &lt;2020-01-05 Sun&gt;</li><li><input checked="" disabled="" type="checkbox"> 达芬奇密码 &lt;2020-01-05 Sun&gt;</li></ul><h3 id="连续剧"><a href="#连续剧" class="headerlink" title="连续剧"></a>连续剧</h3><ul><li><input checked="" disabled="" type="checkbox"> 神探伽利略 &lt;2020-01-04 Sat&gt;</li><li><input disabled="" type="checkbox"> 犯罪心理2</li><li><input disabled="" type="checkbox"> 犯罪心理3</li><li><input disabled="" type="checkbox"> 犯罪心理4</li><li><input disabled="" type="checkbox"> 犯罪心理5</li><li><input disabled="" type="checkbox"> 犯罪心理6</li><li><input disabled="" type="checkbox"> 犯罪心理7</li><li><input disabled="" type="checkbox"> 犯罪心理8</li><li><input disabled="" type="checkbox"> 不死法医</li><li><input disabled="" type="checkbox"> 劳拉之谜</li><li><input disabled="" type="checkbox"> 大小谎言</li><li><input disabled="" type="checkbox"> Lie to me</li><li><input disabled="" type="checkbox"> 神探夏洛克</li><li><input disabled="" type="checkbox"> 布雷德利夫人探案</li><li><input disabled="" type="checkbox"> 骇人命案事件簿</li><li><input disabled="" type="checkbox"> 无妄之灾</li><li><input disabled="" type="checkbox"> 我的恐怖妻子</li></ul><h2 id="2019-年读书观影清单"><a href="#2019-年读书观影清单" class="headerlink" title="2019 年读书观影清单"></a>2019 年读书观影清单</h2><h3 id="小说"><a href="#小说" class="headerlink" title="小说"></a>小说</h3><ul><li><input checked="" disabled="" type="checkbox"> 尸语者</li><li><input checked="" disabled="" type="checkbox"> 无声的证词</li><li><input checked="" disabled="" type="checkbox"> 十一根手指</li><li><input checked="" disabled="" type="checkbox"> 清道夫</li><li><input checked="" disabled="" type="checkbox"> 幸存者</li><li><input checked="" disabled="" type="checkbox"> 偷窥者</li><li><input checked="" disabled="" type="checkbox"> 天谴者</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 一</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 二</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 三</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 四</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 五</li><li><input checked="" disabled="" type="checkbox"> 大唐狄公案 六</li><li><input checked="" disabled="" type="checkbox"> 心理罪系列</li></ul><h3 id="电影-1"><a href="#电影-1" class="headerlink" title="电影"></a>电影</h3><ul><li><input checked="" disabled="" type="checkbox"> 惊奇队长</li><li><input checked="" disabled="" type="checkbox"> 复仇者联盟 4</li><li><input checked="" disabled="" type="checkbox"> 惊声尖笑 1</li><li><input checked="" disabled="" type="checkbox"> 惊声尖笑 2</li><li><input checked="" disabled="" type="checkbox"> 惊声尖笑 3</li><li><input checked="" disabled="" type="checkbox"> 惊声尖笑 4</li><li><input checked="" disabled="" type="checkbox"> x 战警：黑凤凰</li><li><input checked="" disabled="" type="checkbox"> 黑衣人：全球追缉</li><li><input checked="" disabled="" type="checkbox"> 蜘蛛侠：英雄远征</li><li><input checked="" disabled="" type="checkbox"> 看不见的客人</li><li><input checked="" disabled="" type="checkbox"> 深夜食堂 &lt;2019-10-04 Fri&gt;</li><li><input checked="" disabled="" type="checkbox"> 大侦探皮卡丘 &lt;2019-10-05 Sat&gt;</li><li><input checked="" disabled="" type="checkbox"> 超能陆战队 &lt;2019-10-06 Sun&gt;</li><li><input checked="" disabled="" type="checkbox"> 沉默的证人 &lt;2019-10-10 Thu&gt;</li></ul><h3 id="连续剧-1"><a href="#连续剧-1" class="headerlink" title="连续剧"></a>连续剧</h3><ul><li><input checked="" disabled="" type="checkbox"> 东宫</li><li><input checked="" disabled="" type="checkbox"> 知否知否应是绿肥红瘦</li><li><input checked="" disabled="" type="checkbox"> 犯罪心理1</li><li><input checked="" disabled="" type="checkbox"> 无人生还</li><li><input checked="" disabled="" type="checkbox"> 心理法医</li></ul><h2 id="专题电影记录"><a href="#专题电影记录" class="headerlink" title="专题电影记录"></a>专题电影记录</h2><h3 id="漫威系列"><a href="#漫威系列" class="headerlink" title="漫威系列"></a>漫威系列</h3><ul><li><input checked="" disabled="" type="checkbox"> 《钢铁侠》</li><li><input checked="" disabled="" type="checkbox"> 《钢铁侠》</li><li><input checked="" disabled="" type="checkbox"> 《无敌浩克》</li><li><input checked="" disabled="" type="checkbox"> 《钢铁侠2》</li><li><input checked="" disabled="" type="checkbox"> 《雷神》</li><li><input checked="" disabled="" type="checkbox"> 《美国队长》</li><li><input checked="" disabled="" type="checkbox"> 《复仇者联盟》</li><li><input checked="" disabled="" type="checkbox"> 《钢铁侠3》</li><li><input checked="" disabled="" type="checkbox"> 《雷神2》</li><li><input checked="" disabled="" type="checkbox"> 《美国队长2》</li><li><input checked="" disabled="" type="checkbox"> 《银河护卫队》</li><li><input checked="" disabled="" type="checkbox"> 《复仇者联盟2》</li><li><input checked="" disabled="" type="checkbox"> 《蚊人》</li><li><input checked="" disabled="" type="checkbox"> 《美国队长3》</li><li><input checked="" disabled="" type="checkbox"> 《奇异博士》</li><li><input checked="" disabled="" type="checkbox"> 《银河护卫队2》</li><li><input checked="" disabled="" type="checkbox"> 《蜘蛛侠》</li><li><input checked="" disabled="" type="checkbox"> 《雷神3》</li><li><input checked="" disabled="" type="checkbox"> 《黑豹》</li><li><input checked="" disabled="" type="checkbox"> 《复仇者联盟3》</li><li><input checked="" disabled="" type="checkbox"> 《死待》</li><li><input checked="" disabled="" type="checkbox"> 《死待2》</li><li><input checked="" disabled="" type="checkbox"> 《蜘蛛侠-英雄归来》 『2017-9-15』</li><li><input checked="" disabled="" type="checkbox"> 《复仇者联盟3:无限战争》『2018-5-13』</li><li><input checked="" disabled="" type="checkbox"> 《蚁人2:黄蜂女现身》『2018-8-24』</li><li><input checked="" disabled="" type="checkbox"> 《毒液:致命守护者》『2018-11-11』</li><li><input checked="" disabled="" type="checkbox"> 《蜘蛛侠》</li><li><input checked="" disabled="" type="checkbox"> 《蜘蛛侠2》</li><li><input checked="" disabled="" type="checkbox"> 《蜘蛛侠3》</li></ul><h3 id="DC-影业"><a href="#DC-影业" class="headerlink" title="DC 影业"></a>DC 影业</h3><ul><li><input checked="" disabled="" type="checkbox"> 《正义联盟》『2017-11-22』</li><li><input checked="" disabled="" type="checkbox"> 《海王》『2018-12-09』</li></ul><h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ul><li><input checked="" disabled="" type="checkbox"> 《神奇动物在哪里：格林德沃之罪》『2018-11-24』</li><li><input checked="" disabled="" type="checkbox"> 《你的名字》『2017-11-20』</li><li><input checked="" disabled="" type="checkbox"> 《银魂》『2017-9-1』</li><li><input checked="" disabled="" type="checkbox"> 《疯狂动物城》</li><li><input checked="" disabled="" type="checkbox"> 《看不见的客人》 『2017-9-17』</li><li><input checked="" disabled="" type="checkbox"> 《天才枪手》</li><li><input checked="" disabled="" type="checkbox"> 《环太平洋 雷霆再起》『2018-6-24』</li><li><input checked="" disabled="" type="checkbox"> 《神探》『2018-5-25』</li><li><input checked="" disabled="" type="checkbox"> 《古墓丽影 缘起之战》『2018-6-27』</li><li><input checked="" disabled="" type="checkbox"> 《玛丽与魔女之花》 『2018-6-28』</li><li><input checked="" disabled="" type="checkbox"> 《泄密者》『2018-7-19』</li><li><input checked="" disabled="" type="checkbox"> 《唐人街探案2》『2018-2-22』</li><li><input checked="" disabled="" type="checkbox"> 《无双》</li></ul>]]></content>
       
       
       <categories>
           
           <category> 生活总结 </category>
           
-          <category> 年度清单 </category>
-          
       </categories>
       
       
         <tags>
+            
+            <tag> 年度清单 </tag>
             
             <tag> 读书清单 </tag>
             
@@ -106,7 +160,7 @@
       
       <categories>
           
-          <category> 前端开发 </category>
+          <category> 前端技术 </category>
           
           <category> hexo </category>
           
@@ -120,6 +174,33 @@
             <tag> valine </tag>
             
             <tag> Code 504 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Google 验证网站所有权</title>
+      <link href="/hexo-blog/2019/10/30/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/google-search-console/"/>
+      <url>/hexo-blog/2019/10/30/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/google-search-console/</url>
+      
+        <content type="html"><![CDATA[<p>想要有收，必要的点击率和使用率是要保证的，然后就是导流了，如果想在这上面使用，必须要有增加相关的搜索量，将自己写的文章，在 Google 进行搜索的时候，发现并没有数据引入，这就比较尴尬了，查询了一下，可以申请一个 Google Search Console 的服务，这里就必须要整理一下了。</p><p><a href="https://support.google.com/webmasters/answer/9008080#google%5Fanalytics%5Fverification" target="_blank" rel="noopener">点击跳转到验证网站所有权页面</a></p><p>谷歌提供了几个方案，第一个也是推荐的，就是将一个 html 文件放到对应的网站中，这个看了一下。</p><img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/google_search_01.png" class=""><p>但是相对于这种方案，下面的两种方法更合适一些，但是都需要在博客的主题中增加相应的代码，这个可以和 Google Adsense 一起使用。</p><img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/google_search_02.png" class=""><p>这个方案也是可以的，在使用过程中，想要针对性的看自己的网站的内容，使用 Google Analytics（分析）也是一个不错的方案。</p><img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/google_search_03.png" class=""><p>还有一个方法是在 DNS 中增加对应的 txt 文件，但是这个方法，没有解决，在在腾讯云上，配置 DNS 的时候，提示非法，可能是使用的方案不对，需要再研究一下。</p><img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/google_search_4.png" class=""><p>目前已经成功申请了广告业务，但是因为写的太次的原因，网站几乎没人看，恩。。。很尴尬。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Google </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> google adsense </tag>
             
         </tags>
       
@@ -151,6 +232,87 @@
             <tag> markdown </tag>
             
             <tag> markdown-deux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>整数转英文表示</title>
+      <link href="/hexo-blog/2019/10/08/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/python/integer-to-english-words/"/>
+      <url>/hexo-blog/2019/10/08/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/python/integer-to-english-words/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>将非负整数转换为其对应的英文表示。</p><footer><strong>LeetCode</strong><cite><a href="https://leetcode-cn.com/problems/integer-to-english-words/" target="_blank" rel="noopener">数转换英文表示</a></cite></footer></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numberToWords</span><span class="params">(self, num: int)</span> -&gt; str:</span></span><br><span class="line">       one_to_19 = <span class="string">'''One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve</span></span><br><span class="line"><span class="string">               Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen'''</span>.split()</span><br><span class="line">       tens = <span class="string">'Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety'</span>.split()</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(num)</span>:</span></span><br><span class="line">           <span class="keyword">if</span> num &lt; <span class="number">20</span>:</span><br><span class="line">               <span class="keyword">return</span> one_to_19[num - <span class="number">1</span>:num]</span><br><span class="line">           <span class="keyword">elif</span> num &lt; <span class="number">100</span>:</span><br><span class="line">               <span class="keyword">return</span> [tens[num // <span class="number">10</span> - <span class="number">2</span>]] + helper(num % <span class="number">10</span>)</span><br><span class="line">           <span class="keyword">elif</span> num &lt; <span class="number">1000</span>:</span><br><span class="line">               <span class="keyword">return</span> [one_to_19[num // <span class="number">100</span> <span class="number">-1</span>]] + [<span class="string">'Hundred'</span>] + helper(num % <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">           <span class="keyword">for</span> p,w <span class="keyword">in</span> enumerate([<span class="string">'Thousand'</span>,<span class="string">'Million'</span>,<span class="string">'Billion'</span>],<span class="number">1</span>):</span><br><span class="line">               <span class="keyword">if</span> num &lt; <span class="number">1000</span> ** (p+<span class="number">1</span>):</span><br><span class="line">                   <span class="keyword">return</span> helper(num//<span class="number">1000</span>**p) + [w] + helper(num % <span class="number">1000</span> ** p)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">' '</span>.join(helper(num)) <span class="keyword">or</span> <span class="string">"Zero"</span></span><br></pre></td></tr></table></figure><p>这里做了两个测试，关于 <code>if-elif</code> 和 <code>if...if</code> 的时间，在 Leetcode 上测试的时候，发现 <code>if-elif</code> 的效率是低于两个 <code>if...if</code> 的效率的，具体时候如下：</p><img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/py-if-elif.png" class=""><img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/py-if-if.png" class=""><p>所以在没有具体的逻辑要求的时候，使用 <code>if...if</code> 代替 <code>if-elif</code> 来提高效率，但是为什么会与我的认知相反呢？很奇怪，有时间希望可以研究一下两个的时间使用效率的差别。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后台技术 </category>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>整数转罗马数字</title>
+      <link href="/hexo-blog/2019/10/08/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/python/integer-to-roman/"/>
+      <url>/hexo-blog/2019/10/08/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/python/integer-to-roman/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。</p><p>字符          数值<br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000<br>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。</p><p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：</p><p>I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。<br>X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。<br>C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。<br>给定一个整数，将其转为罗马数字。输入确保在 1 到 3999 的范围内。</p><footer><strong>LeetCode</strong><cite><a href="https://leetcode-cn.com/problems/integer-to-roman/" target="_blank" rel="noopener">数转罗马数字</a></cite></footer></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intToRoman</span><span class="params">(self, num: int)</span> -&gt; str:</span></span><br><span class="line">        nums = [<span class="number">1000</span>,<span class="number">900</span>,<span class="number">500</span>,<span class="number">400</span>,<span class="number">100</span>,<span class="number">90</span>,<span class="number">50</span>,<span class="number">40</span>,<span class="number">10</span>,<span class="number">9</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">1</span>]</span><br><span class="line">        romans = [<span class="string">'M'</span>,<span class="string">'CM'</span>,<span class="string">'D'</span>,<span class="string">'CD'</span>,<span class="string">'C'</span>,<span class="string">'XC'</span>,<span class="string">'L'</span>,<span class="string">'XL'</span>,<span class="string">'X'</span>,<span class="string">'IX'</span>,<span class="string">'V'</span>,<span class="string">'IV'</span>,<span class="string">'I'</span>]</span><br><span class="line"></span><br><span class="line">        index = <span class="number">0</span></span><br><span class="line">        res = <span class="string">''</span></span><br><span class="line">        <span class="keyword">while</span> index &lt; <span class="number">13</span>:</span><br><span class="line">            <span class="keyword">while</span> num &gt;= nums[index]:</span><br><span class="line">                res += romans[index]</span><br><span class="line">                num -= nums[index]</span><br><span class="line"></span><br><span class="line">            index += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后台技术 </category>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何提高时间使用效率</title>
+      <link href="/hexo-blog/2019/08/16/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/how-to-improve-work-efficiency/"/>
+      <url>/hexo-blog/2019/08/16/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/how-to-improve-work-efficiency/</url>
+      
+        <content type="html"><![CDATA[<h2 id="碎片时间"><a href="#碎片时间" class="headerlink" title="碎片时间"></a>碎片时间</h2><p>与完整的时间不同，生活中经常有一些碎片时间，这些时间缺乏连续性，并且时间短，随时可能会出现，因此碎片时间和完整时间的利用不太相同。</p><p>我们可以先将自己的碎片时间按长短进行分类，比如 15 分钟、30 分钟，然后按时间长短，将自己可以处理的事情做完，将这些事情列举出来，当有了这个时间之后，可以按这个进行处理。</p><h3 id="15-分钟"><a href="#15-分钟" class="headerlink" title="15 分钟"></a>15 分钟</h3><ul><li>阅读一篇微信公众号的文章，如果有趣可以保存下来，在后面有大块时间后进行反复阅读</li><li>休息一下眼睛，在长时间伏案工作后，必要的休息是很有用的</li><li>给家人打个电话之类的</li><li>处理一下工作中的邮件</li><li>将之前收集到的内容整理成一个计划表</li></ul><h3 id="30-分钟"><a href="#30-分钟" class="headerlink" title="30 分钟"></a>30 分钟</h3><ul><li>增加一个 Emacs 中想要使用的功能</li><li>整理之前阅读到的知识点</li><li>听一小段英文，并记录学习</li></ul><p>这样时间的利用效率提高之后，学习和工作也就更有计划了。</p><p>这里推荐两个小工具。</p><p>Forest : 可以计时时间并统计，比较好用，期间不能使用手机，强迫症好帮手。还能收集金币换不同的树用来种。</p><p>滴答清单 : 有 Mac 版和 iOS 版本，我主要用来收集阅读到的好文章，或者想要归纳整理的内容，等有时间后再重复阅读。</p><h2 id="其它小技巧"><a href="#其它小技巧" class="headerlink" title="其它小技巧"></a>其它小技巧</h2><ul><li>对于可以同时做的事情，尽量同时完成。比如洗澡的同时可以洗衣服、烧水等</li><li>有意识的为自己设定一个截止时间，这样可以强迫自己完成某些任务</li><li>做事的时候多思考总结，找到适合自己，提高时间使用效率的方法</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 时间管理 </tag>
+            
+            <tag> 时间使用效率 </tag>
             
         </tags>
       
@@ -199,74 +361,14 @@
           
           <category> 生活总结 </category>
           
-          <category> 简历 </category>
-          
       </categories>
       
       
         <tags>
             
-            <tag> resume </tag>
+            <tag> 简历 </tag>
             
-            <tag> level </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Emacs Keymap 优先级</title>
-      <link href="/hexo-blog/2019/07/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs/emacs-keymap-priority/"/>
-      <url>/hexo-blog/2019/07/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs/emacs-keymap-priority/</url>
-      
-        <content type="html"><![CDATA[<p>编写 Emacs 的配置文件，无论如何也不能绕开快捷键，对于快捷键一般都是 <code>define-key</code> 方法来实现按键绑定，但是对于不同的 <strong>keymap</strong> 拥有不同的优先级，通过 <strong>keymap</strong> 优先级，可以了解到快捷键间的覆盖关系。</p><p><code>key-translation-map</code> : 最高级，就是把这个键的意义改变了，想使用原来的快捷键，要重新进行绑定</p><p><code>minor-mode-map</code> : 二级，只在 <strong>minor mode</strong> 激活时启作用，其它时候会被其它的快捷键覆盖掉</p><p><code>local-set-key</code> : 三级，在 <strong>major mode</strong> 中启作用</p><p><code>global-set-key</code> : 最弱的级别，但是也是最简单的键绑定方式</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工具环境 </category>
-          
-          <category> Emacs </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> keymap </tag>
-            
-            <tag> keybinds </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>brew 不常用命令</title>
-      <link href="/hexo-blog/2019/07/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/mac/brew-unused-command/"/>
-      <url>/hexo-blog/2019/07/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/mac/brew-unused-command/</url>
-      
-        <content type="html"><![CDATA[<p><code>brew services</code> 命令是用来管理 Mac 系统中后台服务的，比如在 Mac 上安装了 MySQL ，当我希望将这个变成一个后台服务启动的时候，可以使用，有点像 Linux 下的 <code>service</code> 和 <code>systemctl</code> 两个命令。</p><p>具体的使用命令也非常简单：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">brew services list  # 查看使用brew安装的服务列表</span><br><span class="line">brew services run formula|--all  # 启动服务（仅启动不注册）</span><br><span class="line">brew services start formula|--all  # 启动服务，并注册</span><br><span class="line">brew services stop formula|--all   # 停止服务，并取消注册</span><br><span class="line">brew services restart formula|--all  # 重启服务，并注册</span><br><span class="line">brew services cleanup  # 清除已卸载应用的无用的配置</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工具环境 </category>
-          
-          <category> Mac </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> brew </tag>
-            
-            <tag> 服务列表 </tag>
+            <tag> 技能水平 </tag>
             
         </tags>
       
@@ -346,12 +448,12 @@
           
           <category> 生活总结 </category>
           
-          <category> 手帐 </category>
-          
       </categories>
       
       
         <tags>
+            
+            <tag> 总结 </tag>
             
             <tag> 子弹笔记 </tag>
             
@@ -393,6 +495,62 @@
     
     
     <entry>
+      <title>如何写总结类的博客</title>
+      <link href="/hexo-blog/2019/04/08/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/how-to-write-summary-blog/"/>
+      <url>/hexo-blog/2019/04/08/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/how-to-write-summary-blog/</url>
+      
+        <content type="html"><![CDATA[<p>学习是一个将别人的知识转换为自己的知识的过程，这其中最重要的就是思考，如果只是将看到的内容搬到一个地方，那这个过程不能称为学习，只能算是一个备份。</p><p>知识从阅读、思考过程中来，当看到一个比较好的用法的时候，我们可以去抄，但是在抄完之后，必须要有一个整理的过程，这个过程也是为了将一个大块的内容，转换成小块的内容，然后将已知的知识点进行巩固，然后将未学习过的点进行归纳，在后面再运用的时候，可以从我们自己的知识库中找到需要的内容，这个过程就是知识管理。</p><p>知识管理最重要的内容就是复盘和整理，做为一个单线程的程序员，必须对自己的一系列的知识进行整理和归纳，才能跟上前进的脚步，而现在知识的获取不是问题，真正的问题是知识的整理，毕竟自己好才是真的好。</p><p>所以现在我有一套整理的方案，比如阅读到好的文章，先收藏到滴答清单，然后在有时间的时候，把好的文章再重读一遍，然后整理成一篇博客。</p><p>再或者读到一个好解决方案，但是这个方案并不了解，一般会再重新搜索一下具体的内容，将文章先能读一遍，然后再把整篇文章细读一遍，然后保存下来，再看看，等觉得文章已经没问题，再进行整理，最后才是写出一篇总结文档，有时候，前几遍读不明白没什么问题，但是如果不经过整理、归纳、重读、复盘这些操作，等到下次，再读到还是不明白，才是真的问题。</p><p>知识就是要有学习和进步，哪怕慢点，也是有成效的，最怕的就是看起来很努力，看起来很好学，但事实上，并没有在学，没有进步。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 总结 </tag>
+            
+            <tag> 知识管理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java 反射获取数据</title>
+      <link href="/hexo-blog/2019/03/18/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/java-get-field-name/"/>
+      <url>/hexo-blog/2019/03/18/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/java-get-field-name/</url>
+      
+        <content type="html"><![CDATA[<h2 id="反射获取成员变量"><a href="#反射获取成员变量" class="headerlink" title="反射获取成员变量"></a>反射获取成员变量</h2><p>使用 Sql2o 方法读取数据库的时候，发现表名类似，但是有一些差别，如果使用 <code>select *</code> 方式查询，需要针对对象声明多个内容，但是实际上用的都是一样的，所以想通过获取成员变量的名称来拼接成 <code>select</code> 后面的内容，经过尝试，发现可以用下面的方法获取：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">allName</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String allName = <span class="string">""</span>;</span><br><span class="line">    Field[] fields = <span class="keyword">this</span>.getClass().getDeclaredFields();</span><br><span class="line">    <span class="keyword">for</span>(Field field : fields)&#123;</span><br><span class="line">        allName += field.getName() + <span class="string">","</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> allName.substring(<span class="number">0</span>, allName.length() -<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样之后，调用 <code>allName()</code> 方法就能直接获取对应的变量名称了。</p><h2 id="反射获取父类实例化对象中的值"><a href="#反射获取父类实例化对象中的值" class="headerlink" title="反射获取父类实例化对象中的值"></a>反射获取父类实例化对象中的值</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    Field[] fields = <span class="keyword">super</span>.getClass.getDeclaredFields();</span><br><span class="line">    <span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">        field.setAcessible(<span class="keyword">true</span>);</span><br><span class="line">        Method method = <span class="keyword">super</span>.getClass().getDeclaredMethod(<span class="string">"get"</span> + upperHeadChar(field.getName()));</span><br><span class="line">        Object obj = method.invoke(<span class="keyword">super</span>);</span><br><span class="line">        field.set(<span class="keyword">this</span>, obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (NoSuchMethodException | IllegalAcessException | InvocationTargetException e)&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">upperHeadChar</span><span class="params">(String in)</span></span>&#123;</span><br><span class="line">    String head = in.substring(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> head.toUpperCase() + in.substring(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后台技术 </category>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> reflex </tag>
+            
+            <tag> Field </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Emacs 功能键配置</title>
       <link href="/hexo-blog/2019/02/26/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs/emacs-modifier-keys/"/>
       <url>/hexo-blog/2019/02/26/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/emacs/emacs-modifier-keys/</url>
@@ -420,6 +578,31 @@
     
     
     <entry>
+      <title>Emacs 个人使用</title>
+      <link href="/hexo-blog/2019/02/13/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/how-to-use-my-emacs/"/>
+      <url>/hexo-blog/2019/02/13/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/how-to-use-my-emacs/</url>
+      
+        <content type="html"><![CDATA[<p>使用 Emacs 已经有两三年的时间了，从最开始自己配置了一个垃圾版，到后来使用的 <strong>spacemacs</strong> ，再到后来又重新配置了一个个人简单版，再到又配置了一个综合版，个人版最大的问题就是慢，启动几十个配置比大神们配置的启动几百个还要慢，但是最大的优势就是符合我的使用习惯，可以用我最喜欢的方式配置，也可以把我认为没用的配置删除掉。</p><p>当然使用大神们的配置也有一个问题，太大了，而且对于工程化的配置，总需要跟紧开发的路线，可能更新了版本之后，还需要同步更新自己的配置才能使用。这总是让人觉得特别的不爽，而且想要从头学习配置话，总是有一些东西不知道是为什么，也不知道就言怎么用，可是删除掉就是不行，会慢，会报错，会出各种的问题。</p><p><a href="https://www.jianshu.com/p/e952cd0ad48b" target="_blank" rel="noopener">怎么学习 Emacs ? 达到真正融汇贯通的境界?</a></p><p>今天读到的这篇文章让我知道应该如果去使用自己的 Emacs。但是大神毕竟是大神，对于我这样的凡人来说，有点太难了，拿到大神说的这篇文章，1241页的全英文文档。但是从大神的思路中，我觉得我找到了一个比较符合我这样的凡人的路线。</p><p>熟悉快捷键 : 这个没什么可说的，如果不熟悉快捷键的话，几乎所有的工具都用不好，但是 Emacs 最大的特点就是可以定制你的快捷键，这样可以让你更容易习惯这个工具，能更快的上手。</p><p>复杂插件和抄录配置 : 这个也没什么，在入手之后，一个可以使用的配置才是最合适的配置，如果不能使用，那永远也不知道 Emacs 的美在什么的地方，而且工具不能使用，又怎么能当做工具呢？</p><p>找到自己的插件 : 这里的插件是指的从你抄录的或者使用过的配置中找到有用的配置，然后吸收为自己的配置，这个过程可能是大神们的一步，但是对于我来说不得不拆分为几步才能慢慢的使用。我现在找到的，呼声最高的 Emacs 就是 <em>org mode</em> , 然后就是 <em>magit</em> 。这两个工具几乎是 Emacs 的半边天。当然对于非程序员来说， <em>org mode</em> 就已经是半边天了，很多人就是冲着 <em>org mode</em> 来使用 Emacs 的。</p><p>针对自己的插件进行整理和学习 : 将整理出来的插件，针对插件的文档进行阅读和学习，主要是因为这些插件的文档都相对比较短，目前我看到的最后的也就是 <em>org-mode</em> 的341页，与上千页的文档比较，当然是比较简单的了。</p><p>阅读 Emacs Manual : 终于到了最重要的功能了，但是经过了之前的学习之后，应该也就能把这本特别长的文档看完看明白了，然后按大神的思路，一页一页的挨着看, 一个 API 一个 API 的读, 不要跳过每个 API , 都在 ielm 里面实践一下，遇到不知道啥鬼用的 API , 去 Google 或 EmacsWiki 上搜索一下, 看看别人怎么用这些API的。</p><p>暂时先就这些工作，等我到了这个技术之后，再进行第二次更新。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Emacs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>让自己生活的更好</title>
       <link href="/hexo-blog/2019/02/11/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/3-step-to-better-one/"/>
       <url>/hexo-blog/2019/02/11/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/3-step-to-better-one/</url>
@@ -431,12 +614,12 @@
           
           <category> 生活总结 </category>
           
-          <category> 生活 </category>
-          
       </categories>
       
       
         <tags>
+            
+            <tag> 生活 </tag>
             
             <tag> 减法生活 </tag>
             
@@ -541,7 +724,7 @@
       
       <categories>
           
-          <category> 前端开发 </category>
+          <category> 前端技术 </category>
           
           <category> hugo </category>
           
@@ -619,6 +802,33 @@
     
     
     <entry>
+      <title>Layui 表格</title>
+      <link href="/hexo-blog/2018/08/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/layui-table-paging/"/>
+      <url>/hexo-blog/2018/08/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/layui-table-paging/</url>
+      
+        <content type="html"><![CDATA[<p><strong>Layui</strong> 分页是由 <strong>laypage</strong> 实现的，所以既需要分页 <strong>laypage</strong> 还需要数据表格相关的内容。</p><h2 id="数据表格设置"><a href="#数据表格设置" class="headerlink" title="数据表格设置"></a>数据表格设置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table.render(&#123;</span><br><span class="line">    page: <span class="literal">true</span></span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>这样就可以进行分页了，但是如果想要修改分页的样式，可以按下面的方式进行修改：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">table.render(&#123;</span><br><span class="line">    page: &#123;</span><br><span class="line">        layout: [<span class="string">'limit'</span>,<span class="string">'count'</span>,<span class="string">'prev'</span>,<span class="string">'page'</span>,<span class="string">'next'</span>,<span class="string">'skip'</span>] <span class="comment">// 分页布局</span></span><br><span class="line">        ,<span class="attr">groups</span>: <span class="number">1</span> <span class="comment">// 只显示1个连续页码</span></span><br><span class="line">        ,<span class="attr">first</span>: <span class="literal">false</span> <span class="comment">// 不显示首页</span></span><br><span class="line">        ,<span class="attr">last</span>: <span class="literal">false</span> <span class="comment">// 不显示尾页</span></span><br><span class="line">        ,<span class="attr">theme</span>: <span class="string">'#c00'</span> <span class="comment">// 可以传入颜色或者任意普通字符</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>其中 <em>layout</em> 中支持数据有：</p><ol><li><em>count</em> 总条目输区域</li><li><em>prev</em> 上一页区域</li><li><em>page</em> 分页区域</li><li><em>next</em> 下一页区域</li><li><em>limit</em> 条目选项区域</li><li><em>refresh</em> 页面刷新区域</li><li><em>skip</em> 快捷跳页区域</li></ol><h2 id="实现复选框"><a href="#实现复选框" class="headerlink" title="实现复选框"></a><del>实现复选框</del></h2><p>在后来的版本，已经提供了复选框功能了。</p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>首先要在 <strong>templet</strong> 加上行号数据</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/html"</span> <span class="attr">id</span>=<span class="string">"test_id"</span>&gt;</span></span><br><span class="line"><span class="handlebars"><span class="xml">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">“checkbox”</span> <span class="attr">title</span>=<span class="string">“testbox”</span> <span class="attr">id</span>=<span class="string">“id</span></span></span><span class="template-variable">&#123;&#123;d.LAY_TABLE_INDEX&#125;&#125;</span><span class="xml"><span class="tag">”&gt;</span></span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p>然后在 <strong>table</strong> 的表头中增加对应的内容</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">table.render(&#123;</span><br><span class="line">    cols: [[ <span class="comment">//表头</span></span><br><span class="line">        field: <span class="string">'test'</span></span><br><span class="line">        ,<span class="attr">title</span>: <span class="string">'test'</span></span><br><span class="line">        ,<span class="attr">templet</span>: <span class="string">'#test_id'</span></span><br><span class="line">    ]]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>然后对数据进行赋值</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = res.data;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> item <span class="keyword">in</span> data)&#123;</span><br><span class="line">    $(‘#testbox’ + data[item].LAY_TABLE_INDEX).attr(‘checked’, ‘checked’);</span><br><span class="line">&#125;</span><br><span class="line">form.render();</span><br></pre></td></tr></table></figure><p>这主要是因为 <strong>table</strong> 中默认有一个数值，叫 <strong>LAY_TABLE_INDEX</strong> 是用来做为返回的组数据的行号，这里使用这个参数对每一行进行操作，就可以了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端技术 </category>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> layui </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Eclipse 项目层次结构设置</title>
       <link href="/hexo-blog/2018/08/01/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/eclipse-package-presentation/"/>
       <url>/hexo-blog/2018/08/01/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/eclipse-package-presentation/</url>
@@ -646,6 +856,35 @@
     
     
     <entry>
+      <title>in 和 exists 的不同</title>
+      <link href="/hexo-blog/2018/07/26/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/mysql/how-difference-between-in-and-exists-in-sql/"/>
+      <url>/hexo-blog/2018/07/26/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/mysql/how-difference-between-in-and-exists-in-sql/</url>
+      
+        <content type="html"><![CDATA[<h2 id="in-OR-exists"><a href="#in-OR-exists" class="headerlink" title="in OR exists"></a>in OR exists</h2><p>in 是把外表和内表做 <strong>hash</strong> 连接，而 exists 是对外表作 <strong>loop</strong> 循环，每次 <strong>loop</strong> 循环再对内表进行查询。</p><p>简单的认为 exists 比 in 的效率高的说法是不准确的。</p><p>如果两个表大小相当，则 in 和 exists 的效率是差不多的，如果两个表的一大一小，则子查询表大的用 exists，子查询表小的用 in。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> a <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">in</span>(<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">where</span> b);</span><br></pre></td></tr></table></figure><p>即我们可以理解， in 实际上是做了两个循环：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt; a.length;i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; b.length;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i].id == b[j].id)&#123;</span><br><span class="line">            <span class="keyword">return</span> a[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><p>所以极限点是 <strong>a.length * b.length</strong> 。</p><p>同理，可以把 exists 理解为：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; a.length;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">exists</span>(a[i].id))&#123;</span><br><span class="line">        <span class="keyword">return</span> a[i];</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><p>这里需要说明的是： <code>exists(a[i].id)</code> 的过程，实际上是去数据库中查询 b 表的过程。</p><p>所以在看这两种查询的时候，如果 a 表有10000条记录，b表有100条记录，则 in 需要遍历 10000 * 100 次，但是如果 b 表有 10000000 条记录，则 in 需要 10000 * 10000000 次。同样的数据，如果是使用 exists 的话，则是需要做一个 10000 次数据库查询，所以 <strong>子查询的表较大时，最好使用 exits 去做查询</strong>。但是如果两个表差不多大，或者子查询的表较小的时候，就可以选择 in 做查询了。</p><h2 id="not-in-OR-not-exists"><a href="#not-in-OR-not-exists" class="headerlink" title="not in OR not exists"></a>not in OR not exists</h2><p>not in 和 not exists 两个的选择就比较简单了，就是仅使用 not exists 即可。其原因主要有两个：</p><h3 id="not-in-会出现-BUG"><a href="#not-in-会出现-BUG" class="headerlink" title="not in 会出现 BUG"></a>not in 会出现 BUG</h3><p>表t1</p><table><thead><tr><th>c1</th><th>c2</th></tr></thead><tbody><tr><td>1</td><td>2</td></tr><tr><td>1</td><td>3</td></tr></tbody></table><p>表t2</p><table><thead><tr><th>c1</th><th>c2</th></tr></thead><tbody><tr><td>1</td><td>2</td></tr><tr><td>1</td><td></td></tr></tbody></table><p>先执行 <code>not in</code></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t1 <span class="keyword">where</span> t2 <span class="keyword">not</span> <span class="keyword">in</span>(<span class="keyword">select</span> c2 <span class="keyword">from</span> t2);</span><br></pre></td></tr></table></figure><p>这个时候，我们可以看到，先查询出 t2.c2 的值(2,null), 也就是，我们把这个语句变成了 <code>select * from t1 where t2 &lt;&gt; 2 and t2 &lt;&gt; null</code> 。</p><p>这是为什么呢？</p><p>这主要是因为 null 是无法进行 /操作/ 的，也就是 null 的几个原则：</p><ol><li>如果 null 参与算术运算，则该算术表达式的值为 null 。</li><li>如果 null 参与比较运算，则结果可视为 false 。</li><li>如果 null 参与聚集运算，则聚集函数都置为 null 。除 count(*) 之外。</li></ol><p>这个时候，我们可以看到，查询回来的结果是空，但是这并不是我们想看到的。这时我们来测试一下 <code>not exists</code> 方法。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t1 <span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span>(<span class="keyword">select</span> c2 <span class="keyword">from</span> t2 <span class="keyword">where</span> t2.c2 = t1.c2);</span><br></pre></td></tr></table></figure><p>得到的结果是</p><table><thead><tr><th>c1</th><th>c2</th></tr></thead><tbody><tr><td>1</td><td>3</td></tr></tbody></table><p>OK，这就是我们想要的结果。</p><h3 id="not-in-比-not-exists-慢"><a href="#not-in-比-not-exists-慢" class="headerlink" title="not in 比 not exists 慢"></a>not in 比 not exists 慢</h3><p>如果查询语句使用了 <code>not in</code> 那么内外表都进行全表扫描，没有用到索引；而 <code>not extsts</code> 的子查询依然能用到表上的索引。所以无论那个表大，用 <code>not exists</code> 都比 <code>not in</code> 要快。</p><p>所以，我们在选择的时候，不要使用 <code>not in</code> 而是需要将这些语句用 <code>not exists</code> 来替换。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后台技术 </category>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> exists </tag>
+            
+            <tag> in </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>利用 Travis 自动部署博客</title>
       <link href="/hexo-blog/2018/07/15/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/deploy-blog-by-travis/"/>
       <url>/hexo-blog/2018/07/15/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/deploy-blog-by-travis/</url>
@@ -664,9 +903,9 @@
       
         <tags>
             
-            <tag> hugo </tag>
-            
             <tag> travis </tag>
+            
+            <tag> hugo </tag>
             
             <tag> 自动部署博客 </tag>
             
@@ -706,6 +945,37 @@
     
     
     <entry>
+      <title>iframe 滚动条</title>
+      <link href="/hexo-blog/2018/06/21/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/iframce-scrolling-config/"/>
+      <url>/hexo-blog/2018/06/21/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/iframce-scrolling-config/</url>
+      
+        <content type="html"><![CDATA[<h2 id="滚动条重复"><a href="#滚动条重复" class="headerlink" title="滚动条重复"></a>滚动条重复</h2><p>在调用框架或者多级 <strong>iframe</strong> 的时候，经常会出现多个滚动条或者左右都有的情况，需要我们进行调整，现就设置方法记录如下。</p><h2 id="去掉全部滚动条"><a href="#去掉全部滚动条" class="headerlink" title="去掉全部滚动条"></a>去掉全部滚动条</h2><h3 id="设置scrolling属性"><a href="#设置scrolling属性" class="headerlink" title="设置scrolling属性"></a>设置scrolling属性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scrolling: auto <span class="comment">// 在需要的时候显示滚动条</span></span><br><span class="line">scrolling: yes <span class="comment">// 始终显示滚动条</span></span><br><span class="line">scrolling: no <span class="comment">//始终隐藏滚动条</span></span><br></pre></td></tr></table></figure><h3 id="设置-body"><a href="#设置-body" class="headerlink" title="设置 body"></a>设置 body</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">overflow</span>: hidden&#125;</span><br></pre></td></tr></table></figure><p>可以去看滚动条，也可以用来去看某一个滚动条时的方案。</p><h2 id="有选择的去掉滚动条"><a href="#有选择的去掉滚动条" class="headerlink" title="有选择的去掉滚动条"></a>有选择的去掉滚动条</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">overflow-x</span>: auto; <span class="attribute">overflow-y</span>: hidden;&#125; <span class="comment">/* 去看右边的滚动条，保留下面的 */</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">overflow-x</span>: hidden; <span class="attribute">overflow-y</span>: auto;&#125; <span class="comment">/* 去掉底下的滚动条，保留右边 */</span></span><br></pre></td></tr></table></figure><h2 id="代码优先级"><a href="#代码优先级" class="headerlink" title="代码优先级"></a>代码优先级</h2><p>如果 <code>scrolling: auto</code> 或者 <code>scrolling:yes</code> 会依据 <strong>body</strong> 的值显示或者隐藏；如果 <code>scrolling:no</code> 无论什么设置都不会再显示滚动条。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端技术 </category>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> css </tag>
+            
+            <tag> 滚动条 </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ajax 关闭异步请求</title>
       <link href="/hexo-blog/2018/06/20/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ajax-asyn-option/"/>
       <url>/hexo-blog/2018/06/20/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ajax-asyn-option/</url>
@@ -715,7 +985,7 @@
       
       <categories>
           
-          <category> 前端开发 </category>
+          <category> 前端技术 </category>
           
           <category> ajax </category>
           
@@ -727,6 +997,64 @@
             <tag> async </tag>
             
             <tag> 异步请求 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JavaScript 包含某个字符串</title>
+      <link href="/hexo-blog/2018/06/15/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/javascript-contain-string/"/>
+      <url>/hexo-blog/2018/06/15/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/javascript-contain-string/</url>
+      
+        <content type="html"><![CDATA[<p>JavaScript 判断子串方法。</p><h2 id="String-对象方法"><a href="#String-对象方法" class="headerlink" title="String 对象方法"></a>String 对象方法</h2><ul><li><p><code>indexOf()</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"123"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">"3"</span>) != <span class="number">-1</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(str.search(<span class="string">"3"</span>) != <span class="number">-1</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(str.match(reg));<span class="comment">// true</span></span><br></pre></td></tr></table></figure></li><li><p>方法返回指定字符串首次出现的位置，如果未找到，则返回 <strong>-1</strong> 。</p></li><li><p>方法用来检索字符串中指定的子串，或检索与正则表达式相配置的字符串，如果未找到配置，则返回 <strong>-1</strong> 。</p></li><li><p>方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。</p></li></ul><h2 id="RegExp-对象方法"><a href="#RegExp-对象方法" class="headerlink" title="RegExp 对象方法"></a>RegExp 对象方法</h2><h3 id="创建正则对象"><a href="#创建正则对象" class="headerlink" title="创建正则对象"></a>创建正则对象</h3><p><code>new RegExp(pattern, attributes);</code></p><ul><li><strong>pattern</strong> 是一个字符串，指定了正则表达式的模式，或者其它正则。</li><li><strong>attributes</strong> 是一个可选的字符串，包含 <strong>g</strong> 、 <strong>i</strong> 、 <strong>m</strong> 。分别是全局匹配，区分大小写和多行匹配。</li></ul><p>正则匹配相关内容见<a href="/hexo-blog/2018/05/20/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/wildcard-and-regex/" title="通配符与正则">通配符与正则</a>。</p><h3 id="使用正则方法查找"><a href="#使用正则方法查找" class="headerlink" title="使用正则方法查找"></a>使用正则方法查找</h3><ul><li><p><code>test()</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"1123"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="built_in">RegExp</span>(<span class="regexp">/3/</span>);</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(str)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str)); <span class="comment">// null 数组</span></span><br></pre></td></tr></table></figure></li><li><p><code>test()</code> 方法用于检索字符串指定的值。返回 <strong>true</strong> 或者 <strong>false</strong> 。</p></li><li><p><code>exec()</code> 用于检索字符串中正则匹配，返回一个数组，其中存放匹配的结果，如果未找到，则返回 <strong>null</strong> 。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端技术 </category>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> substring </tag>
+            
+            <tag> indexOf </tag>
+            
+            <tag> RegExp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>grep 命令</title>
+      <link href="/hexo-blog/2018/05/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/grep-on-linux/"/>
+      <url>/hexo-blog/2018/05/31/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/grep-on-linux/</url>
+      
+        <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>grep</code> 是一个强大的文本搜索工具，支持正则表达式搜索文本并把匹配的行打印出来。</p><h2 id="常规用法"><a href="#常规用法" class="headerlink" title="常规用法"></a>常规用法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [-acinv] [--color=auto] 'string to search' filename</span><br></pre></td></tr></table></figure><p><code>-a</code> : 将二进制文件以 <code>text</code> 文件的方式搜索数据</p><p><code>-c</code> : 计算找到的字符串的次数</p><p><code>-i</code> : 忽略大小写的不同</p><p><code>-n</code> : 输出行号</p><p><code>-v</code> : 反向选择，即输出没有 「字符串」 的内容</p><p><code>--color=auto</code> : 将找到的关键词部分加上颜色</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 搜索 root</span></span><br><span class="line">grep root temp.txt</span><br><span class="line">cat temp.txt | grep root </span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索 root 同时显示 这些行的行号</span></span><br><span class="line">grep -n root temp.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索没有 root 的行</span></span><br><span class="line">grep -v root temp.txt </span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索没有 root 和 nologin 的行 </span></span><br><span class="line">grep -v root temp.txt | grep -v nologin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索 root 并显示出行号和前两行与后三行 </span></span><br><span class="line">grep -n -A3 -B2 --color=auto 'root'</span><br></pre></td></tr></table></figure><h3 id="递归查找目录"><a href="#递归查找目录" class="headerlink" title="递归查找目录"></a>递归查找目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep 'title' # 在当前目录搜索</span><br><span class="line">grep -r 'title' # 在当前目录及其子目录搜索</span><br><span class="line">grep -r -l 'title' # 在当前目录及其子目录下搜索但不输入匹配的行，只显示文件</span><br></pre></td></tr></table></figure><h2 id="grep-与正则表达式"><a href="#grep-与正则表达式" class="headerlink" title="grep 与正则表达式"></a>grep 与正则表达式</h2><p><code>grep -n &#39;t[ea]st&#39; temp.txt&#39;</code> : 匹配 <code>test</code> 和 <code>tast</code> 两个单词的行。<br><code>grep -n &#39;[^g]oo&#39; temp.txt</code> : 匹配含有 <code>oo</code> 的行，便是不能是 <code>goo</code> 内容。</p><p>更多内容见 <a href="/hexo-blog/2018/05/20/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/wildcard-and-regex/" title="通配符与正则">通配符与正则</a> 。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> grep </tag>
             
         </tags>
       
@@ -754,6 +1082,62 @@
         <tags>
             
             <tag> .gitignore </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>通配符与正则</title>
+      <link href="/hexo-blog/2018/05/20/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/wildcard-and-regex/"/>
+      <url>/hexo-blog/2018/05/20/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/wildcard-and-regex/</url>
+      
+        <content type="html"><![CDATA[<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>通配符和正则表达式很容易混淆，首先二者所应用的对象是不同的，通配符主要是用在 <strong>Shell</strong> 命令中，比如 <code>find</code> 、 <code>ls</code> 、 <code>cp</code> 等，而正则是使用在文本过滤工具（可以是字符串搜索和替换等），例如 <code>awk</code> ， <code>sed</code> 等。</p><h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><p>[a-z] […] : 匹配方括号中指定范围内的单个字符或方括号列出的其中一个字符<br>[!9] [!..] : 不匹配方括号中的字符或指定范围内的单个字符<br>* : 匹配 0 个字符或多个字符<br>? : 匹配任何单个字符，且不能为空的字符</p><blockquote><p>因为 <strong>Shell</strong> 会将方括号( <code>[</code> 、 <code>]</code> )、问号( <code>?</code> )、星号( <code>*</code> )等内容特殊处理，因此想匹配这几个字符时，需要加转义符 <code>\</code> 。</p></blockquote><table><thead><tr><th>通配符号</th><th>内容</th></tr></thead><tbody><tr><td>*</td><td>万用字符，代表0个或者多个字符（包括数字）</td></tr><tr><td>?</td><td>万用字符，代表一定有一个字符</td></tr><tr><td>#</td><td>注解字符，常用在说明或者备注中</td></tr><tr><td>\</td><td>转义字符，将特殊字符还原为一般字符</td></tr><tr><td>&vert;</td><td>分隔字符，分隔两个管道命令</td></tr><tr><td>;</td><td>连续命令界定符，用来分隔</td></tr><tr><td>~</td><td>登录用户的 home 路径</td></tr><tr><td>$</td><td>变量声明字符，用来表示变量</td></tr><tr><td>&amp;</td><td>后台执行命令</td></tr><tr><td>!</td><td>逻辑运算符非</td></tr><tr><td>&gt; &gt;&gt;</td><td>输出导入符，一个为取代，两个为累加</td></tr><tr><td>‘</td><td>单引号，不具有变量转换功能</td></tr><tr><td>“</td><td>具有变量转换功能</td></tr><tr><td>``</td><td>中间为可以先执行的指令</td></tr><tr><td>()</td><td>中间为子 shell 起始与结束</td></tr><tr><td>[]</td><td>中间为字符组合</td></tr><tr><td>{}</td><td>中间为命令区块的组合</td></tr></tbody></table><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="字符匹配"><a href="#字符匹配" class="headerlink" title="字符匹配"></a>字符匹配</h3><p>. : 匹配任意单个字符<br>* : 匹配其前面一个字符出现任意次<br>? : 匹配其前面的字符1次或者0次<br>+ : 匹配其前面的字符至少出现1次（扩展正则表达式中）</p><h3 id="位置匹配"><a href="#位置匹配" class="headerlink" title="位置匹配"></a>位置匹配</h3><p>^ : 行首<br>$ : 行尾<br>\&lt; 或 \b : 词首，其后面的任意字符必须作为单词首部出现<br>\&gt; 或 \b : 词尾，其前面的任意字符必须作为单词尾部出现<br>\B : 非单词开头或结尾<br>^$ : 空白行</p><h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><p>(ab)* : 匹配 <strong>ab</strong> 这个分组出现任意次<br>\1 : 引用第一个左括号以及与之对应的右括号所包括的内容<br>\n : 同 \1</p><h3 id="特殊"><a href="#特殊" class="headerlink" title="特殊"></a>特殊</h3><p><code>[:alnum:]</code> : 任何字母和数字<br><code>[:alpha:]</code> : 任何字母<br><code>[:cntrl:]</code> : 控制字符，包括 <strong>ASCII</strong> 表中的 <strong>000</strong> - <strong>037</strong> 再加上 <strong>177(‘DEL’)</strong><br><code>[:digit:]</code> : 任何数字<br><code>[:punct:]</code> : 标点符号，<code>&#39;!&quot;#$%&amp;()*-+,./:;&lt;=&gt;?@[]\\^_{|}~</code><br><code>[:graph:]</code> : 打印字符，等价于 <code>[:alnum:]</code> + <code>[:punct:]</code><br><code>[:lower:]</code> : 小字字母<br><code>[:upper:]</code> : 大写字母<br><code>[:print:]</code> : 可打印字符，等价于 <code>[:alnum:]</code> + <code>[punct:]</code> + <code>[:space:]</code><br><code>[:space:]</code> : 空白字符，包括 tab/newline/vertical tab/form feed/carriage return/space<br><code>[:xdigit:]</code> : 任何16进制数字，相当于 [0-9a-fA-F]</p><blockquote><ol><li><code>^[[:space:]]*$</code> : 匹配没有任何内容的行</li><li>[] : 中的特殊字符( <strong>.</strong> , ***** )会失去特殊含义</li></ol></blockquote><table><thead><tr><th>正则</th><th>意义</th></tr></thead><tbody><tr><td>^word</td><td>搜索在行首的字符串</td></tr><tr><td>word$</td><td>搜索在行尾的字符串</td></tr><tr><td>.</td><td>任意一个字符</td></tr><tr><td>\</td><td>转义字符</td></tr><tr><td>*</td><td>重复0个或者多个前一字符情况</td></tr><tr><td>{n,m}</td><td>连续 n 到 m 个的前一个字符，若为 {n} 则是连续的 n 个前一个字符，若是 {n,} 则是连续 n 个以上的前一个字符</td></tr><tr><td>[list]</td><td>表示字符列表集合</td></tr><tr><td>[ch1-ch2]</td><td>表示字符顺序列表</td></tr><tr><td>[^]</td><td>表示不包含字符</td></tr></tbody></table><h3 id="使用正则进行匹配的示例"><a href="#使用正则进行匹配的示例" class="headerlink" title="使用正则进行匹配的示例"></a>使用正则进行匹配的示例</h3><p><code>grep -n &#39;^#&#39; temp.txt</code>:搜索到行首为 # 的那一行<br><code>grep -n &#39;!$&#39; temp.txt</code>:搜索行尾为 ! 的那一行<br><code>grep -n &#39;e.e&#39; temp.txt</code>:搜索字符串可以是 eve ，eae ，e e ，但是不会是 ee<br><code>grep -n &#39;&#39;&#39; temp.txt</code>:搜索含有 ‘ 的那一行<br><code>grep -n &#39;ess*&#39; temp.txt</code>:找出有 es ， ess ， esss 的一行，因为 * 是大于等0个，所以可以匹配 es<br><code>grep -n &#39;go{2,3}g&#39; temp.txt</code>:在 g 和 g 之间有 2 到 3 个 o 存在，即 goog ， gooog<br><code>grep -n &#39;g[ld]&#39; temp.txt</code>:搜索含有 gl 和 gd 的那一个，注意，这里只代表一个，如 [lad]f ，只有 glf ， gaf 和 gdf 可以被搜索到，如果是 glaf 这种则是不能被找到的<br><code>grep -n &#39;[0-9]&#39; temp.txt</code>:搜索含有任意数字的一行，注意，在 [] 中的 - 是有特殊含义的，同时也可以使用 <code>grep -n [:digit:] temp.txt</code>来代替。而 - 中的顺序是由 ASCII 来设定的<br><code>grep -n &#39;oo[^t]&#39; temp.txt</code>:搜索不为 oot 的那一行</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> 正则表达式 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> regex </tag>
+            
+            <tag> wildcard </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Homebrew 入门</title>
+      <link href="/hexo-blog/2018/04/27/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/mac/homebrew-commands/"/>
+      <url>/hexo-blog/2018/04/27/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/mac/homebrew-commands/</url>
+      
+        <content type="html"><![CDATA[<h2 id="homebrew-安装"><a href="#homebrew-安装" class="headerlink" title="homebrew 安装"></a>homebrew 安装</h2><p>使用下面的命令进行安装，但是需要先安装 <code>curl</code> :</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span><br></pre></td></tr></table></figure><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul><li>搜索</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew search mysql</span><br></pre></td></tr></table></figure><ul><li>查询</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew info mysql</span><br></pre></td></tr></table></figure><p>主要看具体的信息，比如目前的版本，依赖，安装后注意事项等</p><ul><li>更新</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br></pre></td></tr></table></figure><p>这会更新 Homebrew 自己，并且使得接下来的两个操作有意义</p><ul><li>检查过时</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew outdated</span><br></pre></td></tr></table></figure><p>这回列出所有安装的软件里可以升级的那些</p><ul><li>升级</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew upgrade</span><br></pre></td></tr></table></figure><p>升级所有可以升级的软件们</p><ul><li>清理</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cleanup</span><br></pre></td></tr></table></figure><p>清理不需要的版本极其安装包缓存</p><h2 id="后台启用服务"><a href="#后台启用服务" class="headerlink" title="后台启用服务"></a>后台启用服务</h2><p><code>brew services</code> 命令是用来管理 Mac 系统中后台服务的，比如在 Mac 上安装了 MySQL ，当我希望将这个变成一个后台服务启动的时候，可以使用，有点像 Linux 下的 <code>service</code> 和 <code>systemctl</code> 两个命令。</p><p>具体的使用命令也非常简单：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">brew services list  # 查看使用brew安装的服务列表</span><br><span class="line">brew services run formula|--all  # 启动服务（仅启动不注册）</span><br><span class="line">brew services start formula|--all  # 启动服务，并注册</span><br><span class="line">brew services stop formula|--all   # 停止服务，并取消注册</span><br><span class="line">brew services restart formula|--all  # 重启服务，并注册</span><br><span class="line">brew services cleanup  # 清除已卸载应用的无用的配置</span><br></pre></td></tr></table></figure><h2 id="配置国内镜像"><a href="#配置国内镜像" class="headerlink" title="配置国内镜像"></a>配置国内镜像</h2><p>使用了一段时间的 <strong>Homebrew</strong> 之后，发现网络波动有点大，好多时间都是更新10多分钟，所以就想到了国内镜像问题。</p><p>其实无论是什么内容，只要是需要更新的，就有两个优先选择的，一个是清华源，一个是科大源，这两个是最好用的镜像了。</p><p>另外一个就是 NPM 的阿里源，这三个源都非常好用。</p><p>对于我的使用，主要是两个，一个是 <strong>formula</strong> 索引，另一个是 <strong>bottles</strong> 。</p><p><strong>formula</strong> 更新使用</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd "$(brew --repo)"</span><br><span class="line">git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</span><br><span class="line"></span><br><span class="line">cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"</span><br><span class="line">git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line">brew update</span><br></pre></td></tr></table></figure><p><strong>bottles</strong> 镜像则需要配置到环境变量中，我使用的是 zsh shell 所以配置到 <strong>.zshrc</strong> 文件中</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles' &gt;&gt; ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure><p>如果你想临时使用的话，则需要在终端中输入 <code>export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles</code> ，当然如果你使用的是 bash shell 则可以将其配置到 <strong>.bash_profile</strong> 或者 <strong>.bashrc</strong> 文件中。</p><h2 id="更新报错"><a href="#更新报错" class="headerlink" title="更新报错"></a>更新报错</h2><p>更新的时候，发现 homebrew 安装的时候，会报错 <strong>curl: (7) Failed to connect to raw.githubusercontent.com port 443: Operation timed out</strong> ，测试了一下，发现是因为 <code>curl</code> 这个命令有问题了，使用 homebrew 重新安装一下就可以。 <code>brew reinstall curl</code>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Mac </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> homebrew </tag>
             
         </tags>
       
@@ -972,12 +1356,12 @@
           
           <category> 生活总结 </category>
           
-          <category> Emacs </category>
-          
       </categories>
       
       
         <tags>
+            
+            <tag> 总结 </tag>
             
             <tag> Emacs </tag>
             
@@ -1144,7 +1528,7 @@
       
       <categories>
           
-          <category> 前端开发 </category>
+          <category> 前端技术 </category>
           
           <category> css </category>
           
