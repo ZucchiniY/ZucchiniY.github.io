@@ -418,12 +418,12 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="Dot-生成图的默认命令">Dot 生成图的默认命令</h2>
+        <h2 id="Dot-生成图的默认命令"><a class="header-anchor" href="#Dot-生成图的默认命令"></a>Dot 生成图的默认命令</h2>
 <p><code>dot -T&lt;type&gt; -o &lt;outfile&gt; &lt;infile.dot&gt;</code></p>
 <p>dot 可以替换为circo等其他算法，详细见<a href="#%E5%91%BD%E4%BB%A4%E7%9A%84%E9%80%89%E6%8B%A9">命令的选择</a>章节。</p>
 <p>输入文件是 <strong>&lt;infile.dot&gt;</strong> ，生成的格式由 <strong><type></strong> 指定，生成的文件是 <strong><outfile></strong> 。其中 <strong>-T<type></strong> 包括：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-Tps (PostScript)</span><br><span class="line">-Tsvg -Tsvgz (Structured Vector Graphics)</span><br><span class="line">-Tfig (XFIG  graphics)</span><br><span class="line">-Tmif  (FrameMaker graphics)</span><br><span class="line">-Thpgl (HP pen plotters)</span><br><span class="line">-Tpcl (Laserjet printers)</span><br><span class="line">-Tpng -Tgif (bitmap graphics)</span><br><span class="line">-Tdia (GTK+ based diagrams)</span><br><span class="line">-Timap (imagemap files for httpd servers for each node or edge  that  has a non-null "href" attribute.)</span><br><span class="line">-Tcmapx (client-side imagemap for use in html and xhtml)</span><br></pre></td></tr></table></figure>
-<h2 id="rank">rank</h2>
+<h2 id="rank"><a class="header-anchor" href="#rank"></a>rank</h2>
 <p>rank 约束了子图的节点位置，有向图中，一个箭头的指向，带有级别，一般是尾端高于尖端，即 <code>a-&gt;b</code> a 的级别要高于 b 的级别。</p>
 <p>same : 所有节点在同一级别的节点处</p>
 <p>min : 所有节点在最小级别节点处</p>
@@ -433,16 +433,16 @@
 <blockquote>
 <p><strong>NOTE:</strong> 最低级别，可以是 <strong>最上</strong> 、 <strong>最下</strong> 、 <strong>最左</strong> 、 <strong>最右</strong></p>
 </blockquote>
-<h2 id="rankdir">rankdir</h2>
+<h2 id="rankdir"><a class="header-anchor" href="#rankdir"></a>rankdir</h2>
 <ul>
 <li>TB : top-to-bottom</li>
 <li>LR : left-to-right</li>
 <li>BT : bottom-to-top</li>
 <li>RL : right-to-left</li>
 </ul>
-<h2 id="dot-线条">dot 线条</h2>
+<h2 id="dot-线条"><a class="header-anchor" href="#dot-线条"></a>dot 线条</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">splines &#x3D; ortho #直角拆线</span><br><span class="line">splines &#x3D; spline #曲线（不遮挡）</span><br><span class="line">splines &#x3D; cuvved #曲线（可遮挡）</span><br><span class="line">splines &#x3D; line #直线（可遮挡）</span><br><span class="line">splines &#x3D; polyline #直线（不遮挡）</span><br></pre></td></tr></table></figure>
-<h2 id="命令的选择">命令的选择</h2>
+<h2 id="命令的选择"><a class="header-anchor" href="#命令的选择"></a>命令的选择</h2>
 <table>
 <thead>
 <tr>
@@ -477,9 +477,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="静默执行代码">静默执行代码</h2>
+<h2 id="静默执行代码"><a class="header-anchor" href="#静默执行代码"></a>静默执行代码</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(setq org-confirm-babel-evaluate nil) ;;执行静默语句块</span><br></pre></td></tr></table></figure>
-<h2 id="dot-实例">dot 实例</h2>
+<h2 id="dot-实例"><a class="header-anchor" href="#dot-实例"></a>dot 实例</h2>
 <ul>
 <li>
 <p>绘制流程图:</p>
@@ -1028,7 +1028,7 @@
 </header>
 
     <div class="content pure">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2017/07/31/工具环境/emacs/emacs-dot-and-python-cannot-run-in-spacemacs/" title="Org mode 中不能执行 dot 、 Python 代码" rel="bookmark">Org mode 中不能执行 dot 、 Python 代码</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2019/07/29/工具环境/emacs/emacs-in-mac/" title="Mac 电脑上使用 Emacs" rel="bookmark">Mac 电脑上使用 Emacs</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2017/07/31/工具环境/emacs/emacs-dot-and-python-cannot-run-in-spacemacs/" title="Org mode 中不能执行 dot 、 Python 代码" rel="bookmark">Org mode 中不能执行 dot 、 Python 代码</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2016/04/26/工具环境/emacs/emacs-keybinds-basic/" title="Emacs 快捷键使用" rel="bookmark">Emacs 快捷键使用</a></h3></div></li></ul>
     </div>
   </section>
 

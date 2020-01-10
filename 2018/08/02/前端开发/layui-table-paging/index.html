@@ -417,7 +417,7 @@
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
         <p><strong>Layui</strong> 分页是由 <strong>laypage</strong> 实现的，所以既需要分页 <strong>laypage</strong> 还需要数据表格相关的内容。</p>
-<h2 id="数据表格设置">数据表格设置</h2>
+<h2 id="数据表格设置"><a class="header-anchor" href="#数据表格设置"></a>数据表格设置</h2>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table.render(&#123;</span><br><span class="line">    page: <span class="literal">true</span></span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>这样就可以进行分页了，但是如果想要修改分页的样式，可以按下面的方式进行修改：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">table.render(&#123;</span><br><span class="line">    page: &#123;</span><br><span class="line">        layout: [<span class="string">'limit'</span>,<span class="string">'count'</span>,<span class="string">'prev'</span>,<span class="string">'page'</span>,<span class="string">'next'</span>,<span class="string">'skip'</span>] <span class="comment">// 分页布局</span></span><br><span class="line">        ,<span class="attr">groups</span>: <span class="number">1</span> <span class="comment">// 只显示1个连续页码</span></span><br><span class="line">        ,<span class="attr">first</span>: <span class="literal">false</span> <span class="comment">// 不显示首页</span></span><br><span class="line">        ,<span class="attr">last</span>: <span class="literal">false</span> <span class="comment">// 不显示尾页</span></span><br><span class="line">        ,<span class="attr">theme</span>: <span class="string">'#c00'</span> <span class="comment">// 可以传入颜色或者任意普通字符</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -431,9 +431,9 @@
 <li><em>refresh</em> 页面刷新区域</li>
 <li><em>skip</em> 快捷跳页区域</li>
 </ol>
-<h2 id="实现复选框"><sub>实现复选框</sub></h2>
+<h2 id="实现复选框"><a class="header-anchor" href="#实现复选框"></a><sub>实现复选框</sub></h2>
 <p>在后来的版本，已经提供了复选框功能了。</p>
-<h2 id="实现">实现</h2>
+<h2 id="实现"><a class="header-anchor" href="#实现"></a>实现</h2>
 <p>首先要在 <strong>templet</strong> 加上行号数据</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/html"</span> <span class="attr">id</span>=<span class="string">"test_id"</span>&gt;</span></span><br><span class="line"><span class="handlebars"><span class="xml">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">“checkbox”</span> <span class="attr">title</span>=<span class="string">“testbox”</span> <span class="attr">id</span>=<span class="string">“id</span></span></span><span class="template-variable">&#123;&#123;d.LAY_TABLE_INDEX&#125;&#125;</span><span class="xml"><span class="tag">”&gt;</span></span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>然后在 <strong>table</strong> 的表头中增加对应的内容</p>

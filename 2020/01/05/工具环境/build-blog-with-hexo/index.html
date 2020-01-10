@@ -419,12 +419,12 @@
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
         <p><strong>我们无法选择生活的样子，但我们可以记下来。</strong></p>
-<h2 id="博客的开始">博客的开始</h2>
+<h2 id="博客的开始"><a class="header-anchor" href="#博客的开始"></a>博客的开始</h2>
 <p>其实，一切都是为了更好的装逼。好吧，我着相了。</p>
 <p>最开始想做一个自己博客，主要是因为看到了很多人都有，觉得自己没有太 Low 了。于是申请了 CSDN 的用户，但是太丑了，于是又申请了博客园，感觉这些都不是我想要的，而做为一个 Emacser 不使用 Github 搭建一个自己的博客，感觉就已经落伍了。</p>
 <p>于是就有这最初的一个，相当简陋的利用 Emacs 的 Org-mode 搭建的博客，后来看了 Org-page 这个包，但是，我配置不好啊！为什么为什么！</p>
 <p>最后，从 Hugo 和 Hexo 之间，我选择了 Hexo，虽然 Hugo 在 Windows 上使用起来更方便，但是我还是觉得 Hexo 更适合我。</p>
-<h2 id="利用-Hexo-的坑">利用 Hexo 的坑</h2>
+<h2 id="利用-Hexo-的坑"><a class="header-anchor" href="#利用-Hexo-的坑"></a>利用 Hexo 的坑</h2>
 <ol>
 <li>
 <p>有些插件需要翻墙，有些不用，我也不记得哪个用哪个不用了，实在不行可以使用淘宝的<br>
@@ -466,19 +466,19 @@ Markdown, 这根本用不了几分钟，虽然 Org-mode<br>
 ，这三个命令之后，就可以登录你的静态博客页面去查看了。</p>
 </li>
 </ol>
-<h2 id="博客的生活">博客的生活</h2>
+<h2 id="博客的生活"><a class="header-anchor" href="#博客的生活"></a>博客的生活</h2>
 <p>我很喜欢调试自己的博客，但是写博客就不是那么喜欢了，但是我希望能养成一个定期写博客的习惯。</p>
 <p>所以，我需要博客，主要是用来装…咳，主要是用来记录我们的生活、工作的内容，这样在下次使用的时候，就能更好的做到了。</p>
-<h2 id="Hexo-相关安装">Hexo 相关安装</h2>
+<h2 id="Hexo-相关安装"><a class="header-anchor" href="#Hexo-相关安装"></a>Hexo 相关安装</h2>
 <p>在几次试验之后，Node.js 环境还是使用 nvm<br>
 管理比较好用，下载的时候可以使用 <code>npm --registry=https://registry.npm.taobao.org install</code> 进行安装下面的模块。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install -g tern</span><br><span class="line">npm install -g js-beautify</span><br><span class="line">npm install -g jshint</span><br><span class="line">npm install -g js-yaml</span><br><span class="line">npm install hexo-renderer-jade --save</span><br><span class="line">npm install hexo-renderer-sass --save</span><br></pre></td></tr></table></figure>
-<h2 id="hugo">hugo</h2>
+<h2 id="hugo"><a class="header-anchor" href="#hugo"></a>hugo</h2>
 <p><strong>Hugo</strong> 是由 Go 语言实现的一个 <strong>Static Site Generator</strong> 工具，特点就是快，而且默认是支持 <strong>Org mode</strong> 这种文本的。</p>
 <p>虽然对于 <strong>hexo</strong> 而言少了许多好看的主题，但是对于 <strong>Org mode</strong> 的默认支持让我有了决心一用的冲动。</p>
 <p>在使用了一段时间之后，发现这个工具完美的解决了我所有的问题，并能让我专心于博客写作本身而不是工具，虽然有一些不方便，但最后还是决定继续使用，而且要减少对工具本身的使用，而加强写作本身。</p>
 <p>在长时间的使用之后，发现 <strong>Hugo</strong> 对 <strong>Org mode</strong> 的支持也比较一般，对于一些比较好用的特性，功能都不支持，最好的方案还是从 <strong>Org</strong> 转成 <strong>Markdown</strong> ，所以在最终使用 <strong>ox-hugo</strong> 工具配合 <strong>Hugo</strong> 使用，然后通过 <strong>capture</strong> 功能直接生成对应的博客文章，方便快捷。</p>
-<h3 id="ox-hugo-配置">ox-hugo 配置</h3>
+<h3 id="ox-hugo-配置"><a class="header-anchor" href="#ox-hugo-配置"></a>ox-hugo 配置</h3>
 <p>使用 ox-hugo 主要需要配置两个内容，一是将 <strong>ox-hugo</strong> 增加到配置中，然后是在 启动 org-capture 的时候，增加一个新的选项，可以将自动新增一篇文章。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">(use-package ox-hugo</span><br><span class="line">  :after ox)</span><br><span class="line"></span><br><span class="line">(with-eval-after-load &#39;org-capture</span><br><span class="line">  (defun org-hugo-new-subtree-post-capture-template ()</span><br><span class="line">    &quot;Return &#96;org-capture&#39; template string for new Hugo post.&quot;</span><br><span class="line">    (let* ((date (format-time-string (org-time-stamp-format :long :inactive) (org-current-time)))</span><br><span class="line">           (title (read-from-minibuffer &quot;Post Title: &quot;))</span><br><span class="line">           (file-name (read-from-minibuffer &quot;File Name: &quot;))</span><br><span class="line">           (fname (org-hugo-slug file-name)))</span><br><span class="line">      (mapconcat #&#39;identity</span><br><span class="line">                 &#96;(</span><br><span class="line">                   ,(concat &quot;* TODO &quot; title)</span><br><span class="line">                   &quot;:PROPERTIES:&quot;</span><br><span class="line">                   ,(concat &quot;:EXPORT_FILE_NAME: &quot; fname)</span><br><span class="line">                   ,(concat &quot;:EXPORT_DATE: &quot; date)</span><br><span class="line">                   &quot;:END:&quot;</span><br><span class="line">                   &quot;%?\n&quot;)</span><br><span class="line">                 &quot;\n&quot;)))</span><br><span class="line"></span><br><span class="line">  (add-to-list &#39;org-capture-templates</span><br><span class="line">               &#39;(&quot;h&quot;</span><br><span class="line">                 &quot;Hugo post&quot;</span><br><span class="line">                 entry</span><br><span class="line">                 (file &quot;~&#x2F;workspace&#x2F;blog&#x2F;hugo-posts.org&quot;)</span><br><span class="line">                 (function org-hugo-new-subtree-post-capture-template))))</span><br></pre></td></tr></table></figure>
 <p>在这里，我是将所有的文章写到对应的一个文件中，然后将文件中的所有内容生成到对应的 hugo 文件夹中。</p>
@@ -541,7 +541,7 @@ Markdown, 这根本用不了几分钟，虽然 Org-mode<br>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/hexo-blog/blog/tags/find/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> find</a> <a class="tag" href="/hexo-blog/blog/tags/grep/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> grep</a> <a class="tag" href="/hexo-blog/blog/tags/du/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> du</a>
+                                  <a class="tag" href="/hexo-blog/blog/tags/grep/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> grep</a> <a class="tag" href="/hexo-blog/blog/tags/find/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> find</a> <a class="tag" href="/hexo-blog/blog/tags/du/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> du</a>
                               </h6>
                           
                       </span>

@@ -418,32 +418,32 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="设置访问单个数据库权限">设置访问单个数据库权限</h2>
+        <h2 id="设置访问单个数据库权限"><a class="header-anchor" href="#设置访问单个数据库权限"></a>设置访问单个数据库权限</h2>
 <ul>
 <li>设置用户名为 root，密码为空，可以访问数据库 test</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash">grant all privileges on <span class="built_in">test</span>.* to <span class="string">'root'</span>@<span class="string">'%'</span>;</span></span><br></pre></td></tr></table></figure>
-<h2 id="设置访问全部数据库权限">设置访问全部数据库权限</h2>
+<h2 id="设置访问全部数据库权限"><a class="header-anchor" href="#设置访问全部数据库权限"></a>设置访问全部数据库权限</h2>
 <ul>
 <li>设置用户名为 root，密码为空，可以访问所有数据库</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash">grant all privileges on *.* to <span class="string">'root'</span>@<span class="string">'%'</span>;</span></span><br></pre></td></tr></table></figure>
-<h2 id="设置指定用户名访问权限">设置指定用户名访问权限</h2>
+<h2 id="设置指定用户名访问权限"><a class="header-anchor" href="#设置指定用户名访问权限"></a>设置指定用户名访问权限</h2>
 <ul>
 <li>指定用户名为 liuhui，密码为空，可以访问所有数据库</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash">grant all privileges on *.* to <span class="string">'liuhui'</span>@<span class="string">'%'</span>;</span></span><br></pre></td></tr></table></figure>
-<h2 id="设置密码访问权限">设置密码访问权限</h2>
+<h2 id="设置密码访问权限"><a class="header-anchor" href="#设置密码访问权限"></a>设置密码访问权限</h2>
 <ul>
 <li>设置用户名为 liuhui，密码为 liuhui，可以访问所有数据库</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash">grant all privileges on *.* to <span class="string">'liuhui'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'liuhui'</span>;</span></span><br></pre></td></tr></table></figure>
-<h2 id="设置指定可访问主机权限">设置指定可访问主机权限</h2>
+<h2 id="设置指定可访问主机权限"><a class="header-anchor" href="#设置指定可访问主机权限"></a>设置指定可访问主机权限</h2>
 <ul>
 <li>设置用户名为 liuhui，密码为 liuhui，可以访问所有数据库，只有 10.1.1.1 这台机器有权限访问</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash">grant all privileges on *.* to <span class="string">'liuhui'</span>@<span class="string">'10.1.1.1'</span>;</span></span><br></pre></td></tr></table></figure>
-<h2 id="设置对应的密码级别">设置对应的密码级别</h2>
+<h2 id="设置对应的密码级别"><a class="header-anchor" href="#设置对应的密码级别"></a>设置对应的密码级别</h2>
 <ul>
 <li>参数解释
 <ul>
@@ -994,7 +994,7 @@
 </header>
 
     <div class="content pure">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/07/26/后台技术/mysql/how-difference-between-in-and-exists-in-sql/" title="in 和 exists 的不同" rel="bookmark">in 和 exists 的不同</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/07/12/后台技术/mysql/mysql-create-new-user/" title="新增 MySQL 用户" rel="bookmark">新增 MySQL 用户</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/07/12/后台技术/mysql/mysql-create-new-user/" title="新增 MySQL 用户" rel="bookmark">新增 MySQL 用户</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/07/26/后台技术/mysql/how-difference-between-in-and-exists-in-sql/" title="in 和 exists 的不同" rel="bookmark">in 和 exists 的不同</a></h3></div></li></ul>
     </div>
   </section>
 

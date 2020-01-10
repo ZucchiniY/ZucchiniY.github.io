@@ -416,9 +416,9 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="简介">简介</h2>
+        <h2 id="简介"><a class="header-anchor" href="#简介"></a>简介</h2>
 <p><code>grep</code> 是一个强大的文本搜索工具，支持正则表达式搜索文本并把匹配的行打印出来。</p>
-<h2 id="常规用法">常规用法</h2>
+<h2 id="常规用法"><a class="header-anchor" href="#常规用法"></a>常规用法</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [-acinv] [--color=auto] 'string to search' filename</span><br></pre></td></tr></table></figure>
 <p><code>-a</code> : 将二进制文件以 <code>text</code> 文件的方式搜索数据</p>
 <p><code>-c</code> : 计算找到的字符串的次数</p>
@@ -426,11 +426,11 @@
 <p><code>-n</code> : 输出行号</p>
 <p><code>-v</code> : 反向选择，即输出没有 「字符串」 的内容</p>
 <p><code>--color=auto</code> : 将找到的关键词部分加上颜色</p>
-<h2 id="示例">示例</h2>
+<h2 id="示例"><a class="header-anchor" href="#示例"></a>示例</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 搜索 root</span></span><br><span class="line">grep root temp.txt</span><br><span class="line">cat temp.txt | grep root </span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索 root 同时显示 这些行的行号</span></span><br><span class="line">grep -n root temp.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索没有 root 的行</span></span><br><span class="line">grep -v root temp.txt </span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索没有 root 和 nologin 的行 </span></span><br><span class="line">grep -v root temp.txt | grep -v nologin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索 root 并显示出行号和前两行与后三行 </span></span><br><span class="line">grep -n -A3 -B2 --color=auto 'root'</span><br></pre></td></tr></table></figure>
-<h3 id="递归查找目录">递归查找目录</h3>
+<h3 id="递归查找目录"><a class="header-anchor" href="#递归查找目录"></a>递归查找目录</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep 'title' # 在当前目录搜索</span><br><span class="line">grep -r 'title' # 在当前目录及其子目录搜索</span><br><span class="line">grep -r -l 'title' # 在当前目录及其子目录下搜索但不输入匹配的行，只显示文件</span><br></pre></td></tr></table></figure>
-<h2 id="grep-与正则表达式">grep 与正则表达式</h2>
+<h2 id="grep-与正则表达式"><a class="header-anchor" href="#grep-与正则表达式"></a>grep 与正则表达式</h2>
 <p><code>grep -n 't[ea]st' temp.txt'</code> : 匹配 <code>test</code> 和 <code>tast</code> 两个单词的行。<br>
 <code>grep -n '[^g]oo' temp.txt</code> : 匹配含有 <code>oo</code> 的行，便是不能是 <code>goo</code> 内容。</p>
 <p>更多内容见 <a href="/hexo-blog/2018/05/20/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/linux/wildcard-and-regex/" title="通配符与正则">通配符与正则</a> 。</p>
@@ -971,7 +971,7 @@
 </header>
 
     <div class="content pure">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2020/01/07/工具环境/linux/find-files-on-linux/" title="利用 find 和 grep 联合查找文件" rel="bookmark">利用 find 和 grep 联合查找文件</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/08/02/工具环境/linux/apt-get-update-and-upgrade/" title="apt-get 中 update 与 upgrade 的区别" rel="bookmark">apt-get 中 update 与 upgrade 的区别</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/09/04/工具环境/linux/ensure-port-use-on-linux/" title="Linux 查看端口占用情况" rel="bookmark">Linux 查看端口占用情况</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2020/01/07/工具环境/linux/find-files-on-linux/" title="利用 find 和 grep 联合查找文件" rel="bookmark">利用 find 和 grep 联合查找文件</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/09/04/工具环境/linux/ensure-port-use-on-linux/" title="Linux 查看端口占用情况" rel="bookmark">Linux 查看端口占用情况</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/08/02/工具环境/linux/apt-get-update-and-upgrade/" title="apt-get 中 update 与 upgrade 的区别" rel="bookmark">apt-get 中 update 与 upgrade 的区别</a></h3></div></li></ul>
     </div>
   </section>
 

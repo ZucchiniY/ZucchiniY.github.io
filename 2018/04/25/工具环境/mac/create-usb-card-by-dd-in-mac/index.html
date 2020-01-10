@@ -418,7 +418,7 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="Mac-下写入命令">Mac 下写入命令</h2>
+        <h2 id="Mac-下写入命令"><a class="header-anchor" href="#Mac-下写入命令"></a>Mac 下写入命令</h2>
 <ul>
 <li>找出 U 盘挂载位置</li>
 </ul>
@@ -432,9 +432,9 @@
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd if=isopath of=/dev/disk[num] bs=1m rdisk</span><br></pre></td></tr></table></figure>
 <p><code>rdisk</code> 是指定方式后，可以加快写入速度。</p>
-<h2 id="iso-转换为-dmg">iso 转换为 dmg</h2>
+<h2 id="iso-转换为-dmg"><a class="header-anchor" href="#iso-转换为-dmg"></a>iso 转换为 dmg</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hdiutil convert -format UDRW -o linux.dmg kali.iso</span><br></pre></td></tr></table></figure>
-<h2 id="弹出-U-盘">弹出 U 盘</h2>
+<h2 id="弹出-U-盘"><a class="header-anchor" href="#弹出-U-盘"></a>弹出 U 盘</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diskutil eject /dev/disk[num]</span><br></pre></td></tr></table></figure>
 
       </div>

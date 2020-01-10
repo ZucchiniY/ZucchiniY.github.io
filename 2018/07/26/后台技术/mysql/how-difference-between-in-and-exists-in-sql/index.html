@@ -416,7 +416,7 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="in-OR-exists">in OR exists</h2>
+        <h2 id="in-OR-exists"><a class="header-anchor" href="#in-OR-exists"></a>in OR exists</h2>
 <p>in 是把外表和内表做 <strong>hash</strong> 连接，而 exists 是对外表作 <strong>loop</strong> 循环，每次 <strong>loop</strong> 循环再对内表进行查询。</p>
 <p>简单的认为 exists 比 in 的效率高的说法是不准确的。</p>
 <p>如果两个表大小相当，则 in 和 exists 的效率是差不多的，如果两个表的一大一小，则子查询表大的用 exists，子查询表小的用 in。</p>
@@ -428,9 +428,9 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; a.length;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">exists</span>(a[i].id))&#123;</span><br><span class="line">        <span class="keyword">return</span> a[i];</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <p>这里需要说明的是： <code>exists(a[i].id)</code> 的过程，实际上是去数据库中查询 b 表的过程。</p>
 <p>所以在看这两种查询的时候，如果 a 表有10000条记录，b表有100条记录，则 in 需要遍历 10000 * 100 次，但是如果 b 表有 10000000 条记录，则 in 需要 10000 * 10000000 次。同样的数据，如果是使用 exists 的话，则是需要做一个 10000 次数据库查询，所以 <strong>子查询的表较大时，最好使用 exits 去做查询</strong>。但是如果两个表差不多大，或者子查询的表较小的时候，就可以选择 in 做查询了。</p>
-<h2 id="not-in-OR-not-exists">not in OR not exists</h2>
+<h2 id="not-in-OR-not-exists"><a class="header-anchor" href="#not-in-OR-not-exists"></a>not in OR not exists</h2>
 <p>not in 和 not exists 两个的选择就比较简单了，就是仅使用 not exists 即可。其原因主要有两个：</p>
-<h3 id="not-in-会出现-BUG">not in 会出现 BUG</h3>
+<h3 id="not-in-会出现-BUG"><a class="header-anchor" href="#not-in-会出现-BUG"></a>not in 会出现 BUG</h3>
 <p>表t1</p>
 <table>
 <thead>
@@ -497,7 +497,7 @@
 </tbody>
 </table>
 <p>OK，这就是我们想要的结果。</p>
-<h3 id="not-in-比-not-exists-慢">not in 比 not exists 慢</h3>
+<h3 id="not-in-比-not-exists-慢"><a class="header-anchor" href="#not-in-比-not-exists-慢"></a>not in 比 not exists 慢</h3>
 <p>如果查询语句使用了 <code>not in</code> 那么内外表都进行全表扫描，没有用到索引；而 <code>not extsts</code> 的子查询依然能用到表上的索引。所以无论那个表大，用 <code>not exists</code> 都比 <code>not in</code> 要快。</p>
 <p>所以，我们在选择的时候，不要使用 <code>not in</code> 而是需要将这些语句用 <code>not exists</code> 来替换。</p>
 
@@ -575,7 +575,7 @@
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/hexo-blog/blog/tags/hugo/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> hugo</a> <a class="tag" href="/hexo-blog/blog/tags/travis/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> travis</a> <a class="tag" href="/hexo-blog/blog/tags/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 自动部署博客</a>
+                                  <a class="tag" href="/hexo-blog/blog/tags/travis/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> travis</a> <a class="tag" href="/hexo-blog/blog/tags/hugo/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> hugo</a> <a class="tag" href="/hexo-blog/blog/tags/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 自动部署博客</a>
                               </h6>
                           
                       </span>
@@ -1037,7 +1037,7 @@
 </header>
 
     <div class="content pure">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2016/04/29/后台技术/mysql/mysql-authority-config/" title="MySQL 数据库设置远程权限" rel="bookmark">MySQL 数据库设置远程权限</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/07/12/后台技术/mysql/mysql-create-new-user/" title="新增 MySQL 用户" rel="bookmark">新增 MySQL 用户</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/07/12/后台技术/mysql/mysql-create-new-user/" title="新增 MySQL 用户" rel="bookmark">新增 MySQL 用户</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2016/04/29/后台技术/mysql/mysql-authority-config/" title="MySQL 数据库设置远程权限" rel="bookmark">MySQL 数据库设置远程权限</a></h3></div></li></ul>
     </div>
   </section>
 

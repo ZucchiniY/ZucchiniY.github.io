@@ -417,7 +417,7 @@
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
         <p><strong>Emacs 的快捷键和 Vim 的快捷键是编辑器中的两坐高山，其中 Emacs 的快捷键主要有四类。</strong></p>
-<h2 id="四大类型">四大类型</h2>
+<h2 id="四大类型"><a class="header-anchor" href="#四大类型"></a>四大类型</h2>
 <ul>
 <li>全局快捷键</li>
 </ul>
@@ -434,23 +434,23 @@
 <li>Minor-mode 局部快捷键</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key your-minor-mode-map (kbd &quot;a&quot;) &#39;command)</span><br></pre></td></tr></table></figure>
-<h2 id="删除、禁用快捷键">删除、禁用快捷键</h2>
+<h2 id="删除、禁用快捷键"><a class="header-anchor" href="#删除、禁用快捷键"></a>删除、禁用快捷键</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(global&#x2F;local-unset-key (kbd &quot;a&quot;))</span><br><span class="line">(global&#x2F;local-set-key (kbd &quot;a&quot;) &#39;ignore&#x2F;nil)</span><br></pre></td></tr></table></figure>
-<h2 id="键冲突与解决">键冲突与解决</h2>
+<h2 id="键冲突与解决"><a class="header-anchor" href="#键冲突与解决"></a>键冲突与解决</h2>
 <p>最方便的解决方案是找一个空置的 <strong>prefix</strong> 键，先映射到这个键上，再全局或者局部设置它。</p>
-<h3 id="先映射到空闲键上">先映射到空闲键上</h3>
+<h3 id="先映射到空闲键上"><a class="header-anchor" href="#先映射到空闲键上"></a>先映射到空闲键上</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key key-translation-map (kbd &quot;a&quot;) (kbd &quot;M-g A&quot;))</span><br></pre></td></tr></table></figure>
-<h3 id="全局或者局部设置">全局或者局部设置</h3>
+<h3 id="全局或者局部设置"><a class="header-anchor" href="#全局或者局部设置"></a>全局或者局部设置</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global&#x2F;local-set-key (kbd &quot;M-g A&quot;) &#39;command)</span><br></pre></td></tr></table></figure>
-<h2 id="快捷键优先级">快捷键优先级</h2>
+<h2 id="快捷键优先级"><a class="header-anchor" href="#快捷键优先级"></a>快捷键优先级</h2>
 <p><code>key-translation-map</code> : 最高级，就是把这个键的意义改变了，想使用原来的快捷键，要重新进行绑定</p>
 <p><code>minor-mode-map</code> : 二级，只在 <strong>minor mode</strong> 激活时启作用，其它时候会被其它的快捷键覆盖掉</p>
 <p><code>local-set-key</code> : 三级，在 <strong>major mode</strong> 中启作用</p>
 <p><code>global-set-key</code> : 最弱的级别，但是也是最简单的键绑定方式</p>
-<h3 id="设置局域快捷键">设置局域快捷键</h3>
+<h3 id="设置局域快捷键"><a class="header-anchor" href="#设置局域快捷键"></a>设置局域快捷键</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun f-python-mode ()</span><br><span class="line">  (local-set-key (kbd &quot;C-x C-e&quot;)&#39;f-python-shell-send-line)</span><br><span class="line">  (local-set-key (kbd &quot;M-g C-y&quot;) &#39;f-python-shell-send-line))</span><br><span class="line">(add-hook &#39;python-mode-hook &#39;f-python-mode)</span><br></pre></td></tr></table></figure>
 <p><strong>注意</strong> 当键进行重新绑定后，还应该将之前的功能重新绑定到另一个键上。</p>
-<h2 id="Minor-Mode-Map">Minor Mode Map</h2>
+<h2 id="Minor-Mode-Map"><a class="header-anchor" href="#Minor-Mode-Map"></a>Minor Mode Map</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(define-minor-mode visual-mode</span><br><span class="line">  :init-value nil</span><br><span class="line">  :global t</span><br><span class="line">  :keymap (make-sparse-keymap)</span><br><span class="line">  (if (not visual-mode) (setq cursor-type &#39;bar)</span><br><span class="line">    (setq cursor-type &#39;box)))</span><br><span class="line">(define-key visual-mode-map (kbd &quot;h&quot;) &#39;mark-paragraph)</span><br></pre></td></tr></table></figure>
 <p>定义之后，可以利用 <code>define-key</code> 来设置当前快捷键。然后在需要启用 <strong>Visual mode</strong> 的时候可以启用这个 <strong>minor mode</strong> 的相关快捷键。</p>
 

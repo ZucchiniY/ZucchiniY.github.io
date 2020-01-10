@@ -418,30 +418,30 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="获取">获取</h2>
+        <h2 id="获取"><a class="header-anchor" href="#获取"></a>获取</h2>
 <p>#在刷机之前，需要在电脑上下载 <strong>Android Preview</strong> 包，一般我都是到<a href="https://developer.android.google.cn/preview/download#flash" target="_blank" rel="noopener">安卓中国</a> ，这里可以下载最新的包。</p>
-<h2 id="手机">手机</h2>
+<h2 id="手机"><a class="header-anchor" href="#手机"></a>手机</h2>
 <p>相对下载包的获取，比较难的是有一部支持最新的安卓系统的手机，一般 <strong>Preview</strong> 版的系统都是默认支持 <strong>Google</strong> 自己的手机的。</p>
 <p>目前只支持 Pixel 系列的手机，包括 XL 系列。</p>
 <ul>
 <li>Pixel n</li>
 <li>Pixel n XL</li>
 </ul>
-<h2 id="刷机">刷机</h2>
+<h2 id="刷机"><a class="header-anchor" href="#刷机"></a>刷机</h2>
 <p>刷机目前有两个比较麻烦的地方，第一就是需要安装 <code>adb</code> 的命令，也就是 <strong>Android</strong> 的功能模块，第二就是需要解锁手机。</p>
-<h3 id="adb-配置">adb 配置</h3>
+<h3 id="adb-配置"><a class="header-anchor" href="#adb-配置"></a>adb 配置</h3>
 <p>即将 <strong>Android SDK</strong> 下载下来，然后将其配置到环境变量中即可</p>
-<h4 id="Windows">Windows</h4>
+<h4 id="Windows"><a class="header-anchor" href="#Windows"></a>Windows</h4>
 <ol>
 <li>配置 <strong>ANDROID_HOME</strong> 变量到环境变量中</li>
 <li>配置 <strong>%ANDROID_HOME%\platform-tools</strong> 到 <strong>path</strong> 中</li>
 <li>配置 <strong>%ANDROID_HOME%\tools</strong> 到 <strong>path</strong> 中</li>
 </ol>
-<h4 id="Linux-Mac">Linux &amp; Mac</h4>
+<h4 id="Linux-Mac"><a class="header-anchor" href="#Linux-Mac"></a>Linux &amp; Mac</h4>
 <p>打开 <strong>profile</strong> 文件，默认为 <em>.bash_profile</em> 如果使用的是 <strong>zsh</strong> 则编辑 <em>.zshrc</em> 文件。</p>
 <p>将下面的内容放到 <strong>profile</strong> 文件中</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ANDROID_HOME=~/developerTools/adt-mac/sdk</span><br><span class="line">export ANDROID_HOME</span><br><span class="line">PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools</span><br></pre></td></tr></table></figure>
-<h4 id="Mac">Mac</h4>
+<h4 id="Mac"><a class="header-anchor" href="#Mac"></a>Mac</h4>
 <p>Mac 电脑提供了一个自动安装的内容，可以将 <code>adb</code> 相关的内容直接安装，但是如果是想开发 <strong>Android</strong> 应用的话，则必须要按上面的方案进行配置。</p>
 <p>首先需要先安装 <strong>brew</strong> ，具体方案见 <a href="https://brew.sh/index%5Fzh-cn" target="_blank" rel="noopener">Homebrew</a> ，或者可以直接看其 <strong>GitHub</strong> 的主页 <a href="https://github.com/Homebrew/brew" target="_blank" rel="noopener">Homebrew/brew</a> 。</p>
 <p>然后执行下面的命令</p>
@@ -449,7 +449,7 @@
 <p>如果执行刷机的时候，提示 <strong>fastboot is too old</strong> 则需要重新安装 <em>android-platform-tools</em> , 因为 <code>brew update</code> 更新是不能更新 <em>cask</em> 库的内容的。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask reinstall android-platform-tools</span><br></pre></td></tr></table></figure>
 <p>最后，在命令行中执行 <code>adb devices</code> 不报错刚配置成功。如果配置之后，还依然报错的话，可以检查一下是否在使用过程中，将 <strong>USB 调试功能</strong> 关闭了。</p>
-<h3 id="操作">操作</h3>
+<h3 id="操作"><a class="header-anchor" href="#操作"></a>操作</h3>
 <ol>
 <li>
 <p>连接手机</p>
@@ -484,7 +484,7 @@
 </li>
 </ol>
 <p>然后重启手机就可以了。</p>
-<h3 id="V-版手机解锁">V 版手机解锁</h3>
+<h3 id="V-版手机解锁"><a class="header-anchor" href="#V-版手机解锁"></a>V 版手机解锁</h3>
 <p>需要刷入一个工具，才能解锁</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb push dePixel8 /data/local/tmp</span><br><span class="line">adb shell chmod 755 /data/local/tmp/dePixel8</span><br><span class="line">adb shell /data/local/tmp/dePixel8</span><br></pre></td></tr></table></figure>
 <p>然后再执行 <code>adb reboot bootloader</code> 就可以正常解锁了。</p>

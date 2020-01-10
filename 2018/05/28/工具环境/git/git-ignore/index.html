@@ -417,7 +417,7 @@
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
         <p>git 使用过程中，有许多文件或者文件夹是不希望更新到远程仓库了，因为他们比较占地方，这个时候我们可以利用 <code>.gitignore</code> 文件忽略文件。</p>
-<h2 id="按项目进行忽略">按项目进行忽略</h2>
+<h2 id="按项目进行忽略"><a class="header-anchor" href="#按项目进行忽略"></a>按项目进行忽略</h2>
 <p><strong>.gitignore</strong> 文件用于忽略文件</p>
 <ul>
 <li>所有空行或者以没注释符号 <strong>#</strong> 开头的行都会被 Git 忽略。</li>
@@ -425,13 +425,13 @@
 <li>匹配模式最后跟反斜杠 <code>(/)</code> 说明忽略的是目录。</li>
 <li>要忽略指定模式以外的文件或者目录，可以在模式前加上惊叹号。</li>
 </ul>
-<h3 id="glob-模式">glob 模式</h3>
+<h3 id="glob-模式"><a class="header-anchor" href="#glob-模式"></a>glob 模式</h3>
 <p>* : 表示任意个任意字符</p>
 <p>? : 表示匹配一个任意字符</p>
 <p>所以我们只需要在对应的 <strong>git</strong> 目录下，创建一个 <strong>.gitignore</strong> 文件，然后配置上 <strong>.DS_Store</strong> 即可。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch .gitignore</span><br><span class="line">echo */.DS_Store" &gt; .gitignore</span><br></pre></td></tr></table></figure>
 <p>然后保存，就可以生效了。</p>
-<h2 id="全局进行配置">全局进行配置</h2>
+<h2 id="全局进行配置"><a class="header-anchor" href="#全局进行配置"></a>全局进行配置</h2>
 <p>然后我们发现，只要是 Mac 下的 Git 项目我们都需要这样操作一次，太麻烦了，所以我们可以在 home 目录下创建一个 <strong>.gitignore_global</strong> 文件，然后按 <strong>.gitignore</strong> 文件的配置方式完成配置。</p>
 <p>在每个项目下的 <strong>.gitignore</strong> 文件中，我们可以引用这个 global 文件。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.excludesfile ~/.gitignore_global</span><br></pre></td></tr></table></figure>
@@ -973,7 +973,7 @@
 </header>
 
     <div class="content pure">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2017/08/02/工具环境/git/git-combine-commit-messages/" title="Git 合并多次提交" rel="bookmark">Git 合并多次提交</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/08/30/工具环境/git/git-hung-up-unexpectedly/" title="Git 上传文件超出最大值" rel="bookmark">Git 上传文件超出最大值</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2017/08/02/工具环境/git/git-combine-commit-messages/" title="Git 合并多次提交" rel="bookmark">Git 合并多次提交</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2016/04/27/工具环境/git/git-basic-command/" title="Git 基础命令" rel="bookmark">Git 基础命令</a></h3></div></li></ul>
     </div>
   </section>
 

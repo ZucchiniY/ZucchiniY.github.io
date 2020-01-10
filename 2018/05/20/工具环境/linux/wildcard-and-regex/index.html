@@ -416,9 +416,9 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="简述">简述</h2>
+        <h2 id="简述"><a class="header-anchor" href="#简述"></a>简述</h2>
 <p>通配符和正则表达式很容易混淆，首先二者所应用的对象是不同的，通配符主要是用在 <strong>Shell</strong> 命令中，比如 <code>find</code> 、 <code>ls</code> 、 <code>cp</code> 等，而正则是使用在文本过滤工具（可以是字符串搜索和替换等），例如 <code>awk</code> ， <code>sed</code> 等。</p>
-<h2 id="通配符">通配符</h2>
+<h2 id="通配符"><a class="header-anchor" href="#通配符"></a>通配符</h2>
 <p>[a-z] […] : 匹配方括号中指定范围内的单个字符或方括号列出的其中一个字符<br>
 [!9] [!..] : 不匹配方括号中的字符或指定范围内的单个字符<br>
 * : 匹配 0 个字符或多个字符<br>
@@ -504,24 +504,24 @@
 </tr>
 </tbody>
 </table>
-<h2 id="正则表达式">正则表达式</h2>
-<h3 id="字符匹配">字符匹配</h3>
+<h2 id="正则表达式"><a class="header-anchor" href="#正则表达式"></a>正则表达式</h2>
+<h3 id="字符匹配"><a class="header-anchor" href="#字符匹配"></a>字符匹配</h3>
 <p>. : 匹配任意单个字符<br>
 * : 匹配其前面一个字符出现任意次<br>
 ? : 匹配其前面的字符1次或者0次<br>
 + : 匹配其前面的字符至少出现1次（扩展正则表达式中）</p>
-<h3 id="位置匹配">位置匹配</h3>
+<h3 id="位置匹配"><a class="header-anchor" href="#位置匹配"></a>位置匹配</h3>
 <p>^ : 行首<br>
 $ : 行尾<br>
 \&lt; 或 \b : 词首，其后面的任意字符必须作为单词首部出现<br>
 \&gt; 或 \b : 词尾，其前面的任意字符必须作为单词尾部出现<br>
 \B : 非单词开头或结尾<br>
 ^$ : 空白行</p>
-<h3 id="分组">分组</h3>
+<h3 id="分组"><a class="header-anchor" href="#分组"></a>分组</h3>
 <p>(ab)* : 匹配 <strong>ab</strong> 这个分组出现任意次<br>
 \1 : 引用第一个左括号以及与之对应的右括号所包括的内容<br>
 \n : 同 \1</p>
-<h3 id="特殊">特殊</h3>
+<h3 id="特殊"><a class="header-anchor" href="#特殊"></a>特殊</h3>
 <p><code>[:alnum:]</code> : 任何字母和数字<br>
 <code>[:alpha:]</code> : 任何字母<br>
 <code>[:cntrl:]</code> : 控制字符，包括 <strong>ASCII</strong> 表中的 <strong>000</strong> - <strong>037</strong> 再加上 <strong>177(‘DEL’)</strong><br>
@@ -585,7 +585,7 @@ $ : 行尾<br>
 </tr>
 </tbody>
 </table>
-<h3 id="使用正则进行匹配的示例">使用正则进行匹配的示例</h3>
+<h3 id="使用正则进行匹配的示例"><a class="header-anchor" href="#使用正则进行匹配的示例"></a>使用正则进行匹配的示例</h3>
 <p><code>grep -n '^#' temp.txt</code>:搜索到行首为 # 的那一行<br>
 <code>grep -n '!$' temp.txt</code>:搜索行尾为 ! 的那一行<br>
 <code>grep -n 'e.e' temp.txt</code>:搜索字符串可以是 eve ，eae ，e e ，但是不会是 ee<br>

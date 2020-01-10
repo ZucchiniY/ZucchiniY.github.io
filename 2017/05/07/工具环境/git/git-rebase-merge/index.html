@@ -418,7 +418,7 @@
       <div class="article-entry" itemprop="articleBody">
         <p>在使用 git 进行版本管理的开发过程中，经常遇到上传或者拉取分支的时候冲突，在遇到冲突的时候，经常使用下面两个方式解决，虽然第一个方案看起来比较复杂，但是如果按我之前的文章: <a href="/hexo-blog/2016/03/17/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/git/git-workflow/" title="Git 工作流">Git 工作流</a> 进行工作的话，只需要执行3、4、5三步即可。</p>
 <p>虽然提供的解决方案，但是最好还是从根源上降低冲突出现的频率才是最好的方案。</p>
-<h2 id="新建分支方法">新建分支方法</h2>
+<h2 id="新建分支方法"><a class="header-anchor" href="#新建分支方法"></a>新建分支方法</h2>
 <p>本文主要讨论 Git feature 与 <strong>master(develop)</strong> 分支冲突解决方案。</p>
 <ol>
 <li><code>git pull</code> : 同步远程分支，发现当前的开发流有了新的提交，且与自己开发的功能有冲突。</li>
@@ -429,14 +429,14 @@
 <li><code>applying: xxxx</code> : 看到这个提示表示已经完成了合并。</li>
 <li><code>git checkout master</code> <code>git merge feature</code> : 切换到 master 分支并将 feature 分支内容合并过来。</li>
 </ol>
-<h2 id="暂存提交方案">暂存提交方案</h2>
+<h2 id="暂存提交方案"><a class="header-anchor" href="#暂存提交方案"></a>暂存提交方案</h2>
 <p>在修改的时候，忘记新建对应的分支了，可以按上面的方案，但保存，然后创建新的分支，再将远程分支对应分支的内容 <code>reset</code> 回未修改的状态。或者使用 <code>git stash</code> 系列命令解决冲突。</p>
 <ol>
 <li><code>git stash</code> : 暂存修改的内容</li>
 <li><code>git pull</code> : 拉取最新的内容</li>
 <li><code>git stash apply</code> or <code>git stash pop</code> : 将暂存的内容合并进来</li>
 </ol>
-<h2 id="git-stash-命令">git stash 命令</h2>
+<h2 id="git-stash-命令"><a class="header-anchor" href="#git-stash-命令"></a>git stash 命令</h2>
 <p><code>git stash apply</code> : 应用暂存内容但是不删除，可以是最近的一次暂存，也可以按序号应用 <code>git stash apply stash@{0}</code><br>
 <code>git stash drop</code> : 移除暂存的内容<br>
 <code>git stash pop</code> : 应用的同时从列表中移除，只能操作最近的一次 stash 的内容<br>
@@ -986,7 +986,7 @@
 </header>
 
     <div class="content pure">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2017/08/02/工具环境/git/git-combine-commit-messages/" title="Git 合并多次提交" rel="bookmark">Git 合并多次提交</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/08/30/工具环境/git/git-hung-up-unexpectedly/" title="Git 上传文件超出最大值" rel="bookmark">Git 上传文件超出最大值</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2016/04/27/工具环境/git/git-basic-command/" title="Git 基础命令" rel="bookmark">Git 基础命令</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2017/08/02/工具环境/git/git-combine-commit-messages/" title="Git 合并多次提交" rel="bookmark">Git 合并多次提交</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2016/04/27/工具环境/git/git-basic-command/" title="Git 基础命令" rel="bookmark">Git 基础命令</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/08/30/工具环境/git/git-hung-up-unexpectedly/" title="Git 上传文件超出最大值" rel="bookmark">Git 上传文件超出最大值</a></h3></div></li></ul>
     </div>
   </section>
 
