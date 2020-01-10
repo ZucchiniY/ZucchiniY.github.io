@@ -76,9 +76,9 @@
       
         <tags>
             
-            <tag> grep </tag>
-            
             <tag> find </tag>
+            
+            <tag> grep </tag>
             
             <tag> du </tag>
             
@@ -396,6 +396,33 @@
             <tag> 简历 </tag>
             
             <tag> 技能水平 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mac 下使用 tmux</title>
+      <link href="/hexo-blog/2019/08/01/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/mac/tmux-on-mac/"/>
+      <url>/hexo-blog/2019/08/01/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/mac/tmux-on-mac/</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装-tmux"><a class="header-anchor" href="#安装-tmux"></a>安装 tmux</h2><p><code>brew install tmux</code> 可以直接安装到电脑中。</p><h2 id="简单使用"><a class="header-anchor" href="#简单使用"></a>简单使用</h2><h3 id="打开"><a class="header-anchor" href="#打开"></a>打开</h3><p>在命令行中，直接输入 <code>tmux</code> 即可启</p><h3 id="切分窗口"><a class="header-anchor" href="#切分窗口"></a>切分窗口</h3><p><code>ctrl + b</code> 可以启动命令模式，类似 <strong>vim</strong> 下的 <strong>:</strong> 。然后再按 <strong>%</strong> 可以进行水平切分。</p><p>如果想到垂直切分，则按下 <strong>&quot;</strong> 即可。</p><h3 id="后台执行"><a class="header-anchor" href="#后台执行"></a>后台执行</h3><p><code>ctrl + b</code> 然后按 <strong>d</strong> 可以将这个后台隐藏，如果想回到隐藏的进程，可以输入 <strong>tmux attach</strong> 即可。</p><h2 id="基本概念"><a class="header-anchor" href="#基本概念"></a>基本概念</h2><p><strong>Session</strong> : 会话，一组窗口的集合，通常来概括一个任务， <strong>Session</strong> 可以有自己的名字用来切换</p><p><strong>Window</strong> : 窗口，单个可见窗口，有自己的编号，可以快捷切换。</p><p><strong>Pane</strong> : 窗格，被划分可小块的窗口，类似于 <strong>vim</strong> 中的 <code>C-w +v</code> 。</p><h2 id="快捷键"><a class="header-anchor" href="#快捷键"></a>快捷键</h2><p><code>ctrl + b</code> 来激活快捷键，开启后可以使用一些特定按键来执行操作。</p><table>    <tr>        <th>分类</th>        <th>快捷键</th>        <th>功能</th>    </tr>    <tr>        <td>基础</td>        <td>?</td>        <td>获取帮助信息</td>    </tr>    <tr>        <td rowspan="3">Session管理</td>        <td>s</td>        <td>列出所有会话</td>        <tr>            <td>$</td>            <td>重命名当前会话</td>        </tr>        <tr>            <td>d</td>            <td>断开当前会话</td>        </tr>    </tr>    <tr>        <td rowspan="11">Window管理</td>        <td>c</td>        <td>创建一个新窗口</td>        <tr>            <td>,</td>            <td>重命名当前窗口</td>        </tr>        <tr>            <td>w</td>            <td>列出所有窗口</td>        </tr>        <tr>            <td>%</td>            <td>水平分割窗口</td>        </tr>        <tr>            <td>"</td>            <td>垂直分割窗口</td>        </tr>        <tr>            <td>n</td>            <td>选择下一个窗口</td>        </tr>        <tr>            <td>p</td>            <td>选择上一个窗口</td>        </tr>        <tr>            <td>0~9</td>            <td>选择0~9对应的窗口</td>        </tr>        <tr>            <td>l</td>            <td>在前后两个窗口间切换</td>        </tr>        <tr>            <td>w</td>            <td>通过窗口列表切换窗口</td>        </tr>        <tr>            <td>f</td>            <td>在所有窗口中查找指定文本</td>        </tr>    </tr>    <tr>        <td rowspan="16">Pane管理</td>        <td>%</td>        <td>创建水平窗格</td>        <tr>            <td>"</td>            <td>创建一个垂直窗格</td>        </tr>        <tr>            <td>h</td>            <td>将光标移入下左侧窗格</td>        </tr>        <tr>            <td>j</td>            <td>将光标移入下下方窗格</td>        </tr>        <tr>            <td>l</td>            <td>将光标移入下右侧窗格</td>        </tr>        <tr>            <td>k</td>            <td>将光标移入下上方窗格</td>        </tr>        <tr>            <td>q</td>            <td>显示窗格编号</td>        </tr>        <tr>            <td>o</td>            <td>在窗格间切换</td>        </tr>        <tr>            <td>}</td>            <td>与下一个窗格交换位置</td>        </tr>        <tr>            <td>{</td>            <td>与上一个窗格交换位置</td>        </tr>        <tr>            <td>!</td>            <td>在新窗口中显示当前窗格</td>        </tr>        <tr>            <td>x</td>            <td>关闭当前窗格</td>        </tr>        <tr>            <td>SPC</td>            <td>循环切换窗格布局</td>        </tr>        <tr>            <td>Alt + o</td>            <td>逆时针旋转窗格面板</td>        </tr>        <tr>            <td>Ctrl + o</td>            <td>顺时针旋转窗格面板</td>        </tr>        <tr>            <td>方向键</td>            <td>移动光标选择面板</td>        </tr>    </tr>    <tr>        <td rowspan="2">其它</td>        <td>t</td>        <td>在当前窗格显示时间</td>        <tr>        <td>z</td>        <td>最大化和最小化当前窗口</td>        </tr>    </tr></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Mac </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tmux </tag>
             
         </tags>
       
@@ -930,9 +957,9 @@
       
         <tags>
             
-            <tag> travis </tag>
-            
             <tag> hugo </tag>
+            
+            <tag> travis </tag>
             
             <tag> 自动部署博客 </tag>
             
@@ -964,6 +991,33 @@
             <tag> create user </tag>
             
             <tag> set password </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git submodule 管理子项目</title>
+      <link href="/hexo-blog/2018/07/06/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/git/manage-submodule-by-git/"/>
+      <url>/hexo-blog/2018/07/06/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/git/manage-submodule-by-git/</url>
+      
+        <content type="html"><![CDATA[<h2 id="使用场景"><a class="header-anchor" href="#使用场景"></a>使用场景</h2><p>拆分项目，当项目越来越大之后，我们希望 <strong>子模块</strong> 可以单独管理，并由 <strong>专门</strong> 的人去维护，这个时候只可以使用 <code>git submodule</code> 去完成。</p><h2 id="常用命令"><a class="header-anchor" href="#常用命令"></a>常用命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;repository&gt; --recursive # 递归方式克隆整个项目</span><br><span class="line">git submodule add &lt;repository&gt; path # 添加子模块</span><br><span class="line">git submodule init # 初始化子模块</span><br><span class="line">git submodule update # 更新子模块</span><br><span class="line">git submodule foreach git pull # 拉取所有子模块</span><br></pre></td></tr></table></figure><h2 id="使用方式"><a class="header-anchor" href="#使用方式"></a>使用方式</h2><h3 id="添加子模块"><a class="header-anchor" href="#添加子模块"></a>添加子模块</h3><p><code>git submodule add &lt;repository&gt; path</code> 即可添加</p><h3 id="克隆子模块"><a class="header-anchor" href="#克隆子模块"></a>克隆子模块</h3><p><code>git clone &lt;repository&gt; --recursive</code> 直接递归克隆，如果是克隆父项目，可以在克隆完成之后，使用 <code>git submodule init</code> 初始化子项目列表和 <code>git submodule update</code> 更新最新的子项目。</p><h3 id="更新子模块"><a class="header-anchor" href="#更新子模块"></a>更新子模块</h3><p>如果子模块和新的修改，但是父项目没有更新到最新，则可以使用 <code>git submodule foreach git pull</code> 将所有的子项目中更新，如果子项目比 <strong>.gitmodules</strong> 新，则需要更新一下 <strong>.gitmodules</strong> 。</p><p>父项目中的子模块的版本是由 <strong>commit id</strong> 标识的，所以需要更新 <strong>.gitmodules</strong> 。</p><h3 id="删除子模块"><a class="header-anchor" href="#删除子模块"></a>删除子模块</h3><p>首先需要 <code>git rm --cached &lt;path&gt;</code> ，然后依次删除对应的目录、<strong>.gitmodules</strong> 文件中的记录、 <strong>.git/cofig</strong> 中的记录。再提交到远程服务器，就可以删除了。</p><p>注意：</p><blockquote><p>在执行 <code>git rm --cached &lt;path&gt;</code> 的时候，最后不可以有 <strong>/</strong> 。</p></blockquote><h3 id="修改子模块配置信息"><a class="header-anchor" href="#修改子模块配置信息"></a>修改子模块配置信息</h3><p>与删除相同，需要同时修改 <strong>.gitmodules</strong> 和 <strong>.git/config</strong> 两个文件中的 <strong>URL</strong> 值，然后执行 <code>git submodule sync</code> 来同步，然后再提交到远程即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> submodule </tag>
             
         </tags>
       
@@ -1252,6 +1306,35 @@
             <tag> evil </tag>
             
             <tag> surround </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mac 下执行 Git 命令报错</title>
+      <link href="/hexo-blog/2017/12/07/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/mac/xcrun-error/"/>
+      <url>/hexo-blog/2017/12/07/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/mac/xcrun-error/</url>
+      
+        <content type="html"><![CDATA[<p>mac 执行 git 命令时候出现 <code>invalid active developer path</code> ：</p><p>具体如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xcrun: error: invalid active developer path</span><br><span class="line">(/Library/Developer/CommandLineTools), missing xcrun at:</span><br><span class="line">/Library/Developer/CommandLineTools/usr/bin/xcrun</span><br></pre></td></tr></table></figure><p>解决方法：</p><p>打开终端输入</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br></pre></td></tr></table></figure><p>回车后，系统弹出下载 xcode，点击确认，下载完成后即可。（实际上不是下载 xcode，可能下载 xcode 有关插件，下载时长约 1 分钟）</p><p>原因 : <strong>出现这个错误原因猜想可能是因为之前安装过 xcode 卸载后或者是因为 xcode 更失丢失内容导致的。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Mac </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> xcode </tag>
+            
+            <tag> xcrun </tag>
             
         </tags>
       
