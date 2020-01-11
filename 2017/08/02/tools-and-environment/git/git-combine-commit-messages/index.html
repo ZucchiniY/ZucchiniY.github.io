@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Git 合并多次提交 | Z 空间</title>
+  
+  <meta name="keywords" content="git,rebase,pick,squash">
+  
+  
+  <meta name="description" content="利用 git rebase -i 命令合并多次提交。">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151174326-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-151174326-1');
+    </script>
+  
+  
+    <!-- ba -->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afa425bb2b1286467c2e8120a01d0682";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+  
+  
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script>
+       (adsbygoogle = window.adsbygoogle || []).push({
+           google_ad_client: "ca-pub-2846657491221113",
+           enable_page_level_ads: true
+       });
+      </script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Zucchiniy Zone</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/hexo-blog/"
+            
+            
+            id="hexo-blog">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博客
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/hexo-blog/projects/"
+            
+            
+            id="hexo-blogprojects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/hexo-blog/thematics/"
+            
+            
+            id="hexo-blogthematics">
+            <i class='fa fa-inbox fa-fw'></i>&nbsp;专题
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/hexo-blog/about/"
+            
+              rel="nofollow"
+            
+            
+            id="hexo-blogabout">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/hexo-blog/' >
+        
+          Z 空间
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/hexo-blog/"
+                  
+                  
+                  id="hexo-blog">
+									<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/hexo-blog/blog/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="hexo-blogblogcategories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/hexo-blog/blog/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="hexo-blogblogtags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/hexo-blog/blog/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="hexo-blogblogarchives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/hexo-blog/"
+                
+                
+                id="hexo-blog">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/hexo-blog/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="hexo-blogblogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/hexo-blog/projects/"
+                
+                
+                id="hexo-blogprojects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/hexo-blog/thematics/"
+                
+                
+                id="hexo-blogthematics">
+								<i class='fa fa-inbox fa-fw'></i>&nbsp;专题文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/hexo-blog/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="hexo-blogabout">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+    <section class='meta'>
+        
+        <div class="meta" id="header-meta">
+            
+                
+  
+    <h1 class="title">
+      <a href="/hexo-blog/2017/08/02/tools-and-environment/git/git-combine-commit-messages/">
+        Git 合并多次提交
+      </a>
+    </h1>
+  
+
+
+            
+            <div class='new-meta-box'>
+                
+                    
+                
+                    
+                        
+  <div class='new-meta-item author'>
+    
+      <a href="https://www.zucchiniy.cn/hexo-blog" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/avatar/lvzai.jpg">
+        
+        <p>zucchiniy</p>
+      </a>
+    
+  </div>
+
+
+                    
+                
+                    
+                        <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-08-02</p>
+  </a>
+</div>
+
+                    
+                
+                    
+                        
+  
+  <div class='new-meta-item category'>
+    <a href='/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Git/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>工具环境&nbsp;/&nbsp;Git</p>
+    </a>
+  </div>
+
+
+                    
+                
+                    
+                        
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+                    
+                
+                    
+                        
+  
+    <div class="new-meta-item wordcount">
+      <a class='notlink'>
+        <i class="fas fa-keyboard" aria-hidden="true"></i>
+        <p>字数统计:</p>
+        <p>889字</p>
+      </a>
+    </div>
+    <div class="new-meta-item readtime">
+      <a class='notlink'>
+        <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+        <p>阅读时长≈</p>
+        <p>4分</p>
+      </a>
+    </div>
+  
+
+                    
+                
+                    
+                        
+
+                    
+                
+            </div>
+            
+                <hr>
+            
+        </div>
+    </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>在合并分支的时候，希望将多次提交合并成一个，然后再 cherry-pick 到主分支。</p>
+<h2 id="合并分支"><a class="header-anchor" href="#合并分支"></a>合并分支</h2>
+<p>develop 分支做开发，可能会进行多次提交，但是在发布或者进行 PR 的时候，我们只希望看到一次提交。这个时候，我们需要进行 <code>git rebase</code> 之后进行合并。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> HEAD~3 表示将近三次提交都合并，如果是将 2 次合并则为 HEAD~2</span></span><br><span class="line">git rebase -i HEAD~3</span><br></pre></td></tr></table></figure>
+<p>这个时候，看到的是一上对 <strong>COMMIT</strong> 信息的提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">pick 9ba5122 2017 年 8 月 2 日</span><br><span class="line">pick c6da035 ~~</span><br><span class="line"></span><br><span class="line"># Rebase 9b6bae1..c6da035 onto 9b6bae1 (2 commands)</span><br><span class="line">#</span><br><span class="line"># Commands:</span><br><span class="line"># p, pick &#x3D; use commit</span><br><span class="line"># r, reword &#x3D; use commit, but edit the commit message</span><br><span class="line"># e, edit &#x3D; use commit, but stop for amending</span><br><span class="line"># s, squash &#x3D; use commit, but meld into previous commit</span><br><span class="line"># f, fixup &#x3D; like &quot;squash&quot;, but discard this commit&#39;s log message</span><br><span class="line"># x, exec &#x3D; run command (the rest of the line) using shell</span><br><span class="line"># d, drop &#x3D; remove commit</span><br><span class="line">#</span><br><span class="line"># These lines can be re-ordered; they are executed from top to bottom.</span><br><span class="line">#</span><br><span class="line"># If you remove a line here THAT COMMIT WILL BE LOST.</span><br><span class="line">#</span><br><span class="line"># However, if you remove everything, the rebase will be aborted.</span><br><span class="line">#</span><br><span class="line"># Note that empty commits are commented out</span><br></pre></td></tr></table></figure>
+<p>第一列对应的是 <code>rebase</code> 具体的操作，其含义如下</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pick§</td>
+<td>git 会应用这个补丁，以同样的提交信息（commit message）保存提交</td>
+</tr>
+<tr>
+<td>reword®</td>
+<td>git 会应用这个补丁，但需要重新编辑提交信息</td>
+</tr>
+<tr>
+<td>edit(e)</td>
+<td>git 会应用这个补丁，但会因为 amending 而终止</td>
+</tr>
+<tr>
+<td>squash(s)</td>
+<td>git 会应用这个补丁，但会与之前的提交合并</td>
+</tr>
+<tr>
+<td>fixup(f)</td>
+<td>git 会应用这个补丁，但会丢掉提交日志</td>
+</tr>
+<tr>
+<td>exec(x)</td>
+<td>git 会在 shell 中运行这个命令</td>
+</tr>
+<tr>
+<td>drop(d)</td>
+<td>git 会移除这次 COMMIT</td>
+</tr>
+</tbody>
+</table>
+<p>将第二个 <code>pick c6da035 ~~~</code> 这一行修改成 <code>squash c6da035 ~~~</code> ，使之与之前的提交合并。</p>
+<p>保存之后可以看到下面的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">This is a combination of 2 commits.</span><br><span class="line"># This is the 1st commit message:</span><br><span class="line"></span><br><span class="line">2017 年 8 月 2 日</span><br><span class="line"></span><br><span class="line">删除无用配置，提高启动速度</span><br><span class="line"></span><br><span class="line">1. 更新 zucchini-org</span><br><span class="line">2. 增加 CHANGELOG 用来记录每次更新</span><br><span class="line">3. 更新 plantuml 配置</span><br><span class="line">   FIXED Can&#39;t find plantuml-jar-path</span><br><span class="line">4. 增加 parinfer 配置，用来优化 lisp 的编写速度</span><br><span class="line"></span><br><span class="line"># This is the commit message #2:</span><br><span class="line"></span><br><span class="line">~~</span><br><span class="line"></span><br><span class="line"># Please enter the commit message for your changes. Lines starting</span><br><span class="line"># with &#39;#&#39; will be ignored, and an empty message aborts the commit.</span><br><span class="line">#</span><br><span class="line"># Date:      Tue Aug 1 10:24:44 2017 +0800</span><br><span class="line">#</span><br><span class="line"># interactive rebase in progress; onto 9b6bae1</span><br><span class="line"># Last commands done (2 commands done):</span><br><span class="line">&quot;~&#x2F;spacemacs&#x2F;spacemacs.d&#x2F;.git&#x2F;COMMIT_EDITMSG&quot; 36L, 1003C</span><br></pre></td></tr></table></figure>
+<p>修改成正确的 <code>commit</code> 信息之后，保存存并退出，可以看到下面的内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git rebase -i HEAD~2</span></span><br><span class="line">[detached HEAD 0238691] 2017 年 8 月 2 日</span><br><span class="line"> Date: Tue Aug 1 10:24:44 2017 +0800</span><br><span class="line"> 5 files changed, 65 insertions(+), 34 deletions(-)</span><br><span class="line"> create mode 100644 CHANGELOG.org</span><br><span class="line"> rewrite local/custom.el (66%)</span><br><span class="line">Successfully rebased and updated refs/heads/develop.</span><br></pre></td></tr></table></figure>
+<p>这个时候，就已经将我们这几次的更改都合并到一次中了。</p>
+<h2 id="cherry-pick-分支并更新"><a class="header-anchor" href="#cherry-pick-分支并更新"></a>cherry-pick 分支并更新</h2>
+<p>这个时候，就可以更新我们的代码了。</p>
+<p>首先 <code>git checkout master</code> 分支, 然后更新我们的代码 <code>git pull</code> 。</p>
+<p>然后将我们合并之后的 <strong>develop</strong> 分支的内容更新过来</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -b develop</span><br></pre></td></tr></table></figure>
+<p>看到如下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">commit 02386914b9e5ab13c23451a3463813bfdecb157a</span><br><span class="line">Author: 语乱 &lt;banshiliuli1990@sina.com&gt;</span><br><span class="line">Date:   Tue Aug 1 10:24:44 2017 +0800</span><br><span class="line"></span><br><span class="line">    2017 年 8 月 2 日</span><br><span class="line"></span><br><span class="line">    删除无用配置，提高启动速度</span><br><span class="line"></span><br><span class="line">    1. 更新 zucchini-org</span><br><span class="line">    2. 增加 CHANGELOG 用来记录每次更新</span><br><span class="line">    3. 更新 plantuml 配置</span><br><span class="line">       FIXED Can&#39;t find plantuml-jar-path</span><br><span class="line">    4. 增加 parinfer 配置，用来优化 lisp 的编写速度</span><br></pre></td></tr></table></figure>
+<p>或者使用上次的操作的中的提示 <code>[detached HEAD 0238691] 2017 年 8 月 2 日</code> 其中的 <strong>0238691</strong> 就是我们需要</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick 0238691</span><br></pre></td></tr></table></figure>
+<p>这样我们再推送到远程就可以实现合并更新了。</p>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+<section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+        
+            
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-07T16:01:23+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年1月7日</p>
+  </a>
+</div>
+
+            
+        
+            
+                
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/hexo-blog/blog/tags/rebase/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>rebase</p></a></div>
+
+
+            
+        
+            
+                
+
+            
+        
+    </div>
+</section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/hexo-blog/2017/12/07/tools-and-environment/mac/xcrun-error/" rel="prev" title="Mac 下执行 Git 命令报错">
+                                
+                                    Mac 下执行 Git 命令报错
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/hexo-blog/blog/tags/xcode/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> xcode</a> <a class="tag" href="/hexo-blog/blog/tags/xcrun/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> xcrun</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/hexo-blog/2017/07/31/tools-and-environment/emacs/emacs-dot-and-python-cannot-run-in-spacemacs/" rel="prev" title="Org mode 中不能执行 dot 、 Python 代码">
+                                  
+                                      Org mode 中不能执行 dot 、 Python 代码
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/hexo-blog/blog/tags/spacemacs/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> spacemacs</a> <a class="tag" href="/hexo-blog/blog/tags/org-babel/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> org babel</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+    <article class="post white-box comments">
+        <section class="article typo">
+            <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+            
+            
+            
+            
+                <section id="comments">
+                    <div id="valine_container" class="valine_thread">
+                        <i class="fas fa-spinner fa-spin fa-fw"></i>
+                    </div>
+                </section>
+            
+        </section>
+    </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Git 合并多次提交',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/avatar/lvzai.jpg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/hexo-blog/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:banshiliuli1990@sina.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/zucchiniy"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#合并分支"><span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cherry-pick-分支并更新"><span class="toc-text">cherry-pick 分支并更新</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/hexo-blog/" href="/hexo-blog/"
+          
+          
+          id="hexo-blog">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/hexo-blog/blog/archives/" href="/hexo-blog/blog/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="hexo-blogblogarchives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          文章归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/hexo-blog/projects/" href="/hexo-blog/projects/"
+          
+          
+          id="hexo-blogprojects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          开源项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/hexo-blog/thematics/" href="/hexo-blog/thematics/"
+          
+            rel="nofollow"
+          
+          
+          id="hexo-blogthematics">
+          
+            <i class="fa fa-inbox fa-fw" aria-hidden="true"></i>
+          
+          专题文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/hexo-blog/about/" href="/hexo-blog/about/"
+          
+            rel="nofollow"
+          
+          
+          id="hexo-blogabout">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于小站
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/hexo-blog/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" href="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"><div class='name'>前端技术</div><div class='badge'>(7)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/JavaScript/" href="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/ajax/" href="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/ajax/"><div class='name'>ajax</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/css/" href="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/css/"><div class='name'>css</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/hexo/" href="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/hexo/"><div class='name'>hexo</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/hugo/" href="/hexo-blog/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/hugo/"><div class='name'>hugo</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/hexo-blog/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/" href="/hexo-blog/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/"><div class='name'>后台技术</div><div class='badge'>(10)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Java/" href="/hexo-blog/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Java/"><div class='name'>Java</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/MySQL/" href="/hexo-blog/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/MySQL/"><div class='name'>MySQL</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/" href="/hexo-blog/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"><div class='name'>Python</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"><div class='name'>工具环境</div><div class='badge'>(35)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Android/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Android/"><div class='name'>Android</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Eclispe/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Eclispe/"><div class='name'>Eclispe</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"><div class='name'>Emacs</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/GCC/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/GCC/"><div class='name'>GCC</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Git/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Git/"><div class='name'>Git</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Google/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Google/"><div class='name'>Google</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Mac/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Mac/"><div class='name'>Mac</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Windows/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Windows/"><div class='name'>Windows</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/hexo/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/hexo/"><div class='name'>hexo</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/travis/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/travis/"><div class='name'>travis</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" href="/hexo-blog/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><div class='name'>正则表达式</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/hexo-blog/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" href="/hexo-blog/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"><div class='name'>生活总结</div><div class='badge'>(9)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/hexo-blog/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/hexo-blog/blog/tags/gitignore/" style="font-size: 14px; color: #999">.gitignore</a> <a href="/hexo-blog/blog/tags/Code-504/" style="font-size: 14px; color: #999">Code 504</a> <a href="/hexo-blog/blog/tags/Emacs/" style="font-size: 19px; color: #777">Emacs</a> <a href="/hexo-blog/blog/tags/Field/" style="font-size: 14px; color: #999">Field</a> <a href="/hexo-blog/blog/tags/Git/" style="font-size: 14px; color: #999">Git</a> <a href="/hexo-blog/blog/tags/GitHub-Pages/" style="font-size: 14px; color: #999">GitHub Pages</a> <a href="/hexo-blog/blog/tags/Hugo/" style="font-size: 14px; color: #999">Hugo</a> <a href="/hexo-blog/blog/tags/JavaScript/" style="font-size: 14px; color: #999">JavaScript</a> <a href="/hexo-blog/blog/tags/Leetcode/" style="font-size: 19px; color: #777">Leetcode</a> <a href="/hexo-blog/blog/tags/Mac-OS/" style="font-size: 14px; color: #999">Mac OS</a> <a href="/hexo-blog/blog/tags/Matplotlib/" style="font-size: 14px; color: #999">Matplotlib</a> <a href="/hexo-blog/blog/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/hexo-blog/blog/tags/RegExp/" style="font-size: 14px; color: #999">RegExp</a> <a href="/hexo-blog/blog/tags/apt/" style="font-size: 14px; color: #999">apt</a> <a href="/hexo-blog/blog/tags/apt-get/" style="font-size: 14px; color: #999">apt-get</a> <a href="/hexo-blog/blog/tags/async/" style="font-size: 14px; color: #999">async</a> <a href="/hexo-blog/blog/tags/beautifusoup/" style="font-size: 14px; color: #999">beautifusoup</a> <a href="/hexo-blog/blog/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/hexo-blog/blog/tags/cmder/" style="font-size: 14px; color: #999">cmder</a> <a href="/hexo-blog/blog/tags/coding-system/" style="font-size: 14px; color: #999">coding system</a> <a href="/hexo-blog/blog/tags/command/" style="font-size: 14px; color: #999">command</a> <a href="/hexo-blog/blog/tags/create-user/" style="font-size: 14px; color: #999">create user</a> <a href="/hexo-blog/blog/tags/css/" style="font-size: 19px; color: #777">css</a> <a href="/hexo-blog/blog/tags/dd/" style="font-size: 14px; color: #999">dd</a> <a href="/hexo-blog/blog/tags/diskutil/" style="font-size: 14px; color: #999">diskutil</a> <a href="/hexo-blog/blog/tags/django/" style="font-size: 14px; color: #999">django</a> <a href="/hexo-blog/blog/tags/dot/" style="font-size: 14px; color: #999">dot</a> <a href="/hexo-blog/blog/tags/du/" style="font-size: 14px; color: #999">du</a> <a href="/hexo-blog/blog/tags/emoji/" style="font-size: 14px; color: #999">emoji</a> <a href="/hexo-blog/blog/tags/evil/" style="font-size: 14px; color: #999">evil</a> <a href="/hexo-blog/blog/tags/exists/" style="font-size: 14px; color: #999">exists</a> <a href="/hexo-blog/blog/tags/find/" style="font-size: 14px; color: #999">find</a> <a href="/hexo-blog/blog/tags/g/" style="font-size: 14px; color: #999">g++</a> <a href="/hexo-blog/blog/tags/gcc/" style="font-size: 14px; color: #999">gcc</a> <a href="/hexo-blog/blog/tags/gdb/" style="font-size: 14px; color: #999">gdb</a> <a href="/hexo-blog/blog/tags/google-adsense/" style="font-size: 14px; color: #999">google adsense</a> <a href="/hexo-blog/blog/tags/grant-privileges/" style="font-size: 14px; color: #999">grant privileges</a> <a href="/hexo-blog/blog/tags/graphviz/" style="font-size: 14px; color: #999">graphviz</a> <a href="/hexo-blog/blog/tags/grep/" style="font-size: 19px; color: #777">grep</a> <a href="/hexo-blog/blog/tags/hexo/" style="font-size: 19px; color: #777">hexo</a> <a href="/hexo-blog/blog/tags/homebrew/" style="font-size: 14px; color: #999">homebrew</a> <a href="/hexo-blog/blog/tags/hugo/" style="font-size: 19px; color: #777">hugo</a> <a href="/hexo-blog/blog/tags/hung-up/" style="font-size: 14px; color: #999">hung up</a> <a href="/hexo-blog/blog/tags/hyper/" style="font-size: 14px; color: #999">hyper</a> <a href="/hexo-blog/blog/tags/image-library/" style="font-size: 14px; color: #999">image library</a> <a href="/hexo-blog/blog/tags/in/" style="font-size: 14px; color: #999">in</a> <a href="/hexo-blog/blog/tags/indexOf/" style="font-size: 14px; color: #999">indexOf</a> <a href="/hexo-blog/blog/tags/install-Emacs/" style="font-size: 14px; color: #999">install Emacs</a> <a href="/hexo-blog/blog/tags/keybind/" style="font-size: 14px; color: #999">keybind</a> <a href="/hexo-blog/blog/tags/keybinds/" style="font-size: 14px; color: #999">keybinds</a> <a href="/hexo-blog/blog/tags/keymap/" style="font-size: 14px; color: #999">keymap</a> <a href="/hexo-blog/blog/tags/layui/" style="font-size: 14px; color: #999">layui</a> <a href="/hexo-blog/blog/tags/lsof/" style="font-size: 14px; color: #999">lsof</a> <a href="/hexo-blog/blog/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/hexo-blog/blog/tags/markdown-deux/" style="font-size: 14px; color: #999">markdown-deux</a> <a href="/hexo-blog/blog/tags/markdown-it/" style="font-size: 14px; color: #999">markdown-it</a> <a href="/hexo-blog/blog/tags/merge/" style="font-size: 14px; color: #999">merge</a> <a href="/hexo-blog/blog/tags/modifier-keys/" style="font-size: 14px; color: #999">modifier keys</a> <a href="/hexo-blog/blog/tags/netstat/" style="font-size: 14px; color: #999">netstat</a> <a href="/hexo-blog/blog/tags/org-babel/" style="font-size: 14px; color: #999">org babel</a> <a href="/hexo-blog/blog/tags/org-mode/" style="font-size: 14px; color: #999">org mode</a> <a href="/hexo-blog/blog/tags/pacman/" style="font-size: 14px; color: #999">pacman</a> <a href="/hexo-blog/blog/tags/postbuffer/" style="font-size: 14px; color: #999">postbuffer</a> <a href="/hexo-blog/blog/tags/presentation/" style="font-size: 14px; color: #999">presentation</a> <a href="/hexo-blog/blog/tags/read-excel/" style="font-size: 14px; color: #999">read_excel()</a> <a href="/hexo-blog/blog/tags/rebase/" style="font-size: 19px; color: #777">rebase</a> <a href="/hexo-blog/blog/tags/reflex/" style="font-size: 14px; color: #999">reflex</a> <a href="/hexo-blog/blog/tags/regex/" style="font-size: 14px; color: #999">regex</a> <a href="/hexo-blog/blog/tags/reset/" style="font-size: 14px; color: #999">reset</a> <a href="/hexo-blog/blog/tags/set-password/" style="font-size: 14px; color: #999">set password</a> <a href="/hexo-blog/blog/tags/spacemacs/" style="font-size: 14px; color: #999">spacemacs</a> <a href="/hexo-blog/blog/tags/submodule/" style="font-size: 14px; color: #999">submodule</a> <a href="/hexo-blog/blog/tags/substring/" style="font-size: 14px; color: #999">substring</a> <a href="/hexo-blog/blog/tags/super/" style="font-size: 14px; color: #999">super</a> <a href="/hexo-blog/blog/tags/surround/" style="font-size: 14px; color: #999">surround</a> <a href="/hexo-blog/blog/tags/tasks/" style="font-size: 14px; color: #999">tasks</a> <a href="/hexo-blog/blog/tags/theme/" style="font-size: 14px; color: #999">theme</a> <a href="/hexo-blog/blog/tags/tmux/" style="font-size: 14px; color: #999">tmux</a> <a href="/hexo-blog/blog/tags/travis/" style="font-size: 14px; color: #999">travis</a> <a href="/hexo-blog/blog/tags/valine/" style="font-size: 14px; color: #999">valine</a> <a href="/hexo-blog/blog/tags/wildcard/" style="font-size: 14px; color: #999">wildcard</a> <a href="/hexo-blog/blog/tags/workflow/" style="font-size: 14px; color: #999">workflow</a> <a href="/hexo-blog/blog/tags/xcode/" style="font-size: 14px; color: #999">xcode</a> <a href="/hexo-blog/blog/tags/xcrun/" style="font-size: 14px; color: #999">xcrun</a> <a href="/hexo-blog/blog/tags/%E4%B8%8B%E8%BD%BD%E5%B0%8F%E8%AF%B4/" style="font-size: 14px; color: #999">下载小说</a> <a href="/hexo-blog/blog/tags/%E5%87%8F%E6%B3%95%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">减法生活</a> <a href="/hexo-blog/blog/tags/%E5%AD%90%E5%BC%B9%E7%AC%94%E8%AE%B0/" style="font-size: 14px; color: #999">子弹笔记</a> <a href="/hexo-blog/blog/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" style="font-size: 14px; color: #999">学习计划</a> <a href="/hexo-blog/blog/tags/%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">安卓系统</a> <a href="/hexo-blog/blog/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/" style="font-size: 14px; color: #999">工作流</a> <a href="/hexo-blog/blog/tags/%E5%B9%B4%E5%BA%A6%E6%B8%85%E5%8D%95/" style="font-size: 14px; color: #999">年度清单</a> <a href="/hexo-blog/blog/tags/%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82/" style="font-size: 14px; color: #999">异步请求</a> <a href="/hexo-blog/blog/tags/%E6%80%BB%E7%BB%93/" style="font-size: 24px; color: #555">总结</a> <a href="/hexo-blog/blog/tags/%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%89%8B%E6%9C%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">手动更新手机系统</a> <a href="/hexo-blog/blog/tags/%E6%89%8B%E5%B8%90%E4%BD%93%E7%B3%BB/" style="font-size: 14px; color: #999">手帐体系</a> <a href="/hexo-blog/blog/tags/%E6%8A%80%E8%83%BD%E6%B0%B4%E5%B9%B3/" style="font-size: 14px; color: #999">技能水平</a> <a href="/hexo-blog/blog/tags/%E6%97%B6%E9%97%B4%E4%BD%BF%E7%94%A8%E6%95%88%E7%8E%87/" style="font-size: 14px; color: #999">时间使用效率</a> <a href="/hexo-blog/blog/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/" style="font-size: 14px; color: #999">时间管理</a> <a href="/hexo-blog/blog/tags/%E6%BB%9A%E5%8A%A8%E6%9D%A1/" style="font-size: 14px; color: #999">滚动条</a> <a href="/hexo-blog/blog/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">生活</a> <a href="/hexo-blog/blog/tags/%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/" style="font-size: 14px; color: #999">电影清单</a> <a href="/hexo-blog/blog/tags/%E7%94%B5%E8%A7%86%E6%B8%85%E5%8D%95/" style="font-size: 14px; color: #999">电视清单</a> <a href="/hexo-blog/blog/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/" style="font-size: 14px; color: #999">知识管理</a> <a href="/hexo-blog/blog/tags/%E7%AE%80%E5%8E%86/" style="font-size: 14px; color: #999">简历</a> <a href="/hexo-blog/blog/tags/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/" style="font-size: 14px; color: #999">自动部署博客</a> <a href="/hexo-blog/blog/tags/%E8%AF%BB%E4%B9%A6%E6%B8%85%E5%8D%95/" style="font-size: 14px; color: #999">读书清单</a> <a href="/hexo-blog/blog/tags/%E9%80%8F%E8%A7%86%E8%A1%A8/" style="font-size: 14px; color: #999">透视表</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget related_posts'>
+    
+<header class='pure'>
+  <div><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;相关文章</div>
+  
+</header>
+
+    <div class="content pure">
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2017/05/07/tools-and-environment/git/git-rebase-merge/" title="Git 解决分支冲突" rel="bookmark">Git 解决分支冲突</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2016/04/27/tools-and-environment/git/git-basic-command/" title="Git 基础命令" rel="bookmark">Git 基础命令</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog/2018/05/28/tools-and-environment/git/git-ignore/" title=".gitignore 文件配置" rel="bookmark">.gitignore 文件配置</a></h3></div></li></ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/hexo-blog/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:banshiliuli1990@sina.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/zucchiniy"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://github.com/ZCodingTime/hexo-theme-material-x" target="_blank" class="codename">Material Z</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/hexo-blog/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "0CS13cNBUV5BJj7PQWupnVWq-gzGzoHsz",
+    appKey: "xsz3vAzEbda56D3RK5aomNSW",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
