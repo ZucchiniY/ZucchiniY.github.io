@@ -1343,6 +1343,33 @@
     
     
     <entry>
+      <title>Maven 使用笔记</title>
+      <link href="/hexo-blog/2018/04/18/rear-end/maven-use-tips/"/>
+      <url>/hexo-blog/2018/04/18/rear-end/maven-use-tips/</url>
+      
+        <content type="html"><![CDATA[<h2 id="创建一个项目"><a class="header-anchor" href="#创建一个项目"></a>创建一个项目</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DarchetypeCatalog=internal</span><br><span class="line">-DgroupId=com.mycompany.app -DartifactId=my-app</span><br><span class="line">-DarchetypeArtifactId=maven-archetype-quickstart</span><br><span class="line">-DinteractiveMode=false</span><br></pre></td></tr></table></figure><ul><li><code>mvn archetype:generate</code> 固定格式</li><li><code>-DgroupId</code> 组织标识，包名</li><li><code>-DartifactId</code> 项目名称</li><li><code>-DarchetypeCatalog=internal</code> 不要从远程服务器上取 catalog，解决新建项目卡在 Generating project in interactive mode 处的问题</li><li><code>-DarchetypeArtifactId</code> 指定 ArchetypeId ,<br><code>maven-archetype-quickstart</code> , 创建一个 java 项目；<br><code>maven-archetype-webapp</code> ，创建一个 web 项目</li><li><code>-DinteractiveMode</code> 是否使用交互模式</li></ul><h2 id="修改本地仓库路径"><a class="header-anchor" href="#修改本地仓库路径"></a>修改本地仓库路径</h2><p>在 <code>setting.xml</code> 中增加下面的配置，将 <strong>本地地址</strong> 改成对应的路径即可。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>本地地址<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="导出工程依赖的-jar-包"><a class="header-anchor" href="#导出工程依赖的-jar-包"></a>导出工程依赖的 jar 包</h2><ul><li>导出到默认目录下</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn dependency:copy-dependencies</span><br></pre></td></tr></table></figure><ul><li>导出到指定目录下</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn dependency:copy-dependencied -DoutputDirecrtory=lib</span><br></pre></td></tr></table></figure><ul><li>设置依赖级别，并导出到对应的目录下</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn dependency:copy-dependencied -DoutputDirecrtory=lib -DincludeScope=jcompile</span><br></pre></td></tr></table></figure><p>对应的5个级别：</p><ul><li>complie: 表示 dependency 都在生命周期中使用，同时会传递到依赖项目中</li><li>provided: 表示 dependency 由 JDK 或者容器提供，只作用在编译和测试时，无传递性</li><li>runtime: 表示 dependency 不作用在编译时，但会作用在运行和测试时</li><li>test: 表示 dependency 作用在测试时，不作用在运行时，不随项目发布</li><li>system: 与 provided 类似，但是在系统中要以外部 jar 包形式提供，maven 不会在 repository 查找它</li></ul><h2 id="使用华为镜像"><a class="header-anchor" href="#使用华为镜像"></a>使用华为镜像</h2><p>在 <code>setting.xml</code> 文件中 <strong>mirrors</strong> 节点中添加下面的内容：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>huaweicloud<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://mirrors.huaweicloud.com/repository/maven/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure><p>另外华为的镜像站为 <a href="https://mirrors.huaweicloud.com/" target="_blank" rel="noopener">https://mirrors.huaweicloud.com</a>。</p><h2 id="maven-常用命令"><a class="header-anchor" href="#maven-常用命令"></a>maven 常用命令</h2><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>mvn clean</td><td>清理项目生产的临时文件，一般是模块下的 target 目录</td></tr><tr><td>mvn compile</td><td>编译源代码，一般编译模块下的src/main/java目录</td></tr><tr><td>mvn package</td><td>项目打包工具,会在模块下的target目录生成jar或war等文件</td></tr><tr><td>mvn install</td><td>将打包的jar/war文件复制到你的本地仓库中,供其他模块使用</td></tr><tr><td>mvn deploy</td><td>将打包的文件发布到远程参考,提供其他人员进行下载依赖</td></tr><tr><td>mvn site</td><td>生成项目相关信息的网站</td></tr><tr><td>mvn dependency:tree</td><td>打印出项目的整个依赖树</td></tr><tr><td>mvn spring-boot:run</td><td>启动 springboot 项目</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后台技术 </category>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Maven </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Surround 笔记</title>
       <link href="/hexo-blog/2018/02/12/tools-and-environment/emacs/evil-surround-learning/"/>
       <url>/hexo-blog/2018/02/12/tools-and-environment/emacs/evil-surround-learning/</url>
