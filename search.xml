@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>XPath 使用笔记</title>
+      <link href="/archives/488854a9.html"/>
+      <url>/archives/488854a9.html</url>
+      
+        <content type="html"><![CDATA[<p>xpath 的语法主要是使用的 <code>/name/*[]|//*[@name]</code> 的语法规则。</p><ul><li>定位节点</li></ul><p>节点主要是使用的 id 或者是 classname 进行匹配的，这种情况下，如果是 <code>/</code> 则表示找某一层，如果是 <code>//</code> 进行匹配，则表示是任意位置的某个层，如果用 <code>*</code> 则表示任意名称。</p><p>比如：<code>/cd</code> 是指的 classname 为 cd 的结构，而且是第一层就是 cd，如果是 <code>//cd</code> 则表示其中某层为 cd 但是可以不是最外层。</p><ul><li>选择分支</li></ul><p>使用中括号可以选择分支。以下的语法从 catalog 的子元素中取出第一个叫做 cd 的元素。XPath 的定义中没有第 0 元素这种东西。而且当我们想要选取某类值的时候，可以认为 <code>[]</code> 中的是属性的名称，比如 <code>//cata[@name]</code> 是找的任意 cata 层中包含 name 属性的元素位置。</p><p>在属性之外，还有一种是索引查找方式，比如 <code>//cata[1]</code> 表示查找任意 cata 层中的第一个分支，这里索引是从 <strong>1</strong> 开始，而不是 <strong>0</strong> 开始，如果查找最后一个，则需要使用 <code>cata[last()]</code> 去找，这里只有 <code>last()</code> 方法，不存在 <code>first()</code> 方法。</p><p>如果是 <code>[]</code> 中的内容没有 <code>@</code> 符号，又不是索引值（数字）或者是 <code>last()</code> 方法的话，则表示找出包含某个子元素的情况，比如 <code>//cata/cd[pr]</code> 表示包含 pr 的 <code>/cata/cd</code> 层。如果想指定元素的值，则可以在括号中增加对应的匹配 <code>//cata/cd[pr=1.0]</code> 。</p><p><code>|</code> 在 xpath 中表示或者关系，即符合前面的，或者后面的内容，比如 <code>/cata/pr | /cata/pm</code> 两种我全要的意思。</p><ul><li>选择属性</li></ul><p>如果某一个值是用 <code>@</code> 作为开始，则表示是属性，基本的语法和层的 <code>/</code> 是一致的，区别是可以多个属性并存，即 <code>/ca[@na='uu'][@nb='zz']</code> ，这样就是找到 cd 层中属性 na 是 uu 且 属性 nb 是 zz 的元素。</p><ul><li>特殊方法</li></ul><p><code>contains()</code>: 包含语法，比如 <code>/ca[contains(@name,'na')]</code> name 属性中包含 na 的元素<br><code>text()</code>: 显示文本信息，这里对应的可以用来查询，而且进行其它操作，是对元素属性的补充<br><code>starts-with()</code>: 开始于，比如 <code>/ca[starts-with(@name,'na')]</code> name 属性开始位置包含 na</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端技术 </category>
+          
+          <category> xpath </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 定位节点 </tag>
+            
+            <tag> 正则匹配 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Markdown 中增加表格</title>
       <link href="/archives/fb1b5f62.html"/>
       <url>/archives/fb1b5f62.html</url>
@@ -27,35 +56,6 @@
             <tag> 复杂表格 </tag>
             
             <tag> multimd table </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>XPath 使用笔记</title>
-      <link href="/archives/488854a9.html"/>
-      <url>/archives/488854a9.html</url>
-      
-        <content type="html"><![CDATA[<p>xpath 的语法主要是使用的 <code>/name/*[]|//*[@name]</code> 的语法规则。</p><ul><li>定位节点</li></ul><p>节点主要是使用的 id 或者是 classname 进行匹配的，这种情况下，如果是 <code>/</code> 则表示找某一层，如果是 <code>//</code> 进行匹配，则表示是任意位置的某个层，如果用 <code>*</code> 则表示任意名称。</p><p>比如：<code>/cd</code> 是指的 classname 为 cd 的结构，而且是第一层就是 cd，如果是 <code>//cd</code> 则表示其中某层为 cd 但是可以不是最外层。</p><ul><li>选择分支</li></ul><p>使用中括号可以选择分支。以下的语法从 catalog 的子元素中取出第一个叫做 cd 的元素。XPath 的定义中没有第 0 元素这种东西。而且当我们想要选取某类值的时候，可以认为 <code>[]</code> 中的是属性的名称，比如 <code>//cata[@name]</code> 是找的任意 cata 层中包含 name 属性的元素位置。</p><p>在属性之外，还有一种是索引查找方式，比如 <code>//cata[1]</code> 表示查找任意 cata 层中的第一个分支，这里索引是从 <strong>1</strong> 开始，而不是 <strong>0</strong> 开始，如果查找最后一个，则需要使用 <code>cata[last()]</code> 去找，这里只有 <code>last()</code> 方法，不存在 <code>first()</code> 方法。</p><p>如果是 <code>[]</code> 中的内容没有 <code>@</code> 符号，又不是索引值（数字）或者是 <code>last()</code> 方法的话，则表示找出包含某个子元素的情况，比如 <code>//cata/cd[pr]</code> 表示包含 pr 的 <code>/cata/cd</code> 层。如果想指定元素的值，则可以在括号中增加对应的匹配 <code>//cata/cd[pr=1.0]</code> 。</p><p><code>|</code> 在 xpath 中表示或者关系，即符合前面的，或者后面的内容，比如 <code>/cata/pr | /cata/pm</code> 两种我全要的意思。</p><ul><li>选择属性</li></ul><p>如果某一个值是用 <code>@</code> 作为开始，则表示是属性，基本的语法和层的 <code>/</code> 是一致的，区别是可以多个属性并存，即 <code>/ca[@na='uu'][@nb='zz']</code> ，这样就是找到 cd 层中属性 na 是 uu 且 属性 nb 是 zz 的元素。</p><ul><li>特殊方法</li></ul><p><code>contains()</code>: 包含语法，比如 <code>/ca[contains(@name,'na')]</code> name 属性中包含 na 的元素<br><code>text()</code>: 显示文本信息，这里对应的可以用来查询，而且进行其它操作，是对元素属性的补充<br><code>starts-with()</code>: 开始于，比如 <code>/ca[starts-with(@name,'na')]</code> name 属性开始位置包含 na</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 前端技术 </category>
-          
-          <category> xpath </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 定位节点 </tag>
-            
-            <tag> 正则匹配 </tag>
             
         </tags>
       
@@ -155,33 +155,6 @@
     
     
     <entry>
-      <title>Emacs 快捷键配置方案</title>
-      <link href="/archives/86598d2e.html"/>
-      <url>/archives/86598d2e.html</url>
-      
-        <content type="html"><![CDATA[<p><strong>Emacs 的快捷键和 Vim 的快捷键是编辑器中的两坐高山，其中 Emacs 的快捷键主要有四类。</strong></p><h2 id="四大类型"><a class="header-anchor" href="#四大类型"></a>四大类型</h2><ul><li>全局快捷键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kdb &quot;a&quot;) &#39;command)</span><br></pre></td></tr></table></figure><ul><li>全局映射键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key key-translation-map (kbd &quot;a&quot;) (kdb &quot;b&quot;))</span><br></pre></td></tr></table></figure><ul><li>Major-mode 局部快捷键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(local-set-key (kdb &quot;a&quot;) &#39;command)</span><br></pre></td></tr></table></figure><ul><li>Minor-mode 局部快捷键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key your-minor-mode-map (kbd &quot;a&quot;) &#39;command)</span><br></pre></td></tr></table></figure><h2 id="删除、禁用快捷键"><a class="header-anchor" href="#删除、禁用快捷键"></a>删除、禁用快捷键</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(global&#x2F;local-unset-key (kbd &quot;a&quot;))</span><br><span class="line">(global&#x2F;local-set-key (kbd &quot;a&quot;) &#39;ignore&#x2F;nil)</span><br></pre></td></tr></table></figure><h2 id="键冲突与解决"><a class="header-anchor" href="#键冲突与解决"></a>键冲突与解决</h2><p>最方便的解决方案是找一个空置的 <strong>prefix</strong> 键，先映射到这个键上，再全局或者局部设置它。</p><h3 id="先映射到空闲键上"><a class="header-anchor" href="#先映射到空闲键上"></a>先映射到空闲键上</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key key-translation-map (kbd &quot;a&quot;) (kbd &quot;M-g A&quot;))</span><br></pre></td></tr></table></figure><h3 id="全局或者局部设置"><a class="header-anchor" href="#全局或者局部设置"></a>全局或者局部设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global&#x2F;local-set-key (kbd &quot;M-g A&quot;) &#39;command)</span><br></pre></td></tr></table></figure><h2 id="快捷键优先级"><a class="header-anchor" href="#快捷键优先级"></a>快捷键优先级</h2><p><code>key-translation-map</code> : 最高级，就是把这个键的意义改变了，想使用原来的快捷键，要重新进行绑定</p><p><code>minor-mode-map</code> : 二级，只在 <strong>minor mode</strong> 激活时启作用，其它时候会被其它的快捷键覆盖掉</p><p><code>local-set-key</code> : 三级，在 <strong>major mode</strong> 中启作用</p><p><code>global-set-key</code> : 最弱的级别，但是也是最简单的键绑定方式</p><h3 id="设置局域快捷键"><a class="header-anchor" href="#设置局域快捷键"></a>设置局域快捷键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun f-python-mode ()</span><br><span class="line">  (local-set-key (kbd &quot;C-x C-e&quot;)&#39;f-python-shell-send-line)</span><br><span class="line">  (local-set-key (kbd &quot;M-g C-y&quot;) &#39;f-python-shell-send-line))</span><br><span class="line">(add-hook &#39;python-mode-hook &#39;f-python-mode)</span><br></pre></td></tr></table></figure><p><strong>注意</strong> 当键进行重新绑定后，还应该将之前的功能重新绑定到另一个键上。</p><h2 id="Minor-Mode-Map"><a class="header-anchor" href="#Minor-Mode-Map"></a>Minor Mode Map</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(define-minor-mode visual-mode</span><br><span class="line">  :init-value nil</span><br><span class="line">  :global t</span><br><span class="line">  :keymap (make-sparse-keymap)</span><br><span class="line">  (if (not visual-mode) (setq cursor-type &#39;bar)</span><br><span class="line">    (setq cursor-type &#39;box)))</span><br><span class="line">(define-key visual-mode-map (kbd &quot;h&quot;) &#39;mark-paragraph)</span><br></pre></td></tr></table></figure><p>定义之后，可以利用 <code>define-key</code> 来设置当前快捷键。然后在需要启用 <strong>Visual mode</strong> 的时候可以启用这个 <strong>minor mode</strong> 的相关快捷键。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工具环境 </category>
-          
-          <category> Emacs </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> keybinds </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>GDB 调试笔记</title>
       <link href="/archives/efe1991f.html"/>
       <url>/archives/efe1991f.html</url>
@@ -201,6 +174,33 @@
         <tags>
             
             <tag> gdb </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Emacs 快捷键配置方案</title>
+      <link href="/archives/86598d2e.html"/>
+      <url>/archives/86598d2e.html</url>
+      
+        <content type="html"><![CDATA[<p><strong>Emacs 的快捷键和 Vim 的快捷键是编辑器中的两坐高山，其中 Emacs 的快捷键主要有四类。</strong></p><h2 id="四大类型"><a class="header-anchor" href="#四大类型"></a>四大类型</h2><ul><li>全局快捷键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kdb &quot;a&quot;) &#39;command)</span><br></pre></td></tr></table></figure><ul><li>全局映射键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key key-translation-map (kbd &quot;a&quot;) (kdb &quot;b&quot;))</span><br></pre></td></tr></table></figure><ul><li>Major-mode 局部快捷键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(local-set-key (kdb &quot;a&quot;) &#39;command)</span><br></pre></td></tr></table></figure><ul><li>Minor-mode 局部快捷键</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key your-minor-mode-map (kbd &quot;a&quot;) &#39;command)</span><br></pre></td></tr></table></figure><h2 id="删除、禁用快捷键"><a class="header-anchor" href="#删除、禁用快捷键"></a>删除、禁用快捷键</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(global&#x2F;local-unset-key (kbd &quot;a&quot;))</span><br><span class="line">(global&#x2F;local-set-key (kbd &quot;a&quot;) &#39;ignore&#x2F;nil)</span><br></pre></td></tr></table></figure><h2 id="键冲突与解决"><a class="header-anchor" href="#键冲突与解决"></a>键冲突与解决</h2><p>最方便的解决方案是找一个空置的 <strong>prefix</strong> 键，先映射到这个键上，再全局或者局部设置它。</p><h3 id="先映射到空闲键上"><a class="header-anchor" href="#先映射到空闲键上"></a>先映射到空闲键上</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(define-key key-translation-map (kbd &quot;a&quot;) (kbd &quot;M-g A&quot;))</span><br></pre></td></tr></table></figure><h3 id="全局或者局部设置"><a class="header-anchor" href="#全局或者局部设置"></a>全局或者局部设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global&#x2F;local-set-key (kbd &quot;M-g A&quot;) &#39;command)</span><br></pre></td></tr></table></figure><h2 id="快捷键优先级"><a class="header-anchor" href="#快捷键优先级"></a>快捷键优先级</h2><p><code>key-translation-map</code> : 最高级，就是把这个键的意义改变了，想使用原来的快捷键，要重新进行绑定</p><p><code>minor-mode-map</code> : 二级，只在 <strong>minor mode</strong> 激活时启作用，其它时候会被其它的快捷键覆盖掉</p><p><code>local-set-key</code> : 三级，在 <strong>major mode</strong> 中启作用</p><p><code>global-set-key</code> : 最弱的级别，但是也是最简单的键绑定方式</p><h3 id="设置局域快捷键"><a class="header-anchor" href="#设置局域快捷键"></a>设置局域快捷键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun f-python-mode ()</span><br><span class="line">  (local-set-key (kbd &quot;C-x C-e&quot;)&#39;f-python-shell-send-line)</span><br><span class="line">  (local-set-key (kbd &quot;M-g C-y&quot;) &#39;f-python-shell-send-line))</span><br><span class="line">(add-hook &#39;python-mode-hook &#39;f-python-mode)</span><br></pre></td></tr></table></figure><p><strong>注意</strong> 当键进行重新绑定后，还应该将之前的功能重新绑定到另一个键上。</p><h2 id="Minor-Mode-Map"><a class="header-anchor" href="#Minor-Mode-Map"></a>Minor Mode Map</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(define-minor-mode visual-mode</span><br><span class="line">  :init-value nil</span><br><span class="line">  :global t</span><br><span class="line">  :keymap (make-sparse-keymap)</span><br><span class="line">  (if (not visual-mode) (setq cursor-type &#39;bar)</span><br><span class="line">    (setq cursor-type &#39;box)))</span><br><span class="line">(define-key visual-mode-map (kbd &quot;h&quot;) &#39;mark-paragraph)</span><br></pre></td></tr></table></figure><p>定义之后，可以利用 <code>define-key</code> 来设置当前快捷键。然后在需要启用 <strong>Visual mode</strong> 的时候可以启用这个 <strong>minor mode</strong> 的相关快捷键。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Emacs </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> keybinds </tag>
             
         </tags>
       
