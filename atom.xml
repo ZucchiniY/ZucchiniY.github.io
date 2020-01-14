@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.zucchiniy.cn/"/>
-  <updated>2020-01-14T01:53:17.201Z</updated>
+  <updated>2020-01-14T09:13:32.102Z</updated>
   <id>https://www.zucchiniy.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>统计每天的工作时长</title>
+    <link href="https://www.zucchiniy.cn/archives/12c28564.html"/>
+    <id>https://www.zucchiniy.cn/archives/12c28564.html</id>
+    <published>2020-01-14T07:53:21.000Z</published>
+    <updated>2020-01-14T09:13:32.102Z</updated>
+    
+    <summary type="html">
+    
+      利用 Org mode 中的 clocktable 统计自己的的工作时长。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Emacs" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"/>
+    
+    
+      <category term="org mode" scheme="https://www.zucchiniy.cn/blog/tags/org-mode/"/>
+    
+      <category term="clocktable" scheme="https://www.zucchiniy.cn/blog/tags/clocktable/"/>
+    
+  </entry>
   
   <entry>
     <title>XPath 使用笔记</title>
@@ -217,9 +242,9 @@
       <category term="Linux" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"/>
     
     
-      <category term="find" scheme="https://www.zucchiniy.cn/blog/tags/find/"/>
-    
       <category term="grep" scheme="https://www.zucchiniy.cn/blog/tags/grep/"/>
+    
+      <category term="find" scheme="https://www.zucchiniy.cn/blog/tags/find/"/>
     
       <category term="du" scheme="https://www.zucchiniy.cn/blog/tags/du/"/>
     
@@ -257,7 +282,7 @@
     <link href="https://www.zucchiniy.cn/archives/22a51e75.html"/>
     <id>https://www.zucchiniy.cn/archives/22a51e75.html</id>
     <published>2020-01-03T16:00:00.000Z</published>
-    <updated>2020-01-14T01:53:17.217Z</updated>
+    <updated>2020-01-14T11:58:17.805Z</updated>
     
     <summary type="html">
     
@@ -496,31 +521,6 @@
       <category term="时间管理" scheme="https://www.zucchiniy.cn/blog/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
     
       <category term="时间使用效率" scheme="https://www.zucchiniy.cn/blog/tags/%E6%97%B6%E9%97%B4%E4%BD%BF%E7%94%A8%E6%95%88%E7%8E%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用 Python 生成数据透视表</title>
-    <link href="https://www.zucchiniy.cn/archives/f24bdf86.html"/>
-    <id>https://www.zucchiniy.cn/archives/f24bdf86.html</id>
-    <published>2019-08-08T22:53:00.000Z</published>
-    <updated>2020-01-14T01:53:17.229Z</updated>
-    
-    <summary type="html">
-    
-      简单的利用 Python 实现 Excel 文件的处理。
-    
-    </summary>
-    
-    
-      <category term="后台技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="Python" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"/>
-    
-    
-      <category term="透视表" scheme="https://www.zucchiniy.cn/blog/tags/%E9%80%8F%E8%A7%86%E8%A1%A8/"/>
-    
-      <category term="read_excel()" scheme="https://www.zucchiniy.cn/blog/tags/read-excel/"/>
     
   </entry>
   
