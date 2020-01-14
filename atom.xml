@@ -153,29 +153,6 @@
   </entry>
   
   <entry>
-    <title>GDB 调试笔记</title>
-    <link href="https://www.zucchiniy.cn/archives/efe1991f.html"/>
-    <id>https://www.zucchiniy.cn/archives/efe1991f.html</id>
-    <published>2020-01-07T16:00:00.000Z</published>
-    <updated>2020-01-14T01:53:17.262Z</updated>
-    
-    <summary type="html">
-    
-      GDB 常用命令笔记。
-    
-    </summary>
-    
-    
-      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
-    
-      <category term="Linux" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"/>
-    
-    
-      <category term="gdb" scheme="https://www.zucchiniy.cn/blog/tags/gdb/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Emacs 快捷键配置方案</title>
     <link href="https://www.zucchiniy.cn/archives/86598d2e.html"/>
     <id>https://www.zucchiniy.cn/archives/86598d2e.html</id>
@@ -195,6 +172,29 @@
     
     
       <category term="keybinds" scheme="https://www.zucchiniy.cn/blog/tags/keybinds/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GDB 调试笔记</title>
+    <link href="https://www.zucchiniy.cn/archives/efe1991f.html"/>
+    <id>https://www.zucchiniy.cn/archives/efe1991f.html</id>
+    <published>2020-01-07T16:00:00.000Z</published>
+    <updated>2020-01-14T01:53:17.262Z</updated>
+    
+    <summary type="html">
+    
+      GDB 常用命令笔记。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Linux" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"/>
+    
+    
+      <category term="gdb" scheme="https://www.zucchiniy.cn/blog/tags/gdb/"/>
     
   </entry>
   
