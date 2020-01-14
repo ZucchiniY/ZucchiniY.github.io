@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Z 空间</title>
+  
+  <subtitle>世事洞明皆学问，人情练达即文章。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://www.zucchiniy.cn/"/>
+  <updated>2020-01-14T01:53:17.201Z</updated>
+  <id>https://www.zucchiniy.cn/</id>
+  
+  <author>
+    <name>zucchiniy</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XPath 使用笔记</title>
+    <link href="https://www.zucchiniy.cn/archives/488854a9.html"/>
+    <id>https://www.zucchiniy.cn/archives/488854a9.html</id>
+    <published>2020-01-12T16:00:00.000Z</published>
+    <updated>2020-01-14T01:53:17.201Z</updated>
+    
+    <summary type="html">
+    
+      xpath 节点匹配方案笔记。
+    
+    </summary>
+    
+    
+      <category term="前端技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="xpath" scheme="https://www.zucchiniy.cn/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/xpath/"/>
+    
+    
+      <category term="定位节点" scheme="https://www.zucchiniy.cn/blog/tags/%E5%AE%9A%E4%BD%8D%E8%8A%82%E7%82%B9/"/>
+    
+      <category term="正则匹配" scheme="https://www.zucchiniy.cn/blog/tags/%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown 中增加表格</title>
+    <link href="https://www.zucchiniy.cn/archives/fb1b5f62.html"/>
+    <id>https://www.zucchiniy.cn/archives/fb1b5f62.html</id>
+    <published>2020-01-12T16:00:00.000Z</published>
+    <updated>2020-01-14T01:53:17.212Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- build time:Tue Jan 14 2020 14:30:42 GMT+0800 (中国标准时间) --&gt;&lt;h2 id=&quot;默认表格&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#默认表格&quot;&gt;&lt;/a&gt;默认表格&lt;/h2&gt;&lt;p&gt;Markdown 是
+      
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="markdown" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/markdown/"/>
+    
+    
+      <category term="默认表格" scheme="https://www.zucchiniy.cn/blog/tags/%E9%BB%98%E8%AE%A4%E8%A1%A8%E6%A0%BC/"/>
+    
+      <category term="复杂表格" scheme="https://www.zucchiniy.cn/blog/tags/%E5%A4%8D%E6%9D%82%E8%A1%A8%E6%A0%BC/"/>
+    
+      <category term="multimd table" scheme="https://www.zucchiniy.cn/blog/tags/multimd-table/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Emacs Org mode 小技巧</title>
+    <link href="https://www.zucchiniy.cn/archives/5f8ba428.html"/>
+    <id>https://www.zucchiniy.cn/archives/5f8ba428.html</id>
+    <published>2020-01-12T10:38:24.000Z</published>
+    <updated>2020-01-14T01:53:17.241Z</updated>
+    
+    <summary type="html">
+    
+      增加转义扩展符、ditaa 语言绘制图形。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Emacs" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"/>
+    
+    
+      <category term="org mode" scheme="https://www.zucchiniy.cn/blog/tags/org-mode/"/>
+    
+      <category term="use-sub-superscripts" scheme="https://www.zucchiniy.cn/blog/tags/use-sub-superscripts/"/>
+    
+      <category term="ditaa" scheme="https://www.zucchiniy.cn/blog/tags/ditaa/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Emacs 扩展 Evil 功能</title>
+    <link href="https://www.zucchiniy.cn/archives/d51ccb9b.html"/>
+    <id>https://www.zucchiniy.cn/archives/d51ccb9b.html</id>
+    <published>2020-01-12T10:21:13.000Z</published>
+    <updated>2020-01-14T01:53:17.244Z</updated>
+    
+    <summary type="html">
+    
+      增加 evil 多光标模式，在某些主模式中关闭 evil。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Emacs" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"/>
+    
+    
+      <category term="Evil Multiple cursors" scheme="https://www.zucchiniy.cn/blog/tags/Evil-Multiple-cursors/"/>
+    
+      <category term="turn evil mode off" scheme="https://www.zucchiniy.cn/blog/tags/turn-evil-mode-off/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 中使用 emoji 和 tasks</title>
+    <link href="https://www.zucchiniy.cn/archives/953e2b.html"/>
+    <id>https://www.zucchiniy.cn/archives/953e2b.html</id>
+    <published>2020-01-11T13:06:58.000Z</published>
+    <updated>2020-01-14T01:53:17.197Z</updated>
+    
+    <summary type="html">
+    
+      让 hexo 博客的 markdown 文件中支持 emoji、tasks。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="hexo" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/hexo/"/>
+    
+    
+      <category term="markdown-it" scheme="https://www.zucchiniy.cn/blog/tags/markdown-it/"/>
+    
+      <category term="emoji" scheme="https://www.zucchiniy.cn/blog/tags/emoji/"/>
+    
+      <category term="tasks" scheme="https://www.zucchiniy.cn/blog/tags/tasks/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Emacs 快捷键配置方案</title>
+    <link href="https://www.zucchiniy.cn/archives/86598d2e.html"/>
+    <id>https://www.zucchiniy.cn/archives/86598d2e.html</id>
+    <published>2020-01-07T16:00:00.000Z</published>
+    <updated>2020-01-14T01:53:17.242Z</updated>
+    
+    <summary type="html">
+    
+      Emacs 中快捷键的配置和选择。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Emacs" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"/>
+    
+    
+      <category term="keybinds" scheme="https://www.zucchiniy.cn/blog/tags/keybinds/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GDB 调试笔记</title>
+    <link href="https://www.zucchiniy.cn/archives/efe1991f.html"/>
+    <id>https://www.zucchiniy.cn/archives/efe1991f.html</id>
+    <published>2020-01-07T16:00:00.000Z</published>
+    <updated>2020-01-14T01:53:17.262Z</updated>
+    
+    <summary type="html">
+    
+      GDB 常用命令笔记。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Linux" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"/>
+    
+    
+      <category term="gdb" scheme="https://www.zucchiniy.cn/blog/tags/gdb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用 find 和 grep 联合查找文件</title>
+    <link href="https://www.zucchiniy.cn/archives/3fcde5df.html"/>
+    <id>https://www.zucchiniy.cn/archives/3fcde5df.html</id>
+    <published>2020-01-06T16:00:00.000Z</published>
+    <updated>2020-01-14T01:53:17.261Z</updated>
+    
+    <summary type="html">
+    
+      利用 find、grep、du 命令在 Linux 上查找符合条件的文件。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Linux" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"/>
+    
+    
+      <category term="find" scheme="https://www.zucchiniy.cn/blog/tags/find/"/>
+    
+      <category term="grep" scheme="https://www.zucchiniy.cn/blog/tags/grep/"/>
+    
+      <category term="du" scheme="https://www.zucchiniy.cn/blog/tags/du/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建个人博客</title>
+    <link href="https://www.zucchiniy.cn/archives/c442673f.html"/>
+    <id>https://www.zucchiniy.cn/archives/c442673f.html</id>
+    <published>2020-01-04T16:00:00.000Z</published>
+    <updated>2020-01-14T01:53:17.204Z</updated>
+    
+    <summary type="html">
+    
+      利用 hugo 或者 hexo 生成静态博客并保存到 GitHub Pages 上。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="hexo" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/hexo/"/>
+    
+    
+      <category term="hexo" scheme="https://www.zucchiniy.cn/blog/tags/hexo/"/>
+    
+      <category term="hugo" scheme="https://www.zucchiniy.cn/blog/tags/hugo/"/>
+    
+      <category term="GitHub Pages" scheme="https://www.zucchiniy.cn/blog/tags/GitHub-Pages/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读书/观影清单</title>
+    <link href="https://www.zucchiniy.cn/archives/22a51e75.html"/>
+    <id>https://www.zucchiniy.cn/archives/22a51e75.html</id>
+    <published>2020-01-03T16:00:00.000Z</published>
+    <updated>2020-01-14T01:53:17.217Z</updated>
+    
+    <summary type="html">
+    
+      推理小说、推理电影、推理电视剧的记录
+    
+    </summary>
+    
+    
+      <category term="生活总结" scheme="https://www.zucchiniy.cn/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="年度清单" scheme="https://www.zucchiniy.cn/blog/tags/%E5%B9%B4%E5%BA%A6%E6%B8%85%E5%8D%95/"/>
+    
+      <category term="读书清单" scheme="https://www.zucchiniy.cn/blog/tags/%E8%AF%BB%E4%B9%A6%E6%B8%85%E5%8D%95/"/>
+    
+      <category term="电影清单" scheme="https://www.zucchiniy.cn/blog/tags/%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/"/>
+    
+      <category term="电视清单" scheme="https://www.zucchiniy.cn/blog/tags/%E7%94%B5%E8%A7%86%E6%B8%85%E5%8D%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Valine 评论使用报错 504</title>
+    <link href="https://www.zucchiniy.cn/archives/c7b31ff.html"/>
+    <id>https://www.zucchiniy.cn/archives/c7b31ff.html</id>
+    <published>2019-12-19T09:50:20.000Z</published>
+    <updated>2020-01-14T01:53:17.202Z</updated>
+    
+    <summary type="html">
+    
+      解决 valine 报错 504 问题。
+    
+    </summary>
+    
+    
+      <category term="前端技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="hexo" scheme="https://www.zucchiniy.cn/blog/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/hexo/"/>
+    
+    
+      <category term="hexo" scheme="https://www.zucchiniy.cn/blog/tags/hexo/"/>
+    
+      <category term="valine" scheme="https://www.zucchiniy.cn/blog/tags/valine/"/>
+    
+      <category term="Code 504" scheme="https://www.zucchiniy.cn/blog/tags/Code-504/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何在快捷奏的生活里阅读学习</title>
+    <link href="https://www.zucchiniy.cn/archives/8d1edf2c.html"/>
+    <id>https://www.zucchiniy.cn/archives/8d1edf2c.html</id>
+    <published>2019-11-14T06:50:00.000Z</published>
+    <updated>2020-01-14T01:53:17.218Z</updated>
+    
+    <summary type="html">
+    
+      对最近的一些阅读内容进行分层管理，然后找到最好的学习方案。
+    
+    </summary>
+    
+    
+      <category term="生活总结" scheme="https://www.zucchiniy.cn/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="阅读" scheme="https://www.zucchiniy.cn/blog/tags/%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="阅读分组" scheme="https://www.zucchiniy.cn/blog/tags/%E9%98%85%E8%AF%BB%E5%88%86%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Google 验证网站所有权</title>
+    <link href="https://www.zucchiniy.cn/archives/1cbedf30.html"/>
+    <id>https://www.zucchiniy.cn/archives/1cbedf30.html</id>
+    <published>2019-10-29T22:32:00.000Z</published>
+    <updated>2020-01-14T01:53:17.208Z</updated>
+    
+    <summary type="html">
+    
+      如何在 Google 上验证自己的对网站的所有权。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Google" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Google/"/>
+    
+    
+      <category term="google adsense" scheme="https://www.zucchiniy.cn/blog/tags/google-adsense/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 数据分析初阶</title>
+    <link href="https://www.zucchiniy.cn/archives/a3644317.html"/>
+    <id>https://www.zucchiniy.cn/archives/a3644317.html</id>
+    <published>2019-10-17T18:19:00.000Z</published>
+    <updated>2020-01-14T01:53:17.228Z</updated>
+    
+    <summary type="html">
+    
+      Python 数据分析入门笔记。
+    
+    </summary>
+    
+    
+      <category term="后台技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="Python" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"/>
+    
+    
+      <category term="pandas" scheme="https://www.zucchiniy.cn/blog/tags/pandas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 学习书单</title>
+    <link href="https://www.zucchiniy.cn/archives/f47baf34.html"/>
+    <id>https://www.zucchiniy.cn/archives/f47baf34.html</id>
+    <published>2019-10-16T19:15:00.000Z</published>
+    <updated>2020-01-14T01:53:17.215Z</updated>
+    
+    <summary type="html">
+    
+      Python 学习书单。
+    
+    </summary>
+    
+    
+      <category term="生活总结" scheme="https://www.zucchiniy.cn/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="Python" scheme="https://www.zucchiniy.cn/blog/tags/Python/"/>
+    
+      <category term="学习计划" scheme="https://www.zucchiniy.cn/blog/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 转换 Markdown 方法</title>
+    <link href="https://www.zucchiniy.cn/archives/9a20479.html"/>
+    <id>https://www.zucchiniy.cn/archives/9a20479.html</id>
+    <published>2019-10-11T18:43:00.000Z</published>
+    <updated>2020-01-14T01:53:17.225Z</updated>
+    
+    <summary type="html">
+    
+      利用 Python 将 Markdown 转换为 HTML 。
+    
+    </summary>
+    
+    
+      <category term="后台技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="Python" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"/>
+    
+    
+      <category term="markdown" scheme="https://www.zucchiniy.cn/blog/tags/markdown/"/>
+    
+      <category term="django" scheme="https://www.zucchiniy.cn/blog/tags/django/"/>
+    
+      <category term="markdown-deux" scheme="https://www.zucchiniy.cn/blog/tags/markdown-deux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>整数转英文表示</title>
+    <link href="https://www.zucchiniy.cn/archives/82c82a34.html"/>
+    <id>https://www.zucchiniy.cn/archives/82c82a34.html</id>
+    <published>2019-10-07T18:13:00.000Z</published>
+    <updated>2020-01-14T01:53:17.222Z</updated>
+    
+    <summary type="html">
+    
+      将非负整数转换为其对应的英文表示。——Python
+    
+    </summary>
+    
+    
+      <category term="后台技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="Python" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"/>
+    
+    
+      <category term="Leetcode" scheme="https://www.zucchiniy.cn/blog/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>整数转罗马数字</title>
+    <link href="https://www.zucchiniy.cn/archives/50b197ff.html"/>
+    <id>https://www.zucchiniy.cn/archives/50b197ff.html</id>
+    <published>2019-10-07T18:06:00.000Z</published>
+    <updated>2020-01-14T01:53:17.223Z</updated>
+    
+    <summary type="html">
+    
+      数转罗马数字。——Python
+    
+    </summary>
+    
+    
+      <category term="后台技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="Python" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"/>
+    
+    
+      <category term="Leetcode" scheme="https://www.zucchiniy.cn/blog/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何提高时间使用效率</title>
+    <link href="https://www.zucchiniy.cn/archives/46a53616.html"/>
+    <id>https://www.zucchiniy.cn/archives/46a53616.html</id>
+    <published>2019-08-15T17:42:00.000Z</published>
+    <updated>2020-01-14T01:53:17.213Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- build time:Tue Jan 14 2020 14:30:42 GMT+0800 (中国标准时间) --&gt;&lt;h2 id=&quot;碎片时间&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#碎片时间&quot;&gt;&lt;/a&gt;碎片时间&lt;/h2&gt;&lt;p&gt;与完整的时间不同，生
+      
+    
+    </summary>
+    
+    
+      <category term="生活总结" scheme="https://www.zucchiniy.cn/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="时间管理" scheme="https://www.zucchiniy.cn/blog/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="时间使用效率" scheme="https://www.zucchiniy.cn/blog/tags/%E6%97%B6%E9%97%B4%E4%BD%BF%E7%94%A8%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用 Python 生成数据透视表</title>
+    <link href="https://www.zucchiniy.cn/archives/f24bdf86.html"/>
+    <id>https://www.zucchiniy.cn/archives/f24bdf86.html</id>
+    <published>2019-08-08T22:53:00.000Z</published>
+    <updated>2020-01-14T01:53:17.229Z</updated>
+    
+    <summary type="html">
+    
+      简单的利用 Python 实现 Excel 文件的处理。
+    
+    </summary>
+    
+    
+      <category term="后台技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="Python" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"/>
+    
+    
+      <category term="透视表" scheme="https://www.zucchiniy.cn/blog/tags/%E9%80%8F%E8%A7%86%E8%A1%A8/"/>
+    
+      <category term="read_excel()" scheme="https://www.zucchiniy.cn/blog/tags/read-excel/"/>
+    
+  </entry>
+  
+</feed>
