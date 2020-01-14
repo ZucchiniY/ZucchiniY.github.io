@@ -526,14 +526,14 @@
         <section class="article typo">
             <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
             
-            
-            
-            
                 <section id="comments">
-                    <div id="valine_container" class="valine_thread">
-                        <i class="fas fa-spinner fa-spin fa-fw"></i>
+                    <div id="disqus_thread">
+                        <div><i class='fas fa-exclamation-triangle'></i>&nbsp;无法加载Disqus评论系统，请确保您的网络能够正常访问。</div>
                     </div>
                 </section>
+            
+            
+            
             
         </section>
     </article>
@@ -959,7 +959,7 @@
 </header>
 
     <div class="content pure">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/archives/b203efa6.html" title="Org mode 中不能执行 dot 、 Python 代码" rel="bookmark">Org mode 中不能执行 dot 、 Python 代码</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/archives/3cf89ec9.html" title="Emacs 中辅助键设置" rel="bookmark">Emacs 中辅助键设置</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/archives/b203efa6.html" title="Org mode 中不能执行 dot 、 Python 代码" rel="bookmark">Org mode 中不能执行 dot 、 Python 代码</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/archives/8ebf9d4.html" title="Graphviz dot 笔记" rel="bookmark">Graphviz dot 笔记</a></h3></div></li></ul>
     </div>
   </section>
 
@@ -1078,41 +1078,23 @@
 
 
 
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-    
-      
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
-
-    
-  
   <script>
-  var GUEST_INFO = ['nick','mail','link'];
-  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var notify = 'true' == true;
-  var verify = 'true' == true;
-  var valine = new Valine();
-  valine.init({
-    el: '#valine_container',
-    notify: notify,
-    verify: verify,
-    guest_info: guest_info,
+    var disqus_shortname = 'tyangbloggithubio';
     
-    appId: "0CS13cNBUV5BJj7PQWupnVWq-gzGzoHsz",
-    appKey: "xsz3vAzEbda56D3RK5aomNSW",
-    placeholder: "快来评论吧~",
-    pageSize:'10',
-    avatar:'mp',
-    lang:'zh-cn',
-    highlight:'true'
-  })
+      var disqus_url = 'https://www.zucchiniy.cn/archives/9951df45.html';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
   </script>
+
+
+
+
 
 
 

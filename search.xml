@@ -4,35 +4,6 @@
   
     
     <entry>
-      <title>XPath 使用笔记</title>
-      <link href="/archives/488854a9.html"/>
-      <url>/archives/488854a9.html</url>
-      
-        <content type="html"><![CDATA[<p>xpath 的语法主要是使用的 <code>/name/*[]|//*[@name]</code> 的语法规则。</p><ul><li>定位节点</li></ul><p>节点主要是使用的 id 或者是 classname 进行匹配的，这种情况下，如果是 <code>/</code> 则表示找某一层，如果是 <code>//</code> 进行匹配，则表示是任意位置的某个层，如果用 <code>*</code> 则表示任意名称。</p><p>比如：<code>/cd</code> 是指的 classname 为 cd 的结构，而且是第一层就是 cd，如果是 <code>//cd</code> 则表示其中某层为 cd 但是可以不是最外层。</p><ul><li>选择分支</li></ul><p>使用中括号可以选择分支。以下的语法从 catalog 的子元素中取出第一个叫做 cd 的元素。XPath 的定义中没有第 0 元素这种东西。而且当我们想要选取某类值的时候，可以认为 <code>[]</code> 中的是属性的名称，比如 <code>//cata[@name]</code> 是找的任意 cata 层中包含 name 属性的元素位置。</p><p>在属性之外，还有一种是索引查找方式，比如 <code>//cata[1]</code> 表示查找任意 cata 层中的第一个分支，这里索引是从 <strong>1</strong> 开始，而不是 <strong>0</strong> 开始，如果查找最后一个，则需要使用 <code>cata[last()]</code> 去找，这里只有 <code>last()</code> 方法，不存在 <code>first()</code> 方法。</p><p>如果是 <code>[]</code> 中的内容没有 <code>@</code> 符号，又不是索引值（数字）或者是 <code>last()</code> 方法的话，则表示找出包含某个子元素的情况，比如 <code>//cata/cd[pr]</code> 表示包含 pr 的 <code>/cata/cd</code> 层。如果想指定元素的值，则可以在括号中增加对应的匹配 <code>//cata/cd[pr=1.0]</code> 。</p><p><code>|</code> 在 xpath 中表示或者关系，即符合前面的，或者后面的内容，比如 <code>/cata/pr | /cata/pm</code> 两种我全要的意思。</p><ul><li>选择属性</li></ul><p>如果某一个值是用 <code>@</code> 作为开始，则表示是属性，基本的语法和层的 <code>/</code> 是一致的，区别是可以多个属性并存，即 <code>/ca[@na='uu'][@nb='zz']</code> ，这样就是找到 cd 层中属性 na 是 uu 且 属性 nb 是 zz 的元素。</p><ul><li>特殊方法</li></ul><p><code>contains()</code>: 包含语法，比如 <code>/ca[contains(@name,'na')]</code> name 属性中包含 na 的元素<br><code>text()</code>: 显示文本信息，这里对应的可以用来查询，而且进行其它操作，是对元素属性的补充<br><code>starts-with()</code>: 开始于，比如 <code>/ca[starts-with(@name,'na')]</code> name 属性开始位置包含 na</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 前端技术 </category>
-          
-          <category> xpath </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 定位节点 </tag>
-            
-            <tag> 正则匹配 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Markdown 中增加表格</title>
       <link href="/archives/fb1b5f62.html"/>
       <url>/archives/fb1b5f62.html</url>
@@ -56,6 +27,35 @@
             <tag> 复杂表格 </tag>
             
             <tag> multimd table </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>XPath 使用笔记</title>
+      <link href="/archives/488854a9.html"/>
+      <url>/archives/488854a9.html</url>
+      
+        <content type="html"><![CDATA[<p>xpath 的语法主要是使用的 <code>/name/*[]|//*[@name]</code> 的语法规则。</p><ul><li>定位节点</li></ul><p>节点主要是使用的 id 或者是 classname 进行匹配的，这种情况下，如果是 <code>/</code> 则表示找某一层，如果是 <code>//</code> 进行匹配，则表示是任意位置的某个层，如果用 <code>*</code> 则表示任意名称。</p><p>比如：<code>/cd</code> 是指的 classname 为 cd 的结构，而且是第一层就是 cd，如果是 <code>//cd</code> 则表示其中某层为 cd 但是可以不是最外层。</p><ul><li>选择分支</li></ul><p>使用中括号可以选择分支。以下的语法从 catalog 的子元素中取出第一个叫做 cd 的元素。XPath 的定义中没有第 0 元素这种东西。而且当我们想要选取某类值的时候，可以认为 <code>[]</code> 中的是属性的名称，比如 <code>//cata[@name]</code> 是找的任意 cata 层中包含 name 属性的元素位置。</p><p>在属性之外，还有一种是索引查找方式，比如 <code>//cata[1]</code> 表示查找任意 cata 层中的第一个分支，这里索引是从 <strong>1</strong> 开始，而不是 <strong>0</strong> 开始，如果查找最后一个，则需要使用 <code>cata[last()]</code> 去找，这里只有 <code>last()</code> 方法，不存在 <code>first()</code> 方法。</p><p>如果是 <code>[]</code> 中的内容没有 <code>@</code> 符号，又不是索引值（数字）或者是 <code>last()</code> 方法的话，则表示找出包含某个子元素的情况，比如 <code>//cata/cd[pr]</code> 表示包含 pr 的 <code>/cata/cd</code> 层。如果想指定元素的值，则可以在括号中增加对应的匹配 <code>//cata/cd[pr=1.0]</code> 。</p><p><code>|</code> 在 xpath 中表示或者关系，即符合前面的，或者后面的内容，比如 <code>/cata/pr | /cata/pm</code> 两种我全要的意思。</p><ul><li>选择属性</li></ul><p>如果某一个值是用 <code>@</code> 作为开始，则表示是属性，基本的语法和层的 <code>/</code> 是一致的，区别是可以多个属性并存，即 <code>/ca[@na='uu'][@nb='zz']</code> ，这样就是找到 cd 层中属性 na 是 uu 且 属性 nb 是 zz 的元素。</p><ul><li>特殊方法</li></ul><p><code>contains()</code>: 包含语法，比如 <code>/ca[contains(@name,'na')]</code> name 属性中包含 na 的元素<br><code>text()</code>: 显示文本信息，这里对应的可以用来查询，而且进行其它操作，是对元素属性的补充<br><code>starts-with()</code>: 开始于，比如 <code>/ca[starts-with(@name,'na')]</code> name 属性开始位置包含 na</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端技术 </category>
+          
+          <category> xpath </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 定位节点 </tag>
+            
+            <tag> 正则匹配 </tag>
             
         </tags>
       
