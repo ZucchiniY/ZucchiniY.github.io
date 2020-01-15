@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.zucchiniy.cn/"/>
-  <updated>2020-01-14T09:13:32.102Z</updated>
+  <updated>2020-01-15T06:53:50.095Z</updated>
   <id>https://www.zucchiniy.cn/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo 引用自己撰写的文章</title>
+    <link href="https://www.zucchiniy.cn/archives/8174721c.html"/>
+    <id>https://www.zucchiniy.cn/archives/8174721c.html</id>
+    <published>2020-01-15T06:20:52.000Z</published>
+    <updated>2020-01-15T06:53:50.095Z</updated>
+    
+    <summary type="html">
+    
+      在 Hexo 博客中，可以通过文件的形式自动生成引用链接，还不必直接输入对应的链接名。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Hexo" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Hexo/"/>
+    
+    
+      <category term="post link" scheme="https://www.zucchiniy.cn/blog/tags/post-link/"/>
+    
+      <category term="post path" scheme="https://www.zucchiniy.cn/blog/tags/post-path/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GitHub 做为博客图床</title>
+    <link href="https://www.zucchiniy.cn/archives/de549f00.html"/>
+    <id>https://www.zucchiniy.cn/archives/de549f00.html</id>
+    <published>2020-01-15T02:48:57.000Z</published>
+    <updated>2020-01-15T03:19:49.629Z</updated>
+    
+    <summary type="html">
+    
+      上传图片到 GitHub ，然后通过 jsDelivr 访问。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="GitHub" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/GitHub/"/>
+    
+    
+      <category term="图床" scheme="https://www.zucchiniy.cn/blog/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+      <category term="jsdelivr" scheme="https://www.zucchiniy.cn/blog/tags/jsdelivr/"/>
+    
+      <category term="github" scheme="https://www.zucchiniy.cn/blog/tags/github/"/>
+    
+  </entry>
   
   <entry>
     <title>统计每天的工作时长</title>
@@ -242,9 +294,9 @@
       <category term="Linux" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"/>
     
     
-      <category term="grep" scheme="https://www.zucchiniy.cn/blog/tags/grep/"/>
-    
       <category term="find" scheme="https://www.zucchiniy.cn/blog/tags/find/"/>
+    
+      <category term="grep" scheme="https://www.zucchiniy.cn/blog/tags/grep/"/>
     
       <category term="du" scheme="https://www.zucchiniy.cn/blog/tags/du/"/>
     
@@ -470,57 +522,6 @@
     
     
       <category term="Leetcode" scheme="https://www.zucchiniy.cn/blog/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>整数转罗马数字</title>
-    <link href="https://www.zucchiniy.cn/archives/50b197ff.html"/>
-    <id>https://www.zucchiniy.cn/archives/50b197ff.html</id>
-    <published>2019-10-07T18:06:00.000Z</published>
-    <updated>2020-01-14T01:53:17.223Z</updated>
-    
-    <summary type="html">
-    
-      数转罗马数字。——Python
-    
-    </summary>
-    
-    
-      <category term="后台技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="Python" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"/>
-    
-    
-      <category term="Leetcode" scheme="https://www.zucchiniy.cn/blog/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何提高时间使用效率</title>
-    <link href="https://www.zucchiniy.cn/archives/46a53616.html"/>
-    <id>https://www.zucchiniy.cn/archives/46a53616.html</id>
-    <published>2019-08-15T17:42:00.000Z</published>
-    <updated>2020-01-14T01:53:17.213Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;碎片时间&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#碎片时间&quot;&gt;&lt;/a&gt;碎片时间&lt;/h2&gt;
-&lt;p&gt;与完整的时间不同，生活中经常有一些碎片时间，这些时间缺乏连续性，并且时间短，随时可能会出现，因此碎片时间和完整时间的利用不太相同。&lt;/p&gt;
-&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="生活总结" scheme="https://www.zucchiniy.cn/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
-    
-    
-      <category term="时间管理" scheme="https://www.zucchiniy.cn/blog/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
-    
-      <category term="时间使用效率" scheme="https://www.zucchiniy.cn/blog/tags/%E6%97%B6%E9%97%B4%E4%BD%BF%E7%94%A8%E6%95%88%E7%8E%87/"/>
     
   </entry>
   

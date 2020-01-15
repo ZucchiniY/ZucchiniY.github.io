@@ -4,6 +4,66 @@
   
     
     <entry>
+      <title>Hexo 引用自己撰写的文章</title>
+      <link href="/archives/8174721c.html"/>
+      <url>/archives/8174721c.html</url>
+      
+        <content type="html"><![CDATA[<p>文章中，有时候需要自己给自己引流，所以经常要引用自己的文章，原来在使用 Hugo 的时候，是用的直接写入文章最终链接的方法引用，虽然可以成功的引用文章，但是如果原本的文章链接变化了，就不能使用了，所以最好的方法就是在生成系统之内直接引用。</p><p>Hexo 提供了 <a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="noopener">标签插件</a> 来完成这个功能。</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_path filename %&#125;</span><br><span class="line">&#123;% post_link filename [title] [escape] %&#125;</span><br></pre></td></tr></table></figure><p>比如想要引用我的某一篇文章，需要写 <code>post_link '工具环境/github-jsDelivr'</code> 就可以在文章中看到：<a href="/archives/de549f00.html" title="GitHub 做为博客图床">GitHub 做为博客图床</a>，这样就可以进行站内文章的引用了，这里展示的是文章中的 title 字段，而不是文件名，但是要注意的是，这里默认的路径是在 _post 路径下，如果不是默认路径，需要写上相对路径。</p><p>当然，也可以按自己的想法，定义一个名称，比如 <code>post_link '工具环境/github-jsDelivr' '测试'</code> 这样，我们看到的链接是有个人定义的名称的：<a href="/archives/de549f00.html" title="测试">测试</a>。这两个展示的名称不同，但是最终指向的都是同一篇文章。</p><p>另外还有一种方案，是使用 <code>post_path</code> 指定文章的链接地址，但是不是链接，比如 <code>post_path '工具环境/github-jsDelivr'</code>，我们在文章中看到的是: /archives/de549f00.html ，主要可以直接插入文件链接，也很方便。</p><p>相比较而言，<code>post_link</code> 的方式更常用，但是有些时候，使用 <code>post_path</code> 也可以帮助我们获取信息。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> post link </tag>
+            
+            <tag> post path </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>GitHub 做为博客图床</title>
+      <link href="/archives/de549f00.html"/>
+      <url>/archives/de549f00.html</url>
+      
+        <content type="html"><![CDATA[<p>博客上传到 GitHub 之后，访问文章中的图片会有一些慢，如果是比较大的图片就更慢了。</p><p>之前是通过使用的一些公共的图床网站解决的，但是会有大小和数量的限制，最近看到一个图床应用<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">jsDelivr</a>，这个可以直接访问 GitHub 里的图片信息，所以调整了一下原本的图床方案。</p><p>使用也非常容易：</p><p>在 GitHub 上新建一个版本库，然后将图片放到项目中，上传到对应的分支，比如 master 分支，我的示例是在 <a href="https://github.com/ZucchiniY/blog-assets" target="_blank" rel="noopener">blog-assets</a> 项目，比如图片放在 <em>avatar</em> 路径下，文件名叫 <em>lvzai.jpg</em>——也就是我博客的用户头像，然后将相关内容上传到 GitHub 上之后，就可以通过 <a href="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/avatar/lvzai.jpg" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/avatar/lvzai.jpg</a> 查看图片了。</p><p><img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/avatar/lvzai.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> GitHub </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 图床 </tag>
+            
+            <tag> jsdelivr </tag>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>统计每天的工作时长</title>
       <link href="/archives/12c28564.html"/>
       <url>/archives/12c28564.html</url>
@@ -256,9 +316,9 @@
       
         <tags>
             
-            <tag> grep </tag>
-            
             <tag> find </tag>
+            
+            <tag> grep </tag>
             
             <tag> du </tag>
             
@@ -1388,9 +1448,9 @@
       
         <tags>
             
-            <tag> travis </tag>
-            
             <tag> hugo </tag>
+            
+            <tag> travis </tag>
             
             <tag> 自动部署博客 </tag>
             
