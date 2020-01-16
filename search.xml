@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>在 Emacs 中使用 rime 输入法</title>
+      <link href="/archives/8b0db37f.html"/>
+      <url>/archives/8b0db37f.html</url>
+      
+        <content type="html"><![CDATA[<p>在 Emacs 中使用外部输入法，最大的问题是在切换 evil 的模式的时候，对输入来说会有延迟，因为需要手工将输入法切换到对应的英文模式，才能正常使用快捷键。</p><p>但是如果使用的是 Emacs 自己的输入功能，则不需要做这些同步，只需要从 insert 模式中退出即可，这种操作对 Emacs 来说真的是太方便了。</p><p>经过几次尝试之后，一点点测试出了配置过程中出现的问题，现在整理如下。</p><h2 id="编译-librime"><a class="header-anchor" href="#编译-librime"></a>编译 librime</h2><p>因为本人使用的是 Mac 系统，所以需要先安装一些工具。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install cmake git boost</span><br></pre></td></tr></table></figure><p>这三个工具是编译 liberime 用的，本来想从 GitHub 上下载，但是有问题，所以决定自己编译一份，这里测试了一下，只使用 CommandLineTools 是不行的，需要安全安装 xcode 才可以。</p><ol><li>下载 librime 版本库</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --recursive https://github.com/rime/librime.git</span><br></pre></td></tr></table></figure><ol start="2"><li>编译第三方库</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd librime</span><br><span class="line">make xcode/thirdparty</span><br></pre></td></tr></table></figure><ol start="3"><li>编译 librime</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make xcode</span><br></pre></td></tr></table></figure><h2 id="编译-liberime"><a class="header-anchor" href="#编译-liberime"></a>编译 liberime</h2><p>编译这个是依赖于 <em>librime</em> 文件的，需要先将依赖引进来。</p><ol><li>下载 <em>liberime</em> 项目</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:merrickluo/liberime.git</span><br></pre></td></tr></table></figure><ol start="2"><li>引入 <em>librime</em> 依赖</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export RIME_PATH=~/DEV/librime</span><br></pre></td></tr></table></figure><ol start="3"><li>编译 <em>liberime</em> 文件</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make liberime</span><br></pre></td></tr></table></figure><ol start="4"><li>然后将 <em>liberime</em> 加入到 <em>.emacs.d</em> 项目中</li></ol><p>如果不想自己编译的话，也可以直接下载我编译好的文件，但是需要把文件存放到一个指定的路径下。</p><p>下载路径：<a href="https://github.com/AboutEmacs/.emacs.d/releases/download/1.0/liberime.so" target="_blank" rel="noopener">liberime.so</a></p><h2 id="增加-Emacs-配置"><a class="header-anchor" href="#增加-Emacs-配置"></a>增加 Emacs 配置</h2><p>在增加配置之前，先检查一下 Emacs 是否支持 <code>module-load</code> 如果不支持，请优先安装支持的版本，建议使用 <a href="https://github.com/railwaycat/homebrew-emacsmacport" target="_blank" rel="noopener">emacs-mac</a> 中的版本。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">(use-package pyim</span><br><span class="line">  :demand t</span><br><span class="line">  :diminish pyim-isearch-mode</span><br><span class="line">  :init</span><br><span class="line">  (setq default-input-method &quot;pyim&quot;</span><br><span class="line">        pyim-default-scheme &#39;rime</span><br><span class="line">        pyim-page-length 7</span><br><span class="line">        pyim-page-tooltip &#39;proframe)</span><br><span class="line">  :config</span><br><span class="line">  (setq-default pyim-english-input-switch-functions</span><br><span class="line">                &#39;(pyim-probe-dynamic-english</span><br><span class="line">                  pyim-probe-evil-normal-mode</span><br><span class="line">                  pyim-probe-program-mode</span><br><span class="line">                  pyim-probe-org-structure-template))</span><br><span class="line"></span><br><span class="line">  (setq-default pyim-punctuation-half-width-functions</span><br><span class="line">                &#39;(pyim-probe-punctuation-line-beginning</span><br><span class="line">                  pyim-probe-punctuation-after-punctuation))</span><br><span class="line">  (pyim-isearch-mode t)</span><br><span class="line">  :bind (&quot;M-j&quot; . pyim-convert-string-at-point))</span><br><span class="line"></span><br><span class="line">(use-package liberime</span><br><span class="line">  :load-path (lambda () (expand-file-name &quot;rime&quot; user-emacs-directory))</span><br><span class="line">  :custom</span><br><span class="line">  (rime_share_data_dir &quot;&#x2F;Library&#x2F;Input Methods&#x2F;Squirrel.app&#x2F;Contents&#x2F;SharedSupport&#x2F;&quot;)</span><br><span class="line">  (rime_user_data_dir (expand-file-name &quot;rime&quot; user-emacs-directory))</span><br><span class="line">  :init</span><br><span class="line">  (module-load (expand-file-name &quot;liberime.so&quot; user-emacs-directory))</span><br><span class="line">  :config</span><br><span class="line">  ;; 配置同步文件夹</span><br><span class="line">  (liberime-start rime_share_data_dir rime_user_data_dir)</span><br><span class="line">  (liberime-select-schema &quot;wubi86&quot;))</span><br><span class="line"></span><br><span class="line">(use-package posframe)</span><br><span class="line"></span><br><span class="line">(provide &#39;modules-pyim)</span><br></pre></td></tr></table></figure><p>重启 Emacs 就可以使用 pyim 替代原有的输入法了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具环境 </category>
+          
+          <category> Emacs </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> pyim </tag>
+            
+            <tag> rime </tag>
+            
+            <tag> librime </tag>
+            
+            <tag> liberime </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo 引用自己撰写的文章</title>
       <link href="/archives/8174721c.html"/>
       <url>/archives/8174721c.html</url>

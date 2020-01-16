@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.zucchiniy.cn/"/>
-  <updated>2020-01-15T06:53:50.095Z</updated>
+  <updated>2020-01-16T08:41:13.809Z</updated>
   <id>https://www.zucchiniy.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在 Emacs 中使用 rime 输入法</title>
+    <link href="https://www.zucchiniy.cn/archives/8b0db37f.html"/>
+    <id>https://www.zucchiniy.cn/archives/8b0db37f.html</id>
+    <published>2020-01-16T06:26:59.000Z</published>
+    <updated>2020-01-16T08:41:13.809Z</updated>
+    
+    <summary type="html">
+    
+      在 Emacs 中通过 pyim 使用 rime 输入法。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Emacs" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"/>
+    
+    
+      <category term="pyim" scheme="https://www.zucchiniy.cn/blog/tags/pyim/"/>
+    
+      <category term="rime" scheme="https://www.zucchiniy.cn/blog/tags/rime/"/>
+    
+      <category term="librime" scheme="https://www.zucchiniy.cn/blog/tags/librime/"/>
+    
+      <category term="liberime" scheme="https://www.zucchiniy.cn/blog/tags/liberime/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo 引用自己撰写的文章</title>
@@ -499,29 +528,6 @@
       <category term="django" scheme="https://www.zucchiniy.cn/blog/tags/django/"/>
     
       <category term="markdown-deux" scheme="https://www.zucchiniy.cn/blog/tags/markdown-deux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>整数转英文表示</title>
-    <link href="https://www.zucchiniy.cn/archives/82c82a34.html"/>
-    <id>https://www.zucchiniy.cn/archives/82c82a34.html</id>
-    <published>2019-10-07T18:13:00.000Z</published>
-    <updated>2020-01-14T01:53:17.222Z</updated>
-    
-    <summary type="html">
-    
-      将非负整数转换为其对应的英文表示。——Python
-    
-    </summary>
-    
-    
-      <category term="后台技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="Python" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"/>
-    
-    
-      <category term="Leetcode" scheme="https://www.zucchiniy.cn/blog/tags/Leetcode/"/>
     
   </entry>
   
