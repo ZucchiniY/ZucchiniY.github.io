@@ -259,29 +259,6 @@
   </entry>
   
   <entry>
-    <title>Emacs 快捷键配置方案</title>
-    <link href="https://www.zucchiniy.cn/archives/86598d2e.html"/>
-    <id>https://www.zucchiniy.cn/archives/86598d2e.html</id>
-    <published>2020-01-07T16:00:00.000Z</published>
-    <updated>2020-01-14T01:53:17.242Z</updated>
-    
-    <summary type="html">
-    
-      Emacs 中快捷键的配置和选择。
-    
-    </summary>
-    
-    
-      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
-    
-      <category term="Emacs" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"/>
-    
-    
-      <category term="keybinds" scheme="https://www.zucchiniy.cn/blog/tags/keybinds/"/>
-    
-  </entry>
-  
-  <entry>
     <title>GDB 调试笔记</title>
     <link href="https://www.zucchiniy.cn/archives/efe1991f.html"/>
     <id>https://www.zucchiniy.cn/archives/efe1991f.html</id>
@@ -305,6 +282,29 @@
   </entry>
   
   <entry>
+    <title>Emacs 快捷键配置方案</title>
+    <link href="https://www.zucchiniy.cn/archives/86598d2e.html"/>
+    <id>https://www.zucchiniy.cn/archives/86598d2e.html</id>
+    <published>2020-01-07T16:00:00.000Z</published>
+    <updated>2020-01-14T01:53:17.242Z</updated>
+    
+    <summary type="html">
+    
+      Emacs 中快捷键的配置和选择。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Emacs" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"/>
+    
+    
+      <category term="keybinds" scheme="https://www.zucchiniy.cn/blog/tags/keybinds/"/>
+    
+  </entry>
+  
+  <entry>
     <title>利用 find 和 grep 联合查找文件</title>
     <link href="https://www.zucchiniy.cn/archives/3fcde5df.html"/>
     <id>https://www.zucchiniy.cn/archives/3fcde5df.html</id>
@@ -323,9 +323,9 @@
       <category term="Linux" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"/>
     
     
-      <category term="find" scheme="https://www.zucchiniy.cn/blog/tags/find/"/>
-    
       <category term="grep" scheme="https://www.zucchiniy.cn/blog/tags/grep/"/>
+    
+      <category term="find" scheme="https://www.zucchiniy.cn/blog/tags/find/"/>
     
       <category term="du" scheme="https://www.zucchiniy.cn/blog/tags/du/"/>
     
@@ -363,7 +363,7 @@
     <link href="https://www.zucchiniy.cn/archives/22a51e75.html"/>
     <id>https://www.zucchiniy.cn/archives/22a51e75.html</id>
     <published>2020-01-03T16:00:00.000Z</published>
-    <updated>2020-02-14T17:13:32.087Z</updated>
+    <updated>2020-02-14T17:24:58.441Z</updated>
     
     <summary type="html">
     
