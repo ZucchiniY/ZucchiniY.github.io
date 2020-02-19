@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.zucchiniy.cn/"/>
-  <updated>2020-01-21T03:20:31.986Z</updated>
+  <updated>2020-02-18T03:24:09.499Z</updated>
   <id>https://www.zucchiniy.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>烤肉酱笔记</title>
+    <link href="https://www.zucchiniy.cn/archives/cc3cd8dc.html"/>
+    <id>https://www.zucchiniy.cn/archives/cc3cd8dc.html</id>
+    <published>2020-02-18T03:18:16.000Z</published>
+    <updated>2020-02-18T03:24:09.499Z</updated>
+    
+    <summary type="html">
+    
+      如何做一个好吃的烤肉酱。
+    
+    </summary>
+    
+    
+      <category term="生活总结" scheme="https://www.zucchiniy.cn/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="bbq" scheme="https://www.zucchiniy.cn/blog/tags/bbq/"/>
+    
+  </entry>
   
   <entry>
     <title>在 Emacs 中使用 rime 输入法</title>
@@ -259,29 +280,6 @@
   </entry>
   
   <entry>
-    <title>GDB 调试笔记</title>
-    <link href="https://www.zucchiniy.cn/archives/efe1991f.html"/>
-    <id>https://www.zucchiniy.cn/archives/efe1991f.html</id>
-    <published>2020-01-07T16:00:00.000Z</published>
-    <updated>2020-01-14T01:53:17.262Z</updated>
-    
-    <summary type="html">
-    
-      GDB 常用命令笔记。
-    
-    </summary>
-    
-    
-      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
-    
-      <category term="Linux" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"/>
-    
-    
-      <category term="gdb" scheme="https://www.zucchiniy.cn/blog/tags/gdb/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Emacs 快捷键配置方案</title>
     <link href="https://www.zucchiniy.cn/archives/86598d2e.html"/>
     <id>https://www.zucchiniy.cn/archives/86598d2e.html</id>
@@ -305,6 +303,29 @@
   </entry>
   
   <entry>
+    <title>GDB 调试笔记</title>
+    <link href="https://www.zucchiniy.cn/archives/efe1991f.html"/>
+    <id>https://www.zucchiniy.cn/archives/efe1991f.html</id>
+    <published>2020-01-07T16:00:00.000Z</published>
+    <updated>2020-01-14T01:53:17.262Z</updated>
+    
+    <summary type="html">
+    
+      GDB 常用命令笔记。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Linux" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"/>
+    
+    
+      <category term="gdb" scheme="https://www.zucchiniy.cn/blog/tags/gdb/"/>
+    
+  </entry>
+  
+  <entry>
     <title>利用 find 和 grep 联合查找文件</title>
     <link href="https://www.zucchiniy.cn/archives/3fcde5df.html"/>
     <id>https://www.zucchiniy.cn/archives/3fcde5df.html</id>
@@ -323,9 +344,9 @@
       <category term="Linux" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Linux/"/>
     
     
-      <category term="grep" scheme="https://www.zucchiniy.cn/blog/tags/grep/"/>
-    
       <category term="find" scheme="https://www.zucchiniy.cn/blog/tags/find/"/>
+    
+      <category term="grep" scheme="https://www.zucchiniy.cn/blog/tags/grep/"/>
     
       <category term="du" scheme="https://www.zucchiniy.cn/blog/tags/du/"/>
     
@@ -363,7 +384,7 @@
     <link href="https://www.zucchiniy.cn/archives/22a51e75.html"/>
     <id>https://www.zucchiniy.cn/archives/22a51e75.html</id>
     <published>2020-01-03T16:00:00.000Z</published>
-    <updated>2020-02-14T17:24:58.441Z</updated>
+    <updated>2020-02-19T07:13:56.318Z</updated>
     
     <summary type="html">
     
@@ -501,33 +522,6 @@
       <category term="Python" scheme="https://www.zucchiniy.cn/blog/tags/Python/"/>
     
       <category term="学习计划" scheme="https://www.zucchiniy.cn/blog/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 转换 Markdown 方法</title>
-    <link href="https://www.zucchiniy.cn/archives/9a20479.html"/>
-    <id>https://www.zucchiniy.cn/archives/9a20479.html</id>
-    <published>2019-10-11T18:43:00.000Z</published>
-    <updated>2020-01-14T01:53:17.225Z</updated>
-    
-    <summary type="html">
-    
-      利用 Python 将 Markdown 转换为 HTML 。
-    
-    </summary>
-    
-    
-      <category term="后台技术" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="Python" scheme="https://www.zucchiniy.cn/blog/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Python/"/>
-    
-    
-      <category term="markdown" scheme="https://www.zucchiniy.cn/blog/tags/markdown/"/>
-    
-      <category term="django" scheme="https://www.zucchiniy.cn/blog/tags/django/"/>
-    
-      <category term="markdown-deux" scheme="https://www.zucchiniy.cn/blog/tags/markdown-deux/"/>
     
   </entry>
   
