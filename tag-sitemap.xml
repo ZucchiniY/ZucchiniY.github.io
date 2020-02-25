@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://www.zucchiniy.cn/blog/tags/rebase/</loc>
+        <lastmod>2020-02-25T10:05:45.093Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://www.zucchiniy.cn/blog/tags/%25E7%2594%25B5%25E8%25A7%2586%25E6%25B8%2585%25E5%258D%2595/</loc>
         <lastmod>2020-02-25T03:55:05.485Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -298,13 +305,6 @@
 
     <url>
         <loc>https://www.zucchiniy.cn/blog/tags/merge/</loc>
-        <lastmod>2020-01-14T01:53:17.250Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.zucchiniy.cn/blog/tags/rebase/</loc>
         <lastmod>2020-01-14T01:53:17.250Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -724,6 +724,13 @@
     </url>
 
     <url>
+        <loc>https://www.zucchiniy.cn/blog/tags/Maven/</loc>
+        <lastmod>2020-01-14T01:53:17.220Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://www.zucchiniy.cn/blog/tags/Field/</loc>
         <lastmod>2020-01-14T01:53:17.220Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -732,13 +739,6 @@
 
     <url>
         <loc>https://www.zucchiniy.cn/blog/tags/reflex/</loc>
-        <lastmod>2020-01-14T01:53:17.220Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.zucchiniy.cn/blog/tags/Maven/</loc>
         <lastmod>2020-01-14T01:53:17.220Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

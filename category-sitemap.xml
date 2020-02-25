@@ -8,6 +8,20 @@
     </url>
 
     <url>
+        <loc>https://www.zucchiniy.cn/blog/categories/%25E5%25B7%25A5%25E5%2585%25B7%25E7%258E%25AF%25E5%25A2%2583/Git/</loc>
+        <lastmod>2020-02-25T10:05:45.093Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.zucchiniy.cn/blog/categories/%25E5%25B7%25A5%25E5%2585%25B7%25E7%258E%25AF%25E5%25A2%2583/</loc>
+        <lastmod>2020-02-25T10:05:45.093Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://www.zucchiniy.cn/blog/categories/%25E7%2594%259F%25E6%25B4%25BB%25E6%2580%25BB%25E7%25BB%2593/</loc>
         <lastmod>2020-02-25T03:55:05.485Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -16,13 +30,6 @@
 
     <url>
         <loc>https://www.zucchiniy.cn/blog/categories/%25E5%25B7%25A5%25E5%2585%25B7%25E7%258E%25AF%25E5%25A2%2583/Emacs/</loc>
-        <lastmod>2020-01-21T03:20:31.986Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.zucchiniy.cn/blog/categories/%25E5%25B7%25A5%25E5%2585%25B7%25E7%258E%25AF%25E5%25A2%2583/</loc>
         <lastmod>2020-01-21T03:20:31.986Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -59,13 +66,6 @@
     <url>
         <loc>https://www.zucchiniy.cn/blog/categories/%25E5%25B7%25A5%25E5%2585%25B7%25E7%258E%25AF%25E5%25A2%2583/Linux/</loc>
         <lastmod>2020-01-14T01:53:17.266Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.zucchiniy.cn/blog/categories/%25E5%25B7%25A5%25E5%2585%25B7%25E7%258E%25AF%25E5%25A2%2583/Git/</loc>
-        <lastmod>2020-01-14T01:53:17.257Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
