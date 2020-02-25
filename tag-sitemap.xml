@@ -675,6 +675,13 @@
     </url>
 
     <url>
+        <loc>https://www.zucchiniy.cn/blog/tags/Leetcode/</loc>
+        <lastmod>2020-01-14T01:53:17.223Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://www.zucchiniy.cn/blog/tags/logging-level/</loc>
         <lastmod>2020-01-14T01:53:17.223Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -697,13 +704,6 @@
 
     <url>
         <loc>https://www.zucchiniy.cn/blog/tags/mysql/</loc>
-        <lastmod>2020-01-14T01:53:17.223Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.zucchiniy.cn/blog/tags/Leetcode/</loc>
         <lastmod>2020-01-14T01:53:17.223Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1011,6 +1011,13 @@
     </url>
 
     <url>
+        <loc>https://www.zucchiniy.cn/blog/tags/layui/</loc>
+        <lastmod>2020-01-14T01:53:17.200Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://www.zucchiniy.cn/blog/tags/RegExp/</loc>
         <lastmod>2020-01-14T01:53:17.200Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1032,20 +1039,6 @@
     </url>
 
     <url>
-        <loc>https://www.zucchiniy.cn/blog/tags/layui/</loc>
-        <lastmod>2020-01-14T01:53:17.200Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.zucchiniy.cn/blog/tags/css/</loc>
-        <lastmod>2020-01-14T01:53:17.199Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://www.zucchiniy.cn/blog/tags/JavaScript/</loc>
         <lastmod>2020-01-14T01:53:17.199Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1054,6 +1047,13 @@
 
     <url>
         <loc>https://www.zucchiniy.cn/blog/tags/%25E6%25BB%259A%25E5%258A%25A8%25E6%259D%25A1/</loc>
+        <lastmod>2020-01-14T01:53:17.199Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.zucchiniy.cn/blog/tags/css/</loc>
         <lastmod>2020-01-14T01:53:17.199Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
