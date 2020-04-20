@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.zucchiniy.cn/"/>
-  <updated>2020-03-24T12:11:10.513Z</updated>
+  <updated>2020-04-20T16:31:48.907Z</updated>
   <id>https://www.zucchiniy.cn/</id>
   
   <author>
@@ -17,11 +17,61 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Emacs中配置使用Rime输入法</title>
+    <link href="https://www.zucchiniy.cn/archives/2f2b0c30.html"/>
+    <id>https://www.zucchiniy.cn/archives/2f2b0c30.html</id>
+    <published>2020-04-21T06:26:59.000Z</published>
+    <updated>2020-04-20T16:31:48.907Z</updated>
+    
+    <summary type="html">
+    
+      在Emacs中使用Rime输入输入中文。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Emacs" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"/>
+    
+    
+      <category term="librime" scheme="https://www.zucchiniy.cn/blog/tags/librime/"/>
+    
+      <category term="emacs-rime" scheme="https://www.zucchiniy.cn/blog/tags/emacs-rime/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编译 librime 和 liberime</title>
+    <link href="https://www.zucchiniy.cn/archives/b325b5d6.html"/>
+    <id>https://www.zucchiniy.cn/archives/b325b5d6.html</id>
+    <published>2020-04-21T06:26:59.000Z</published>
+    <updated>2020-04-20T16:36:27.030Z</updated>
+    
+    <summary type="html">
+    
+      编译 librime 和 liberime 方案。
+    
+    </summary>
+    
+    
+      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
+    
+      <category term="Emacs" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"/>
+    
+    
+      <category term="librime" scheme="https://www.zucchiniy.cn/blog/tags/librime/"/>
+    
+      <category term="liberime" scheme="https://www.zucchiniy.cn/blog/tags/liberime/"/>
+    
+  </entry>
+  
+  <entry>
     <title>面向对象设计原则笔记</title>
     <link href="https://www.zucchiniy.cn/archives/cdbcd916.html"/>
     <id>https://www.zucchiniy.cn/archives/cdbcd916.html</id>
     <published>2020-03-23T09:03:35.000Z</published>
-    <updated>2020-03-24T12:11:10.513Z</updated>
+    <updated>2020-04-05T08:28:47.282Z</updated>
     
     <summary type="html">
     
@@ -36,35 +86,6 @@
     
     
       <category term="SOLID" scheme="https://www.zucchiniy.cn/blog/tags/SOLID/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在 Emacs 中使用 rime 输入法</title>
-    <link href="https://www.zucchiniy.cn/archives/8b0db37f.html"/>
-    <id>https://www.zucchiniy.cn/archives/8b0db37f.html</id>
-    <published>2020-01-16T06:26:59.000Z</published>
-    <updated>2020-01-21T03:20:31.986Z</updated>
-    
-    <summary type="html">
-    
-      在 Emacs 中通过 pyim 使用 rime 输入法。
-    
-    </summary>
-    
-    
-      <category term="工具环境" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/"/>
-    
-      <category term="Emacs" scheme="https://www.zucchiniy.cn/blog/categories/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/Emacs/"/>
-    
-    
-      <category term="pyim" scheme="https://www.zucchiniy.cn/blog/tags/pyim/"/>
-    
-      <category term="rime" scheme="https://www.zucchiniy.cn/blog/tags/rime/"/>
-    
-      <category term="librime" scheme="https://www.zucchiniy.cn/blog/tags/librime/"/>
-    
-      <category term="liberime" scheme="https://www.zucchiniy.cn/blog/tags/liberime/"/>
     
   </entry>
   
@@ -501,29 +522,6 @@
     
     
       <category term="pandas" scheme="https://www.zucchiniy.cn/blog/tags/pandas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 学习书单</title>
-    <link href="https://www.zucchiniy.cn/archives/f47baf34.html"/>
-    <id>https://www.zucchiniy.cn/archives/f47baf34.html</id>
-    <published>2019-10-16T19:15:00.000Z</published>
-    <updated>2020-03-20T14:59:30.114Z</updated>
-    
-    <summary type="html">
-    
-      Python 学习书单。
-    
-    </summary>
-    
-    
-      <category term="生活总结" scheme="https://www.zucchiniy.cn/blog/categories/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/"/>
-    
-    
-      <category term="Python" scheme="https://www.zucchiniy.cn/blog/tags/Python/"/>
-    
-      <category term="学习计划" scheme="https://www.zucchiniy.cn/blog/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
     
   </entry>
   
