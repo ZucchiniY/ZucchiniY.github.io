@@ -1,0 +1,9 @@
+.card {
+    margin: 3 auto;
+    float: none;
+    margin-bottom: 10px;
+}
+
+.navbar.fixed-top ~ .content {
+    padding-top: 5%;
+}

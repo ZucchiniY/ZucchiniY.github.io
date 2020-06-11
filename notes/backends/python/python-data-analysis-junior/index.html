@@ -1,0 +1,776 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-6ge4b1Lr1zrvyGvm5pdAkc3NMa97XYhFPBWsZsT6O3eOU+hqURR1bQEMm11Grf3a" crossorigin="anonymous">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/favicon/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/static/css/blog.css">
+<link rel="stylesheet" href="/pygments.css">
+<!-- 验证 -->
+<meta name="baidu-site-verification" content="91wpN2bolu" />
+<meta name="baidu_union_verify" content="621bf14a06bf40bf54d776ef1cb67a9a">
+<meta name="google-site-verification" content="1zjaBYiW-491c1GSe5DRpRwZlop9RpQet7Kx8WYW1sY" />
+
+    </head>
+    <body>
+        
+            <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light " >
+    <a class="navbar-brand" href="#" >
+        <img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/static/img/logo.png" width="40" height="40">
+        Zucchiniy 博客
+    </a>
+    <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">博客<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/archives">归档</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 专题
+                 </a>
+                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                 <a class="dropdown-item" href="#">Action</a>
+                 <a class="dropdown-item" href="#">Another action</a>
+                 <a class="dropdown-item" href="#">Something else here</a>
+                 </div>
+                 </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="/about">关于 </a>
+            </li>
+        </ul>
+    </div>
+    <script async src="https://cse.google.com/cse.js?cx=010050096186898163812:xwbls6-9jis"></script>
+    <div class="gcse-searchbox-only"></div>
+</nav>
+        
+
+        
+            <div class="content row">
+                
+    
+        <div class="col-9" >
+            <div class="card">
+    <div class="card-header"><h1>Python 数据分析初阶</h1></div>
+    <div class="card-body">
+        <h2>某一列数据计算</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">data</span><span class="p">[</span><span class="s1">&#39;column_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>以之前找到的一个前辈的数据为例子，首先我们要获取文件</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;xxxx.xls&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>这里可以单独查看其中的内容 <code>data['nick']</code>，计算其中的大小则使用 <code>data['nick'].value_counts()</code>。</p>
+<p>同样的情况，我们可以增加分组并获取对应的数据</p>
+<div class="codehilite"><pre><span></span><code><span class="n">data1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">])</span> <span class="n">data1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>这种情况下可以类比为SQL语句：</p>
+<div class="codehilite"><pre><span></span><code><span class="k">select</span> <span class="k">avg</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="k">from</span> <span class="k">data</span> <span class="k">group</span> <span class="k">by</span> <span class="n">city</span>
+</code></pre></div>
+
+
+<p>这样的数据看起来不是特别让人喜欢，这个时间我们可以给他排个序：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">data1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>现在看起来好多了，但是有点多了，我们只想看前几条记录：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">data1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>可惜了，好多城市我都没听过，我只想看直辖市的数据</p>
+<div class="codehilite"><pre><span></span><code><span class="n">data2</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="s1">&#39;天津&#39;</span><span class="p">,</span><span class="s1">&#39;重庆&#39;</span><span class="p">,</span><span class="s1">&#39;上海&#39;</span><span class="p">]))]</span>
+</code></pre></div>
+
+
+<p>但是这样还是不特别好看，我们可以再按城市看一下，评分有多少</p>
+<div class="codehilite"><pre><span></span><code><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+
+
+<h2>数据表信息查看</h2>
+<p><code>df.shape</code>: 维度查看
+<code>df.info()</code>: 数据表基本信息，包括围度、列名、数据格式、所占空间
+<code>df.dtypes</code>: 每一列的数据格式
+<code>df['b'].dtype</code>: 某一列的格式
+<code>df.isnull()</code>: 是否空值
+<code>df.['b'].unique()</code>: 查看某一列的唯一值
+<code>df.values</code>: 查看数据表的值
+<code>df.columns</code>: 查看列名
+<code>df.head()</code>: 查看默认的前 10 行数据
+<code>df.tail()</code>: 查看默认的后 10 行数据</p>
+<h2>数据表清洗</h2>
+<p><code>df.fillna(value=0)</code>: 用数字 0 填充空值 
+<code>df['pr'].fillna(df['pr'].mean())</code>: 用列 pr 的平均值对 na 进行填充
+<code>df['city']=df['city'].map(str.strip)</code>: 清除 city 字段的字符空格
+<code>df['city']=df['city'].str.lower()</code>: 大小写转换
+<code>df['pr'].astype('int')</code>: 更改数据的格式
+<code>df.rename(columns={'category': 'category-size'})</code>: 更改列名
+<code>df['city'].drop_duplicates()</code>: 删除后出现的重复值
+<code>df['city'].drop_duplicates(keep='last')</code>: 删除先出现的重复值
+<code>df['city'].replace('sh', 'shanghai')</code>: 数据替换</p>
+<h2>数据预处理</h2>
+<ul>
+<li>
+<p>数据表合并</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df_inner</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>  <span class="c1"># 匹配合并，交集</span>
+<span class="n">df_left</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>  <span class="c1"># 左联表</span>
+<span class="n">df_right</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>  <span class="c1"># 右联表</span>
+<span class="n">df_outer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>  <span class="c1"># 并集</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>设置索引列</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>按照特定列的值排序</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>按照索引列排序</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>如果 pr 列的值大于 3000 ， group 列显示 hight , 否则显示 low</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pr&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3000</span><span class="p">,</span> <span class="s1">&#39;hight&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>对复合多个条件的数据进行分级标记</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;beijing&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pr&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4000</span><span class="p">),</span> <span class="s1">&#39;sign&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>对 category 字段的值依次进行分列，并创建数据表，索引值 df 的索引列，列名称为 category 和 size</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]),</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+
+</li>
+</ul>
+<h2>数据提取</h2>
+<p><code>loc</code>: 函数按标签值进行提取
+<code>iloc</code>: 按位置进行提取
+<code>ix</code>: 可以同时按标签和位置进行提取</p>
+<p>具体的使用见下：</p>
+<p><code>df.loc[3]</code>: 按索引提取单行的数值
+<code>df.iloc[0:5]</code>: 按索引提取区域行数据值
+<code>df.reset_index()</code>: 重设索引
+<code>df=df.set_index('date')</code>: 设置 date 为索引
+<code>df[:'2013']</code>: 提取 2013 之前的所有数据
+<code>df.iloc[:3,:2]</code>: 从 0 位置开始，前三行，前两列，这里的数据不同去是索引的标签名称，而是数据所有的位置
+<code>df.iloc[[0,2,5],[4,5]]</code>: 提取第 0、2、5 行，第 4、5 列的数据
+<code>df.ix[:'2013',:4]</code>: 提取 2013 之前，前四列数据
+<code>df['city'].isin(['beijing'])</code>: 判断 city 的值是否为北京
+<code>df.loc[df['city'].isin(['beijing','shanghai'])]</code>: 判断 city 列里是否包含 beijing 和 shanghai ，然后将符合条件的数据提取出来
+<code>pd.DataFrame(category.str[:3])</code>: 提取前三个字符，并生成数据表</p>
+<h2>数据筛选</h2>
+<p>使用与、或、非三个条件配合大于、小于、等于对数据进行筛选，并进行计数和求和。</p>
+<ul>
+<li>
+<p>使用与进行筛选</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;beijing&#39;</span><span class="p">),</span>
+    <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;category&#39;</span><span class="p">]]</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>使用或进行筛选</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;beijing&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">]]</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>使用非进行筛选</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;beijing&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>筛选后的灵气按 city 列进行计数</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;beijing&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">city</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>使用 query 函数进行筛选</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;city&#39;</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;beijing&#39;</span><span class="p">,</span> <span class="s1">&#39;shanghai&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>对筛选后的结果按 pr 进行求和</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;city&#39;</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;beijing&#39;</span><span class="p">,</span> <span class="s1">&#39;shanghai&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">pr</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+
+</li>
+</ul>
+<h2>数据汇总</h2>
+<p>主要使用 groupby 和 pivote_table 进行处理。</p>
+<p><code>df.groupby('city').count()</code>: 按 city 列分组后进行数据汇总
+<code>df.groupby('city')['id'].count()</code>: 按 city 进行分组，然后汇总 id 列的数据
+<code>df.groupby(['city','size'])['id'].count()</code>: 对两个字段进行分组汇总，然后进行计算
+<code>df.groupby('city')['pr'].agg([len, np.sum,np.mean])</code>: 对 city 进行分组，然后计算 pr 列的大小、总和和平均数</p>
+<h2>数据统计</h2>
+<p>数据采样，计算标准差、协方差和相关系数。</p>
+<ul>
+<li>
+<p>简单数据采样</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>手动设置采样权重</p>
+<div class="codehilite"><pre><span></span><code><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>采样后不放回</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># 如果 replace = True 采样后放回</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>数据表描述性统计</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># round 表示显示的小数位数，T 表示转置</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>计算列的标准差</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>计算两个字段间的协方差</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;m-point&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>计算表中所有字段间的协方差</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>两个字段间的相关性分析</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;m-point&#39;</span><span class="p">])</span>  <span class="c1"># 相关系数在 [-1, 1] 之间，接近 -1 为负相关，1 为正相关，0 为不相关</span>
+</code></pre></div>
+
+
+</li>
+<li>
+<p>数据表的相关性分析</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</code></pre></div>
+
+
+</li>
+</ul>
+    </div>
+</div>
+        </div>
+    
+
+                <div class="col-3">
+                    
+                        <div class="author" >
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Author</div>
+        </div>
+        <div class="card-body">
+            <img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/avatar/lvzai.jpg" class="card-img-top">
+        </div>
+    </div>
+</div>
+<div class="tags" >
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Tags</div>
+        </div>
+        <div class="card-body">
+            
+                <a href="/tag/%E6%80%BB%E7%BB%93/" class="badge badge-info"> 总结(3)</a>
+            
+                <a href="/tag/Emacs/" class="badge badge-info"> Emacs(2)</a>
+            
+                <a href="/tag/org%20mode/" class="badge badge-info"> org mode(4)</a>
+            
+                <a href="/tag/%E5%B9%B4%E5%BA%A6%E6%B8%85%E5%8D%95/" class="badge badge-info"> 年度清单(2)</a>
+            
+                <a href="/tag/%E8%AF%BB%E4%B9%A6%E6%B8%85%E5%8D%95/" class="badge badge-info"> 读书清单(2)</a>
+            
+                <a href="/tag/%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/" class="badge badge-info"> 电影清单(2)</a>
+            
+                <a href="/tag/%E7%94%B5%E8%A7%86%E6%B8%85%E5%8D%95/" class="badge badge-info"> 电视清单(2)</a>
+            
+                <a href="/tag/Python/" class="badge badge-info"> Python(3)</a>
+            
+                <a href="/tag/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="badge badge-info"> 学习计划(1)</a>
+            
+                <a href="/tag/%E5%AD%90%E5%BC%B9%E7%AC%94%E8%AE%B0/" class="badge badge-info"> 子弹笔记(1)</a>
+            
+                <a href="/tag/%E6%89%8B%E5%B8%90%E4%BD%93%E7%B3%BB/" class="badge badge-info"> 手帐体系(1)</a>
+            
+                <a href="/tag/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/" class="badge badge-info"> 时间管理(1)</a>
+            
+                <a href="/tag/%E6%97%B6%E9%97%B4%E4%BD%BF%E7%94%A8%E6%95%88%E7%8E%87/" class="badge badge-info"> 时间使用效率(1)</a>
+            
+                <a href="/tag/%E5%BD%A2%E6%84%8F%E6%8B%B3/" class="badge badge-info"> 形意拳(1)</a>
+            
+                <a href="/tag/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/" class="badge badge-info"> 知识管理(1)</a>
+            
+                <a href="/tag/%E7%AE%80%E5%8E%86/" class="badge badge-info"> 简历(1)</a>
+            
+                <a href="/tag/%E6%8A%80%E8%83%BD%E6%B0%B4%E5%B9%B3/" class="badge badge-info"> 技能水平(1)</a>
+            
+                <a href="/tag/%E7%94%9F%E6%B4%BB/" class="badge badge-info"> 生活(1)</a>
+            
+                <a href="/tag/%E5%87%8F%E6%B3%95%E7%94%9F%E6%B4%BB/" class="badge badge-info"> 减法生活(1)</a>
+            
+                <a href="/tag/%E9%98%85%E8%AF%BB/" class="badge badge-info"> 阅读(1)</a>
+            
+                <a href="/tag/%E9%98%85%E8%AF%BB%E5%88%86%E7%BB%84/" class="badge badge-info"> 阅读分组(1)</a>
+            
+                <a href="/tag/org/" class="badge badge-info"> org(1)</a>
+            
+                <a href="/tag/docx/" class="badge badge-info"> docx(1)</a>
+            
+                <a href="/tag/markdown/" class="badge badge-info"> markdown(2)</a>
+            
+                <a href="/tag/cmder/" class="badge badge-info"> cmder(1)</a>
+            
+                <a href="/tag/%E5%9B%BE%E5%BA%8A/" class="badge badge-info"> 图床(1)</a>
+            
+                <a href="/tag/jsdelivr/" class="badge badge-info"> jsdelivr(1)</a>
+            
+                <a href="/tag/github/" class="badge badge-info"> github(1)</a>
+            
+                <a href="/tag/%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F/" class="badge badge-info"> 安卓系统(1)</a>
+            
+                <a href="/tag/%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%89%8B%E6%9C%BA%E7%B3%BB%E7%BB%9F/" class="badge badge-info"> 手动更新手机系统(1)</a>
+            
+                <a href="/tag/post%20link/" class="badge badge-info"> post link(1)</a>
+            
+                <a href="/tag/post%20path/" class="badge badge-info"> post path(1)</a>
+            
+                <a href="/tag/hexo/" class="badge badge-info"> hexo(2)</a>
+            
+                <a href="/tag/hugo/" class="badge badge-info"> hugo(2)</a>
+            
+                <a href="/tag/GitHub%20Pages/" class="badge badge-info"> GitHub Pages(1)</a>
+            
+                <a href="/tag/travis/" class="badge badge-info"> travis(1)</a>
+            
+                <a href="/tag/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/" class="badge badge-info"> 自动部署博客(1)</a>
+            
+                <a href="/tag/presentation/" class="badge badge-info"> presentation(1)</a>
+            
+                <a href="/tag/gcc/" class="badge badge-info"> gcc(1)</a>
+            
+                <a href="/tag/g%2B%2B/" class="badge badge-info"> g++(1)</a>
+            
+                <a href="/tag/%E9%BB%98%E8%AE%A4%E8%A1%A8%E6%A0%BC/" class="badge badge-info"> 默认表格(1)</a>
+            
+                <a href="/tag/%E5%A4%8D%E6%9D%82%E8%A1%A8%E6%A0%BC/" class="badge badge-info"> 复杂表格(1)</a>
+            
+                <a href="/tag/multimd%20table/" class="badge badge-info"> multimd table(1)</a>
+            
+                <a href="/tag/google%20adsense/" class="badge badge-info"> google adsense(1)</a>
+            
+                <a href="/tag/evil/" class="badge badge-info"> evil(1)</a>
+            
+                <a href="/tag/surround/" class="badge badge-info"> surround(1)</a>
+            
+                <a href="/tag/librime/" class="badge badge-info"> librime(2)</a>
+            
+                <a href="/tag/emacs-rime/" class="badge badge-info"> emacs-rime(1)</a>
+            
+                <a href="/tag/liberime/" class="badge badge-info"> liberime(1)</a>
+            
+                <a href="/tag/dot/" class="badge badge-info"> dot(1)</a>
+            
+                <a href="/tag/graphviz/" class="badge badge-info"> graphviz(1)</a>
+            
+                <a href="/tag/use-sub-superscripts/" class="badge badge-info"> use-sub-superscripts(1)</a>
+            
+                <a href="/tag/ditaa/" class="badge badge-info"> ditaa(1)</a>
+            
+                <a href="/tag/Evil%20Multiple%20cursors/" class="badge badge-info"> Evil Multiple cursors(1)</a>
+            
+                <a href="/tag/turn%20evil%20mode%20off/" class="badge badge-info"> turn evil mode off(1)</a>
+            
+                <a href="/tag/modifier%20keys/" class="badge badge-info"> modifier keys(1)</a>
+            
+                <a href="/tag/keymap/" class="badge badge-info"> keymap(1)</a>
+            
+                <a href="/tag/super/" class="badge badge-info"> super(1)</a>
+            
+                <a href="/tag/hyper/" class="badge badge-info"> hyper(1)</a>
+            
+                <a href="/tag/install%20Emacs/" class="badge badge-info"> install Emacs(1)</a>
+            
+                <a href="/tag/Mac%20OS/" class="badge badge-info"> Mac OS(1)</a>
+            
+                <a href="/tag/keybinds/" class="badge badge-info"> keybinds(1)</a>
+            
+                <a href="/tag/clocktable/" class="badge badge-info"> clocktable(1)</a>
+            
+                <a href="/tag/coding%20system/" class="badge badge-info"> coding system(1)</a>
+            
+                <a href="/tag/image%20library/" class="badge badge-info"> image library(1)</a>
+            
+                <a href="/tag/keybind/" class="badge badge-info"> keybind(1)</a>
+            
+                <a href="/tag/spacemacs/" class="badge badge-info"> spacemacs(1)</a>
+            
+                <a href="/tag/org%20babel/" class="badge badge-info"> org babel(1)</a>
+            
+                <a href="/tag/homebrew/" class="badge badge-info"> homebrew(1)</a>
+            
+                <a href="/tag/dd/" class="badge badge-info"> dd(1)</a>
+            
+                <a href="/tag/diskutil/" class="badge badge-info"> diskutil(1)</a>
+            
+                <a href="/tag/tmux/" class="badge badge-info"> tmux(1)</a>
+            
+                <a href="/tag/xcode/" class="badge badge-info"> xcode(1)</a>
+            
+                <a href="/tag/xcrun/" class="badge badge-info"> xcrun(1)</a>
+            
+                <a href="/tag/node-gyp/" class="badge badge-info"> node-gyp(1)</a>
+            
+                <a href="/tag/tar/" class="badge badge-info"> tar(1)</a>
+            
+                <a href="/tag/tree/" class="badge badge-info"> tree(1)</a>
+            
+                <a href="/tag/pacman/" class="badge badge-info"> pacman(1)</a>
+            
+                <a href="/tag/plantuml/" class="badge badge-info"> plantuml(1)</a>
+            
+                <a href="/tag/find/" class="badge badge-info"> find(1)</a>
+            
+                <a href="/tag/grep/" class="badge badge-info"> grep(2)</a>
+            
+                <a href="/tag/du/" class="badge badge-info"> du(1)</a>
+            
+                <a href="/tag/apt-get/" class="badge badge-info"> apt-get(1)</a>
+            
+                <a href="/tag/apt/" class="badge badge-info"> apt(1)</a>
+            
+                <a href="/tag/regex/" class="badge badge-info"> regex(1)</a>
+            
+                <a href="/tag/wildcard/" class="badge badge-info"> wildcard(1)</a>
+            
+                <a href="/tag/zsh/" class="badge badge-info"> zsh(1)</a>
+            
+                <a href="/tag/gdb/" class="badge badge-info"> gdb(1)</a>
+            
+                <a href="/tag/lsof/" class="badge badge-info"> lsof(1)</a>
+            
+                <a href="/tag/netstat/" class="badge badge-info"> netstat(1)</a>
+            
+                <a href="/tag/rebase/" class="badge badge-info"> rebase(2)</a>
+            
+                <a href="/tag/workflow/" class="badge badge-info"> workflow(1)</a>
+            
+                <a href="/tag/%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="badge badge-info"> 工作流(1)</a>
+            
+                <a href="/tag/.gitignore/" class="badge badge-info"> .gitignore(1)</a>
+            
+                <a href="/tag/postbuffer/" class="badge badge-info"> postbuffer(1)</a>
+            
+                <a href="/tag/hung%20up/" class="badge badge-info"> hung up(1)</a>
+            
+                <a href="/tag/merge/" class="badge badge-info"> merge(1)</a>
+            
+                <a href="/tag/cache/" class="badge badge-info"> cache(1)</a>
+            
+                <a href="/tag/reset/" class="badge badge-info"> reset(1)</a>
+            
+                <a href="/tag/Git/" class="badge badge-info"> Git(1)</a>
+            
+                <a href="/tag/command/" class="badge badge-info"> command(1)</a>
+            
+                <a href="/tag/submodule/" class="badge badge-info"> submodule(1)</a>
+            
+                <a href="/tag/GitHub%20Pull%20Request/" class="badge badge-info"> GitHub Pull Request(1)</a>
+            
+                <a href="/tag/pr/" class="badge badge-info"> pr(1)</a>
+            
+                <a href="/tag/Matplotlib/" class="badge badge-info"> Matplotlib(1)</a>
+            
+                <a href="/tag/beautifusoup/" class="badge badge-info"> beautifusoup(1)</a>
+            
+                <a href="/tag/%E4%B8%8B%E8%BD%BD%E5%B0%8F%E8%AF%B4/" class="badge badge-info"> 下载小说(1)</a>
+            
+                <a href="/tag/SOLID/" class="badge badge-info"> SOLID(1)</a>
+            
+                <a href="/tag/Leetcode/" class="badge badge-info"> Leetcode(2)</a>
+            
+                <a href="/tag/%E9%80%8F%E8%A7%86%E8%A1%A8/" class="badge badge-info"> 透视表(1)</a>
+            
+                <a href="/tag/read_excel%28%29/" class="badge badge-info"> read_excel()(1)</a>
+            
+                <a href="/tag/pandas/" class="badge badge-info"> pandas(1)</a>
+            
+                <a href="/tag/conda/" class="badge badge-info"> conda(1)</a>
+            
+                <a href="/tag/django/" class="badge badge-info"> django(1)</a>
+            
+                <a href="/tag/markdown-deux/" class="badge badge-info"> markdown-deux(1)</a>
+            
+                <a href="/tag/mysql/" class="badge badge-info"> mysql(1)</a>
+            
+                <a href="/tag/oracle/" class="badge badge-info"> oracle(1)</a>
+            
+                <a href="/tag/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" class="badge badge-info"> 模糊查询(1)</a>
+            
+                <a href="/tag/logging%20level/" class="badge badge-info"> logging level(1)</a>
+            
+                <a href="/tag/reflex/" class="badge badge-info"> reflex(1)</a>
+            
+                <a href="/tag/Field/" class="badge badge-info"> Field(1)</a>
+            
+                <a href="/tag/Maven/" class="badge badge-info"> Maven(1)</a>
+            
+                <a href="/tag/Selenium/" class="badge badge-info"> Selenium(1)</a>
+            
+                <a href="/tag/%E4%B8%8B%E6%8B%89%E6%A1%86/" class="badge badge-info"> 下拉框(1)</a>
+            
+                <a href="/tag/select%20into/" class="badge badge-info"> select into(1)</a>
+            
+                <a href="/tag/insert%20into%20select/" class="badge badge-info"> insert into select(1)</a>
+            
+                <a href="/tag/CAST/" class="badge badge-info"> CAST(1)</a>
+            
+                <a href="/tag/CONVERT/" class="badge badge-info"> CONVERT(1)</a>
+            
+                <a href="/tag/timestamp/" class="badge badge-info"> timestamp(1)</a>
+            
+                <a href="/tag/concat/" class="badge badge-info"> concat(1)</a>
+            
+                <a href="/tag/concat_ws/" class="badge badge-info"> concat_ws(1)</a>
+            
+                <a href="/tag/group_concat/" class="badge badge-info"> group_concat(1)</a>
+            
+                <a href="/tag/union/" class="badge badge-info"> union(1)</a>
+            
+                <a href="/tag/grant%20privileges/" class="badge badge-info"> grant privileges(1)</a>
+            
+                <a href="/tag/%E9%87%8D%E7%BD%AE%20root%20%E5%AF%86%E7%A0%81/" class="badge badge-info"> 重置 root 密码(1)</a>
+            
+                <a href="/tag/%E6%8A%A5%E9%94%99%2010060/" class="badge badge-info"> 报错 10060(1)</a>
+            
+                <a href="/tag/%E6%B8%85%E7%90%86%E8%BF%9E%E6%8E%A5%E6%95%B0/" class="badge badge-info"> 清理连接数(1)</a>
+            
+                <a href="/tag/create%20user/" class="badge badge-info"> create user(1)</a>
+            
+                <a href="/tag/set%20password/" class="badge badge-info"> set password(1)</a>
+            
+                <a href="/tag/exists/" class="badge badge-info"> exists(1)</a>
+            
+                <a href="/tag/in/" class="badge badge-info"> in(1)</a>
+            
+                <a href="/tag/markdown-it/" class="badge badge-info"> markdown-it(1)</a>
+            
+                <a href="/tag/emoji/" class="badge badge-info"> emoji(1)</a>
+            
+                <a href="/tag/tasks/" class="badge badge-info"> tasks(1)</a>
+            
+                <a href="/tag/valine/" class="badge badge-info"> valine(1)</a>
+            
+                <a href="/tag/Code%20504/" class="badge badge-info"> Code 504(1)</a>
+            
+                <a href="/tag/Hugo/" class="badge badge-info"> Hugo(1)</a>
+            
+                <a href="/tag/theme/" class="badge badge-info"> theme(1)</a>
+            
+                <a href="/tag/substring/" class="badge badge-info"> substring(1)</a>
+            
+                <a href="/tag/indexOf/" class="badge badge-info"> indexOf(1)</a>
+            
+                <a href="/tag/RegExp/" class="badge badge-info"> RegExp(1)</a>
+            
+                <a href="/tag/%E5%AE%9A%E4%BD%8D%E8%8A%82%E7%82%B9/" class="badge badge-info"> 定位节点(1)</a>
+            
+                <a href="/tag/%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D/" class="badge badge-info"> 正则匹配(1)</a>
+            
+                <a href="/tag/async/" class="badge badge-info"> async(1)</a>
+            
+                <a href="/tag/%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82/" class="badge badge-info"> 异步请求(1)</a>
+            
+                <a href="/tag/css/" class="badge badge-info"> css(2)</a>
+            
+                <a href="/tag/layui/" class="badge badge-info"> layui(1)</a>
+            
+                <a href="/tag/%E6%BB%9A%E5%8A%A8%E6%9D%A1/" class="badge badge-info"> 滚动条(1)</a>
+            
+                <a href="/tag/JavaScript/" class="badge badge-info"> JavaScript(1)</a>
+            
+        </div>
+    </div>
+</div>
+<div class="categories" >
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Categories</div>
+        </div>
+        <div class="card-body">
+            
+                <a href="/category/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" class="badge badge-info">生活总结(13)</a>
+            
+                <a href="/category/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/" class="badge badge-info">工具环境(48)</a>
+            
+                <a href="/category/Pandoc/" class="badge badge-info">Pandoc(1)</a>
+            
+                <a href="/category/Windows/" class="badge badge-info">Windows(1)</a>
+            
+                <a href="/category/GitHub/" class="badge badge-info">GitHub(1)</a>
+            
+                <a href="/category/Android/" class="badge badge-info">Android(1)</a>
+            
+                <a href="/category/Hexo/" class="badge badge-info">Hexo(1)</a>
+            
+                <a href="/category/hexo/" class="badge badge-info">hexo(3)</a>
+            
+                <a href="/category/travis/" class="badge badge-info">travis(1)</a>
+            
+                <a href="/category/Eclispe/" class="badge badge-info">Eclispe(1)</a>
+            
+                <a href="/category/GCC/" class="badge badge-info">GCC(1)</a>
+            
+                <a href="/category/markdown/" class="badge badge-info">markdown(1)</a>
+            
+                <a href="/category/Google/" class="badge badge-info">Google(1)</a>
+            
+                <a href="/category/Emacs/" class="badge badge-info">Emacs(14)</a>
+            
+                <a href="/category/Mac/" class="badge badge-info">Mac(4)</a>
+            
+                <a href="/category/Linux/" class="badge badge-info">Linux(8)</a>
+            
+                <a href="/category/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="badge badge-info">正则表达式(1)</a>
+            
+                <a href="/category/Git/" class="badge badge-info">Git(9)</a>
+            
+                <a href="/category/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/" class="badge badge-info">后台技术(20)</a>
+            
+                <a href="/category/Python/" class="badge badge-info">Python(9)</a>
+            
+                <a href="/category/Java/" class="badge badge-info">Java(4)</a>
+            
+                <a href="/category/MySQL/" class="badge badge-info">MySQL(7)</a>
+            
+                <a href="/category/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="badge badge-info">前端技术(8)</a>
+            
+                <a href="/category/hugo/" class="badge badge-info">hugo(1)</a>
+            
+                <a href="/category/JavaScript/" class="badge badge-info">JavaScript(3)</a>
+            
+                <a href="/category/xpath/" class="badge badge-info">xpath(1)</a>
+            
+                <a href="/category/ajax/" class="badge badge-info">ajax(1)</a>
+            
+                <a href="/category/css/" class="badge badge-info">css(1)</a>
+            
+        </div>
+    </div>
+</div>
+                    
+                </div>
+            </div>
+        
+    </body>
+    <footer>
+        <div>
+    <center>
+        <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    </center>
+    
+        <center>&copy; 2020 power by <a href="https://github.com/ZucchiniY">Zuchhiniy</a></center>
+    
+</div>
+<!-- 谷歌广告 -->
+
+    <script data-ad-client="ca-pub-2846657491221113" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.26.0/dist/moment.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+
+
+<!-- 百度分析 -->
+<script>
+ var _hmt = _hmt || [];
+ (function() {
+     var hm = document.createElement("script");
+     hm.src = "https://hm.baidu.com/hm.js?31557380932f914656639e3f499fca3c";
+     var s = document.getElementsByTagName("script")[0]; 
+     s.parentNode.insertBefore(hm, s);
+ })();
+</script>
+<!-- 谷歌分析 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151174326-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'UA-151174326-1');
+</script>
+<!-- 不蒜子 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    </footer>
+</html>

@@ -1,0 +1,941 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-6ge4b1Lr1zrvyGvm5pdAkc3NMa97XYhFPBWsZsT6O3eOU+hqURR1bQEMm11Grf3a" crossorigin="anonymous">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/favicon/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/static/css/blog.css">
+<link rel="stylesheet" href="/pygments.css">
+<!-- 验证 -->
+<meta name="baidu-site-verification" content="91wpN2bolu" />
+<meta name="baidu_union_verify" content="621bf14a06bf40bf54d776ef1cb67a9a">
+<meta name="google-site-verification" content="1zjaBYiW-491c1GSe5DRpRwZlop9RpQet7Kx8WYW1sY" />
+
+    </head>
+    <body>
+        
+            <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light " >
+    <a class="navbar-brand" href="#" >
+        <img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/static/img/logo.png" width="40" height="40">
+        Zucchiniy 博客
+    </a>
+    <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">博客<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/archives">归档</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 专题
+                 </a>
+                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                 <a class="dropdown-item" href="#">Action</a>
+                 <a class="dropdown-item" href="#">Another action</a>
+                 <a class="dropdown-item" href="#">Something else here</a>
+                 </div>
+                 </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="/about">关于 </a>
+            </li>
+        </ul>
+    </div>
+    <script async src="https://cse.google.com/cse.js?cx=010050096186898163812:xwbls6-9jis"></script>
+    <div class="gcse-searchbox-only"></div>
+</nav>
+        
+
+        
+            <div class="content row">
+                
+    
+        <div class="col-9" >
+            <div class="card">
+    <div class="card-header"><h1>Matplotlib 学习笔记</h1></div>
+    <div class="card-body">
+        <p>记录了几个好入的可视化库，学习还是要从基础—— Matplotlib 开始学习。</p>
+<h2>图表基本</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="c1"># 创建图表</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib01.png" /></p>
+<p>与 Emacs org mode 交互使用：</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;Agg&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/python-matplot-fig.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/python-matplot-fig.png&#39;</span>  <span class="c1"># return filename to org-mode</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/python-matplot-fig.png" /></p>
+<p><code>plt.close()</code> : 关闭窗口</p>
+<p><code>plt.gcf().clear()</code> : 每次清空图标内的内容</p>
+<h2>Matplotlib 图例</h2>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib-anatomy.png" /></p>
+<h2>折线图</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># 表头</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;aa&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="c1"># 图例位置</span>
+<span class="c1"># best 自适应位置</span>
+<span class="c1"># upper right</span>
+<span class="c1"># upper left</span>
+<span class="c1"># lower left</span>
+<span class="c1"># lower right</span>
+<span class="c1"># right</span>
+<span class="c1"># center left</span>
+<span class="c1"># center right</span>
+<span class="c1"># lower center</span>
+<span class="c1"># upper center</span>
+<span class="c1"># center</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+
+<span class="c1"># x 轴边界</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="c1"># y 轴边界</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+<span class="c1"># 设置 x 刻度</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="c1"># 设置 y 刻度</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="c1"># x 轴刻度标签</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="c1"># y 轴刻度标签</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="c1"># 边界限定了值的范围，刻度表示显示的标尺，这里 x 轴是 0 - 10 ，但是刻度只有 0.0 - 9.0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib02.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib02.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib02.png" /></p>
+<ul>
+<li>
+<p>图表基本样式</p>
+<p>:::python
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib</p>
+<p>x = np.linspace(-np.pi,np.pi ,256, endpoint=True)
+c, s = np.cos(x), np.sin(x)</p>
+<p>plt.plot(c)
+plt.plot(s)</p>
+<h1>显示网格</h1>
+<h1>linestyle: 线型</h1>
+<h1>color: 颜色</h1>
+<h1>linewidth: 宽度</h1>
+<h1>axis: x,y,both 显示 x,y,两者</h1>
+<p>plt.grid(True, linestyle='--', color='gray', linewidth='0.5', axis='both')
+plt.tick_params(bottom='on', top='on', left='on',right='on')</p>
+<h1>显示刻度的方向 in, out, inout</h1>
+<p>matplotlib.rcParams['xtick.direction']='out'
+matplotlib.rcParams['ytick.direction']='in'</p>
+<h1>返回当前 axes 对象，gcf() 返回当前 figure 对象</h1>
+<p>frame = plt.gca()
+plt.axis('on')
+frame.axes.get_xaxis().set_visible(True)
+frame.axes.get_yaxis().set_visible(False)</p>
+<p>plt.savefig('./images/matplotlib03.png')
+return '/images/matplotlib03.png'</p>
+</li>
+</ul>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib03.png" /></p>
+<ul>
+<li>线样式<ul>
+<li><code>-</code>: 直线</li>
+<li><code>--</code>: 虚线</li>
+<li><code>-.</code>: 点横线</li>
+<li><code>:</code>: 全点线</li>
+</ul>
+</li>
+</ul>
+<h2>子图</h2>
+<p>在 matplotlib 中，整个图像为 Figure ，而一个 Figure 中可以有多个 axes。</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;bmh&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="c1"># 创建图表，在2行2列的第一个位置</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="s1">&#39;--g&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib04.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib04.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib04.png" /></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ABCD&#39;</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib05.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib05.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib05.png" /></p>
+<h2>Series 直接生成图表</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+
+<span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span>
+               <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2019&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="c1"># kind 包括，line, bar, barh</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
+    <span class="c1"># linestyle -, marker . color g</span>
+    <span class="n">style</span><span class="o">=</span><span class="s1">&#39;-gx&#39;</span><span class="p">,</span>
+    <span class="c1"># alpha 透明度，0-1</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">use_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="n">yticks</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Time Series&#39;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib06.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib06.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib06.png" /></p>
+<h2>Dataframe 直接生成图表</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+                  <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2019&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">12</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcd&#39;</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">style</span><span class="o">=</span><span class="s1">&#39;--.&#39;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+    <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">yticks</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">25</span><span class="p">)),</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+    <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib07.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib07.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib07.png" /></p>
+<h2>柱关图与堆叠图</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">16</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcdefghijklmnop&#39;</span><span class="p">))</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ABC&#39;</span><span class="p">))</span>
+
+<span class="c1"># 单系列柱状图</span>
+<span class="n">s</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># 多系列柱状图</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;Reds_r&#39;</span><span class="p">)</span>
+
+<span class="c1"># 多系列堆叠图</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;BuGn_r&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib08.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib08.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib08.png" /></p>
+<h2>堆叠柱状图</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">category_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Strongly disagree&#39;</span><span class="p">,</span> <span class="s1">&#39;Disagree&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Neither agree nor disagree&#39;</span><span class="p">,</span> <span class="s1">&#39;Agree&#39;</span><span class="p">,</span> <span class="s1">&#39;Strongly agree&#39;</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Question 1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">26</span><span class="p">],</span>
+    <span class="s1">&#39;Question 2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">26</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
+    <span class="s1">&#39;Question 3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span>
+    <span class="s1">&#39;Question 4&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">33</span><span class="p">],</span>
+    <span class="s1">&#39;Question 5&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+    <span class="s1">&#39;Question 6&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">38</span><span class="p">]</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">survey</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">category_names</span><span class="p">):</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+    <span class="n">data_cum</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">category_colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">)(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">9.2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">colname</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">category_names</span><span class="p">,</span> <span class="n">category_colors</span><span class="p">)):</span>
+        <span class="n">widths</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+        <span class="n">starts</span> <span class="o">=</span> <span class="n">data_cum</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">widths</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="n">starts</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="n">colname</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">xcenters</span> <span class="o">=</span> <span class="n">starts</span> <span class="o">+</span> <span class="n">widths</span> <span class="o">/</span> <span class="mi">2</span>
+
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="n">text_color</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span> <span class="k">if</span> <span class="n">r</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="s1">&#39;darkgrey&#39;</span>
+        <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">xcenters</span><span class="p">,</span> <span class="n">widths</span><span class="p">)):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">)),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">text_color</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">category_names</span><span class="p">),</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+              <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+
+
+<span class="n">survey</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">category_names</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib09.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib09.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib09.png" /></p>
+<h2>散点图</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+        <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+        <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">50</span><span class="p">)}</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;entry a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;entry b&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib010.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib010.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib010.png" /></p>
+<h2>图中插入数据表</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">66386</span><span class="p">,</span> <span class="mi">174296</span><span class="p">,</span> <span class="mi">75131</span><span class="p">,</span> <span class="mi">577908</span><span class="p">,</span> <span class="mi">32015</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">58230</span><span class="p">,</span> <span class="mi">381139</span><span class="p">,</span> <span class="mi">78045</span><span class="p">,</span> <span class="mi">99308</span><span class="p">,</span> <span class="mi">160454</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">89135</span><span class="p">,</span> <span class="mi">80552</span><span class="p">,</span> <span class="mi">152558</span><span class="p">,</span> <span class="mi">497981</span><span class="p">,</span> <span class="mi">603535</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">78415</span><span class="p">,</span> <span class="mi">81858</span><span class="p">,</span> <span class="mi">150656</span><span class="p">,</span> <span class="mi">193263</span><span class="p">,</span> <span class="mi">69638</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">139361</span><span class="p">,</span> <span class="mi">331509</span><span class="p">,</span> <span class="mi">343164</span><span class="p">,</span> <span class="mi">781380</span><span class="p">,</span> <span class="mi">52269</span><span class="p">]]</span>
+
+<span class="n">columns</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Freeze&#39;</span><span class="p">,</span> <span class="s1">&#39;Wind&#39;</span><span class="p">,</span> <span class="s1">&#39;Flood&#39;</span><span class="p">,</span> <span class="s1">&#39;Quake&#39;</span><span class="p">,</span> <span class="s1">&#39;Hail&#39;</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> year&#39;</span> <span class="o">%</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">value_increment</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">BuPu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)))</span>
+<span class="n">n_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.3</span>
+<span class="n">bar_width</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">y_offset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">))</span>
+<span class="n">cell_text</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">row</span><span class="p">],</span> <span class="n">bar_width</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="n">y_offset</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">row</span><span class="p">],</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">y_offset</span> <span class="o">=</span> <span class="n">y_offset</span><span class="o">+</span><span class="n">data</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
+    <span class="n">cell_text</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">%1.1f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y_offset</span><span class="p">])</span>
+
+<span class="n">colors_col</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Reds</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">cell_text</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+
+<span class="n">the_table</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">cellText</span><span class="o">=</span><span class="n">cell_text</span><span class="p">,</span>
+                      <span class="n">rowLabels</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span>
+                      <span class="n">rowColours</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+                      <span class="n">colLabels</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span>
+                      <span class="n">colColours</span><span class="o">=</span><span class="n">colors_col</span><span class="p">,</span>
+                      <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Loss in $</span><span class="si">{0}</span><span class="s2">&#39;s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value_increment</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">values</span> <span class="o">*</span> <span class="n">value_increment</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">val</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">values</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Loss by Disaster&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib011.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib011.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib011.png" /></p>
+<h2>面积图</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcd&#39;</span><span class="p">))</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcd&#39;</span><span class="p">))</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;Greens_r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;Set2&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib012.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib012.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib012.png" /></p>
+<h2>3d 图例</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">196608081</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">randrange</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">vmax</span><span class="o">-</span><span class="n">vmin</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="n">vmin</span>
+
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">zlow</span><span class="p">,</span> <span class="n">zhigh</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)]:</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">zs</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">zlow</span><span class="p">,</span> <span class="n">zhigh</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">m</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X Label&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y Label&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/matplotlib013.png&#39;</span><span class="p">)</span>
+<span class="k">return</span> <span class="s1">&#39;/images/matplotlib013.png&#39;</span>
+</code></pre></div>
+
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/images/matplotlib013.png" /></p>
+<h2>更多图例</h2>
+<p>更多内容内 <a href="https://matplotlib.org/gallery/index.html">Matplotlib Gallery</a>，可以从中找到想使用的图例进行使用。</p>
+    </div>
+</div>
+        </div>
+    
+
+                <div class="col-3">
+                    
+                        <div class="author" >
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Author</div>
+        </div>
+        <div class="card-body">
+            <img src="https://cdn.jsdelivr.net/gh/zucchiniy/blog-assets@master/avatar/lvzai.jpg" class="card-img-top">
+        </div>
+    </div>
+</div>
+<div class="tags" >
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Tags</div>
+        </div>
+        <div class="card-body">
+            
+                <a href="/tag/%E6%80%BB%E7%BB%93/" class="badge badge-info"> 总结(3)</a>
+            
+                <a href="/tag/Emacs/" class="badge badge-info"> Emacs(2)</a>
+            
+                <a href="/tag/org%20mode/" class="badge badge-info"> org mode(4)</a>
+            
+                <a href="/tag/%E5%B9%B4%E5%BA%A6%E6%B8%85%E5%8D%95/" class="badge badge-info"> 年度清单(2)</a>
+            
+                <a href="/tag/%E8%AF%BB%E4%B9%A6%E6%B8%85%E5%8D%95/" class="badge badge-info"> 读书清单(2)</a>
+            
+                <a href="/tag/%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/" class="badge badge-info"> 电影清单(2)</a>
+            
+                <a href="/tag/%E7%94%B5%E8%A7%86%E6%B8%85%E5%8D%95/" class="badge badge-info"> 电视清单(2)</a>
+            
+                <a href="/tag/Python/" class="badge badge-info"> Python(3)</a>
+            
+                <a href="/tag/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="badge badge-info"> 学习计划(1)</a>
+            
+                <a href="/tag/%E5%AD%90%E5%BC%B9%E7%AC%94%E8%AE%B0/" class="badge badge-info"> 子弹笔记(1)</a>
+            
+                <a href="/tag/%E6%89%8B%E5%B8%90%E4%BD%93%E7%B3%BB/" class="badge badge-info"> 手帐体系(1)</a>
+            
+                <a href="/tag/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/" class="badge badge-info"> 时间管理(1)</a>
+            
+                <a href="/tag/%E6%97%B6%E9%97%B4%E4%BD%BF%E7%94%A8%E6%95%88%E7%8E%87/" class="badge badge-info"> 时间使用效率(1)</a>
+            
+                <a href="/tag/%E5%BD%A2%E6%84%8F%E6%8B%B3/" class="badge badge-info"> 形意拳(1)</a>
+            
+                <a href="/tag/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/" class="badge badge-info"> 知识管理(1)</a>
+            
+                <a href="/tag/%E7%AE%80%E5%8E%86/" class="badge badge-info"> 简历(1)</a>
+            
+                <a href="/tag/%E6%8A%80%E8%83%BD%E6%B0%B4%E5%B9%B3/" class="badge badge-info"> 技能水平(1)</a>
+            
+                <a href="/tag/%E7%94%9F%E6%B4%BB/" class="badge badge-info"> 生活(1)</a>
+            
+                <a href="/tag/%E5%87%8F%E6%B3%95%E7%94%9F%E6%B4%BB/" class="badge badge-info"> 减法生活(1)</a>
+            
+                <a href="/tag/%E9%98%85%E8%AF%BB/" class="badge badge-info"> 阅读(1)</a>
+            
+                <a href="/tag/%E9%98%85%E8%AF%BB%E5%88%86%E7%BB%84/" class="badge badge-info"> 阅读分组(1)</a>
+            
+                <a href="/tag/org/" class="badge badge-info"> org(1)</a>
+            
+                <a href="/tag/docx/" class="badge badge-info"> docx(1)</a>
+            
+                <a href="/tag/markdown/" class="badge badge-info"> markdown(2)</a>
+            
+                <a href="/tag/cmder/" class="badge badge-info"> cmder(1)</a>
+            
+                <a href="/tag/%E5%9B%BE%E5%BA%8A/" class="badge badge-info"> 图床(1)</a>
+            
+                <a href="/tag/jsdelivr/" class="badge badge-info"> jsdelivr(1)</a>
+            
+                <a href="/tag/github/" class="badge badge-info"> github(1)</a>
+            
+                <a href="/tag/%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F/" class="badge badge-info"> 安卓系统(1)</a>
+            
+                <a href="/tag/%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%89%8B%E6%9C%BA%E7%B3%BB%E7%BB%9F/" class="badge badge-info"> 手动更新手机系统(1)</a>
+            
+                <a href="/tag/post%20link/" class="badge badge-info"> post link(1)</a>
+            
+                <a href="/tag/post%20path/" class="badge badge-info"> post path(1)</a>
+            
+                <a href="/tag/hexo/" class="badge badge-info"> hexo(2)</a>
+            
+                <a href="/tag/hugo/" class="badge badge-info"> hugo(2)</a>
+            
+                <a href="/tag/GitHub%20Pages/" class="badge badge-info"> GitHub Pages(1)</a>
+            
+                <a href="/tag/travis/" class="badge badge-info"> travis(1)</a>
+            
+                <a href="/tag/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/" class="badge badge-info"> 自动部署博客(1)</a>
+            
+                <a href="/tag/presentation/" class="badge badge-info"> presentation(1)</a>
+            
+                <a href="/tag/gcc/" class="badge badge-info"> gcc(1)</a>
+            
+                <a href="/tag/g%2B%2B/" class="badge badge-info"> g++(1)</a>
+            
+                <a href="/tag/%E9%BB%98%E8%AE%A4%E8%A1%A8%E6%A0%BC/" class="badge badge-info"> 默认表格(1)</a>
+            
+                <a href="/tag/%E5%A4%8D%E6%9D%82%E8%A1%A8%E6%A0%BC/" class="badge badge-info"> 复杂表格(1)</a>
+            
+                <a href="/tag/multimd%20table/" class="badge badge-info"> multimd table(1)</a>
+            
+                <a href="/tag/google%20adsense/" class="badge badge-info"> google adsense(1)</a>
+            
+                <a href="/tag/evil/" class="badge badge-info"> evil(1)</a>
+            
+                <a href="/tag/surround/" class="badge badge-info"> surround(1)</a>
+            
+                <a href="/tag/librime/" class="badge badge-info"> librime(2)</a>
+            
+                <a href="/tag/emacs-rime/" class="badge badge-info"> emacs-rime(1)</a>
+            
+                <a href="/tag/liberime/" class="badge badge-info"> liberime(1)</a>
+            
+                <a href="/tag/dot/" class="badge badge-info"> dot(1)</a>
+            
+                <a href="/tag/graphviz/" class="badge badge-info"> graphviz(1)</a>
+            
+                <a href="/tag/use-sub-superscripts/" class="badge badge-info"> use-sub-superscripts(1)</a>
+            
+                <a href="/tag/ditaa/" class="badge badge-info"> ditaa(1)</a>
+            
+                <a href="/tag/Evil%20Multiple%20cursors/" class="badge badge-info"> Evil Multiple cursors(1)</a>
+            
+                <a href="/tag/turn%20evil%20mode%20off/" class="badge badge-info"> turn evil mode off(1)</a>
+            
+                <a href="/tag/modifier%20keys/" class="badge badge-info"> modifier keys(1)</a>
+            
+                <a href="/tag/keymap/" class="badge badge-info"> keymap(1)</a>
+            
+                <a href="/tag/super/" class="badge badge-info"> super(1)</a>
+            
+                <a href="/tag/hyper/" class="badge badge-info"> hyper(1)</a>
+            
+                <a href="/tag/install%20Emacs/" class="badge badge-info"> install Emacs(1)</a>
+            
+                <a href="/tag/Mac%20OS/" class="badge badge-info"> Mac OS(1)</a>
+            
+                <a href="/tag/keybinds/" class="badge badge-info"> keybinds(1)</a>
+            
+                <a href="/tag/clocktable/" class="badge badge-info"> clocktable(1)</a>
+            
+                <a href="/tag/coding%20system/" class="badge badge-info"> coding system(1)</a>
+            
+                <a href="/tag/image%20library/" class="badge badge-info"> image library(1)</a>
+            
+                <a href="/tag/keybind/" class="badge badge-info"> keybind(1)</a>
+            
+                <a href="/tag/spacemacs/" class="badge badge-info"> spacemacs(1)</a>
+            
+                <a href="/tag/org%20babel/" class="badge badge-info"> org babel(1)</a>
+            
+                <a href="/tag/homebrew/" class="badge badge-info"> homebrew(1)</a>
+            
+                <a href="/tag/dd/" class="badge badge-info"> dd(1)</a>
+            
+                <a href="/tag/diskutil/" class="badge badge-info"> diskutil(1)</a>
+            
+                <a href="/tag/tmux/" class="badge badge-info"> tmux(1)</a>
+            
+                <a href="/tag/xcode/" class="badge badge-info"> xcode(1)</a>
+            
+                <a href="/tag/xcrun/" class="badge badge-info"> xcrun(1)</a>
+            
+                <a href="/tag/node-gyp/" class="badge badge-info"> node-gyp(1)</a>
+            
+                <a href="/tag/tar/" class="badge badge-info"> tar(1)</a>
+            
+                <a href="/tag/tree/" class="badge badge-info"> tree(1)</a>
+            
+                <a href="/tag/pacman/" class="badge badge-info"> pacman(1)</a>
+            
+                <a href="/tag/plantuml/" class="badge badge-info"> plantuml(1)</a>
+            
+                <a href="/tag/find/" class="badge badge-info"> find(1)</a>
+            
+                <a href="/tag/grep/" class="badge badge-info"> grep(2)</a>
+            
+                <a href="/tag/du/" class="badge badge-info"> du(1)</a>
+            
+                <a href="/tag/apt-get/" class="badge badge-info"> apt-get(1)</a>
+            
+                <a href="/tag/apt/" class="badge badge-info"> apt(1)</a>
+            
+                <a href="/tag/regex/" class="badge badge-info"> regex(1)</a>
+            
+                <a href="/tag/wildcard/" class="badge badge-info"> wildcard(1)</a>
+            
+                <a href="/tag/zsh/" class="badge badge-info"> zsh(1)</a>
+            
+                <a href="/tag/gdb/" class="badge badge-info"> gdb(1)</a>
+            
+                <a href="/tag/lsof/" class="badge badge-info"> lsof(1)</a>
+            
+                <a href="/tag/netstat/" class="badge badge-info"> netstat(1)</a>
+            
+                <a href="/tag/rebase/" class="badge badge-info"> rebase(2)</a>
+            
+                <a href="/tag/workflow/" class="badge badge-info"> workflow(1)</a>
+            
+                <a href="/tag/%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="badge badge-info"> 工作流(1)</a>
+            
+                <a href="/tag/.gitignore/" class="badge badge-info"> .gitignore(1)</a>
+            
+                <a href="/tag/postbuffer/" class="badge badge-info"> postbuffer(1)</a>
+            
+                <a href="/tag/hung%20up/" class="badge badge-info"> hung up(1)</a>
+            
+                <a href="/tag/merge/" class="badge badge-info"> merge(1)</a>
+            
+                <a href="/tag/cache/" class="badge badge-info"> cache(1)</a>
+            
+                <a href="/tag/reset/" class="badge badge-info"> reset(1)</a>
+            
+                <a href="/tag/Git/" class="badge badge-info"> Git(1)</a>
+            
+                <a href="/tag/command/" class="badge badge-info"> command(1)</a>
+            
+                <a href="/tag/submodule/" class="badge badge-info"> submodule(1)</a>
+            
+                <a href="/tag/GitHub%20Pull%20Request/" class="badge badge-info"> GitHub Pull Request(1)</a>
+            
+                <a href="/tag/pr/" class="badge badge-info"> pr(1)</a>
+            
+                <a href="/tag/Matplotlib/" class="badge badge-info"> Matplotlib(1)</a>
+            
+                <a href="/tag/beautifusoup/" class="badge badge-info"> beautifusoup(1)</a>
+            
+                <a href="/tag/%E4%B8%8B%E8%BD%BD%E5%B0%8F%E8%AF%B4/" class="badge badge-info"> 下载小说(1)</a>
+            
+                <a href="/tag/SOLID/" class="badge badge-info"> SOLID(1)</a>
+            
+                <a href="/tag/Leetcode/" class="badge badge-info"> Leetcode(2)</a>
+            
+                <a href="/tag/%E9%80%8F%E8%A7%86%E8%A1%A8/" class="badge badge-info"> 透视表(1)</a>
+            
+                <a href="/tag/read_excel%28%29/" class="badge badge-info"> read_excel()(1)</a>
+            
+                <a href="/tag/pandas/" class="badge badge-info"> pandas(1)</a>
+            
+                <a href="/tag/conda/" class="badge badge-info"> conda(1)</a>
+            
+                <a href="/tag/django/" class="badge badge-info"> django(1)</a>
+            
+                <a href="/tag/markdown-deux/" class="badge badge-info"> markdown-deux(1)</a>
+            
+                <a href="/tag/mysql/" class="badge badge-info"> mysql(1)</a>
+            
+                <a href="/tag/oracle/" class="badge badge-info"> oracle(1)</a>
+            
+                <a href="/tag/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" class="badge badge-info"> 模糊查询(1)</a>
+            
+                <a href="/tag/logging%20level/" class="badge badge-info"> logging level(1)</a>
+            
+                <a href="/tag/reflex/" class="badge badge-info"> reflex(1)</a>
+            
+                <a href="/tag/Field/" class="badge badge-info"> Field(1)</a>
+            
+                <a href="/tag/Maven/" class="badge badge-info"> Maven(1)</a>
+            
+                <a href="/tag/Selenium/" class="badge badge-info"> Selenium(1)</a>
+            
+                <a href="/tag/%E4%B8%8B%E6%8B%89%E6%A1%86/" class="badge badge-info"> 下拉框(1)</a>
+            
+                <a href="/tag/select%20into/" class="badge badge-info"> select into(1)</a>
+            
+                <a href="/tag/insert%20into%20select/" class="badge badge-info"> insert into select(1)</a>
+            
+                <a href="/tag/CAST/" class="badge badge-info"> CAST(1)</a>
+            
+                <a href="/tag/CONVERT/" class="badge badge-info"> CONVERT(1)</a>
+            
+                <a href="/tag/timestamp/" class="badge badge-info"> timestamp(1)</a>
+            
+                <a href="/tag/concat/" class="badge badge-info"> concat(1)</a>
+            
+                <a href="/tag/concat_ws/" class="badge badge-info"> concat_ws(1)</a>
+            
+                <a href="/tag/group_concat/" class="badge badge-info"> group_concat(1)</a>
+            
+                <a href="/tag/union/" class="badge badge-info"> union(1)</a>
+            
+                <a href="/tag/grant%20privileges/" class="badge badge-info"> grant privileges(1)</a>
+            
+                <a href="/tag/%E9%87%8D%E7%BD%AE%20root%20%E5%AF%86%E7%A0%81/" class="badge badge-info"> 重置 root 密码(1)</a>
+            
+                <a href="/tag/%E6%8A%A5%E9%94%99%2010060/" class="badge badge-info"> 报错 10060(1)</a>
+            
+                <a href="/tag/%E6%B8%85%E7%90%86%E8%BF%9E%E6%8E%A5%E6%95%B0/" class="badge badge-info"> 清理连接数(1)</a>
+            
+                <a href="/tag/create%20user/" class="badge badge-info"> create user(1)</a>
+            
+                <a href="/tag/set%20password/" class="badge badge-info"> set password(1)</a>
+            
+                <a href="/tag/exists/" class="badge badge-info"> exists(1)</a>
+            
+                <a href="/tag/in/" class="badge badge-info"> in(1)</a>
+            
+                <a href="/tag/markdown-it/" class="badge badge-info"> markdown-it(1)</a>
+            
+                <a href="/tag/emoji/" class="badge badge-info"> emoji(1)</a>
+            
+                <a href="/tag/tasks/" class="badge badge-info"> tasks(1)</a>
+            
+                <a href="/tag/valine/" class="badge badge-info"> valine(1)</a>
+            
+                <a href="/tag/Code%20504/" class="badge badge-info"> Code 504(1)</a>
+            
+                <a href="/tag/Hugo/" class="badge badge-info"> Hugo(1)</a>
+            
+                <a href="/tag/theme/" class="badge badge-info"> theme(1)</a>
+            
+                <a href="/tag/substring/" class="badge badge-info"> substring(1)</a>
+            
+                <a href="/tag/indexOf/" class="badge badge-info"> indexOf(1)</a>
+            
+                <a href="/tag/RegExp/" class="badge badge-info"> RegExp(1)</a>
+            
+                <a href="/tag/%E5%AE%9A%E4%BD%8D%E8%8A%82%E7%82%B9/" class="badge badge-info"> 定位节点(1)</a>
+            
+                <a href="/tag/%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D/" class="badge badge-info"> 正则匹配(1)</a>
+            
+                <a href="/tag/async/" class="badge badge-info"> async(1)</a>
+            
+                <a href="/tag/%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82/" class="badge badge-info"> 异步请求(1)</a>
+            
+                <a href="/tag/css/" class="badge badge-info"> css(2)</a>
+            
+                <a href="/tag/layui/" class="badge badge-info"> layui(1)</a>
+            
+                <a href="/tag/%E6%BB%9A%E5%8A%A8%E6%9D%A1/" class="badge badge-info"> 滚动条(1)</a>
+            
+                <a href="/tag/JavaScript/" class="badge badge-info"> JavaScript(1)</a>
+            
+        </div>
+    </div>
+</div>
+<div class="categories" >
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Categories</div>
+        </div>
+        <div class="card-body">
+            
+                <a href="/category/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" class="badge badge-info">生活总结(13)</a>
+            
+                <a href="/category/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/" class="badge badge-info">工具环境(48)</a>
+            
+                <a href="/category/Pandoc/" class="badge badge-info">Pandoc(1)</a>
+            
+                <a href="/category/Windows/" class="badge badge-info">Windows(1)</a>
+            
+                <a href="/category/GitHub/" class="badge badge-info">GitHub(1)</a>
+            
+                <a href="/category/Android/" class="badge badge-info">Android(1)</a>
+            
+                <a href="/category/Hexo/" class="badge badge-info">Hexo(1)</a>
+            
+                <a href="/category/hexo/" class="badge badge-info">hexo(3)</a>
+            
+                <a href="/category/travis/" class="badge badge-info">travis(1)</a>
+            
+                <a href="/category/Eclispe/" class="badge badge-info">Eclispe(1)</a>
+            
+                <a href="/category/GCC/" class="badge badge-info">GCC(1)</a>
+            
+                <a href="/category/markdown/" class="badge badge-info">markdown(1)</a>
+            
+                <a href="/category/Google/" class="badge badge-info">Google(1)</a>
+            
+                <a href="/category/Emacs/" class="badge badge-info">Emacs(14)</a>
+            
+                <a href="/category/Mac/" class="badge badge-info">Mac(4)</a>
+            
+                <a href="/category/Linux/" class="badge badge-info">Linux(8)</a>
+            
+                <a href="/category/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="badge badge-info">正则表达式(1)</a>
+            
+                <a href="/category/Git/" class="badge badge-info">Git(9)</a>
+            
+                <a href="/category/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/" class="badge badge-info">后台技术(20)</a>
+            
+                <a href="/category/Python/" class="badge badge-info">Python(9)</a>
+            
+                <a href="/category/Java/" class="badge badge-info">Java(4)</a>
+            
+                <a href="/category/MySQL/" class="badge badge-info">MySQL(7)</a>
+            
+                <a href="/category/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="badge badge-info">前端技术(8)</a>
+            
+                <a href="/category/hugo/" class="badge badge-info">hugo(1)</a>
+            
+                <a href="/category/JavaScript/" class="badge badge-info">JavaScript(3)</a>
+            
+                <a href="/category/xpath/" class="badge badge-info">xpath(1)</a>
+            
+                <a href="/category/ajax/" class="badge badge-info">ajax(1)</a>
+            
+                <a href="/category/css/" class="badge badge-info">css(1)</a>
+            
+        </div>
+    </div>
+</div>
+                    
+                </div>
+            </div>
+        
+    </body>
+    <footer>
+        <div>
+    <center>
+        <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    </center>
+    
+        <center>&copy; 2020 power by <a href="https://github.com/ZucchiniY">Zuchhiniy</a></center>
+    
+</div>
+<!-- 谷歌广告 -->
+
+    <script data-ad-client="ca-pub-2846657491221113" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.26.0/dist/moment.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+
+
+<!-- 百度分析 -->
+<script>
+ var _hmt = _hmt || [];
+ (function() {
+     var hm = document.createElement("script");
+     hm.src = "https://hm.baidu.com/hm.js?31557380932f914656639e3f499fca3c";
+     var s = document.getElementsByTagName("script")[0]; 
+     s.parentNode.insertBefore(hm, s);
+ })();
+</script>
+<!-- 谷歌分析 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151174326-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'UA-151174326-1');
+</script>
+<!-- 不蒜子 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    </footer>
+</html>
