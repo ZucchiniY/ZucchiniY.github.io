@@ -59,26 +59,23 @@
             <div class="card">
     <div class="card-header"><h1>Homebrew 入门</h1></div>
     <div class="card-body">
-        <h2>homebrew 安装</h2>
+        <h2 id="homebrew">homebrew 安装</h2>
 <p>使用下面的命令进行安装，但是需要先安装 <code>curl</code> :</p>
 <div class="codehilite"><pre><span></span><code>/usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
 
-
-<h2>常用命令</h2>
+<h2 id="_1">常用命令</h2>
 <ul>
 <li>
 <p>搜索</p>
 <div class="codehilite"><pre><span></span><code>brew search mysql
 </code></pre></div>
 
-
 </li>
 <li>
 <p>查询</p>
 <div class="codehilite"><pre><span></span><code>brew info mysql
 </code></pre></div>
-
 
 </li>
 </ul>
@@ -87,14 +84,12 @@
 <li>更新<div class="codehilite"><pre><span></span><code>brew update
 </code></pre></div>
 
-
 </li>
 </ul>
 <p>这会更新 Homebrew 自己，并且使得接下来的两个操作有意义</p>
 <ul>
 <li>检查过时<div class="codehilite"><pre><span></span><code>brew outdated
 </code></pre></div>
-
 
 </li>
 </ul>
@@ -103,7 +98,6 @@
 <li>升级<div class="codehilite"><pre><span></span><code>brew upgrade
 </code></pre></div>
 
-
 </li>
 </ul>
 <p>升级所有可以升级的软件们</p>
@@ -111,11 +105,10 @@
 <li>清理<div class="codehilite"><pre><span></span><code>brew cleanup
 </code></pre></div>
 
-
 </li>
 </ul>
 <p>清理不需要的版本极其安装包缓存</p>
-<h2>后台启用服务</h2>
+<h2 id="_2">后台启用服务</h2>
 <p><code>brew services</code> 命令是用来管理 Mac 系统中后台服务的，比如在 Mac 上安装了 MySQL ，当我希望将这个变成一个后台服务启动的时候，可以使用，有点像 Linux 下的 <code>service</code> 和 <code>systemctl</code> 两个命令。</p>
 <p>具体的使用命令也非常简单：</p>
 <div class="codehilite"><pre><span></span><code>brew services list  <span class="c1"># 查看使用brew安装的服务列表</span>
@@ -126,8 +119,7 @@ brew services restart formula<span class="p">|</span>--all  <span class="c1"># �
 brew services cleanup  <span class="c1"># 清除已卸载应用的无用的配置</span>
 </code></pre></div>
 
-
-<h2>配置国内镜像</h2>
+<h2 id="_3">配置国内镜像</h2>
 <p>使用了一段时间的 <strong>Homebrew</strong> 之后，发现网络波动有点大，好多时间都是更新10多分钟，所以就想到了国内镜像问题。</p>
 <p>其实无论是什么内容，只要是需要更新的，就有两个优先选择的，一个是清华源，一个是科大源，这两个是最好用的镜像了。</p>
 <p>另外一个就是 NPM 的阿里源，这三个源都非常好用。</p>
@@ -145,12 +137,10 @@ git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo homebr
 brew update
 </code></pre></div>
 
-
 <p><strong>bottles</strong> 镜像则需要配置到环境变量中，我使用的是 zsh shell 所以配置到 <strong>.zshrc</strong> 文件中</p>
 <div class="codehilite"><pre><span></span><code><span class="nb">echo</span> <span class="s1">&#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#39;</span> &gt;&gt; ~/.zshrc
 <span class="nb">source</span> ~/.zshrc
 </code></pre></div>
-
 
 <p>如果你想临时使用的话，则需要在终端中输入 <code>export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles</code> ，当然如果你使用的是 bash shell 则可以将其配置到 <strong>.bash_profile</strong> 或者 <strong>.bashrc</strong> 文件中。</p>
 <p>如果不再希望使用图内的镜像，也可以重置为 <em>GitHub</em> 镜像。</p>
@@ -167,8 +157,7 @@ git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo homebr
 brew update
 </code></pre></div>
 
-
-<h2>更新报错</h2>
+<h2 id="_4">更新报错</h2>
 <p>更新的时候，发现 homebrew 安装的时候，会报错 <strong>curl: (7) Failed to connect to raw.githubusercontent.com port 443: Operation timed out</strong> ，测试了一下，发现是因为 <code>curl</code> 这个命令有问题了，使用 homebrew 重新安装一下就可以。 <code>brew reinstall curl</code>。</p>
     </div>
 </div>
@@ -194,11 +183,125 @@ brew update
         </div>
         <div class="card-body">
             
-                <a href="/tag/%E6%80%BB%E7%BB%93/" class="badge badge-info"> 总结(3)</a>
+                <a href="/tag/reflex/" class="badge badge-info"> reflex(1)</a>
             
-                <a href="/tag/Emacs/" class="badge badge-info"> Emacs(2)</a>
+                <a href="/tag/Field/" class="badge badge-info"> Field(1)</a>
             
-                <a href="/tag/org%20mode/" class="badge badge-info"> org mode(4)</a>
+                <a href="/tag/Maven/" class="badge badge-info"> Maven(1)</a>
+            
+                <a href="/tag/Selenium/" class="badge badge-info"> Selenium(1)</a>
+            
+                <a href="/tag/%E4%B8%8B%E6%8B%89%E6%A1%86/" class="badge badge-info"> 下拉框(1)</a>
+            
+                <a href="/tag/mysql/" class="badge badge-info"> mysql(1)</a>
+            
+                <a href="/tag/oracle/" class="badge badge-info"> oracle(1)</a>
+            
+                <a href="/tag/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" class="badge badge-info"> 模糊查询(1)</a>
+            
+                <a href="/tag/logging%20level/" class="badge badge-info"> logging level(1)</a>
+            
+                <a href="/tag/exists/" class="badge badge-info"> exists(1)</a>
+            
+                <a href="/tag/in/" class="badge badge-info"> in(1)</a>
+            
+                <a href="/tag/MySQL%20%E5%AE%89%E8%A3%85/" class="badge badge-info"> MySQL 安装(1)</a>
+            
+                <a href="/tag/grant%20privileges/" class="badge badge-info"> grant privileges(1)</a>
+            
+                <a href="/tag/concat/" class="badge badge-info"> concat(1)</a>
+            
+                <a href="/tag/concat_ws/" class="badge badge-info"> concat_ws(1)</a>
+            
+                <a href="/tag/group_concat/" class="badge badge-info"> group_concat(1)</a>
+            
+                <a href="/tag/union/" class="badge badge-info"> union(1)</a>
+            
+                <a href="/tag/create%20user/" class="badge badge-info"> create user(1)</a>
+            
+                <a href="/tag/set%20password/" class="badge badge-info"> set password(1)</a>
+            
+                <a href="/tag/%E9%87%8D%E7%BD%AE%20root%20%E5%AF%86%E7%A0%81/" class="badge badge-info"> 重置 root 密码(1)</a>
+            
+                <a href="/tag/%E6%8A%A5%E9%94%99%2010060/" class="badge badge-info"> 报错 10060(1)</a>
+            
+                <a href="/tag/%E6%B8%85%E7%90%86%E8%BF%9E%E6%8E%A5%E6%95%B0/" class="badge badge-info"> 清理连接数(1)</a>
+            
+                <a href="/tag/select%20into/" class="badge badge-info"> select into(1)</a>
+            
+                <a href="/tag/insert%20into%20select/" class="badge badge-info"> insert into select(1)</a>
+            
+                <a href="/tag/CAST/" class="badge badge-info"> CAST(1)</a>
+            
+                <a href="/tag/CONVERT/" class="badge badge-info"> CONVERT(1)</a>
+            
+                <a href="/tag/timestamp/" class="badge badge-info"> timestamp(1)</a>
+            
+                <a href="/tag/Leetcode/" class="badge badge-info"> Leetcode(2)</a>
+            
+                <a href="/tag/Matplotlib/" class="badge badge-info"> Matplotlib(1)</a>
+            
+                <a href="/tag/SOLID/" class="badge badge-info"> SOLID(1)</a>
+            
+                <a href="/tag/django/" class="badge badge-info"> django(1)</a>
+            
+                <a href="/tag/markdown/" class="badge badge-info"> markdown(2)</a>
+            
+                <a href="/tag/markdown-deux/" class="badge badge-info"> markdown-deux(1)</a>
+            
+                <a href="/tag/pandas/" class="badge badge-info"> pandas(1)</a>
+            
+                <a href="/tag/beautifusoup/" class="badge badge-info"> beautifusoup(1)</a>
+            
+                <a href="/tag/%E4%B8%8B%E8%BD%BD%E5%B0%8F%E8%AF%B4/" class="badge badge-info"> 下载小说(1)</a>
+            
+                <a href="/tag/conda/" class="badge badge-info"> conda(1)</a>
+            
+                <a href="/tag/%E9%80%8F%E8%A7%86%E8%A1%A8/" class="badge badge-info"> 透视表(1)</a>
+            
+                <a href="/tag/read_excel%28%29/" class="badge badge-info"> read_excel()(1)</a>
+            
+                <a href="/tag/async/" class="badge badge-info"> async(1)</a>
+            
+                <a href="/tag/%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82/" class="badge badge-info"> 异步请求(1)</a>
+            
+                <a href="/tag/Hugo/" class="badge badge-info"> Hugo(1)</a>
+            
+                <a href="/tag/theme/" class="badge badge-info"> theme(1)</a>
+            
+                <a href="/tag/css/" class="badge badge-info"> css(2)</a>
+            
+                <a href="/tag/markdown-it/" class="badge badge-info"> markdown-it(1)</a>
+            
+                <a href="/tag/emoji/" class="badge badge-info"> emoji(1)</a>
+            
+                <a href="/tag/tasks/" class="badge badge-info"> tasks(1)</a>
+            
+                <a href="/tag/%E6%BB%9A%E5%8A%A8%E6%9D%A1/" class="badge badge-info"> 滚动条(1)</a>
+            
+                <a href="/tag/JavaScript/" class="badge badge-info"> JavaScript(1)</a>
+            
+                <a href="/tag/substring/" class="badge badge-info"> substring(1)</a>
+            
+                <a href="/tag/indexOf/" class="badge badge-info"> indexOf(1)</a>
+            
+                <a href="/tag/RegExp/" class="badge badge-info"> RegExp(1)</a>
+            
+                <a href="/tag/layui/" class="badge badge-info"> layui(1)</a>
+            
+                <a href="/tag/hexo/" class="badge badge-info"> hexo(2)</a>
+            
+                <a href="/tag/valine/" class="badge badge-info"> valine(1)</a>
+            
+                <a href="/tag/Code%20504/" class="badge badge-info"> Code 504(1)</a>
+            
+                <a href="/tag/%E5%AE%9A%E4%BD%8D%E8%8A%82%E7%82%B9/" class="badge badge-info"> 定位节点(1)</a>
+            
+                <a href="/tag/%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D/" class="badge badge-info"> 正则匹配(1)</a>
+            
+                <a href="/tag/%E7%94%9F%E6%B4%BB/" class="badge badge-info"> 生活(1)</a>
+            
+                <a href="/tag/%E5%87%8F%E6%B3%95%E7%94%9F%E6%B4%BB/" class="badge badge-info"> 减法生活(1)</a>
             
                 <a href="/tag/%E5%B9%B4%E5%BA%A6%E6%B8%85%E5%8D%95/" class="badge badge-info"> 年度清单(2)</a>
             
@@ -208,19 +311,19 @@ brew update
             
                 <a href="/tag/%E7%94%B5%E8%A7%86%E6%B8%85%E5%8D%95/" class="badge badge-info"> 电视清单(2)</a>
             
-                <a href="/tag/Python/" class="badge badge-info"> Python(3)</a>
-            
-                <a href="/tag/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="badge badge-info"> 学习计划(1)</a>
+                <a href="/tag/%E6%80%BB%E7%BB%93/" class="badge badge-info"> 总结(3)</a>
             
                 <a href="/tag/%E5%AD%90%E5%BC%B9%E7%AC%94%E8%AE%B0/" class="badge badge-info"> 子弹笔记(1)</a>
             
                 <a href="/tag/%E6%89%8B%E5%B8%90%E4%BD%93%E7%B3%BB/" class="badge badge-info"> 手帐体系(1)</a>
             
+                <a href="/tag/Emacs/" class="badge badge-info"> Emacs(2)</a>
+            
+                <a href="/tag/org%20mode/" class="badge badge-info"> org mode(4)</a>
+            
                 <a href="/tag/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/" class="badge badge-info"> 时间管理(1)</a>
             
                 <a href="/tag/%E6%97%B6%E9%97%B4%E4%BD%BF%E7%94%A8%E6%95%88%E7%8E%87/" class="badge badge-info"> 时间使用效率(1)</a>
-            
-                <a href="/tag/%E5%BD%A2%E6%84%8F%E6%8B%B3/" class="badge badge-info"> 形意拳(1)</a>
             
                 <a href="/tag/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/" class="badge badge-info"> 知识管理(1)</a>
             
@@ -228,41 +331,25 @@ brew update
             
                 <a href="/tag/%E6%8A%80%E8%83%BD%E6%B0%B4%E5%B9%B3/" class="badge badge-info"> 技能水平(1)</a>
             
-                <a href="/tag/%E7%94%9F%E6%B4%BB/" class="badge badge-info"> 生活(1)</a>
+                <a href="/tag/Python/" class="badge badge-info"> Python(3)</a>
             
-                <a href="/tag/%E5%87%8F%E6%B3%95%E7%94%9F%E6%B4%BB/" class="badge badge-info"> 减法生活(1)</a>
+                <a href="/tag/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="badge badge-info"> 学习计划(1)</a>
+            
+                <a href="/tag/%E5%BD%A2%E6%84%8F%E6%8B%B3/" class="badge badge-info"> 形意拳(1)</a>
             
                 <a href="/tag/%E9%98%85%E8%AF%BB/" class="badge badge-info"> 阅读(1)</a>
             
                 <a href="/tag/%E9%98%85%E8%AF%BB%E5%88%86%E7%BB%84/" class="badge badge-info"> 阅读分组(1)</a>
             
-                <a href="/tag/org/" class="badge badge-info"> org(1)</a>
-            
-                <a href="/tag/docx/" class="badge badge-info"> docx(1)</a>
-            
-                <a href="/tag/markdown/" class="badge badge-info"> markdown(2)</a>
-            
-                <a href="/tag/cmder/" class="badge badge-info"> cmder(1)</a>
-            
-                <a href="/tag/%E5%9B%BE%E5%BA%8A/" class="badge badge-info"> 图床(1)</a>
-            
-                <a href="/tag/jsdelivr/" class="badge badge-info"> jsdelivr(1)</a>
-            
-                <a href="/tag/github/" class="badge badge-info"> github(1)</a>
-            
                 <a href="/tag/%E5%AE%89%E5%8D%93%E7%B3%BB%E7%BB%9F/" class="badge badge-info"> 安卓系统(1)</a>
             
                 <a href="/tag/%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%89%8B%E6%9C%BA%E7%B3%BB%E7%BB%9F/" class="badge badge-info"> 手动更新手机系统(1)</a>
             
-                <a href="/tag/post%20link/" class="badge badge-info"> post link(1)</a>
-            
-                <a href="/tag/post%20path/" class="badge badge-info"> post path(1)</a>
-            
-                <a href="/tag/hexo/" class="badge badge-info"> hexo(2)</a>
-            
                 <a href="/tag/hugo/" class="badge badge-info"> hugo(2)</a>
             
                 <a href="/tag/GitHub%20Pages/" class="badge badge-info"> GitHub Pages(1)</a>
+            
+                <a href="/tag/cmder/" class="badge badge-info"> cmder(1)</a>
             
                 <a href="/tag/travis/" class="badge badge-info"> travis(1)</a>
             
@@ -274,37 +361,37 @@ brew update
             
                 <a href="/tag/g%2B%2B/" class="badge badge-info"> g++(1)</a>
             
+                <a href="/tag/%E5%9B%BE%E5%BA%8A/" class="badge badge-info"> 图床(1)</a>
+            
+                <a href="/tag/jsdelivr/" class="badge badge-info"> jsdelivr(1)</a>
+            
+                <a href="/tag/github/" class="badge badge-info"> github(1)</a>
+            
+                <a href="/tag/google%20adsense/" class="badge badge-info"> google adsense(1)</a>
+            
+                <a href="/tag/post%20link/" class="badge badge-info"> post link(1)</a>
+            
+                <a href="/tag/post%20path/" class="badge badge-info"> post path(1)</a>
+            
+                <a href="/tag/org/" class="badge badge-info"> org(1)</a>
+            
+                <a href="/tag/docx/" class="badge badge-info"> docx(1)</a>
+            
                 <a href="/tag/%E9%BB%98%E8%AE%A4%E8%A1%A8%E6%A0%BC/" class="badge badge-info"> 默认表格(1)</a>
             
                 <a href="/tag/%E5%A4%8D%E6%9D%82%E8%A1%A8%E6%A0%BC/" class="badge badge-info"> 复杂表格(1)</a>
             
                 <a href="/tag/multimd%20table/" class="badge badge-info"> multimd table(1)</a>
             
-                <a href="/tag/google%20adsense/" class="badge badge-info"> google adsense(1)</a>
+                <a href="/tag/clocktable/" class="badge badge-info"> clocktable(1)</a>
             
-                <a href="/tag/evil/" class="badge badge-info"> evil(1)</a>
+                <a href="/tag/spacemacs/" class="badge badge-info"> spacemacs(1)</a>
             
-                <a href="/tag/surround/" class="badge badge-info"> surround(1)</a>
-            
-                <a href="/tag/librime/" class="badge badge-info"> librime(2)</a>
-            
-                <a href="/tag/emacs-rime/" class="badge badge-info"> emacs-rime(1)</a>
-            
-                <a href="/tag/liberime/" class="badge badge-info"> liberime(1)</a>
+                <a href="/tag/org%20babel/" class="badge badge-info"> org babel(1)</a>
             
                 <a href="/tag/dot/" class="badge badge-info"> dot(1)</a>
             
                 <a href="/tag/graphviz/" class="badge badge-info"> graphviz(1)</a>
-            
-                <a href="/tag/use-sub-superscripts/" class="badge badge-info"> use-sub-superscripts(1)</a>
-            
-                <a href="/tag/ditaa/" class="badge badge-info"> ditaa(1)</a>
-            
-                <a href="/tag/Evil%20Multiple%20cursors/" class="badge badge-info"> Evil Multiple cursors(1)</a>
-            
-                <a href="/tag/turn%20evil%20mode%20off/" class="badge badge-info"> turn evil mode off(1)</a>
-            
-                <a href="/tag/modifier%20keys/" class="badge badge-info"> modifier keys(1)</a>
             
                 <a href="/tag/keymap/" class="badge badge-info"> keymap(1)</a>
             
@@ -316,25 +403,97 @@ brew update
             
                 <a href="/tag/Mac%20OS/" class="badge badge-info"> Mac OS(1)</a>
             
-                <a href="/tag/keybinds/" class="badge badge-info"> keybinds(1)</a>
-            
-                <a href="/tag/clocktable/" class="badge badge-info"> clocktable(1)</a>
-            
                 <a href="/tag/coding%20system/" class="badge badge-info"> coding system(1)</a>
             
                 <a href="/tag/image%20library/" class="badge badge-info"> image library(1)</a>
             
                 <a href="/tag/keybind/" class="badge badge-info"> keybind(1)</a>
             
-                <a href="/tag/spacemacs/" class="badge badge-info"> spacemacs(1)</a>
+                <a href="/tag/modifier%20keys/" class="badge badge-info"> modifier keys(1)</a>
             
-                <a href="/tag/org%20babel/" class="badge badge-info"> org babel(1)</a>
+                <a href="/tag/librime/" class="badge badge-info"> librime(2)</a>
             
-                <a href="/tag/homebrew/" class="badge badge-info"> homebrew(1)</a>
+                <a href="/tag/emacs-rime/" class="badge badge-info"> emacs-rime(1)</a>
+            
+                <a href="/tag/Evil%20Multiple%20cursors/" class="badge badge-info"> Evil Multiple cursors(1)</a>
+            
+                <a href="/tag/turn%20evil%20mode%20off/" class="badge badge-info"> turn evil mode off(1)</a>
+            
+                <a href="/tag/evil/" class="badge badge-info"> evil(1)</a>
+            
+                <a href="/tag/surround/" class="badge badge-info"> surround(1)</a>
+            
+                <a href="/tag/keybinds/" class="badge badge-info"> keybinds(1)</a>
+            
+                <a href="/tag/liberime/" class="badge badge-info"> liberime(1)</a>
+            
+                <a href="/tag/use-sub-superscripts/" class="badge badge-info"> use-sub-superscripts(1)</a>
+            
+                <a href="/tag/ditaa/" class="badge badge-info"> ditaa(1)</a>
+            
+                <a href="/tag/Git/" class="badge badge-info"> Git(1)</a>
+            
+                <a href="/tag/command/" class="badge badge-info"> command(1)</a>
+            
+                <a href="/tag/rebase/" class="badge badge-info"> rebase(2)</a>
+            
+                <a href="/tag/postbuffer/" class="badge badge-info"> postbuffer(1)</a>
+            
+                <a href="/tag/hung%20up/" class="badge badge-info"> hung up(1)</a>
+            
+                <a href="/tag/.gitignore/" class="badge badge-info"> .gitignore(1)</a>
+            
+                <a href="/tag/merge/" class="badge badge-info"> merge(1)</a>
+            
+                <a href="/tag/cache/" class="badge badge-info"> cache(1)</a>
+            
+                <a href="/tag/reset/" class="badge badge-info"> reset(1)</a>
+            
+                <a href="/tag/workflow/" class="badge badge-info"> workflow(1)</a>
+            
+                <a href="/tag/%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="badge badge-info"> 工作流(1)</a>
+            
+                <a href="/tag/submodule/" class="badge badge-info"> submodule(1)</a>
+            
+                <a href="/tag/GitHub%20Pull%20Request/" class="badge badge-info"> GitHub Pull Request(1)</a>
+            
+                <a href="/tag/pr/" class="badge badge-info"> pr(1)</a>
+            
+                <a href="/tag/apt-get/" class="badge badge-info"> apt-get(1)</a>
+            
+                <a href="/tag/apt/" class="badge badge-info"> apt(1)</a>
+            
+                <a href="/tag/lsof/" class="badge badge-info"> lsof(1)</a>
+            
+                <a href="/tag/netstat/" class="badge badge-info"> netstat(1)</a>
+            
+                <a href="/tag/find/" class="badge badge-info"> find(1)</a>
+            
+                <a href="/tag/grep/" class="badge badge-info"> grep(2)</a>
+            
+                <a href="/tag/du/" class="badge badge-info"> du(1)</a>
+            
+                <a href="/tag/gdb/" class="badge badge-info"> gdb(1)</a>
+            
+                <a href="/tag/pacman/" class="badge badge-info"> pacman(1)</a>
+            
+                <a href="/tag/plantuml/" class="badge badge-info"> plantuml(1)</a>
+            
+                <a href="/tag/tar/" class="badge badge-info"> tar(1)</a>
+            
+                <a href="/tag/tree/" class="badge badge-info"> tree(1)</a>
+            
+                <a href="/tag/regex/" class="badge badge-info"> regex(1)</a>
+            
+                <a href="/tag/wildcard/" class="badge badge-info"> wildcard(1)</a>
+            
+                <a href="/tag/zsh/" class="badge badge-info"> zsh(1)</a>
             
                 <a href="/tag/dd/" class="badge badge-info"> dd(1)</a>
             
                 <a href="/tag/diskutil/" class="badge badge-info"> diskutil(1)</a>
+            
+                <a href="/tag/homebrew/" class="badge badge-info"> homebrew(1)</a>
             
                 <a href="/tag/tmux/" class="badge badge-info"> tmux(1)</a>
             
@@ -343,176 +502,6 @@ brew update
                 <a href="/tag/xcrun/" class="badge badge-info"> xcrun(1)</a>
             
                 <a href="/tag/node-gyp/" class="badge badge-info"> node-gyp(1)</a>
-            
-                <a href="/tag/tar/" class="badge badge-info"> tar(1)</a>
-            
-                <a href="/tag/tree/" class="badge badge-info"> tree(1)</a>
-            
-                <a href="/tag/pacman/" class="badge badge-info"> pacman(1)</a>
-            
-                <a href="/tag/plantuml/" class="badge badge-info"> plantuml(1)</a>
-            
-                <a href="/tag/find/" class="badge badge-info"> find(1)</a>
-            
-                <a href="/tag/grep/" class="badge badge-info"> grep(2)</a>
-            
-                <a href="/tag/du/" class="badge badge-info"> du(1)</a>
-            
-                <a href="/tag/apt-get/" class="badge badge-info"> apt-get(1)</a>
-            
-                <a href="/tag/apt/" class="badge badge-info"> apt(1)</a>
-            
-                <a href="/tag/regex/" class="badge badge-info"> regex(1)</a>
-            
-                <a href="/tag/wildcard/" class="badge badge-info"> wildcard(1)</a>
-            
-                <a href="/tag/zsh/" class="badge badge-info"> zsh(1)</a>
-            
-                <a href="/tag/gdb/" class="badge badge-info"> gdb(1)</a>
-            
-                <a href="/tag/lsof/" class="badge badge-info"> lsof(1)</a>
-            
-                <a href="/tag/netstat/" class="badge badge-info"> netstat(1)</a>
-            
-                <a href="/tag/rebase/" class="badge badge-info"> rebase(2)</a>
-            
-                <a href="/tag/workflow/" class="badge badge-info"> workflow(1)</a>
-            
-                <a href="/tag/%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="badge badge-info"> 工作流(1)</a>
-            
-                <a href="/tag/.gitignore/" class="badge badge-info"> .gitignore(1)</a>
-            
-                <a href="/tag/postbuffer/" class="badge badge-info"> postbuffer(1)</a>
-            
-                <a href="/tag/hung%20up/" class="badge badge-info"> hung up(1)</a>
-            
-                <a href="/tag/merge/" class="badge badge-info"> merge(1)</a>
-            
-                <a href="/tag/cache/" class="badge badge-info"> cache(1)</a>
-            
-                <a href="/tag/reset/" class="badge badge-info"> reset(1)</a>
-            
-                <a href="/tag/Git/" class="badge badge-info"> Git(1)</a>
-            
-                <a href="/tag/command/" class="badge badge-info"> command(1)</a>
-            
-                <a href="/tag/submodule/" class="badge badge-info"> submodule(1)</a>
-            
-                <a href="/tag/GitHub%20Pull%20Request/" class="badge badge-info"> GitHub Pull Request(1)</a>
-            
-                <a href="/tag/pr/" class="badge badge-info"> pr(1)</a>
-            
-                <a href="/tag/Matplotlib/" class="badge badge-info"> Matplotlib(1)</a>
-            
-                <a href="/tag/beautifusoup/" class="badge badge-info"> beautifusoup(1)</a>
-            
-                <a href="/tag/%E4%B8%8B%E8%BD%BD%E5%B0%8F%E8%AF%B4/" class="badge badge-info"> 下载小说(1)</a>
-            
-                <a href="/tag/SOLID/" class="badge badge-info"> SOLID(1)</a>
-            
-                <a href="/tag/Leetcode/" class="badge badge-info"> Leetcode(2)</a>
-            
-                <a href="/tag/%E9%80%8F%E8%A7%86%E8%A1%A8/" class="badge badge-info"> 透视表(1)</a>
-            
-                <a href="/tag/read_excel%28%29/" class="badge badge-info"> read_excel()(1)</a>
-            
-                <a href="/tag/pandas/" class="badge badge-info"> pandas(1)</a>
-            
-                <a href="/tag/conda/" class="badge badge-info"> conda(1)</a>
-            
-                <a href="/tag/django/" class="badge badge-info"> django(1)</a>
-            
-                <a href="/tag/markdown-deux/" class="badge badge-info"> markdown-deux(1)</a>
-            
-                <a href="/tag/mysql/" class="badge badge-info"> mysql(1)</a>
-            
-                <a href="/tag/oracle/" class="badge badge-info"> oracle(1)</a>
-            
-                <a href="/tag/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" class="badge badge-info"> 模糊查询(1)</a>
-            
-                <a href="/tag/logging%20level/" class="badge badge-info"> logging level(1)</a>
-            
-                <a href="/tag/reflex/" class="badge badge-info"> reflex(1)</a>
-            
-                <a href="/tag/Field/" class="badge badge-info"> Field(1)</a>
-            
-                <a href="/tag/Maven/" class="badge badge-info"> Maven(1)</a>
-            
-                <a href="/tag/Selenium/" class="badge badge-info"> Selenium(1)</a>
-            
-                <a href="/tag/%E4%B8%8B%E6%8B%89%E6%A1%86/" class="badge badge-info"> 下拉框(1)</a>
-            
-                <a href="/tag/select%20into/" class="badge badge-info"> select into(1)</a>
-            
-                <a href="/tag/insert%20into%20select/" class="badge badge-info"> insert into select(1)</a>
-            
-                <a href="/tag/MySQL%20%E5%AE%89%E8%A3%85/" class="badge badge-info"> MySQL 安装(1)</a>
-            
-                <a href="/tag/CAST/" class="badge badge-info"> CAST(1)</a>
-            
-                <a href="/tag/CONVERT/" class="badge badge-info"> CONVERT(1)</a>
-            
-                <a href="/tag/timestamp/" class="badge badge-info"> timestamp(1)</a>
-            
-                <a href="/tag/concat/" class="badge badge-info"> concat(1)</a>
-            
-                <a href="/tag/concat_ws/" class="badge badge-info"> concat_ws(1)</a>
-            
-                <a href="/tag/group_concat/" class="badge badge-info"> group_concat(1)</a>
-            
-                <a href="/tag/union/" class="badge badge-info"> union(1)</a>
-            
-                <a href="/tag/grant%20privileges/" class="badge badge-info"> grant privileges(1)</a>
-            
-                <a href="/tag/%E9%87%8D%E7%BD%AE%20root%20%E5%AF%86%E7%A0%81/" class="badge badge-info"> 重置 root 密码(1)</a>
-            
-                <a href="/tag/%E6%8A%A5%E9%94%99%2010060/" class="badge badge-info"> 报错 10060(1)</a>
-            
-                <a href="/tag/%E6%B8%85%E7%90%86%E8%BF%9E%E6%8E%A5%E6%95%B0/" class="badge badge-info"> 清理连接数(1)</a>
-            
-                <a href="/tag/create%20user/" class="badge badge-info"> create user(1)</a>
-            
-                <a href="/tag/set%20password/" class="badge badge-info"> set password(1)</a>
-            
-                <a href="/tag/exists/" class="badge badge-info"> exists(1)</a>
-            
-                <a href="/tag/in/" class="badge badge-info"> in(1)</a>
-            
-                <a href="/tag/markdown-it/" class="badge badge-info"> markdown-it(1)</a>
-            
-                <a href="/tag/emoji/" class="badge badge-info"> emoji(1)</a>
-            
-                <a href="/tag/tasks/" class="badge badge-info"> tasks(1)</a>
-            
-                <a href="/tag/valine/" class="badge badge-info"> valine(1)</a>
-            
-                <a href="/tag/Code%20504/" class="badge badge-info"> Code 504(1)</a>
-            
-                <a href="/tag/Hugo/" class="badge badge-info"> Hugo(1)</a>
-            
-                <a href="/tag/theme/" class="badge badge-info"> theme(1)</a>
-            
-                <a href="/tag/substring/" class="badge badge-info"> substring(1)</a>
-            
-                <a href="/tag/indexOf/" class="badge badge-info"> indexOf(1)</a>
-            
-                <a href="/tag/RegExp/" class="badge badge-info"> RegExp(1)</a>
-            
-                <a href="/tag/%E5%AE%9A%E4%BD%8D%E8%8A%82%E7%82%B9/" class="badge badge-info"> 定位节点(1)</a>
-            
-                <a href="/tag/%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D/" class="badge badge-info"> 正则匹配(1)</a>
-            
-                <a href="/tag/async/" class="badge badge-info"> async(1)</a>
-            
-                <a href="/tag/%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82/" class="badge badge-info"> 异步请求(1)</a>
-            
-                <a href="/tag/css/" class="badge badge-info"> css(2)</a>
-            
-                <a href="/tag/layui/" class="badge badge-info"> layui(1)</a>
-            
-                <a href="/tag/%E6%BB%9A%E5%8A%A8%E6%9D%A1/" class="badge badge-info"> 滚动条(1)</a>
-            
-                <a href="/tag/JavaScript/" class="badge badge-info"> JavaScript(1)</a>
             
         </div>
     </div>
@@ -524,21 +513,35 @@ brew update
         </div>
         <div class="card-body">
             
-                <a href="/category/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" class="badge badge-info">生活总结(13)</a>
+                <a href="/category/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/" class="badge badge-info">后台技术(21)</a>
+            
+                <a href="/category/Java/" class="badge badge-info">Java(4)</a>
+            
+                <a href="/category/MySQL/" class="badge badge-info">MySQL(8)</a>
+            
+                <a href="/category/Python/" class="badge badge-info">Python(9)</a>
+            
+                <a href="/category/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="badge badge-info">前端技术(8)</a>
+            
+                <a href="/category/ajax/" class="badge badge-info">ajax(1)</a>
+            
+                <a href="/category/hugo/" class="badge badge-info">hugo(1)</a>
+            
+                <a href="/category/css/" class="badge badge-info">css(1)</a>
             
                 <a href="/category/%E5%B7%A5%E5%85%B7%E7%8E%AF%E5%A2%83/" class="badge badge-info">工具环境(48)</a>
             
-                <a href="/category/Pandoc/" class="badge badge-info">Pandoc(1)</a>
+                <a href="/category/hexo/" class="badge badge-info">hexo(3)</a>
             
-                <a href="/category/Windows/" class="badge badge-info">Windows(1)</a>
+                <a href="/category/JavaScript/" class="badge badge-info">JavaScript(3)</a>
             
-                <a href="/category/GitHub/" class="badge badge-info">GitHub(1)</a>
+                <a href="/category/xpath/" class="badge badge-info">xpath(1)</a>
+            
+                <a href="/category/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93/" class="badge badge-info">生活总结(13)</a>
             
                 <a href="/category/Android/" class="badge badge-info">Android(1)</a>
             
-                <a href="/category/Hexo/" class="badge badge-info">Hexo(1)</a>
-            
-                <a href="/category/hexo/" class="badge badge-info">hexo(3)</a>
+                <a href="/category/Windows/" class="badge badge-info">Windows(1)</a>
             
                 <a href="/category/travis/" class="badge badge-info">travis(1)</a>
             
@@ -546,39 +549,25 @@ brew update
             
                 <a href="/category/GCC/" class="badge badge-info">GCC(1)</a>
             
-                <a href="/category/markdown/" class="badge badge-info">markdown(1)</a>
+                <a href="/category/GitHub/" class="badge badge-info">GitHub(1)</a>
             
                 <a href="/category/Google/" class="badge badge-info">Google(1)</a>
             
+                <a href="/category/Hexo/" class="badge badge-info">Hexo(1)</a>
+            
+                <a href="/category/Pandoc/" class="badge badge-info">Pandoc(1)</a>
+            
+                <a href="/category/markdown/" class="badge badge-info">markdown(1)</a>
+            
                 <a href="/category/Emacs/" class="badge badge-info">Emacs(14)</a>
             
-                <a href="/category/Mac/" class="badge badge-info">Mac(4)</a>
+                <a href="/category/Git/" class="badge badge-info">Git(9)</a>
             
                 <a href="/category/Linux/" class="badge badge-info">Linux(8)</a>
             
                 <a href="/category/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="badge badge-info">正则表达式(1)</a>
             
-                <a href="/category/Git/" class="badge badge-info">Git(9)</a>
-            
-                <a href="/category/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/" class="badge badge-info">后台技术(21)</a>
-            
-                <a href="/category/Python/" class="badge badge-info">Python(9)</a>
-            
-                <a href="/category/Java/" class="badge badge-info">Java(4)</a>
-            
-                <a href="/category/MySQL/" class="badge badge-info">MySQL(8)</a>
-            
-                <a href="/category/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="badge badge-info">前端技术(8)</a>
-            
-                <a href="/category/hugo/" class="badge badge-info">hugo(1)</a>
-            
-                <a href="/category/JavaScript/" class="badge badge-info">JavaScript(3)</a>
-            
-                <a href="/category/xpath/" class="badge badge-info">xpath(1)</a>
-            
-                <a href="/category/ajax/" class="badge badge-info">ajax(1)</a>
-            
-                <a href="/category/css/" class="badge badge-info">css(1)</a>
+                <a href="/category/Mac/" class="badge badge-info">Mac(4)</a>
             
         </div>
     </div>
@@ -594,37 +583,62 @@ brew update
         <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
     </center>
     
-        <center>&copy; 2020 power by <a href="https://github.com/ZucchiniY">Zuchhiniy</a></center>
+    <center>&copy; 2020 power by <a href="https://github.com/ZucchiniY">Zuchhiniy</a></center>
     
 </div>
 <!-- 谷歌广告 -->
 
-    <script data-ad-client="ca-pub-2846657491221113" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script data-ad-client="ca-pub-2846657491221113" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.26.0/dist/moment.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
 
+<!-- 百度广告-->
+<!-- PC -->
+<div class="_54tydb5cszk"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6300133",
+        container: "_54tydb5cszk",
+        async: true
+    });
+</script>
+<!-- wap -->
+<div class="_dqr8o6yclye"></div>
+<script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+        id: "u6300134",
+        container: "_dqr8o6yclye",
+        async: true
+    });
+</script>
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer">
+</script>
 
 <!-- 百度分析 -->
 <script>
- var _hmt = _hmt || [];
- (function() {
-     var hm = document.createElement("script");
-     hm.src = "https://hm.baidu.com/hm.js?31557380932f914656639e3f499fca3c";
-     var s = document.getElementsByTagName("script")[0]; 
-     s.parentNode.insertBefore(hm, s);
- })();
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?31557380932f914656639e3f499fca3c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 </script>
 <!-- 谷歌分析 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151174326-1"></script>
 <script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
- gtag('config', 'UA-151174326-1');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151174326-1');
 </script>
 <!-- 不蒜子 -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>

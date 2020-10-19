@@ -2,28 +2,158 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/journal/emacs-learning-way/</loc>
-        <lastmod>2017-03-02</lastmod>
+        <loc>http://www.zucchiniy.com/notes/backends/java/java-get-field-name/</loc>
+        <lastmod>2019-03-18</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/journal/book-movie-list-2020/</loc>
-        <lastmod>2020-01-04</lastmod>
+        <loc>http://www.zucchiniy.com/notes/backends/java/maven-use-tips/</loc>
+        <lastmod>2018-04-18</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/journal/python-learning-path/</loc>
-        <lastmod>2019-08-07</lastmod>
+        <loc>http://www.zucchiniy.com/notes/backends/java/select-dropdown-value-by-selenium/</loc>
+        <lastmod>2019-02-27</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/journal/learning-book-list/</loc>
-        <lastmod>2019-10-17</lastmod>
+        <loc>http://www.zucchiniy.com/notes/backends/java/springboot-config-tips/</loc>
+        <lastmod>2018-04-28</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/journal/bullet-journal-for-myself/</loc>
-        <lastmod>2019-07-18</lastmod>
+        <loc>http://www.zucchiniy.com/notes/backends/mysql/how-difference-between-in-and-exists-in-sql/</loc>
+        <lastmod>2018-07-26</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/mysql/install-mysql-server-in-window/</loc>
+        <lastmod>2020-08-12</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/mysql/mysql-authority-config/</loc>
+        <lastmod>2016-04-29</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/mysql/mysql-concat-string/</loc>
+        <lastmod>2018-05-15</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/mysql/mysql-create-new-user/</loc>
+        <lastmod>2018-07-12</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/mysql/mysql-forget-root-password/</loc>
+        <lastmod>2018-09-27</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/mysql/select-into-in-mysql/</loc>
+        <lastmod>2018-08-07</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/mysql/sort-string-in-mysql/</loc>
+        <lastmod>2018-05-22</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/python/integer-to-english-words/</loc>
+        <lastmod>2019-10-08</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/python/integer-to-roman/</loc>
+        <lastmod>2019-10-08</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/python/matplotlib-learning-notes/</loc>
+        <lastmod>2019-07-30</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/python/oop-solid-md/</loc>
+        <lastmod>2020-03-23</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/python/python-convert-markdown-to-html/</loc>
+        <lastmod>2019-10-12</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/python/python-data-analysis-junior/</loc>
+        <lastmod>2019-10-18</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/python/python-download-novel/</loc>
+        <lastmod>2018-08-15</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/python/python-evn-config/</loc>
+        <lastmod>2019-07-26</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/backends/python/python-process-excel/</loc>
+        <lastmod>2019-08-09</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/fronts/ajax-asyn-option/</loc>
+        <lastmod>2018-06-20</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/fronts/create-new-theme-for-hugo/</loc>
+        <lastmod>2018-08-22</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/fronts/css-learning-notes/</loc>
+        <lastmod>2016-01-06</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/fronts/hexo-markdown-tasks-emoji/</loc>
+        <lastmod>2020-01-11</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/fronts/iframce-scrolling-config/</loc>
+        <lastmod>2018-06-21</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/fronts/javascript-contain-string/</loc>
+        <lastmod>2018-06-15</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/fronts/layui-table-paging/</loc>
+        <lastmod>2018-08-02</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/fronts/valine-504-error/</loc>
+        <lastmod>2019-12-19</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/fronts/xpath-basis/</loc>
+        <lastmod>2020-01-13</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/journal/3-step-to-better-one/</loc>
+        <lastmod>2019-02-11</lastmod>
     </url>
     
     <url>
@@ -32,13 +162,23 @@
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/journal/how-to-improve-work-efficiency/</loc>
-        <lastmod>2019-08-16</lastmod>
+        <loc>http://www.zucchiniy.com/notes/journal/book-movie-list-2020/</loc>
+        <lastmod>2020-01-04</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/journal/mimicry-training/</loc>
-        <lastmod>2018-05-28</lastmod>
+        <loc>http://www.zucchiniy.com/notes/journal/bullet-journal-for-myself/</loc>
+        <lastmod>2019-07-18</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/journal/emacs-learning-way/</loc>
+        <lastmod>2017-03-02</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/journal/how-to-improve-work-efficiency/</loc>
+        <lastmod>2019-08-16</lastmod>
     </url>
     
     <url>
@@ -57,8 +197,18 @@
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/journal/3-step-to-better-one/</loc>
-        <lastmod>2019-02-11</lastmod>
+        <loc>http://www.zucchiniy.com/notes/journal/learning-book-list/</loc>
+        <lastmod>2019-10-17</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/journal/mimicry-training/</loc>
+        <lastmod>2018-05-28</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/journal/python-learning-path/</loc>
+        <lastmod>2019-08-07</lastmod>
     </url>
     
     <url>
@@ -67,33 +217,18 @@
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/pandoc-command/</loc>
-        <lastmod>2016-01-19</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/cmder-cannot-display-chinese/</loc>
-        <lastmod>2018-08-29</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/github-jsDelivr/</loc>
-        <lastmod>2020-01-15</lastmod>
-    </url>
-    
-    <url>
         <loc>http://www.zucchiniy.com/notes/tools/android-flashboot/</loc>
         <lastmod>2019-04-10</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/hexo-post-link/</loc>
-        <lastmod>2020-01-15</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/build-blog-with-hexo/</loc>
+        <lastmod>2020-01-05</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/build-blog-with-hexo/</loc>
-        <lastmod>2020-01-05</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/cmder-cannot-display-chinese/</loc>
+        <lastmod>2018-08-29</lastmod>
     </url>
     
     <url>
@@ -112,8 +247,8 @@
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/use-table-in-markdown/</loc>
-        <lastmod>2020-01-13</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/github-jsDelivr/</loc>
+        <lastmod>2020-01-15</lastmod>
     </url>
     
     <url>
@@ -122,43 +257,33 @@
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/emacs/evil-surround-learning/</loc>
-        <lastmod>2018-02-12</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/hexo-post-link/</loc>
+        <lastmod>2020-01-15</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/emacs/emacs-rime-config/</loc>
-        <lastmod>2020-04-21</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/pandoc-command/</loc>
+        <lastmod>2016-01-19</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/emacs/liberime-librime-compile/</loc>
-        <lastmod>2020-04-21</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/use-table-in-markdown/</loc>
+        <lastmod>2020-01-13</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/emacs/emacs-clocktable/</loc>
+        <lastmod>2020-01-14</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/emacs/emacs-dot-and-python-cannot-run-in-spacemacs/</loc>
+        <lastmod>2017-07-31</lastmod>
     </url>
     
     <url>
         <loc>http://www.zucchiniy.com/notes/tools/emacs/emacs-graphviz-dot/</loc>
         <lastmod>2016-01-08</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/emacs/org-mode-use-tips/</loc>
-        <lastmod>2020-01-12</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/emacs/evil-functions/</loc>
-        <lastmod>2020-01-12</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/emacs/emacs-modifier-keys/</loc>
-        <lastmod>2019-02-26</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/emacs/run-python-in-emacs/</loc>
-        <lastmod>2019-08-07</lastmod>
     </url>
     
     <url>
@@ -172,88 +297,53 @@
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/emacs/keybinds-config-in-emacs/</loc>
-        <lastmod>2020-01-08</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/emacs/emacs-clocktable/</loc>
-        <lastmod>2020-01-14</lastmod>
-    </url>
-    
-    <url>
         <loc>http://www.zucchiniy.com/notes/tools/emacs/emacs-keybinds-basic/</loc>
         <lastmod>2016-04-26</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/emacs/emacs-dot-and-python-cannot-run-in-spacemacs/</loc>
-        <lastmod>2017-07-31</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/emacs/emacs-modifier-keys/</loc>
+        <lastmod>2019-02-26</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/mac/homebrew-commands/</loc>
-        <lastmod>2018-04-27</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/emacs/emacs-rime-config/</loc>
+        <lastmod>2020-04-21</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/mac/create-usb-card-by-dd-in-mac/</loc>
-        <lastmod>2018-04-25</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/emacs/evil-functions/</loc>
+        <lastmod>2020-01-12</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/mac/tmux-on-mac/</loc>
-        <lastmod>2019-08-01</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/emacs/evil-surround-learning/</loc>
+        <lastmod>2018-02-12</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/mac/xcrun-error/</loc>
-        <lastmod>2017-12-07</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/linux/tar-and-tree-command/</loc>
-        <lastmod>2017-03-19</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/linux/linux-config-tips/</loc>
-        <lastmod>2017-06-08</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/linux/find-files-on-linux/</loc>
-        <lastmod>2020-01-07</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/linux/apt-get-update-and-upgrade/</loc>
-        <lastmod>2018-08-02</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/linux/grep-on-linux/</loc>
-        <lastmod>2018-05-31</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/linux/wildcard-and-regex/</loc>
-        <lastmod>2018-05-20</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/linux/zsh-shell-basic/</loc>
-        <lastmod>2018-04-29</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/linux/how-to-use-gdb-to-debug-program/</loc>
+        <loc>http://www.zucchiniy.com/notes/tools/emacs/keybinds-config-in-emacs/</loc>
         <lastmod>2020-01-08</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/linux/ensure-port-use-on-linux/</loc>
-        <lastmod>2018-09-04</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/emacs/liberime-librime-compile/</loc>
+        <lastmod>2020-04-21</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/emacs/org-mode-use-tips/</loc>
+        <lastmod>2020-01-12</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/emacs/run-python-in-emacs/</loc>
+        <lastmod>2019-08-07</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/git/git-basic-command/</loc>
+        <lastmod>2016-04-27</lastmod>
     </url>
     
     <url>
@@ -262,18 +352,13 @@
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/git/git-workflow/</loc>
-        <lastmod>2016-03-17</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/git/git-hung-up-unexpectedly/</loc>
+        <lastmod>2018-08-30</lastmod>
     </url>
     
     <url>
         <loc>http://www.zucchiniy.com/notes/tools/git/git-ignore/</loc>
         <lastmod>2018-05-28</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/tools/git/git-hung-up-unexpectedly/</loc>
-        <lastmod>2018-08-30</lastmod>
     </url>
     
     <url>
@@ -287,8 +372,8 @@
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/tools/git/git-basic-command/</loc>
-        <lastmod>2016-04-27</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/git/git-workflow/</loc>
+        <lastmod>2016-03-17</lastmod>
     </url>
     
     <url>
@@ -302,153 +387,68 @@
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/backends/python/matplotlib-learning-notes/</loc>
-        <lastmod>2019-07-30</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/python/python-download-novel/</loc>
-        <lastmod>2018-08-15</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/python/oop-solid-md/</loc>
-        <lastmod>2020-03-23</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/python/integer-to-roman/</loc>
-        <lastmod>2019-10-08</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/python/python-process-excel/</loc>
-        <lastmod>2019-08-09</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/python/python-data-analysis-junior/</loc>
-        <lastmod>2019-10-18</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/python/python-evn-config/</loc>
-        <lastmod>2019-07-26</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/python/python-convert-markdown-to-html/</loc>
-        <lastmod>2019-10-12</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/python/integer-to-english-words/</loc>
-        <lastmod>2019-10-08</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/java/springboot-config-tips/</loc>
-        <lastmod>2018-04-28</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/java/java-get-field-name/</loc>
-        <lastmod>2019-03-18</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/java/maven-use-tips/</loc>
-        <lastmod>2018-04-18</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/java/select-dropdown-value-by-selenium/</loc>
-        <lastmod>2019-02-27</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/mysql/select-into-in-mysql/</loc>
-        <lastmod>2018-08-07</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/mysql/install-mysql-server-in-window/</loc>
-        <lastmod>2020-08-12</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/mysql/sort-string-in-mysql/</loc>
-        <lastmod>2018-05-22</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/mysql/mysql-concat-string/</loc>
-        <lastmod>2018-05-15</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/mysql/mysql-authority-config/</loc>
-        <lastmod>2016-04-29</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/mysql/mysql-forget-root-password/</loc>
-        <lastmod>2018-09-27</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/mysql/mysql-create-new-user/</loc>
-        <lastmod>2018-07-12</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/backends/mysql/how-difference-between-in-and-exists-in-sql/</loc>
-        <lastmod>2018-07-26</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/fronts/hexo-markdown-tasks-emoji/</loc>
-        <lastmod>2020-01-11</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/fronts/valine-504-error/</loc>
-        <lastmod>2019-12-19</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/fronts/create-new-theme-for-hugo/</loc>
-        <lastmod>2018-08-22</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/fronts/javascript-contain-string/</loc>
-        <lastmod>2018-06-15</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/fronts/xpath-basis/</loc>
-        <lastmod>2020-01-13</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/fronts/ajax-asyn-option/</loc>
-        <lastmod>2018-06-20</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/fronts/css-learning-notes/</loc>
-        <lastmod>2016-01-06</lastmod>
-    </url>
-    
-    <url>
-        <loc>http://www.zucchiniy.com/notes/fronts/layui-table-paging/</loc>
+        <loc>http://www.zucchiniy.com/notes/tools/linux/apt-get-update-and-upgrade/</loc>
         <lastmod>2018-08-02</lastmod>
     </url>
     
     <url>
-        <loc>http://www.zucchiniy.com/notes/fronts/iframce-scrolling-config/</loc>
-        <lastmod>2018-06-21</lastmod>
+        <loc>http://www.zucchiniy.com/notes/tools/linux/ensure-port-use-on-linux/</loc>
+        <lastmod>2018-09-04</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/linux/find-files-on-linux/</loc>
+        <lastmod>2020-01-07</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/linux/grep-on-linux/</loc>
+        <lastmod>2018-05-31</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/linux/how-to-use-gdb-to-debug-program/</loc>
+        <lastmod>2020-01-08</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/linux/linux-config-tips/</loc>
+        <lastmod>2017-06-08</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/linux/tar-and-tree-command/</loc>
+        <lastmod>2017-03-19</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/linux/wildcard-and-regex/</loc>
+        <lastmod>2018-05-20</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/linux/zsh-shell-basic/</loc>
+        <lastmod>2018-04-29</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/mac/create-usb-card-by-dd-in-mac/</loc>
+        <lastmod>2018-04-25</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/mac/homebrew-commands/</loc>
+        <lastmod>2018-04-27</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/mac/tmux-on-mac/</loc>
+        <lastmod>2019-08-01</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://www.zucchiniy.com/notes/tools/mac/xcrun-error/</loc>
+        <lastmod>2017-12-07</lastmod>
     </url>
     
 </urlset>
